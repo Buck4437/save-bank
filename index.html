@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>AD Save Bank</title>
+        <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <h1>AD Save Bank (WIP)</h1>
+            <div class="cat-nav">
+                <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}}</button>
+            </div>
+            <br>
+            <div class="file-nav">
+                <button v-for="saveFile in currentCategory.saveFiles" @click="switchSaveFile(saveFile)">{{saveFile.name}}</button>
+            </div>
+            <div class="save-file">
+                <div id="save-file-text">
+                    {{displayedText}}
+                </div>
+                <button @click="copyText()">Copy To Clipboard</button>
+                <input style="display:none" id="hidden-save-file-text-field"></input>
+            </div>
+        </div>
+    </body>
+
+    <!-- TODO: Description for categories -->
+    <!-- TODO: Description for save files -->
+    <!-- TODO: Authors of saveFiles -->
+    <!-- TODO: Styling -->
+    <!-- TODO: Vertical scrolling for cat and subcats -->
+    <!-- TODO: Credits -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <script src="javascripts/classes/Save.js"></script>
+    <script src="javascripts/classes/SaveCategory.js"></script>
+    <script src="javascripts/database.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>

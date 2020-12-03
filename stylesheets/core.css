@@ -1,0 +1,11 @@
+*{
+  font-family: 'Inconsolata', monospace;
+}
+
+#save-file-text{
+    width: 90%;
+    height: 300px;
+    background-color: #666666;
+    word-wrap: break-word;
+    overflow-y: auto;
+}
