@@ -17,13 +17,16 @@
             <div class="file-nav">
                 <button v-for="saveFile in currentCategory.saveFiles" @click="switchSaveFile(saveFile)">{{saveFile.name}}</button>
             </div>
-            <div class="save-file">
-                <div id="save-file-text">
-                    {{displayedText}}
-                </div>
-                <button @click="copyText()">Copy To Clipboard</button>
-                <input style="display:none" id="hidden-save-file-text-field"></input>
+            <br>
+            <div id="save-file-text">
+                {{displayedText}}
             </div>
+            <br>
+            <button @click="copyText()">Copy To Clipboard</button>
+            <input style="display:none" id="hidden-save-file-text-field"></input>
+            <br>
+            <br>
+            Credits to earth for making the original save bank
         </div>
     </body>
 
@@ -32,7 +35,6 @@
     <!-- TODO: Authors of saveFiles -->
     <!-- TODO: Styling -->
     <!-- TODO: Vertical scrolling for cat and subcats -->
-    <!-- TODO: Credits -->
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 

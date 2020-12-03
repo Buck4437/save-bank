@@ -16,7 +16,11 @@ var app = new Vue({
         },
         switchCategory(index){
             this.currentCategoryIndex = index;
-            this.displayedText = this.currentCategory.saveFiles[0].data
+            if (this.currentCategory.saveFiles.length != 0){
+                this.displayedText = this.currentCategory.saveFiles[0].data
+            } else {
+                this.displayedText = "No save files available"
+            }
         },
         copyText(){
             var copyTextarea = document.getElementById("hidden-save-file-text-field");
