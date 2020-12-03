@@ -3,7 +3,7 @@ var app = new Vue({
     data: {
         saves,
         currentCategoryIndex: 0,
-        displayedText: "Save will appear here!"
+        displayedText: "Save file will appear here!"
     },
     computed:{
         currentCategory(){
@@ -19,7 +19,7 @@ var app = new Vue({
             if (this.currentCategory.saveFiles.length != 0){
                 this.displayedText = this.currentCategory.saveFiles[0].data
             } else {
-                this.displayedText = "No save files available"
+                this.displayedText = "No save file available"
             }
         },
         copyText(){
