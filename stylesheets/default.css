@@ -1,4 +1,60 @@
 body{
     background-color: #121212;
     color: #FFFFFF;
+    max-width: 1000px;
+    padding-left: 20px;
+}
+
+button{
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+    transition-duration: 0.3s;
+}
+
+.cat-nav button{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    min-width: 150px;
+    min-height: 60px;
+}
+
+.file-list{
+}
+
+.file-con{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.file-name{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.file-btn-con{
+    display: flex;
+    flex-direction: column;
+}
+
+.file-btn{
+    margin-bottom: 10px;
+    min-width: 150px;
+    min-height: 40px;
+}
+
+#save-file-text{
+    width: 90%;
+    height: 300px;
+    background-color: #666666;
+    word-wrap: break-word;
+    overflow-y: auto;
 }

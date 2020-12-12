@@ -2,8 +2,7 @@ var app = new Vue({
     el: "#app",
     data: {
         saves,
-        currentCategoryIndex: 0,
-        displayedText: "Save file will appear here!"
+        currentCategoryIndex: 0
     },
     computed:{
         currentCategory(){
@@ -11,9 +10,6 @@ var app = new Vue({
         }
     },
     methods:{
-        switchSaveFile(saveFile){
-            this.displayedText = saveFile.data
-        },
         switchCategory(index){
             this.currentCategoryIndex = index;
             if (this.currentCategory.saveFiles.length != 0){
@@ -22,20 +18,21 @@ var app = new Vue({
                 this.displayedText = "No save file available"
             }
         },
-        copyText(){
-            var copyTextarea = document.getElementById("hidden-save-file-text-field");
-            copyTextarea.style.display = "block";
-            copyTextarea.value = this.displayedText;
-            copyTextarea.focus();
-            copyTextarea.select();
-
-            try {
-              document.execCommand('copy');
-            } catch (err) {
-              console.log('Unable to copy');
+        copyText(text){
+            //source: https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
+            const el = document.createElement('textarea');
+            el.value = text;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            try{
+                document.execCommand('copy');
+            } catch(e){
+                prompt("Failed to copy. Please copy manually:", text);
             }
-
-            copyTextarea.style.display = "none";
+            document.body.removeChild(el);
         }
     }
 })

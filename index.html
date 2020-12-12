@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>AD Save Bank</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
@@ -10,35 +11,50 @@
     <body>
         <div id="app">
             <h1>AD Save Bank (WIP)</h1>
+            <h3>Version Alpha 1</h3>
+            <h4>Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a></h4>
             <div class="cat-nav">
                 <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}}</button>
             </div>
             <br>
-            <div class="file-nav">
-                <button v-for="saveFile in currentCategory.saveFiles" @click="switchSaveFile(saveFile)">{{saveFile.name}}</button>
+            <div class="file-list">
+                <div class="file-con" v-for="saveFile in currentCategory.saveFiles">
+                    <div class="file-text-con">
+                        <div class="file-name"><b>{{saveFile.name}}</b></div>
+                        <span><i>{{saveFile.desc || "No description provided."}}</i></span>
+                    </div>
+                    <div class="file-btn-con">
+                        <button class="file-btn" @click="copyText(saveFile.data)">Copy To Clipboard</button>
+                        <!-- <button class="file-btn">View as JSON (WIP)</button> -->
+                    </div>
+                </div>
+                <div class="file-con" v-if="currentCategory.saveFiles.length == 0">
+                    <div class="file-text-con">
+                        <span><i>No save file available.</i></span>
+                    </div>
+                </div>
             </div>
-            <br>
-            <div id="save-file-text">
-                {{displayedText}}
-            </div>
-            <br>
-            <button @click="copyText()">Copy To Clipboard</button>
-            <input style="display:none" id="hidden-save-file-text-field"></input>
-            <br>
-            <br>
-            Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a>
-        </div>
+         </div>
     </body>
 
+
+    <!-- TODO: A method to get save from a "Save folder"
+    then call the method in data in database to organize the ccode-->
+    <!-- TODO: Show save file text -->
+    <!-- TODO: Popup when copied to clipboard -->
+    <!-- TODO: Add Description for save files -->
+    <!-- TODO: Switch font -->
+    <!-- TODO: Database (?) -->
     <!-- TODO: Description for categories -->
-    <!-- TODO: Description for save files -->
     <!-- TODO: Authors of saveFiles -->
     <!-- TODO: Styling -->
-    <!-- TODO: Vertical scrolling for cat and subcats -->
+    <!-- TODO: idea: dropdown menu is better
+    Vertical scrolling for cat and subcats (expand dock aka xi on mobile)-->
+    <!-- TODO: JSON mode (?) -->
+    <!-- TODO: Sort by progression (early to late, late to early etc) -->
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 
-    <script src="javascripts/classes/Save.js"></script>
     <script src="javascripts/classes/SaveCategory.js"></script>
     <script src="javascripts/database.js"></script>
     <script src="javascripts/index.js"></script>
