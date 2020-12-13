@@ -51,7 +51,7 @@ var saves = [
     ),
     new SaveCategory(
         "Time Dilation",
-        {name: "e2161 EP/8e14 DT/3e6 TP"}
+        {name: "e2161 EP/8e14 DT/3e6 TP", desc: "Provided by Autissima"}
     ),
     new SaveCategory(
         "Post-e4k EP",

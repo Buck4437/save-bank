@@ -11,8 +11,9 @@
     <body>
         <div id="app">
             <h1>AD Save Bank (WIP)</h1>
-            <h3>Version Alpha 2</h3>
-            <h4>Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a></h4>
+            <h2>Version Alpha 2</h2>
+            <h3>Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a></h3>
+            <h4><a target="_blank" href="changelog.html">Changelog</a></h4>
             <div class="cat-nav">
                 <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}}</button>
             </div>
@@ -34,22 +35,11 @@
                     </div>
                 </div>
             </div>
-            Changelog:<br>
-            Alpha 2:<br>
-            - Option to export as .txt file<br>
-            - Changed save file storage system<br>
-            <br>
-            Alpha 1:<br>
-            - New UI<br>
-            <br>
-            Alpha 0: Initial Release
          </div>
     </body>
 
-
-    <!-- TODO: Changelog -->
-    <!-- TODO: Show save file text -->
     <!-- TODO: Popup when copied to clipboard -->
+    <!-- TODO: Show save file text -->
     <!-- TODO: Add Description for save files -->
     <!-- TODO: Switch font -->
     <!-- TODO: Database (?) -->
