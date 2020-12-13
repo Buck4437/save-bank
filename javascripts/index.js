@@ -12,8 +12,8 @@ var app = new Vue({
     methods:{
         switchCategory(index){
             this.currentCategoryIndex = index;
-            if (this.currentCategory.saveFiles.length != 0){
-                this.displayedText = this.currentCategory.saveFiles[0].data
+            if (this.currentCategory.saves.length != 0){
+                this.displayedText = this.currentCategory.saves[0].data
             } else {
                 this.displayedText = "No save file available"
             }
