@@ -11,7 +11,7 @@
     <body>
         <div id="app">
             <h1>AD Save Bank (WIP)</h1>
-            <h3>Version Alpha 1</h3>
+            <h3>Version Alpha 2</h3>
             <h4>Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a></h4>
             <div class="cat-nav">
                 <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}}</button>
@@ -24,8 +24,8 @@
                         <span><i>{{saveFile.desc || "No description provided."}}</i></span>
                     </div>
                     <div class="file-btn-con">
-                        <button class="file-btn" @click="copyText(saveFile.data)">Copy To Clipboard</button>
-                        <!-- <button class="file-btn">View as JSON (WIP)</button> -->
+                        <button class="file-btn" @click="copyByPath(saveFile,currentCategory)">Copy To Clipboard</button>
+                        <button class="file-btn" @click="downloadFile(saveFile,currentCategory)">Export as .txt</button>
                     </div>
                 </div>
                 <div class="file-con" v-if="currentCategory.saveFiles.length == 0">
@@ -34,17 +34,26 @@
                     </div>
                 </div>
             </div>
+            Changelog:<br>
+            Alpha 2:<br>
+            - Option to export as .txt file<br>
+            - Changed save file storage system<br>
+            <br>
+            Alpha 1:<br>
+            - New UI<br>
+            <br>
+            Alpha 0: Initial Release
          </div>
     </body>
 
 
-    <!-- TODO: A method to get save from a "Save folder"
-    then call the method in data in database to organize the ccode-->
+    <!-- TODO: Changelog -->
     <!-- TODO: Show save file text -->
     <!-- TODO: Popup when copied to clipboard -->
     <!-- TODO: Add Description for save files -->
     <!-- TODO: Switch font -->
     <!-- TODO: Database (?) -->
+    <!-- TODO: ID system -->
     <!-- TODO: Description for categories -->
     <!-- TODO: Authors of saveFiles -->
     <!-- TODO: Styling -->
@@ -53,7 +62,7 @@
     <!-- TODO: JSON mode (?) -->
     <!-- TODO: Sort by progression (early to late, late to early etc) -->
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 
     <script src="javascripts/classes/SaveCategory.js"></script>
     <script src="javascripts/database.js"></script>
