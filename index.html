@@ -13,6 +13,7 @@
             <h1>AD Save Bank (WIP)</h1>
             <h2>Version Alpha 2</h2>
             <h3>Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a></h3>
+            <h4>Maintained by Buck (Buck#4437)</h4>
             <h4><a target="_blank" href="changelog.html">Changelog</a></h4>
             <div class="cat-nav">
                 <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}}</button>
@@ -25,8 +26,8 @@
                         <span><i>{{saveFile.desc || "No description provided."}}</i></span>
                     </div>
                     <div class="file-btn-con">
-                        <button class="file-btn" @click="copyByPath(saveFile,currentCategory)">Copy To Clipboard</button>
-                        <button class="file-btn" @click="downloadFile(saveFile,currentCategory)">Export as .txt</button>
+                        <button class="file-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
+                        <button class="file-btn" @click="downloadFile(saveFile)">Export as .txt</button>
                     </div>
                 </div>
                 <div class="file-con" v-if="currentCategory.saves.length == 0">
@@ -40,5 +41,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
 
     <script src="javascripts/database.js"></script>
+    <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
 </html>
