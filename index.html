@@ -11,12 +11,15 @@
     <body>
         <div id="app">
             <h1>AD Save Bank (WIP)</h1>
-            <h2>Version Alpha 2</h2>
-            <h3>Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a></h3>
-            <h4>Maintained by Buck (Buck#4437)</h4>
-            <h4><a target="_blank" href="changelog.html">Changelog</a></h4>
+            <h2>Version Alpha 3</h2>
+            <h3>(Info collapsible placeholder)</h3>
+            <h4>
+                <a target="_blank" href="info.html">Info</a>
+                <a target="_blank" href="changelog.html">Changelog</a>
+                <a target="_blank" href="credits.html">Credits</a>
+            </h4>
             <div class="cat-nav">
-                <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}}</button>
+                <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}} ({{saveCategory.saves.length}})</button>
             </div>
             <br>
             <div class="file-list">
@@ -45,16 +48,17 @@
     <script src="javascripts/index.js"></script>
 </html>
 
-<!-- TODO: Display amount of saves next to category -->
-<!-- TODO: Make info collapsible -->
+<!-- TODO: Make info collapsible instead of hypertext -->
+<!-- TODO: Add Description for save files -->
+<!-- TODO: Credits.html -->
+
 <!-- TODO: Popup when copied to clipboard -->
 <!-- TODO: Show save file text -->
-<!-- TODO: Add Description for save files -->
 <!-- TODO: Switch font -->
 <!-- TODO: Description for categories -->
 <!-- TODO: Styling -->
 <!-- TODO: Themes -->
-<!-- TODO: Issue: button too big on mobile -->
+<!-- TODO: Issue: button too big on mobile (Add word break?)-->
 <!-- TODO: idea: dropdown menu is better
 Vertical scrolling for cat and subcats (expand dock aka xi on mobile)-->
 <!-- TODO: JSON mode (?) -->
