@@ -40,6 +40,10 @@ button:hover{
     margin-bottom: 20px;
 }
 
+.file-desc{
+    line-height: 1.6
+}
+
 .file-btn-con{
     display: flex;
     flex-direction: column;

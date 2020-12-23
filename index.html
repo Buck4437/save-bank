@@ -26,7 +26,7 @@
                 <div class="file-con" v-for="saveFile in currentCategory.saves">
                     <div class="file-text-con">
                         <div class="file-name"><b>{{saveFile.name}}</b></div>
-                        <span><i>{{saveFile.desc || "No description provided."}}</i></span>
+                        <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
                     </div>
                     <div class="file-btn-con">
                         <button class="file-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
@@ -51,15 +51,16 @@
 <!-- TODO: Make info collapsible instead of hypertext -->
 <!-- TODO: Add Description for save files -->
 <!-- TODO: Credits.html -->
+<!-- TODO: Switch font -->
 
 <!-- TODO: Popup when copied to clipboard -->
 <!-- TODO: Show save file text -->
-<!-- TODO: Switch font -->
 <!-- TODO: Description for categories -->
 <!-- TODO: Styling -->
 <!-- TODO: Themes -->
 <!-- TODO: Issue: button too big on mobile (Add word break?)-->
 <!-- TODO: idea: dropdown menu is better
 Vertical scrolling for cat and subcats (expand dock aka xi on mobile)-->
+<!-- TODO: Database -->
 <!-- TODO: JSON mode (?) -->
 <!-- TODO: Sort by progression (early to late, late to early etc) -->

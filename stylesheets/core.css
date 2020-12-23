@@ -1,3 +1,7 @@
-*{
+* {
   font-family: 'Inconsolata', monospace;
+}
+
+.pre-formatted {
+    white-space: pre-wrap;
 }
