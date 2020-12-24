@@ -119,11 +119,6 @@ button:hover{
         flex-direction: column;
     }
 
-    .settings-con{
-        display: flex;
-        flex-direction: column;
-    }
-
     .file-btn {
         flex-grow: 1;
     }
@@ -143,5 +138,8 @@ button:hover{
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
-
+    .settings-con{
+        display: flex;
+        flex-direction: column;
+    }
 }
