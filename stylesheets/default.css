@@ -17,22 +17,28 @@ button:hover{
     transition-duration: 0.3s;
 }
 
+.cat-nav {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #FFFFFF;
+}
+
 .cat-nav button{
-    margin-right: 10px;
     margin-bottom: 10px;
     min-width: 150px;
     min-height: 60px;
 }
 
-.file-list{
-}
-
 .file-con{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     border: 2px solid white;
     padding: 20px;
     margin-bottom: 20px;
+}
+
+.file-text-con{
+    flex-grow: 1;
+    padding-bottom: 20px;
 }
 
 .file-name{
@@ -45,6 +51,7 @@ button:hover{
 }
 
 .file-btn-con{
+    min-width: 10%;
     display: flex;
     flex-direction: column;
 }
@@ -55,10 +62,46 @@ button:hover{
     min-height: 40px;
 }
 
-#save-file-text{
-    width: 90%;
-    height: 300px;
-    background-color: #666666;
-    word-wrap: break-word;
-    overflow-y: auto;
+.settings-con{
+    display: flex;
+    flex-direction: row;
+}
+
+.settings-btn{
+    flex-grow: 0;
+    min-width: 200px;
+    min-height: 100px;
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    .file-con {
+        flex-direction: column;
+    }
+
+    .settings-con{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .file-btn {
+        flex-grow: 1;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .file-btn-con {
+        flex-direction: row;
+    }
+
+    .file-btn {
+        flex-grow: 1;
+        margin: 10px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+
 }

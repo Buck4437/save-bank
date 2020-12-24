@@ -1,8 +1,15 @@
+const C = {
+    FILES_TAB: 0,
+    SETTINGS_TAB: 1
+}
+
 var app = new Vue({
     el: "#app",
     data: {
         saves,
-        currentCategoryIndex: 0
+        C,
+        currentCategoryIndex: 0,
+        currentTab: C.FILES_TAB
     },
     computed:{
         currentCategory(){
@@ -10,13 +17,17 @@ var app = new Vue({
         }
     },
     methods:{
+        openTab(tab){
+            this.currentTab = tab;
+        },
         switchCategory(index){
+            this.openTab(this.C.FILES_TAB);
             this.currentCategoryIndex = index;
-            if (this.currentCategory.saves.length != 0){
-                this.displayedText = this.currentCategory.saves[0].data
-            } else {
-                this.displayedText = "No save file available"
-            }
+            // if (this.currentCategory.saves.length != 0){
+            //     this.displayedText = this.currentCategory.saves[0].data
+            // } else {
+            //     this.displayedText = "No save file available"
+            // }
         },
         copyByPath(saveFile){
             copyText(saveFile.data);
@@ -28,3 +39,8 @@ var app = new Vue({
         }
     }
 })
+
+tippy('.copy-btn', {
+        content: 'Copied!',
+        trigger: 'click'
+      });
