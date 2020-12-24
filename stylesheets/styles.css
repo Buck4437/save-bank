@@ -1,44 +1,83 @@
+* {
+    color: var(--color);
+    transition-duration: 0.5s;
+}
+
 body{
-    background-color: #121212;
-    color: #FFFFFF;
+    background-color: var(--background);
     max-width: 1000px;
     padding-left: 20px;
 }
 
 button{
     background-color: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    border: 2px solid var(--color);
     cursor: pointer;
 }
 
 button:hover{
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--hover);
     transition-duration: 0.3s;
 }
 
 .cat-nav {
     padding-bottom: 10px;
-    border-bottom: 1px solid #FFFFFF;
 }
 
-.cat-nav button{
+.cat-btn{
     margin-bottom: 10px;
     min-width: 150px;
     min-height: 60px;
 }
 
+.normal {
+    border-color: var(--color-antimatter);
+    color: var(--color-antimatter);
+}
+
+.normal-background {
+    background-color: var(--color-antimatter-background);
+}
+
+.infinity {
+    border-color: var(--color-infinity);
+    color: var(--color-infinity);
+}
+
+.infinity-background {
+    background-color: var(--color-infinity-background);
+}
+
+.eternity {
+    border-color: var(--color-eternity);
+    color: var(--color-eternity);
+}
+
+.eternity-background {
+    background-color: var(--color-eternity-background);
+}
+
+.reality {
+    border-color: var(--color-reality);
+    color: var(--color-reality);
+}
+
+.reality-background {
+    background-color: var(--color-reality-background);
+}
+
 .file-con{
     display: flex;
-    flex-wrap: wrap;
-    border: 2px solid white;
+    justify-content: space-between;
+    border: 2px solid var(--color);
     padding: 20px;
     margin-bottom: 20px;
+    transition-duration: 0s;
 }
 
 .file-text-con{
-    flex-grow: 1;
     padding-bottom: 20px;
+    padding-right: 20px;
 }
 
 .file-name{
@@ -51,7 +90,7 @@ button:hover{
 }
 
 .file-btn-con{
-    min-width: 10%;
+    min-width: 160px;
     display: flex;
     flex-direction: column;
 }
@@ -76,6 +115,7 @@ button:hover{
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
     .file-con {
+        flex-wrap: wrap;
         flex-direction: column;
     }
 
