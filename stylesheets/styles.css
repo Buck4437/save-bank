@@ -112,6 +112,12 @@ button:hover{
     min-height: 100px;
 }
 
+/* tooltip */
+.tippy-content {
+    color: var(--tooltip);
+}
+
+
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
     .file-con {
