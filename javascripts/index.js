@@ -11,7 +11,7 @@ var app = new Vue({
         C,
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
-        currentTheme: 1
+        currentTheme: 0
     },
     computed: {
         currentCategory() {

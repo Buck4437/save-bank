@@ -36,12 +36,12 @@ function download(filename, text) {
 
 // Themes
 
-var themes = ["Light", "Dark"];
+var themes = ["Dark", "Light"];
 
 function getTheme() {
     let theme = Number(localStorage.getItem("saveBankTheme"));
     if (isNaN(theme)) {
-        theme = 1;
+        theme =  0;
     }
     return theme;
 }
