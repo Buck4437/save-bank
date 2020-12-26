@@ -37,11 +37,13 @@
         Save bank created by Buck
 
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-
-    <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
-    <script src="javascripts/index.js"></script>
+    <script type="text/javascript">
+    var currentTheme = loadTheme();
+    setInterval(() => {
+        if (currentTheme != getTheme()) {
+            currentTheme = loadTheme();
+        }
+    }, 200)
+    </script>
 </html>

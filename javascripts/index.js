@@ -7,10 +7,10 @@ var app = new Vue({
     el: "#app",
     data: {
         saves,
+        themes,
         C,
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
-        themes: ["Light", "Dark"],
         currentTheme: 1
     },
     computed: {
@@ -19,20 +19,12 @@ var app = new Vue({
         }
     },
     methods: {
-        switchTheme(index) {
-            if (index !== undefined) {
-                this.currentTheme = index;
-            } else {
-                this.currentTheme++;
-                if (this.currentTheme >= this.themes.length) {
-                    this.currentTheme = 0;
-                }
+        switchTheme() {
+            this.currentTheme++;
+            if (this.currentTheme >= themes.length) {
+                this.currentTheme = 0;
             }
-            for (let theme of this.themes) {
-                document.body.classList.remove(theme.toLowerCase() + "-theme");
-            }
-            document.body.classList.add(this.themes[this.currentTheme].toLowerCase() + "-theme");
-            localStorage.setItem("saveBankTheme", this.currentTheme)
+            setTheme(this.currentTheme);
         },
         openTab(tab) {
             this.currentTab = tab;
@@ -51,14 +43,17 @@ var app = new Vue({
         }
     },
     mounted() {
-        let theme = localStorage.getItem("saveBankTheme")
-        if (theme !== undefined) {
-            this.switchTheme(Number(theme));
-        }
+        this.currentTheme = loadTheme();
     }
 })
 
 tippy('.copy-btn', {
         content: 'Copied!',
-        trigger: 'click'
+        trigger: 'click',
+        hideOnClick: false,
+        onShow(instance) {
+            setTimeout(() => {
+                instance.hide();
+            }, 1500);
+        }
       });
