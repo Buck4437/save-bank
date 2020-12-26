@@ -38,7 +38,7 @@
                         <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
                             :class="i % 2 == 1 ? (currentCategory.era || 'normal').toLowerCase() + '-background' : ''">
                             <div class="file-text-con">
-                                <div class="file-name"><b>{{saveFile.name}}</b></div>
+                                <div class="file-name">{{saveFile.name}}</div>
                                 <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
                             </div>
                             <div class="file-btn-con">
@@ -77,14 +77,18 @@
 </html>
 
 <!-- TODO: background color -->
+<!-- TODO: Make side naivgations bg full height -->
 <!-- TODO: Fixed positioning -->
+<!-- TODO: Recolour the buttons -->
 <!-- TODO: Mobile version of vert nav -->
+
+<!-- TODO: (ABANDONED) Make position similar to mobile | people dont like :notlikeblob: -->
 
 <!-- TODO: Idea: use dropdown menu
 Vertical scrolling for cat and subcats (menu aka Ξ on mobile)-->
+<!-- TODO: new AMOLED theme (to replace original dark theme) -->
 <!-- TODO: Option to use old UI -->
 <!-- TODO: Active states for tabs-->
-
 
 
 

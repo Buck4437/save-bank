@@ -18,7 +18,7 @@
 .light-theme{
     --color: #4F5957;
     --primary: #FFFFFF;
-    /* --secondary: #222222; */
+    --secondary: #FAFAFA;
     --background: #F0F0F0;
     --hover: #4F595726;
     --tooltip: #FFFFFF;
