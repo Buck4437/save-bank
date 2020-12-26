@@ -11,46 +11,52 @@
     </head>
     <body>
         <div id="app">
-            <h1>AD Save Bank (WIP)</h1>
-            <h2>Version Beta 1</h2>
-            <h4>
-                <a target="_blank" href="changelog.html">Changelog</a> |
-                <a target="_blank" href="info.html">Info</a>
-            </h4>
-            <div class="cat-nav">
-                <template v-for="(saveCategory, i) in saves">
-                    <button class="cat-btn"
+            <header>
+                <span class="title">AD Save Bank (WIP)</span>
+                <span class="about">
+                    <span class="version">Beta 2</span> |
+                    <a target="_blank" href="changelog.html">Changelog</a> |
+                    <a target="_blank" href="info.html">Info</a>
+                </span>
+            </header>
+            <main>
+                <div class="cat-nav">
+                    <template v-for="(saveCategory, i) in saves">
+                        <button class="cat-btn"
                             :class="(saveCategory.era || 'normal').toLowerCase()"
                             @click="switchCategory(i)">
-                        {{saveCategory.name}} ({{saveCategory.saves.length}})
-                    </button>{{' '}}
-                </template>
-                <button class="cat-btn" @click="openTab(C.SETTINGS_TAB)">
-                    Settings
-                </button>
-            </div>
-            <br>
-            <div class="file-list" v-if="currentTab === C.FILES_TAB">
-                <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
-                :class="i % 2 == 1 ? (currentCategory.era || 'normal').toLowerCase() + '-background' : ''">
-                    <div class="file-text-con">
-                        <div class="file-name"><b>{{saveFile.name}}</b></div>
-                        <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
+                            {{saveCategory.name}} ({{saveCategory.saves.length}})
+                        </button>{{' '}}
+                    </template>
+                    <button class="cat-btn" @click="openTab(C.SETTINGS_TAB)">
+                        Settings
+                    </button>
+                </div>
+                <br>
+                <div class="tab-con">
+                    <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
+                        <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
+                            :class="i % 2 == 1 ? (currentCategory.era || 'normal').toLowerCase() + '-background' : ''">
+                            <div class="file-text-con">
+                                <div class="file-name"><b>{{saveFile.name}}</b></div>
+                                <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
+                            </div>
+                            <div class="file-btn-con">
+                                <button class="file-btn copy-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
+                                <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
+                            </div>
+                        </div>
+                        <div class="file-con" v-if="currentCategory.saves.length == 0">
+                            <div class="file-text-con">
+                                <span><i>No save file available.</i></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="file-btn-con">
-                        <button class="file-btn copy-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
-                        <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
+                    <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
+                        <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
                     </div>
                 </div>
-                <div class="file-con" v-if="currentCategory.saves.length == 0">
-                    <div class="file-text-con">
-                        <span><i>No save file available.</i></span>
-                    </div>
-                </div>
-            </div>
-            <div class="settings-con" v-if="currentTab === C.SETTINGS_TAB">
-                <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
-            </div>
+            </main>
          </div>
     </body>
 
@@ -70,10 +76,24 @@
     <script src="javascripts/tooltip.js"></script>
 </html>
 
-<!-- TODO: Active states for tabs-->
-<!-- TODO: Description for categories -->
+<!-- TODO: background color -->
+<!-- TODO: Fixed positioning -->
+<!-- TODO: Mobile version of vert nav -->
+
 <!-- TODO: Idea: use dropdown menu
 Vertical scrolling for cat and subcats (menu aka Ξ on mobile)-->
+<!-- TODO: Option to use old UI -->
+<!-- TODO: Active states for tabs-->
+
+
+
+
+<!-- TODO: Description for categories -->
 <!-- TODO: Database -->
 <!-- TODO: JSON mode (?) -->
 <!-- TODO: Sort by progression (early to late, late to early etc) -->
+
+<!-- TODO: Custom saves -->
+
+
+<!-- TODO: Far: save editor -->
