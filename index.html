@@ -5,29 +5,41 @@
         <title>AD Save Bank</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/colors.css">
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="app">
             <h1>AD Save Bank (WIP)</h1>
-            <h2>Version Alpha 2</h2>
-            <h3>Credits to earth for making the <a target="_blank" href="https://docs.google.com/document/d/1wkUvOwlFvTMCiTPvAjVNyuaILNRE6zoXms2S8R2RtA8/edit#">original save bank</a></h3>
-            <h4>Maintained by Buck (Buck#4437)</h4>
-            <h4><a target="_blank" href="changelog.html">Changelog</a></h4>
+            <h2>Version Beta 1</h2>
+            <h4>
+                <a target="_blank" href="changelog.html">Changelog</a> |
+                <a target="_blank" href="info.html">Info</a>
+            </h4>
             <div class="cat-nav">
-                <button v-for="(saveCategory, i) in saves" @click="switchCategory(i)">{{saveCategory.name}}</button>
+                <template v-for="(saveCategory, i) in saves">
+                    <button class="cat-btn"
+                            :class="(saveCategory.era || 'normal').toLowerCase()"
+                            @click="switchCategory(i)">
+                        {{saveCategory.name}} ({{saveCategory.saves.length}})
+                    </button>{{' '}}
+                </template>
+                <button class="cat-btn" @click="openTab(C.SETTINGS_TAB)">
+                    Settings
+                </button>
             </div>
             <br>
-            <div class="file-list">
-                <div class="file-con" v-for="saveFile in currentCategory.saves">
+            <div class="file-list" v-if="currentTab === C.FILES_TAB">
+                <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
+                :class="i % 2 == 1 ? (currentCategory.era || 'normal').toLowerCase() + '-background' : ''">
                     <div class="file-text-con">
                         <div class="file-name"><b>{{saveFile.name}}</b></div>
-                        <span><i>{{saveFile.desc || "No description provided."}}</i></span>
+                        <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
                     </div>
                     <div class="file-btn-con">
-                        <button class="file-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
-                        <button class="file-btn" @click="downloadFile(saveFile)">Export as .txt</button>
+                        <button class="file-btn copy-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
+                        <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
                     </div>
                 </div>
                 <div class="file-con" v-if="currentCategory.saves.length == 0">
@@ -36,11 +48,31 @@
                     </div>
                 </div>
             </div>
+            <div class="settings-con" v-if="currentTab === C.SETTINGS_TAB">
+                <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
+            </div>
          </div>
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <!-- Development !-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production !-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script> -->
 
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
 </html>
+
+<!-- TODO: Active states for tabs-->
+<!-- TODO: Show save file text -->
+<!-- TODO: Description for categories -->
+<!-- TODO: Idea: use dropdown menu
+Vertical scrolling for cat and subcats (menu aka Ξ on mobile)-->
+<!-- TODO: Database -->
+<!-- TODO: JSON mode (?) -->
+<!-- TODO: Sort by progression (early to late, late to early etc) -->

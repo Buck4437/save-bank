@@ -1,3 +1,5 @@
+// File management
+
 function copyText(text){
     //source: https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
     const el = document.createElement('textarea');
@@ -29,4 +31,31 @@ function download(filename, text) {
     element.click();
 
     document.body.removeChild(element);
+}
+
+
+// Themes
+
+var themes = ["Dark", "Light"];
+
+function getTheme() {
+    let theme = Number(localStorage.getItem("saveBankTheme"));
+    if (isNaN(theme)) {
+        theme =  0;
+    }
+    return theme;
+}
+
+function loadTheme() {
+    let theme = getTheme();
+    setTheme(theme);
+    return theme;
+}
+
+function setTheme(index) {
+    for (let theme of themes) {
+        document.body.classList.remove(theme.toLowerCase() + "-theme");
+    }
+    document.body.classList.add(themes[index].toLowerCase() + "-theme");
+    localStorage.setItem("saveBankTheme", index)
 }

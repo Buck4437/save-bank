@@ -1,0 +1,23 @@
+:root, .dark-theme{
+    --color: #D9D9D9;
+    --background: #121212;
+    --hover: #D9D9D926;
+    --color-antimatter: #2196F3;
+    --color-antimatter-background: #DF505050;
+    --color-infinity: #B67F33;
+    --color-infinity-background: #B67F3350;
+    --color-eternity: #B341E0;
+    --color-eternity-background: #B341E050;
+    --color-reality: #0BA00E;
+    --color-reality-background: #0BA00E50;
+}
+
+.light-theme{
+    --color: #4F5957;
+    --background: #FFFFFF;
+    --hover: #4F595726;
+    --color-antimatter-background: #2196F350;
+    --color-infinity-background: #FF980050;
+    --color-eternity-background: #673AB750;
+    --color-reality-background: #0A710C50; /*IDK the actual value, just prediction*/
+}

@@ -1,0 +1,145 @@
+* {
+    color: var(--color);
+    transition-duration: 0.5s;
+}
+
+body{
+    background-color: var(--background);
+    max-width: 1000px;
+    padding-left: 20px;
+}
+
+button{
+    background-color: transparent;
+    border: 2px solid var(--color);
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--hover);
+    transition-duration: 0.3s;
+}
+
+.cat-nav {
+    padding-bottom: 10px;
+}
+
+.cat-btn{
+    margin-bottom: 10px;
+    min-width: 150px;
+    min-height: 60px;
+}
+
+.normal {
+    border-color: var(--color-antimatter);
+    color: var(--color-antimatter);
+}
+
+.normal-background {
+    background-color: var(--color-antimatter-background);
+}
+
+.infinity {
+    border-color: var(--color-infinity);
+    color: var(--color-infinity);
+}
+
+.infinity-background {
+    background-color: var(--color-infinity-background);
+}
+
+.eternity {
+    border-color: var(--color-eternity);
+    color: var(--color-eternity);
+}
+
+.eternity-background {
+    background-color: var(--color-eternity-background);
+}
+
+.reality {
+    border-color: var(--color-reality);
+    color: var(--color-reality);
+}
+
+.reality-background {
+    background-color: var(--color-reality-background);
+}
+
+.file-con{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid var(--color);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition-duration: 0s;
+}
+
+.file-text-con{
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
+.file-name{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.file-desc{
+    line-height: 1.6
+}
+
+.file-btn-con{
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-btn{
+    margin-bottom: 10px;
+    min-width: 150px;
+    min-height: 40px;
+}
+
+.settings-con{
+    display: flex;
+    flex-direction: row;
+}
+
+.settings-btn{
+    flex-grow: 0;
+    min-width: 200px;
+    min-height: 100px;
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    .file-con {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .file-btn {
+        flex-grow: 1;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .file-btn-con {
+        flex-direction: row;
+    }
+
+    .file-btn {
+        flex-grow: 1;
+        margin: 10px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    .settings-con{
+        display: flex;
+        flex-direction: column;
+    }
+}
