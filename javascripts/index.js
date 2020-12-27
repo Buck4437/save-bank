@@ -11,14 +11,30 @@ var app = new Vue({
         C,
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
-        currentTheme: 0
+        currentTheme: 0,
+        version: "Beta 2"
     },
     computed: {
         currentCategory() {
-            return this.saves[this.currentCategoryIndex]
+            if (this.currentCategoryIndex > -1 && this.currentCategoryIndex < this.saves.length) {
+                return this.saves[this.currentCategoryIndex]
+            } else {
+                return null;
+            }
         }
     },
     methods: {
+        menu(toggle) {
+            var app = document.querySelector("#app");
+            if (toggle === undefined) {
+                app.classList.toggle("is-active");
+            } else {
+                app.classList.remove("is-active");
+                if (toggle) {
+                    app.classList.add("is-active");
+                }
+            }
+        },
         switchTheme() {
             this.currentTheme++;
             if (this.currentTheme >= themes.length) {
@@ -27,7 +43,11 @@ var app = new Vue({
             setTheme(this.currentTheme);
         },
         openTab(tab) {
+            if (tab !== this.C.FILES_TAB) {
+                this.currentCategoryIndex = -1; 
+            }
             this.currentTab = tab;
+            this.menu(false);
         },
         switchCategory(index) {
             this.openTab(this.C.FILES_TAB);

@@ -36,19 +36,27 @@ button:hover{
 header {
     background-color: var(--primary);
     display: flex;
-    justify-content: space-between;
+    padding: 0;
     align-items: center;
-    padding: 16px;
-
+    padding: 0 16px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 100;
-    height: 32px;
+    height: 64px;
+}
+
+.menu-btn {
+    display: none; /* default on desktop */
+}
+
+.title, .about {
+    margin: 16px;
 }
 
 .title {
     font-size: 24px;
+    flex-grow: 1;
 }
 
 /* main content */
@@ -57,7 +65,6 @@ main {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
-    /* align-items: stretch; */
 }
 
 /* naivgations */
@@ -65,13 +72,15 @@ main {
 .cat-nav {
     background: var(--secondary);
     padding: 16px;
-    width: 240px;
+    width: 256px;
     list-style-type: none;
     margin: 0;
 
     position: fixed;
+    z-index: 50;
     height: calc(100vh - 64px - 32px);
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .nav-btn-con {
@@ -79,16 +88,26 @@ main {
     align-items: center;
 }
 
-.cat-btn{
+.cat-btn {
     margin-bottom: 16px;
     min-width: 240px;
     min-height: 48px;
 }
 
+.cat-btn.is-active {
+    background-color: var(--color);
+    color: var(--background);
+}
+
+.nav-version, .nav-link {
+    margin-bottom: 16px;
+    display: none;
+}
+
 /* tabs */
 
 .tab-con {
-    margin-left: 272px;
+    margin-left: 288px;
 
     flex-grow: 1;
     display: flex;
@@ -114,7 +133,6 @@ main {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .file-name{
@@ -129,10 +147,10 @@ main {
 
 .file-btn-con{
     padding: 16px;
-    min-width: 160px;
+    min-width: 192px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .file-btn{
@@ -168,6 +186,11 @@ main {
     background-color: var(--color-antimatter-background);
 }
 
+.normal.is-active {
+    background-color: var(--color-antimatter);
+    color: var(--background);
+}
+
 .infinity {
     border-color: var(--color-infinity);
     color: var(--color-infinity);
@@ -175,6 +198,11 @@ main {
 
 .infinity-background {
     background-color: var(--color-infinity-background);
+}
+
+.infinity.is-active {
+    background-color: var(--color-infinity);
+    color: var(--background);
 }
 
 .eternity {
@@ -186,6 +214,11 @@ main {
     background-color: var(--color-eternity-background);
 }
 
+.eternity.is-active {
+    background-color: var(--color-eternity);
+    color: var(--background);
+}
+
 .reality {
     border-color: var(--color-reality);
     color: var(--color-reality);
@@ -195,8 +228,102 @@ main {
     background-color: var(--color-reality-background);
 }
 
+.reality.is-active {
+    background-color: var(--color-reality);
+    color: var(--background);
+}
+
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
+
+    /* menu button */
+    .menu-btn {
+        height: 64px;
+        min-width: 64px;
+        padding: 20px;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .menu-btn-inner {
+        background-color: var(--color);
+        border: none;
+        width: 100%;
+        height: 2px;
+    }
+
+    /* animation */
+
+    #app.is-active .menu-btn-inner.top {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #app.is-active .menu-btn-inner.mid {
+        opacity: 0%;
+    }
+
+
+    #app.is-active .menu-btn-inner.bot {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* header */
+
+    header {
+        padding: 0;
+    }
+
+    .about .link {
+        display: none;
+    }
+
+    /* main */
+
+    /* navigation expansion */
+
+    .cat-nav {
+        transform: translateX(-288px);
+    }
+
+    #app.is-active .cat-nav {
+        transform: translateX(0);
+    }
+
+    .mask {
+        height: calc(100vh - 64px);
+        opacity: 0%;
+        background-color: #000000;
+
+        position: fixed;
+        z-index: 25;
+    }
+
+    #app.is-active .mask {
+        cursor: pointer;
+        opacity: 60%;
+        width: 100%;
+    }
+
+    /* extra link */
+
+    .nav-link {
+        display: block;
+    }
+
+
+    /* tabs */
+
+    .tab-con {
+        width: 100%;
+        margin-left: 0;
+    }
+
+
+    /* files */
+
+
     .file-con {
         flex-wrap: wrap;
         flex-direction: column;
@@ -221,6 +348,19 @@ main {
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {
+
+    body {
+        min-width: 272px;
+    }
+
+    .about {
+        display: none;
+    }
+
+    .nav-version {
+        display: block;
+    }
+
     .settings-con{
         display: flex;
         flex-direction: column;

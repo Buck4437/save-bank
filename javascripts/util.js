@@ -48,7 +48,9 @@ function getTheme() {
 
 function loadTheme() {
     let theme = getTheme();
-    setTheme(theme);
+    if (theme !== 0) {
+        setTheme(theme);
+    }
     return theme;
 }
 

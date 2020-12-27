@@ -12,11 +12,18 @@
     <body>
         <div id="app">
             <header>
-                <span class="title">AD Save Bank (WIP)</span>
+                <button class="menu-btn" @click="menu()">
+                    <span class="menu-btn-inner top"></span>
+                    <span class="menu-btn-inner mid"></span>
+                    <span class="menu-btn-inner bot"></span>
+                </button>
+                <span class="title">AD Save Bank</span>
                 <span class="about">
-                    <span class="version">Beta 2</span> |
-                    <a target="_blank" href="changelog.html">Changelog</a> |
-                    <a target="_blank" href="info.html">Info</a>
+                    <span class="version">{{version}}</span>
+                    <span class="link">
+                        | <a target="_blank" href="changelog.html">Changelog</a> |
+                        <a target="_blank" href="info.html">Info</a>
+                    </span>
                 </span>
             </header>
             <main>
@@ -24,18 +31,25 @@
                     <template v-for="(saveCategory, i) in saves">
                         <li class="nav-btn-con">
                             <button class="cat-btn"
-                                :class="(saveCategory.era || 'normal').toLowerCase()"
+                                :class="[{'is-active': currentCategoryIndex === i}, (saveCategory.era || 'normal').toLowerCase()]"
                                 @click="switchCategory(i)">
                                 {{saveCategory.name}} ({{saveCategory.saves.length}})
                             </button>{{' '}}
                         </li>
                     </template>
                     <li class="nav-btn-con">
-                        <button class="cat-btn" @click="openTab(C.SETTINGS_TAB)">
+                        <button class="cat-btn"
+                                :class="{'is-active': currentTab === C.SETTINGS_TAB}"
+                                @click="openTab(C.SETTINGS_TAB)">
                         Settings
                         </button>
                     </li>
+                    <li class="nav-version">{{version}}</li>
+                    <li class="nav-link"><a target="_blank" href="changelog.html">Changelog</a></li>
+                    <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
                 </ul>
+                <div class="mask" @click="menu()">
+                </div>
                 <div class="tab-con">
                     <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
                         <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
@@ -79,19 +93,11 @@
     <script src="javascripts/tooltip.js"></script>
 </html>
 
-<!-- TODO: Recolour the buttons -->
-<!-- TODO: Mobile version of vert nav -->
+<!-- TODO: new AMOLED theme (to replace original dark theme) -->
 
 <!-- TODO: (ABANDONED) Make position similar to mobile | people dont like :notlikeblob: -->
 
-<!-- TODO: Idea: use dropdown menu
-Vertical scrolling for cat and subcats (menu aka Ξ on mobile)-->
-<!-- TODO: new AMOLED theme (to replace original dark theme) -->
-<!-- TODO: Option to use old UI -->
-<!-- TODO: Active states for tabs-->
-
-
-
+<!-- TODO: Recolour the buttons -->
 <!-- TODO: Description for categories -->
 <!-- TODO: Database -->
 <!-- TODO: JSON mode (?) -->
