@@ -233,6 +233,12 @@ main {
     color: var(--background);
 }
 
+/* tooltip */
+.tippy-content {
+    color: var(--tooltip);
+}
+
+
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
 
