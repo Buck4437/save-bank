@@ -44,7 +44,7 @@ var app = new Vue({
         },
         openTab(tab) {
             if (tab !== this.C.FILES_TAB) {
-                this.currentCategoryIndex = -1; 
+                this.currentCategoryIndex = -1;
             }
             this.currentTab = tab;
             this.menu(false);
