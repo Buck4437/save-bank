@@ -20,19 +20,22 @@
                 </span>
             </header>
             <main>
-                <div class="cat-nav">
+                <ul class="cat-nav">
                     <template v-for="(saveCategory, i) in saves">
-                        <button class="cat-btn"
-                            :class="(saveCategory.era || 'normal').toLowerCase()"
-                            @click="switchCategory(i)">
-                            {{saveCategory.name}} ({{saveCategory.saves.length}})
-                        </button>{{' '}}
+                        <li class="nav-btn-con">
+                            <button class="cat-btn"
+                                :class="(saveCategory.era || 'normal').toLowerCase()"
+                                @click="switchCategory(i)">
+                                {{saveCategory.name}} ({{saveCategory.saves.length}})
+                            </button>{{' '}}
+                        </li>
                     </template>
-                    <button class="cat-btn" @click="openTab(C.SETTINGS_TAB)">
+                    <li class="nav-btn-con">
+                        <button class="cat-btn" @click="openTab(C.SETTINGS_TAB)">
                         Settings
-                    </button>
-                </div>
-                <br>
+                        </button>
+                    </li>
+                </ul>
                 <div class="tab-con">
                     <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
                         <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
@@ -76,9 +79,6 @@
     <script src="javascripts/tooltip.js"></script>
 </html>
 
-<!-- TODO: background color -->
-<!-- TODO: Make side naivgations bg full height -->
-<!-- TODO: Fixed positioning -->
 <!-- TODO: Recolour the buttons -->
 <!-- TODO: Mobile version of vert nav -->
 
