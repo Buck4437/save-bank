@@ -11,49 +11,71 @@
     </head>
     <body>
         <div id="app">
-            <h1>AD Save Bank (WIP)</h1>
-            <h2>Version Beta 1</h2>
-            <h4>
-                <a target="_blank" href="changelog.html">Changelog</a> |
-                <a target="_blank" href="info.html">Info</a>
-            </h4>
-            <div class="cat-nav">
-                <template v-for="(saveCategory, i) in saves">
-                    <button class="cat-btn"
-                            :class="(saveCategory.era || 'normal').toLowerCase()"
-                            @click="switchCategory(i)">
-                        {{saveCategory.name}} ({{saveCategory.saves.length}})
-                    </button>{{' '}}
-                </template>
-                <button class="cat-btn" @click="openTab(C.SETTINGS_TAB)">
-                    Settings
+            <header>
+                <button class="menu-btn" @click="menu()">
+                    <span class="menu-btn-inner top"></span>
+                    <span class="menu-btn-inner mid"></span>
+                    <span class="menu-btn-inner bot"></span>
                 </button>
-            </div>
-            <br>
-            <div class="file-list" v-if="currentTab === C.FILES_TAB">
-                <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
-                :class="i % 2 == 1 ? (currentCategory.era || 'normal').toLowerCase() + '-background' : ''">
-                    <div class="file-text-con">
-                        <div class="file-name"><b>{{saveFile.name}}</b></div>
-                        <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
+                <span class="title">AD Save Bank</span>
+                <span class="about">
+                    <span class="version">{{version}}</span>
+                    <span class="link">
+                        | <a target="_blank" href="changelog.html">Changelog</a> |
+                        <a target="_blank" href="info.html">Info</a>
+                    </span>
+                </span>
+            </header>
+            <main>
+                <ul class="cat-nav">
+                    <template v-for="(saveCategory, i) in saves">
+                        <li class="nav-btn-con">
+                            <button class="cat-btn"
+                                :class="[{'is-active': currentCategoryIndex === i}, (saveCategory.era || 'normal').toLowerCase()]"
+                                @click="switchCategory(i)">
+                                {{saveCategory.name}} ({{saveCategory.saves.length}})
+                            </button>{{' '}}
+                        </li>
+                    </template>
+                    <li class="nav-btn-con">
+                        <button class="cat-btn"
+                                :class="{'is-active': currentTab === C.SETTINGS_TAB}"
+                                @click="openTab(C.SETTINGS_TAB)">
+                        Settings
+                        </button>
+                    </li>
+                    <li class="nav-version">{{version}}</li>
+                    <li class="nav-link"><a target="_blank" href="changelog.html">Changelog</a></li>
+                    <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
+                </ul>
+                <div class="mask" @click="menu()">
+                </div>
+                <div class="tab-con">
+                    <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
+                        <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
+                            :class="i % 2 == 1 ? (currentCategory.era || 'normal').toLowerCase() + '-background' : ''">
+                            <div class="file-text-con">
+                                <div class="file-name">{{saveFile.name}}</div>
+                                <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
+                            </div>
+                            <div class="file-btn-con">
+                                <button class="file-btn copy-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
+                                <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
+                            </div>
+                        </div>
+                        <div class="file-con" v-if="currentCategory.saves.length == 0">
+                            <div class="file-text-con">
+                                <span><i>No save file available.</i></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="file-btn-con">
-                        <button class="file-btn copy-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
-                        <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
+                    <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
+                        <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
                     </div>
                 </div>
-                <div class="file-con" v-if="currentCategory.saves.length == 0">
-                    <div class="file-text-con">
-                        <span><i>No save file available.</i></span>
-                    </div>
-                </div>
-            </div>
-            <div class="settings-con" v-if="currentTab === C.SETTINGS_TAB">
-                <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
-            </div>
+            </main>
          </div>
     </body>
-
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>

@@ -1,5 +1,7 @@
 :root, .dark-theme{
     --color: #D9D9D9;
+    --primary: #323232;
+    --secondary: #222222;
     --background: #121212;
     --hover: #D9D9D926;
     --tooltip: #D9D9D9;
@@ -15,7 +17,9 @@
 
 .light-theme{
     --color: #4F5957;
-    --background: #FFFFFF;
+    --primary: #FFFFFF;
+    --secondary: #FAFAFA;
+    --background: #F0F0F0;
     --hover: #4F595726;
     --tooltip: #FFFFFF;
     --color-antimatter-background: #2196F350;
