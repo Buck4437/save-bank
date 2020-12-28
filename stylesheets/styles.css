@@ -83,15 +83,14 @@ main {
     overflow-x: hidden;
 }
 
+.mini-header {
+    display: none;
+}
+
 .nav-ul {
-    height: calc(100vh - 64px);
     list-style-type: none;
     margin: 0;
     padding: 16px;
-}
-
-.mini-header {
-    display: none;
 }
 
 .nav-btn-con {
@@ -317,6 +316,10 @@ main {
         position: sticky;
         top: 0;
         z-index: 200;
+    }
+
+    .nav-ul {
+        padding-bottom: 80px; /* try to and fix the weird chrome vh bug */
     }
 
 

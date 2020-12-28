@@ -12,7 +12,7 @@ var app = new Vue({
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
         currentTheme: 0,
-        version: "Beta 3 Alpha 3"
+        version: "Beta 3 Alpha 4"
     },
     computed: {
         currentCategory() {
@@ -21,7 +21,7 @@ var app = new Vue({
             } else {
                 return null;
             }
-        }
+        s}
     },
     methods: {
         menu(toggle) {
