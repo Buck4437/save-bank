@@ -12,11 +12,7 @@
     <body>
         <div id="app">
             <header>
-                <button class="menu-btn" @click="menu()">
-                    <span class="menu-btn-inner top"></span>
-                    <span class="menu-btn-inner mid"></span>
-                    <span class="menu-btn-inner bot"></span>
-                </button>
+                <menu-button @toggle-menu="menu()"></menu-button>
                 <span class="title">AD Save Bank</span>
                 <span class="about">
                     <span class="version">{{version}}</span>
@@ -29,18 +25,14 @@
             <main>
                 <div class="cat-nav">
                     <div class="mini-header">
-                        <button class="menu-btn" @click="menu()">
-                            <span class="menu-btn-inner top"></span>
-                            <span class="menu-btn-inner mid"></span>
-                            <span class="menu-btn-inner bot"></span>
-                        </button>
-                        <span class="title">AD Save Bank</span>
+                        <menu-button @toggle-menu="menu()"></menu-button>
+                        <span class="title">Menu</span>
                     </div>
                     <ul class="nav-ul">
                         <template v-for="(saveCategory, i) in saves">
                             <li class="nav-btn-con">
                                 <button class="cat-btn"
-                                    :class="[{'is-active': currentCategoryIndex === i}, (saveCategory.era || 'normal').toLowerCase()]"
+                                    :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
                                     @click="switchCategory(i)">
                                     {{saveCategory.name}} ({{saveCategory.saves.length}})
                                 </button>{{' '}}
@@ -58,12 +50,15 @@
                         <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
                     </ul>
                 </div>
-                <div class="mask" @click="menu()">
-                </div>
+                <div class="mask" @click="menu()"></div>
                 <div class="tab-con">
                     <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
+                        <div class="cat-info">
+                            <span class="cat-title">{{currentCategory.name}}</span>
+                            <span class="cat-desc"><i>{{currentCategory.desc || ""}}</i></span>
+                        </div>
                         <div class="file-con" v-for="(saveFile, i) in currentCategory.saves"
-                            :class="i % 2 == 1 ? (currentCategory.era || 'normal').toLowerCase() + '-background' : ''">
+                            :class="i % 2 == 1 ? currentCategory.era + '-background' : ''">
                             <div class="file-text-con">
                                 <div class="file-name">{{saveFile.name}}</div>
                                 <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
@@ -73,7 +68,7 @@
                                 <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
                             </div>
                         </div>
-                        <div class="file-con" v-if="currentCategory.saves.length == 0">
+                        <div class="file-con" v-if="currentCategory.saves === undefined || currentCategory.saves.length == 0">
                             <div class="file-text-con">
                                 <span><i>No save file available.</i></span>
                             </div>
@@ -96,20 +91,21 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script> -->
 
+    <script src="javascripts/components/menu-button.js"></script>
+
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
     <script src="javascripts/tooltip.js"></script>
 </html>
 
-<!-- TODO: Fix vh wrong on chrome mobile -->
 <!-- TODO: Loading screen -->
 
-<!-- TODO: Description for categories -->
+<!-- TODO: Embed library -->
 <!-- TODO: Sort by progression (early to late, late to early etc) -->
 <!-- TODO: Database -->
-<!-- TODO: JSON mode (?) -->
 <!-- TODO: Swipe gesture -->
+<!-- TODO: Add desc -->
 
 <!-- TODO: Custom saves -->
 

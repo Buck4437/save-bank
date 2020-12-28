@@ -1,3 +1,5 @@
+"use strict";
+
 tippy.delegate('.file-list', {
         target: ".copy-btn",
         content: 'Copied!',

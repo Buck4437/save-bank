@@ -12,6 +12,10 @@ body{
     background-color: var(--background);
 }
 
+body.is-active {
+    overflow: hidden;
+}
+
 button{
     background-color: transparent;
     border: 2px solid var(--color);
@@ -77,7 +81,7 @@ main {
     margin: 0;
 
     position: fixed;
-    z-index: 100;
+    z-index: 25;
     height: calc(100vh - 64px);
     overflow-y: auto;
     overflow-x: hidden;
@@ -115,7 +119,20 @@ main {
 }
 
 .mask {
-    -webkit-tap-highlight-color: transparent;
+    height: 100vh;
+    transition: all 0.5s height 0s;
+    transform: translateY(-64px);
+    opacity: 0%;
+    background-color: #000000;
+
+    position: fixed;
+    z-index: 50;
+}
+
+body.is-active .mask {
+    cursor: pointer;
+    opacity: 60%;
+    width: 100%;
 }
 
 /* tabs */
@@ -129,6 +146,31 @@ main {
     justify-content: center;
     padding: 16px;
 }
+
+/* files */
+
+/* info */
+
+.cat-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.cat-title, .cat-desc {
+    margin: 8px;
+}
+
+.cat-title {
+    font-size: 24px;
+}
+
+.cat-desc {
+    font-size: 16px;
+}
+
+/* saves */
 
 .file-list {
     flex-grow: 1;
@@ -172,6 +214,8 @@ main {
     min-width: 160px;
     min-height: 48px;
 }
+
+/* settings */
 
 .settings-con{
     display: flex;
@@ -233,6 +277,20 @@ main {
     color: var(--background);
 }
 
+.dilation {
+    border-color: var(--color-dilation);
+    color: var(--color-dilation);
+}
+
+.dilation-background {
+    background-color: var(--color-dilation-background);
+}
+
+.dilation.is-active {
+    background-color: var(--color-dilation);
+    color: var(--background);
+}
+
 .reality {
     border-color: var(--color-reality);
     color: var(--color-reality);
@@ -276,16 +334,16 @@ main {
 
     /* animation */
 
-    #app.is-active .menu-btn-inner.top {
+    body.is-active .menu-btn-inner.top {
         transform: translateY(8px) rotate(45deg);
     }
 
-    #app.is-active .menu-btn-inner.mid {
+    body.is-active .menu-btn-inner.mid {
         opacity: 0%;
     }
 
 
-    #app.is-active .menu-btn-inner.bot {
+    body.is-active .menu-btn-inner.bot {
         transform: translateY(-8px) rotate(-45deg);
     }
 
@@ -304,6 +362,8 @@ main {
     /* navigation */
 
     .cat-nav {
+        z-index: 100; /* to cover the mask */
+
         height: 100vh;
         transition: all 0.5s height 0s;
         transform: translateX(-288px) translateY(-64px);
@@ -319,29 +379,12 @@ main {
     }
 
     .nav-ul {
-        padding-bottom: 80px; /* try to and fix the weird chrome vh bug */
+        padding-bottom: 120px; /* try to and fix the weird chrome vh bug */
     }
 
 
-    #app.is-active .cat-nav {
+    body.is-active .cat-nav {
         transform: translateX(0) translateY(-64px);
-    }
-
-    .mask {
-        height: 100vh;
-        transition: all 0.5s height 0s;
-        transform: translateY(-64px);
-        opacity: 0%;
-        background-color: #000000;
-
-        position: fixed;
-        z-index: 50;
-    }
-
-    #app.is-active .mask {
-        cursor: pointer;
-        opacity: 60%;
-        width: 100%;
     }
 
     /* extra link */

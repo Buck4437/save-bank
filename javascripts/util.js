@@ -1,3 +1,5 @@
+"use strict";
+
 // File management
 
 function copyText(text){

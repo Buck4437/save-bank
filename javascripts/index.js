@@ -1,3 +1,5 @@
+"use strict";
+
 const C = {
     FILES_TAB: 0,
     SETTINGS_TAB: 1
@@ -12,11 +14,12 @@ var app = new Vue({
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
         currentTheme: 0,
-        version: "Beta 3 Alpha 4"
+        version: "Beta 3 Alpha 5"
     },
     computed: {
         currentCategory() {
-            if (this.currentCategoryIndex > -1 && this.currentCategoryIndex < this.saves.length) {
+            if (this.currentCategoryIndex > -1 &&
+                this.currentCategoryIndex < this.saves.length) {
                 return this.saves[this.currentCategoryIndex]
             } else {
                 return null;
@@ -25,13 +28,13 @@ var app = new Vue({
     },
     methods: {
         menu(toggle) {
-            var app = document.querySelector("#app");
+            var body = document.querySelector("body");
             if (toggle === undefined) {
-                app.classList.toggle("is-active");
+                body.classList.toggle("is-active");
             } else {
-                app.classList.remove("is-active");
+                body.classList.remove("is-active");
                 if (toggle) {
-                    app.classList.add("is-active");
+                    body.classList.add("is-active");
                 }
             }
         },
