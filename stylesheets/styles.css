@@ -120,7 +120,7 @@ main {
 
 .mask {
     height: 100vh;
-    transition: all 0.5s height 0s;
+    transition: all 0.5s, height 0s;
     transform: translateY(-64px);
     opacity: 0%;
     background-color: #000000;
@@ -365,7 +365,7 @@ body.is-active .mask {
         z-index: 100; /* to cover the mask */
 
         height: 100vh;
-        transition: all 0.5s height 0s;
+        transition: all 0.5s, height 0s;
         transform: translateX(-288px) translateY(-64px);
     }
 

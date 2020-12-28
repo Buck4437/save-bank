@@ -7,9 +7,15 @@
         <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/colors.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/loading.css">
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="loading">
+            Loading...
+            <br>
+            This shouldn't take longer than a few seconds...
+        </div>
         <div id="app">
             <header>
                 <menu-button @toggle-menu="menu()"></menu-button>
@@ -22,7 +28,7 @@
                     </span>
                 </span>
             </header>
-            <main>
+            <main class="main">
                 <div class="cat-nav">
                     <div class="mini-header">
                         <menu-button @toggle-menu="menu()"></menu-button>
@@ -99,13 +105,9 @@
     <script src="javascripts/tooltip.js"></script>
 </html>
 
-<!-- TODO: Loading screen -->
-
 <!-- TODO: Embed library -->
 <!-- TODO: Sort by progression (early to late, late to early etc) -->
-<!-- TODO: Database -->
 <!-- TODO: Swipe gesture -->
-<!-- TODO: Add desc -->
 
 <!-- TODO: Custom saves -->
 

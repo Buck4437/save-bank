@@ -14,7 +14,7 @@ var app = new Vue({
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
         currentTheme: 0,
-        version: "Beta 3 Alpha 5"
+        version: "Beta 3 Alpha 6"
     },
     computed: {
         currentCategory() {
@@ -67,5 +67,9 @@ var app = new Vue({
     },
     mounted() {
         this.currentTheme = loadTheme();
+        setTimeout(() => {
+            var body = document.querySelector("body");
+            body.classList.add("ready");
+        }, 500) // for the theme to apply propertly, and also to prevent sudden transition
     }
 })

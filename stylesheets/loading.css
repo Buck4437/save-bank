@@ -1,0 +1,18 @@
+/* styles applied pre-rendered, high priority */
+
+#app {
+    display: none;
+}
+
+.loading {
+    padding: 16px;
+    font-size: 16px;
+}
+
+body.ready #app {
+    display: block;
+}
+
+body.ready .loading {
+    display: none;
+}
