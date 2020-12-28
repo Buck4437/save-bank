@@ -305,6 +305,7 @@ main {
 
     .cat-nav {
         height: 100vh;
+        transition: height 0s;
         transform: translateX(-288px) translateY(-64px);
     }
 
@@ -323,6 +324,7 @@ main {
 
     .mask {
         height: 100vh;
+        transition: height 0s;
         transform: translateY(-64px);
         opacity: 0%;
         background-color: #000000;
