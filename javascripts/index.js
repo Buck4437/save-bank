@@ -14,7 +14,7 @@ var app = new Vue({
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
         currentTheme: 0,
-        version: "Beta 3 Alpha 6a"
+        version: "Beta 3 Alpha 6b"
     },
     computed: {
         currentCategory() {
@@ -50,7 +50,8 @@ var app = new Vue({
                 this.currentCategoryIndex = -1;
             }
             this.currentTab = tab;
-            this.menu(false);
+            this.menu(false); //close the menu
+            scroll(0,0); //scroll to top
         },
         switchCategory(index) {
             this.openTab(this.C.FILES_TAB);
