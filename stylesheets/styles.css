@@ -84,6 +84,7 @@ main {
 }
 
 .nav-ul {
+    height: calc(100vh - 64px);
     list-style-type: none;
     margin: 0;
     padding: 16px;
@@ -305,13 +306,14 @@ main {
 
     .cat-nav {
         height: 100vh;
-        transition: height 0s;
+        transition: all 0.5s height 0s;
         transform: translateX(-288px) translateY(-64px);
     }
 
     .mini-header {
         background-color: var(--primary);
         display: flex;
+
         position: sticky;
         top: 0;
         z-index: 200;
@@ -324,7 +326,7 @@ main {
 
     .mask {
         height: 100vh;
-        transition: height 0s;
+        transition: all 0.5s height 0s;
         transform: translateY(-64px);
         opacity: 0%;
         background-color: #000000;
