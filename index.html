@@ -27,27 +27,37 @@
                 </span>
             </header>
             <main>
-                <ul class="cat-nav">
-                    <template v-for="(saveCategory, i) in saves">
+                <div class="cat-nav">
+                    <div class="mini-header">
+                        <button class="menu-btn" @click="menu()">
+                            <span class="menu-btn-inner top"></span>
+                            <span class="menu-btn-inner mid"></span>
+                            <span class="menu-btn-inner bot"></span>
+                        </button>
+                        <span class="title">AD Save Bank</span>
+                    </div>
+                    <ul class="nav-ul">
+                        <template v-for="(saveCategory, i) in saves">
+                            <li class="nav-btn-con">
+                                <button class="cat-btn"
+                                    :class="[{'is-active': currentCategoryIndex === i}, (saveCategory.era || 'normal').toLowerCase()]"
+                                    @click="switchCategory(i)">
+                                    {{saveCategory.name}} ({{saveCategory.saves.length}})
+                                </button>{{' '}}
+                            </li>
+                        </template>
                         <li class="nav-btn-con">
                             <button class="cat-btn"
-                                :class="[{'is-active': currentCategoryIndex === i}, (saveCategory.era || 'normal').toLowerCase()]"
-                                @click="switchCategory(i)">
-                                {{saveCategory.name}} ({{saveCategory.saves.length}})
-                            </button>{{' '}}
+                                    :class="{'is-active': currentTab === C.SETTINGS_TAB}"
+                                    @click="openTab(C.SETTINGS_TAB)">
+                            Settings
+                            </button>
                         </li>
-                    </template>
-                    <li class="nav-btn-con">
-                        <button class="cat-btn"
-                                :class="{'is-active': currentTab === C.SETTINGS_TAB}"
-                                @click="openTab(C.SETTINGS_TAB)">
-                        Settings
-                        </button>
-                    </li>
-                    <li class="nav-version">{{version}}</li>
-                    <li class="nav-link"><a target="_blank" href="changelog.html">Changelog</a></li>
-                    <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
-                </ul>
+                        <li class="nav-version">{{version}}</li>
+                        <li class="nav-link"><a target="_blank" href="changelog.html">Changelog</a></li>
+                        <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
+                    </ul>
+                </div>
                 <div class="mask" @click="menu()">
                 </div>
                 <div class="tab-con">

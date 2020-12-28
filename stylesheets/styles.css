@@ -42,7 +42,7 @@ header {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 25;
     height: 64px;
 }
 
@@ -71,16 +71,26 @@ main {
 
 .cat-nav {
     background: var(--secondary);
-    padding: 16px;
-    width: 256px;
+    padding: 0px;
+    width: 288px;
     list-style-type: none;
     margin: 0;
 
     position: fixed;
-    z-index: 50;
-    height: calc(100vh - 64px - 32px);
+    z-index: 100;
+    height: calc(100vh - 64px);
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 16px;
+}
+
+.mini-header {
+    display: none;
 }
 
 .nav-btn-con {
@@ -102,6 +112,10 @@ main {
 .nav-version, .nav-link {
     margin-bottom: 16px;
     display: none;
+}
+
+.mask {
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* tabs */
@@ -287,23 +301,34 @@ main {
 
     /* main */
 
-    /* navigation expansion */
+    /* navigation */
 
     .cat-nav {
-        transform: translateX(-288px);
+        height: 100vh;
+        transform: translateX(-288px) translateY(-64px);
     }
 
+    .mini-header {
+        background-color: var(--primary);
+        display: flex;
+        position: sticky;
+        top: 0;
+        z-index: 200;
+    }
+
+
     #app.is-active .cat-nav {
-        transform: translateX(0);
+        transform: translateX(0) translateY(-64px);
     }
 
     .mask {
-        height: calc(100vh - 64px);
+        height: 100vh;
+        transform: translateY(-64px);
         opacity: 0%;
         background-color: #000000;
 
         position: fixed;
-        z-index: 25;
+        z-index: 50;
     }
 
     #app.is-active .mask {
@@ -317,7 +342,6 @@ main {
     .nav-link {
         display: block;
     }
-
 
     /* tabs */
 
