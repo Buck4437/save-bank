@@ -20,6 +20,7 @@ button{
     background-color: transparent;
     border: 2px solid var(--color);
     cursor: pointer;
+    outline: none;
 }
 
 button:hover{
@@ -152,12 +153,19 @@ body.is-active .mask {
 
 /* files */
 
+.cat-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 /* info */
 
 .cat-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding-bottom: 16px;
 }
 
@@ -176,7 +184,7 @@ body.is-active .mask {
 /* sort by */
 
 .sort-by-btn {
-    min-width: 160px;
+    min-width: 208px;
     min-height: 32px;
     padding: 8px;
     margin-bottom: 16px;
@@ -399,8 +407,6 @@ body.is-active .mask {
         transform: translateX(0) translateY(-64px);
     }
 
-    /* extra link */
-
     .nav-link {
         display: block;
     }
@@ -415,27 +421,26 @@ body.is-active .mask {
 
     /* files */
 
+    .cat-header {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
 
     .file-con {
         flex-wrap: wrap;
         flex-direction: column;
+        align-items: stretch;
     }
 
     .file-btn {
-        flex-grow: 1;
+        width: 50%;
     }
+
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-    .file-btn-con {
-        flex-direction: row;
-    }
-
-    .file-btn {
-        flex-grow: 1;
-        margin: 10px;
-    }
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
