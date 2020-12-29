@@ -75,7 +75,8 @@
                                 <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
                             </div>
                             <div class="file-btn-con">
-                                <button class="file-btn copy-btn" @click="copyByPath(saveFile)">Copy To Clipboard</button>
+                                <tooltip-button class="file-btn copy-btn" @click="copyByPath(saveFile)"
+                                                text="Copy To Clipboard" tooltip-text="Copied!"></tooltip-button>
                                 <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
                             </div>
                         </div>
@@ -94,21 +95,20 @@
     </body>
     <!-- Development !-->
     <script src="javascripts/libraries/vue.js"></script>
-    <script src="javascripts/libraries/popper.min.js"></script>
-    <script src="javascripts/libraries/tippy-bundle.umd.js"></script>
 
     <!-- Production !-->
-    <!-- <script src="javascripts/libraries/vue.min.js"></script>
-    <script src="javascripts/libraries/popper.min.js"></script>
-    <script src="javascripts/libraries/tippy-bundle.umd.min.js"></script> -->
+    <!-- <script src="javascripts/libraries/vue.min.js"></script> -->
 
     <script src="javascripts/components/menu-button.js"></script>
+    <script src="javascripts/components/tooltip-button.js"></script>
 
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
-    <script src="javascripts/tooltip.js"></script>
 </html>
+
+<!-- TODO: tippy too sensitive to clicks !-->
+<!-- TODO: Revert to old layout after testing -->
 
 <!-- TODO: Custom saves (Max size: 10)-->
 <!-- TODO: Progress bar for custom saves (Storage size) -->

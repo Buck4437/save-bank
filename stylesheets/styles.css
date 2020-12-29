@@ -29,6 +29,46 @@ button:hover{
     transition-duration: 0.3s;
 }
 
+/* tooltip - Important! */
+
+.tooltip-btn {
+    position: relative;
+}
+
+.tooltip-text {
+    min-width: 10px;
+    min-height: 5px;
+    text-align: center;
+    display: inline-block;
+    background-color: var(--tooltip-background);
+    color: var(--tooltip);
+    border-radius: 4px;
+    padding: 8px;
+    opacity: 0;
+    transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s;
+
+    position: absolute;
+    z-index: 10;
+    top: -54px;
+    left: calc(50% - 32px);
+}
+
+.tooltip-text::after {
+	content: " ";
+	position: absolute;
+	top: calc(100% - 8px);
+	left: 50%;
+	margin-left: -8px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: var(--tooltip-background);
+	transform: rotate(45deg);
+}
+
+.tooltip-text.is-active {
+    opacity: 1;
+}
+
 /* actual layout */
 
 #app {
@@ -252,10 +292,6 @@ body.is-active .mask {
     min-height: 96px;
 }
 
-/* tooltip */
-.tippy-content {
-    color: var(--tooltip);
-}
 
 /* preset backgrounds */
 
@@ -328,12 +364,6 @@ body.is-active .mask {
     background-color: var(--color-reality);
     color: var(--background);
 }
-
-/* tooltip */
-.tippy-content {
-    color: var(--tooltip);
-}
-
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
