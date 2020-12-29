@@ -16,7 +16,7 @@ var app = new Vue({
         currentTheme: 0,
         sortMode: 0,
         sortTypes: ["Early to late", "Late to early"],
-        version: "Beta 3 Alpha 7c"
+        version: "Beta 3 Alpha 7d"
     },
     computed: {
         currentCategory() {
