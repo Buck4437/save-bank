@@ -119,8 +119,9 @@ main {
 }
 
 .mask {
+    width: 0%;
     height: 100vh;
-    transition: all 0.5s, height 0s;
+    transition: all 0.5s, height 0s, width 0s ease 0.5s;
     transform: translateY(-64px);
     opacity: 0%;
     background-color: #000000;
@@ -132,6 +133,8 @@ main {
 }
 
 body.is-active .mask {
+    transition: all 0.5s, height 0s, width 0s ease 0s;
+
     cursor: pointer;
     opacity: 60%;
     width: 100%;

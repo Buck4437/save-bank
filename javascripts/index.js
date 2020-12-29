@@ -14,7 +14,7 @@ var app = new Vue({
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
         currentTheme: 0,
-        version: "Beta 3 Alpha 6b"
+        version: "Beta 3 Alpha 6c"
     },
     computed: {
         currentCategory() {
