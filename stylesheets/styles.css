@@ -96,6 +96,7 @@ main {
     list-style-type: none;
     margin: 0;
     padding: 16px;
+    padding-bottom: 120px; /* try to and fix the weird chrome vh bug */
 }
 
 .nav-btn-con {
@@ -400,11 +401,6 @@ body.is-active .mask {
         top: 0;
         z-index: 200;
     }
-
-    .nav-ul {
-        padding-bottom: 120px; /* try to and fix the weird chrome vh bug */
-    }
-
 
     body.is-active .cat-nav {
         transform: translateX(0) translateY(-64px);
