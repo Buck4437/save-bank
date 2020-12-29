@@ -3,13 +3,14 @@
 Vue.component("tooltip-button", {
     template: `
     <div class="tooltip-frame">
-        <button class="tooltip-btn" @click="click()">{{text}}</button>
+        <button class="tooltip-btn" @click="click()" :class="buttonClass">{{text}}</button>
         <span class="tooltip-text">{{tooltipText}}</span>
     </div>
     `,
     props: {
         text: String,
-        tooltipText: String
+        tooltipText: String,
+        buttonClass: Array
     },
     methods: {
         click() {

@@ -281,8 +281,17 @@ body.is-active .mask {
     justify-content: center;
 }
 
-.file-btn{
+.file-btn {
     margin: 8px;
+    min-width: 160px;
+    min-height: 48px;
+}
+
+.file-btn-outer {
+    margin: 8px;
+}
+
+.file-btn-inner {
     min-width: 160px;
     min-height: 48px;
 }
@@ -459,18 +468,7 @@ body.is-active .mask {
     /* files */
 
     .file-list {
-        flex-grow: 0;
         min-width: 288px;
-        width: 75%;
-    }
-
-    .cat-header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cat-info {
-        align-items: center;
     }
 
     .file-con {
@@ -483,6 +481,16 @@ body.is-active .mask {
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .file-btn-con {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .file-btn, .file-btn-outer {
+        flex-grow: 1;
+    }
+
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
@@ -498,6 +506,15 @@ body.is-active .mask {
 
     .nav-version {
         display: block;
+    }
+
+    .cat-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cat-info {
+        align-items: center;
     }
 
     .settings-con{

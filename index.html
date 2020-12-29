@@ -75,8 +75,9 @@
                                 <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
                             </div>
                             <div class="file-btn-con">
-                                <tooltip-button class="file-btn copy-btn" @click="copyByPath(saveFile)"
-                                                text="Copy To Clipboard" tooltip-text="Copied!"></tooltip-button>
+                                <tooltip-button class="file-btn-outer" @click="copyByPath(saveFile)"
+                                                text="Copy To Clipboard" tooltip-text="Copied!"
+                                                :button-class="['file-btn-inner', 'copy-btn']"></tooltip-button>
                                 <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
                             </div>
                         </div>
