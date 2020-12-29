@@ -14,19 +14,40 @@ var app = new Vue({
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
         currentTheme: 0,
-        version: "Beta 3 Alpha 6c"
+        sortMode: 0,
+        sortTypes: ["Early to late", "Late to early"],
+        version: "Beta 3 Alpha 7"
     },
     computed: {
         currentCategory() {
-            if (this.currentCategoryIndex > -1 &&
-                this.currentCategoryIndex < this.saves.length) {
-                return this.saves[this.currentCategoryIndex]
-            } else {
-                return null;
+            let i = this.currentCategoryIndex;
+            let saves = this.saves;
+            if (i > -1 && i < saves.length) {
+                return saves[i]
             }
-        s}
+            return null;
+        },
+        currentSaveFiles() {
+            let cat = this.currentCategory;
+            if (cat !== null) {
+                if (cat.saves !== undefined) {
+                    let saves = cat.saves
+                    switch (this.sortMode) {
+                        case 1: return [...saves].reverse();
+                        default: return saves; //including case 0
+                    }
+                }
+            }
+            return [];
+        }
     },
     methods: {
+        toggleSort() {
+            this.sortMode++;
+            if (this.sortMode >= this.sortTypes.length) {
+                this.sortMode = 0;
+            }
+        },
         menu(toggle) {
             var body = document.querySelector("body");
             if (toggle === undefined) {

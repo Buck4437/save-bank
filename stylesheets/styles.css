@@ -2,7 +2,7 @@
 
 * {
     color: var(--color);
-    transition-duration: 0.5s;
+    transition: color 0.5s, background-color 0.5s, border 0.5s;
 }
 
 body{
@@ -83,8 +83,7 @@ main {
     position: fixed;
     z-index: 25;
     height: calc(100vh - 64px);
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: auto;
 }
 
 .mini-header {
@@ -121,22 +120,21 @@ main {
 .mask {
     width: 0%;
     height: 100vh;
-    transition: all 0.5s, height 0s, width 0s ease 0.5s;
+    transition: background-color 0.5s, width 0s ease 0.5s;
     transform: translateY(-64px);
-    opacity: 0%;
-    background-color: #000000;
+    background-color: #00000000;
 
     position: fixed;
     z-index: 50;
 
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent; /* prevent selection on mobile */
 }
 
 body.is-active .mask {
-    transition: all 0.5s, height 0s, width 0s ease 0s;
+    transition: background-color 0.5s, width 0s ease 0s;
 
     cursor: pointer;
-    opacity: 60%;
+    background-color: #00000099;
     width: 100%;
 }
 
@@ -173,6 +171,15 @@ body.is-active .mask {
 
 .cat-desc {
     font-size: 16px;
+}
+
+/* sort by */
+
+.sort-by-btn {
+    min-width: 160px;
+    min-height: 32px;
+    padding: 8px;
+    margin-bottom: 16px;
 }
 
 /* saves */
@@ -435,7 +442,7 @@ body.is-active .mask {
 @media only screen and (max-width: 479px) {
 
     body {
-        min-width: 272px;
+        min-width: 288px;
     }
 
     .about {
