@@ -421,6 +421,12 @@ body.is-active .mask {
 
     /* files */
 
+    .file-list {
+        flex-grow: 0;
+        min-width: 288px;
+        width: 75%;
+    }
+
     .cat-header {
         flex-direction: column;
         align-items: flex-start;
@@ -431,10 +437,6 @@ body.is-active .mask {
         flex-wrap: wrap;
         flex-direction: column;
         align-items: stretch;
-    }
-
-    .file-btn {
-        width: 50%;
     }
 
 }
