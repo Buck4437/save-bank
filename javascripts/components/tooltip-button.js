@@ -2,9 +2,10 @@
 
 Vue.component("tooltip-button", {
     template: `
-    <button class="tooltip-btn" @click="click()">{{text}}
+    <div class="tooltip-frame">
+        <button class="tooltip-btn" @click="click()">{{text}}</button>
         <span class="tooltip-text">{{tooltipText}}</span>
-    </button>
+    </div>
     `,
     props: {
         text: String,
@@ -16,7 +17,7 @@ Vue.component("tooltip-button", {
             classList.add("is-active");
             setTimeout(() => {
                 classList.remove("is-active")
-            }, 1500)
+            }, 1000)
             this.$emit('click');
         }
     }
