@@ -6,17 +6,11 @@ Vue.component("custom-saves", {
         <div class="cat-header">
             <div class="cat-info">
                 <span class="cat-title">Custom Saves</span>
-                <span class="cat-desc">
-                    <i>
-                        Saves: <span :class="{'warning': customSaves.length >= 10}">{{customSaves.length}} / 10</span>
-                    </i>
-                </span>
+                <span class="cat-desc"><i>Quota: <span :class="{'warning': customSaves.length >= 10}">{{customSaves.length}} / 10</span></i></span>
             </div>
-            <div class="custom-save-info">
-                <button class="add-save-btn" v-if="customSaves.length < 10" @click="open()">
-                    Add new save
-                </button>
-            </div>
+            <button class="add-save-btn" v-if="customSaves.length < 10" @click="edit(-1)">
+                Add new save
+            </button>
         </div>
         <div class="file-con custom-save-con" v-for="(saveFile, i) in customSaves"
             :class="i % 2 == 1 ? 'custom-background' : ''">
@@ -25,113 +19,98 @@ Vue.component("custom-saves", {
                 <span class="pre-formatted file-desc"><i>{{saveFile.desc === "" ? "No description provided." : saveFile.desc}}</i></span>
             </div>
             <div class="file-btn-con">
-                <button class="file-btn rename-btn" @click="rename(saveFile)">Edit name</button>
-                <button class="file-btn edit-desc-btn" @click="editDesc(saveFile)">Edit description</button>
-                <button class="file-btn edit-data-btn" @click="editData(saveFile)">Edit data</button>
-                <tooltip-button class="file-btn-outer" @click="copyByPath(saveFile)"
+                <tooltip-button class="file-btn-outer" @click="copy(saveFile)"
                                 text="Copy To Clipboard" tooltip-text="Copied!"
                                 :button-class="['file-btn-inner', 'copy-btn']"></tooltip-button>
                 <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
-                <button class="file-btn delete-btn warning" @click="deleteFile(saveFile)">Delete</button>
+                <button class="file-btn edit-btn" @click="edit(i)">Edit</button>
+                <button class="file-btn delete-btn warning" @click="deleteFile(i)">Delete</button>
             </div>
         </div>
-        <div class="model-outer">
-            <div class="model custom-save-model">
-                <button class="model-close" @click="close()">×</button>
-                <div class="custom-save-model-header">Input save info here:</div>
-                <ul>
-                    <li>Name: <input class="input-name"></input></li>
-                    <li>Desc: <input class="input-desc"></input></li>
-                    <li>Data: <input class="input-data"></input></li>
-                </ul>
-                <button class="custom-save-submit-btn" @click="add()">Submit</button>
-            </div>
-            <div class="model-mask">
-            </div>
-        </div>
+        <input-model :fields="fields" :header="inputHeader"
+                    @submit="submit" @close="close()"
+                    :default="inputDefault" style="display: none;"
+                    class="custom-save-model"></input-model>
     </div>
     `,
     data() {
         return {
             saveIndex: 0, // used for counting saves created
             customSaves: [],
-            fields: ["Name", "Desc", "Data"]
+            fields: ["Name", "Desc", "Data"],
+            editedFileIndex: -1
+        }
+    },
+    computed: {
+        inputHeader() {
+            let index = this.editedFileIndex;
+            let saves = this.customSaves;
+            if (index < 0 || index >= saves.length) {
+                return "Enter save info:"
+            }
+            return "Edit save info:"
+        },
+        inputDefault() {
+            let index = this.editedFileIndex;
+            let saves = this.customSaves;
+            if (index < 0 || index >= saves.length) {
+                return null;
+            }
+            return saves[index];
         }
     },
     methods: {
-        open() {
-            let element = this.$el.querySelector(".model-outer")
-            element.classList.add("is-active")
-        },
-        close() {
-            let element = this.$el.querySelector(".model-outer")
-            element.classList.remove("is-active")
-        },
-        add() {
-            let nameEl = this.$el.querySelector(".input-name");
-            let descEl = this.$el.querySelector(".input-desc");
-            let dataEl = this.$el.querySelector(".input-data");
-            let name = nameEl.value
-            let desc = descEl.value
-            let data = dataEl.value
-            if (name.replace(/\s/g, "") == "") {
-                name = "Save #" + (this.saveIndex + 1)
-                this.saveIndex ++;
+        submit(save) {
+            let oldSave = this.inputDefault;
+            if (oldSave === null) {
+                if (save.name.replace(/\s/g, "") == "") {
+                    save.name = "Save #" + (this.saveIndex + 1)
+                    this.saveIndex ++;
+                }
+                this.customSaves.push(save)
+            } else {
+                for (let attr in save) {
+                    oldSave[attr] = save[attr];
+                }
             }
-            this.customSaves.push(this.makeSave(name, desc, data));
-            this.update();
-            nameEl.value = "";
-            descEl.value = "";
-            dataEl.value = "";
+            this.save();
             this.close();
         },
-        rename(save) {
-            let name = prompt("Enter new name:");
-            if (name !== null && name !== undefined && name.replace(/\s/g, "") !== "") {
-                save.name = name;
-                this.update();
-            }
+        edit(i) {
+            this.editedFileIndex = i;
+            this.open();
         },
-        editDesc(save) {
-            let desc = prompt("Enter new description:");
-            if (desc !== null && desc !== undefined && desc.replace(/\s/g, "") !== "") {
-                save.desc = desc;
-                this.update();
-            }
+        copy(save) {
+            this.$emit('copy-file', save);
         },
-        editData(save) {
-            let data = prompt("Enter new save data:")
-            if (data !== null && data !== undefined && data.replace(/\s/g, "") !== "") {
-                save.data = data;
-                this.update();
-                alert("Save data updated!");
-            }
+        downloadFile(save) {
+            this.$emit('download-file', save);
         },
-        deleteFile(save) {
+        deleteFile(i) {
+            let save = this.customSaves[i];
             if (confirm(`Are you sure you want to delete this save file (${save.name})? This cannot be undone!`)) {
-                this.customSaves.splice(this.customSaves.indexOf(save), 1);
-                this.update();
+                this.customSaves.splice(i, 1);
+                this.save();
             }
         },
-        makeSave(name = "", desc = "", data = "") {
-            return {
-                name: name,
-                desc: desc,
-                data: data
-            }
+        open() {
+            let element = this.$el.querySelector(".custom-save-model")
+            element.style.display = "flex";
+            let body = document.querySelector("body")
+            body.style.overflowY = "hidden";
         },
-        update() {
+        close() {
+            let element = this.$el.querySelector(".custom-save-model")
+            element.style.display = "none";
+            let body = document.querySelector("body")
+            body.style.overflowY = "scroll";
+        },
+        save() {
             let data = {
                 index: this.saveIndex,
                 saves: this.customSaves
             }
             localStorage.setItem("saveBankCustomSaves", JSON.stringify(data));
-        },
-        copyByPath(save) {
-            this.$emit('copy-file', save);
-        },
-        downloadFile(save) {
-            this.$emit('download-file', save);
         }
     },
     mounted() {

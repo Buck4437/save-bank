@@ -61,6 +61,7 @@ button:hover{
 	top: -60px;
 	left: -9999px;
 }
+
 .tooltip-text::after {
 	content: " ";
 	position: absolute;
@@ -82,31 +83,19 @@ button:hover{
 /* model boxes - IMPORTANT! */
 
 .model-outer {
-    position: absolute;
+    position: fixed;
     z-index: 500;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+    background-color: var(--model);
 
-    display: none;
+    display: flex;
 
     align-items: center;
     justify-content: center;
-}
-
-.model-mask {
-    position: absolute;
-    z-index: 498;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    padding: auto;
-    background-color: var(--model);
 }
 
 .model {
@@ -115,10 +104,6 @@ button:hover{
     border-radius: 4px;
     padding: 16px;
     background-color: var(--secondary);
-}
-
-.model-outer.is-active {
-    display: flex;
 }
 
 .model-close {
@@ -132,7 +117,42 @@ button:hover{
     color: var(--warning);
 }
 
-/* .model.is-active */
+.input-model {
+    min-width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.input-model input {
+    border: none;
+    background-color: var(--background);
+}
+
+.input-model-header {
+    font-size: 20px;
+    padding: 8px;
+}
+
+.input-model ul {
+    flex-grow: 1;
+
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.input-model li {
+    padding: 8px;
+}
+
+.input-submit-btn {
+    flex-grow: 0;
+    margin: 8px;
+    padding: 8px;
+}
 
 /* actual layout */
 
@@ -290,9 +310,7 @@ body.is-active .mask {
     font-size: 16px;
 }
 
-/* sort by */
-
-.sort-by-btn {
+.sort-by-btn, .add-save-btn {
     min-width: 208px;
     min-height: 32px;
     padding: 8px;
@@ -315,6 +333,7 @@ body.is-active .mask {
 }
 
 .file-text-con{
+    width: 70%;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -335,7 +354,7 @@ body.is-active .mask {
     min-width: 192px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .file-btn {
@@ -351,67 +370,6 @@ body.is-active .mask {
 .file-btn-inner {
     min-width: 160px;
     min-height: 48px;
-}
-
-/* custom save files */
-
-.custom-save-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.add-save-btn {
-    min-width: 160px;
-    min-height: 40px;
-    margin-bottom: 16px;
-}
-
-.custom-save-con {
-    flex-direction: column;
-}
-
-.custom-save-con .file-btn-con { /* too many buttons */
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.custom-save-con .file-btn, .custom-save-con .file-btn-outer {
-    flex-grow: 0;
-}
-
-.custom-save-model {
-    min-width: 25%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.custom-save-model-header {
-    font-size: 20px;
-    padding: 8px;
-}
-
-.custom-save-model ul {
-    flex-grow: 1;
-
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
-
-.custom-save-model li {
-    padding: 8px;
-}
-
-.custom-save-submit-btn {
-    flex-grow: 0;
-    margin: 8px;
-    padding: 8px;
 }
 
 /* settings */
@@ -665,12 +623,18 @@ body.is-active .mask {
         font-size: 18px;
     }
 
-    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
-        width: 45%;
+    .custom-save-con .file-btn-con, .custom-save-con .file-btn-row {
+        flex-direction: column;
     }
 
-    .custom-save-model {
-        min-width: 288px;
+
+
+    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+        /* width: 45%; */
+    }
+
+    .model {
+        max-width: 80vw;
     }
 
     .settings-con{
