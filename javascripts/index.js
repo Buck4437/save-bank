@@ -2,7 +2,8 @@
 
 const C = {
     FILES_TAB: 0,
-    SETTINGS_TAB: 1
+    CUSTOM_TAB: 1,
+    SETTINGS_TAB: 2
 }
 
 var app = new Vue({
@@ -16,7 +17,7 @@ var app = new Vue({
         currentTheme: 0,
         sortMode: 0,
         sortTypes: ["Early to late", "Late to early"],
-        version: "Beta 3"
+        version: "Beta 4 Alpha 1"
     },
     computed: {
         currentCategory() {

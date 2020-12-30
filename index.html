@@ -46,6 +46,13 @@
                         </template>
                         <li class="nav-btn-con">
                             <button class="cat-btn"
+                                    :class="{'is-active': currentTab === C.CUSTOM_TAB}"
+                                    @click="openTab(C.CUSTOM_TAB)">
+                            Custom Saves
+                            </button>
+                        </li>
+                        <li class="nav-btn-con">
+                            <button class="cat-btn"
                                     :class="{'is-active': currentTab === C.SETTINGS_TAB}"
                                     @click="openTab(C.SETTINGS_TAB)">
                             Settings
@@ -87,7 +94,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab file-list" v-if="currentTab === C.CUSTOM_TAB">
+                        <custom-saves @copy-file="copyByPath" @download-file="downloadFile"></custom-saves>
+                    </div>
                     <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
+                        <div class="cat-info">
+                            <span class="cat-title">Settings</span>
+                        </div>
                         <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
                     </div>
                 </div>
@@ -102,16 +115,16 @@
 
     <script src="javascripts/components/menu-button.js"></script>
     <script src="javascripts/components/tooltip-button.js"></script>
+    <script src="javascripts/components/custom-saves.js"></script>
 
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
 </html>
 
-<!-- TODO: Custom saves (Max size: 10)-->
 <!-- TODO: Progress bar for custom saves (Storage size) -->
-<!-- TODO: Renaming -->
-<!-- TODO: Move up/ down -->
+
+<!-- TODO: Custom models -->
 
 <!-- TODO: IDK maybe name versions after greek alphabet -->
 

@@ -3,6 +3,7 @@
     --primary: #323232;
     --secondary: #222222;
     --background: #121212;
+    --warning: #CF6679;
     --hover: #D9D9D926;
     --tooltip: #D9D9D9;
     --tooltip-background: #323232;
@@ -16,6 +17,7 @@
     --color-dilation-background: #51CC0A50;
     --color-reality: #0BA00E;
     --color-reality-background: #0BA00E50;
+    --color-custom-background: #D9D9D950;
 }
 
 .light-theme{
@@ -23,6 +25,7 @@
     --primary: #FFFFFF;
     --secondary: #FAFAFA;
     --background: #F0F0F0;
+    --warning: #B00020;
     --hover: #4F595726;
     --tooltip: #FFFFFF;
     --color-antimatter-background: #2196F350;
@@ -30,4 +33,5 @@
     --color-eternity-background: #673AB750;
     --color-dilation-background: #33B70050;
     --color-reality-background: #0A710C50; /*IDK the actual value, just prediction*/
+    --color-custom-background: #4F595750;
 }

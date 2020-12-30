@@ -51,7 +51,7 @@ button:hover{
 	padding: 8px;
 	opacity: 0;
 	display: inline-block;
-	transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s;
+	transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s, left 0.5s linear 0.5s;
 	user-select: none;
 	cursor: default;
 	-webkit-tap-highlight-color: transparent; /* prevent selection on mobile */
@@ -59,7 +59,7 @@ button:hover{
 	position: absolute;
 	z-index: 10;
 	top: -60px;
-	left: calc(50% - 40px);
+	left: -9999px;
 }
 .tooltip-text::after {
 	content: " ";
@@ -74,6 +74,8 @@ button:hover{
 }
 
 .tooltip-text.is-active {
+    left: calc(50% - 40px);
+    transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s;
     opacity: 1;
 }
 
@@ -296,15 +298,51 @@ body.is-active .mask {
     min-height: 48px;
 }
 
+/* custom save files */
+
+.custom-save-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-save-btn {
+    min-width: 160px;
+    min-height: 40px;
+    margin-bottom: 16px;
+}
+
+.custom-save-con {
+    flex-direction: column;
+}
+
+.custom-save-con .file-btn-con { /* too many buttons */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+    flex-grow: 0;
+}
+
+.delete-btn {
+    border-color: var(--warning);
+    color: var(--warning);
+}
+
+
 /* settings */
 
 .settings-con{
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
 }
 
 .settings-btn{
-    flex-grow: 0;
+    align-self: flex-start;
     min-width: 192px;
     min-height: 96px;
 }
@@ -380,6 +418,10 @@ body.is-active .mask {
 .reality.is-active {
     background-color: var(--color-reality);
     color: var(--background);
+}
+
+.custom-background {
+    background-color: var(--color-custom-background);
 }
 
 /* All Mobile Sizes (devices and browser) */
@@ -477,6 +519,14 @@ body.is-active .mask {
         align-items: stretch;
     }
 
+    .file-btn-con {
+        flex-wrap: wrap;
+    }
+
+    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+        flex-grow: 1;
+    }
+
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -489,6 +539,10 @@ body.is-active .mask {
 
     .file-btn, .file-btn-outer {
         flex-grow: 1;
+    }
+
+    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+        width: 30%;
     }
 
 }
@@ -517,8 +571,23 @@ body.is-active .mask {
         align-items: center;
     }
 
+    .custom-save-info {
+        flex-direction: column;
+    }
+
+    .custom-save-size {
+        margin: 8px 0;
+        font-size: 18px;
+    }
+
+    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+        width: 45%;
+    }
+
     .settings-con{
         display: flex;
+        flex-grow: 0;
+        align-self: center;
         flex-direction: column;
     }
 }
