@@ -28,9 +28,14 @@ Vue.component("custom-saves", {
             </div>
         </div>
         <input-model :fields="fields" :header="inputHeader"
-                    @submit="submit" @close="close()"
+                    @submit="submit" @close="close('.custom-save-input-model')"
                     :default="inputDefault" style="display: none;"
-                    class="custom-save-model"></input-model>
+                    class="custom-save-input-model"></input-model>
+        <confirm-model header="Confirmation" :text="deleteConfirmationText"
+                    class="custom-save-confirm-model"
+                    style="display: none;"
+                    @close="close('.custom-save-confirm-model')"
+                    @confirm="trueDelete()"></confirm-model>
     </div>
     `,
     data() {
@@ -38,12 +43,12 @@ Vue.component("custom-saves", {
             saveIndex: 0, // used for counting saves created
             customSaves: [],
             fields: ["Name", "Desc", "Data"],
-            editedFileIndex: -1
+            currentFileIndex: -1
         }
     },
     computed: {
         inputHeader() {
-            let index = this.editedFileIndex;
+            let index = this.currentFileIndex;
             let saves = this.customSaves;
             if (index < 0 || index >= saves.length) {
                 return "Enter save info:"
@@ -51,12 +56,17 @@ Vue.component("custom-saves", {
             return "Edit save info:"
         },
         inputDefault() {
-            let index = this.editedFileIndex;
+            let index = this.currentFileIndex;
             let saves = this.customSaves;
             if (index < 0 || index >= saves.length) {
                 return null;
             }
             return saves[index];
+        },
+        deleteConfirmationText() {
+            let save = this.customSaves[this.currentFileIndex] || {name: "Placeholder"};
+            let name = save.name
+            return `Are you sure you want to delete this save file (${name})? This cannot be undone!`
         }
     },
     methods: {
@@ -74,11 +84,11 @@ Vue.component("custom-saves", {
                 }
             }
             this.save();
-            this.close();
+            this.close('.custom-save-input-model');
         },
         edit(i) {
-            this.editedFileIndex = i;
-            this.open();
+            this.currentFileIndex = i;
+            this.open('.custom-save-input-model');
         },
         copy(save) {
             this.$emit('copy-file', save);
@@ -87,20 +97,23 @@ Vue.component("custom-saves", {
             this.$emit('download-file', save);
         },
         deleteFile(i) {
-            let save = this.customSaves[i];
-            if (confirm(`Are you sure you want to delete this save file (${save.name})? This cannot be undone!`)) {
-                this.customSaves.splice(i, 1);
-                this.save();
-            }
+            this.currentFileIndex = i;
+            this.open('.custom-save-confirm-model');
         },
-        open() {
-            let element = this.$el.querySelector(".custom-save-model")
+        trueDelete() {
+            let i = this.currentFileIndex;
+            this.customSaves.splice(i, 1);
+            this.save();
+            this.close('.custom-save-confirm-model');
+        },
+        open(c) {
+            let element = this.$el.querySelector(c)
             element.style.display = "flex";
             let body = document.querySelector("body")
             body.style.overflowY = "hidden";
         },
-        close() {
-            let element = this.$el.querySelector(".custom-save-model")
+        close(c) {
+            let element = this.$el.querySelector(c)
             element.style.display = "none";
             let body = document.querySelector("body")
             body.style.overflowY = "scroll";
