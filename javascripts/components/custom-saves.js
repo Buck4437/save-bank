@@ -6,10 +6,14 @@ Vue.component("custom-saves", {
         <div class="cat-header">
             <div class="cat-info">
                 <span class="cat-title">Custom Saves</span>
-                <span class="cat-desc"><i>Saves: {{customSaves.length}} / 10</i></span>
+                <span class="cat-desc">
+                    <i>
+                        Saves: <span :class="{'warning': customSaves.length >= 10}">{{customSaves.length}} / 10</span>
+                    </i>
+                </span>
             </div>
             <div class="custom-save-info">
-                <button class="add-save-btn" v-if="customSaves.length < 10" @click="add()">
+                <button class="add-save-btn" v-if="customSaves.length < 10" @click="open()">
                     Add new save
                 </button>
             </div>
@@ -28,23 +32,58 @@ Vue.component("custom-saves", {
                                 text="Copy To Clipboard" tooltip-text="Copied!"
                                 :button-class="['file-btn-inner', 'copy-btn']"></tooltip-button>
                 <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
-                <button class="file-btn delete-btn" @click="deleteFile(saveFile)">Delete</button>
+                <button class="file-btn delete-btn warning" @click="deleteFile(saveFile)">Delete</button>
+            </div>
+        </div>
+        <div class="model-outer">
+            <div class="model custom-save-model">
+                <button class="model-close" @click="close()">×</button>
+                <div class="custom-save-model-header">Input save info here:</div>
+                <ul>
+                    <li>Name: <input class="input-name"></input></li>
+                    <li>Desc: <input class="input-desc"></input></li>
+                    <li>Data: <input class="input-data"></input></li>
+                </ul>
+                <button class="custom-save-submit-btn" @click="add()">Submit</button>
+            </div>
+            <div class="model-mask">
             </div>
         </div>
     </div>
     `,
     data() {
         return {
-            customSaves: []
+            saveIndex: 0, // used for counting saves created
+            customSaves: [],
+            fields: ["Name", "Desc", "Data"]
         }
     },
     methods: {
+        open() {
+            let element = this.$el.querySelector(".model-outer")
+            element.classList.add("is-active")
+        },
+        close() {
+            let element = this.$el.querySelector(".model-outer")
+            element.classList.remove("is-active")
+        },
         add() {
-            let save = prompt("Enter your save data here:").replace(/\s/g, "");
-            if (save !== null && save !== undefined && save !== "") {
-                this.customSaves.push(this.makeSave(save));
-                this.update();
+            let nameEl = this.$el.querySelector(".input-name");
+            let descEl = this.$el.querySelector(".input-desc");
+            let dataEl = this.$el.querySelector(".input-data");
+            let name = nameEl.value
+            let desc = descEl.value
+            let data = dataEl.value
+            if (name.replace(/\s/g, "") == "") {
+                name = "Save #" + (this.saveIndex + 1)
+                this.saveIndex ++;
             }
+            this.customSaves.push(this.makeSave(name, desc, data));
+            this.update();
+            nameEl.value = "";
+            descEl.value = "";
+            dataEl.value = "";
+            this.close();
         },
         rename(save) {
             let name = prompt("Enter new name:");
@@ -61,7 +100,7 @@ Vue.component("custom-saves", {
             }
         },
         editData(save) {
-            let data = prompt("Enter new save data:");
+            let data = prompt("Enter new save data:")
             if (data !== null && data !== undefined && data.replace(/\s/g, "") !== "") {
                 save.data = data;
                 this.update();
@@ -74,15 +113,19 @@ Vue.component("custom-saves", {
                 this.update();
             }
         },
-        makeSave(data = "") {
+        makeSave(name = "", desc = "", data = "") {
             return {
-                name: "Save #" + (this.customSaves.length + 1),
-                desc: "",
+                name: name,
+                desc: desc,
                 data: data
             }
         },
         update() {
-            localStorage.setItem("saveBankCustomSaves", JSON.stringify(this.customSaves))
+            let data = {
+                index: this.saveIndex,
+                saves: this.customSaves
+            }
+            localStorage.setItem("saveBankCustomSaves", JSON.stringify(data));
         },
         copyByPath(save) {
             this.$emit('copy-file', save);
@@ -94,11 +137,14 @@ Vue.component("custom-saves", {
     mounted() {
         let saves = localStorage.getItem("saveBankCustomSaves");
         if (saves !== undefined) {
-            let savesArray = JSON.parse(saves);
-            if (Array.isArray(savesArray)) {
-                for (let save of savesArray) {
+            let data = JSON.parse(saves);
+            if (Array.isArray(data.saves)) {
+                for (let save of data.saves) {
                     this.customSaves.push(save);
                 }
+            }
+            if (isNumber(data.index)) {
+                this.saveIndex = data.index;
             }
         }
     }

@@ -79,6 +79,61 @@ button:hover{
     opacity: 1;
 }
 
+/* model boxes - IMPORTANT! */
+
+.model-outer {
+    position: absolute;
+    z-index: 500;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.model-mask {
+    position: absolute;
+    z-index: 498;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: auto;
+    background-color: var(--model);
+}
+
+.model {
+    z-index: 501;
+
+    border-radius: 4px;
+    padding: 16px;
+    background-color: var(--secondary);
+}
+
+.model-outer.is-active {
+    display: flex;
+}
+
+.model-close {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    left: calc(100% - 40px);
+    border: none;
+    color: var(--warning);
+}
+
+/* .model.is-active */
+
 /* actual layout */
 
 #app {
@@ -327,11 +382,37 @@ body.is-active .mask {
     flex-grow: 0;
 }
 
-.delete-btn {
-    border-color: var(--warning);
-    color: var(--warning);
+.custom-save-model {
+    min-width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
+.custom-save-model-header {
+    font-size: 20px;
+    padding: 8px;
+}
+
+.custom-save-model ul {
+    flex-grow: 1;
+
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.custom-save-model li {
+    padding: 8px;
+}
+
+.custom-save-submit-btn {
+    flex-grow: 0;
+    margin: 8px;
+    padding: 8px;
+}
 
 /* settings */
 
@@ -348,7 +429,11 @@ body.is-active .mask {
 }
 
 
-/* preset backgrounds */
+/* presets */
+.warning {
+    border-color: var(--warning);
+    color: var(--warning);
+}
 
 .normal {
     border-color: var(--color-antimatter);
@@ -582,6 +667,10 @@ body.is-active .mask {
 
     .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
         width: 45%;
+    }
+
+    .custom-save-model {
+        min-width: 288px;
     }
 
     .settings-con{

@@ -6,6 +6,8 @@
     --warning: #CF6679;
     --hover: #D9D9D926;
     --tooltip: #D9D9D9;
+    --model: #000000A0;
+
     --tooltip-background: #323232;
     --color-antimatter: #2196F3;
     --color-antimatter-background: #DF505050;
@@ -28,6 +30,7 @@
     --warning: #B00020;
     --hover: #4F595726;
     --tooltip: #FFFFFF;
+
     --color-antimatter-background: #2196F350;
     --color-infinity-background: #FF980050;
     --color-eternity-background: #673AB750;

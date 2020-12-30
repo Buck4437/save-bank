@@ -63,3 +63,9 @@ function setTheme(index) {
     document.body.classList.add(themes[index].toLowerCase() + "-theme");
     localStorage.setItem("saveBankTheme", index)
 }
+
+// Misc
+
+function isNumber(val) {
+    return typeof val === 'number' && isFinite(val)
+}
