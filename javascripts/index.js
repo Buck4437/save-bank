@@ -1,3 +1,5 @@
+"use strict";
+
 const C = {
     FILES_TAB: 0,
     SETTINGS_TAB: 1
@@ -12,26 +14,48 @@ var app = new Vue({
         currentCategoryIndex: 0,
         currentTab: C.FILES_TAB,
         currentTheme: 0,
-        version: "Beta 2"
+        sortMode: 0,
+        sortTypes: ["Early to late", "Late to early"],
+        version: "Beta 3"
     },
     computed: {
         currentCategory() {
-            if (this.currentCategoryIndex > -1 && this.currentCategoryIndex < this.saves.length) {
-                return this.saves[this.currentCategoryIndex]
-            } else {
-                return null;
+            let i = this.currentCategoryIndex;
+            let saves = this.saves;
+            if (i > -1 && i < saves.length) {
+                return saves[i]
             }
+            return null;
+        },
+        currentSaveFiles() {
+            let cat = this.currentCategory;
+            if (cat !== null) {
+                if (cat.saves !== undefined) {
+                    let saves = cat.saves
+                    switch (this.sortMode) {
+                        case 1: return [...saves].reverse();
+                        default: return saves; //including case 0
+                    }
+                }
+            }
+            return [];
         }
     },
     methods: {
+        toggleSort() {
+            this.sortMode++;
+            if (this.sortMode >= this.sortTypes.length) {
+                this.sortMode = 0;
+            }
+        },
         menu(toggle) {
-            var app = document.querySelector("#app");
+            var body = document.querySelector("body");
             if (toggle === undefined) {
-                app.classList.toggle("is-active");
+                body.classList.toggle("is-active");
             } else {
-                app.classList.remove("is-active");
+                body.classList.remove("is-active");
                 if (toggle) {
-                    app.classList.add("is-active");
+                    body.classList.add("is-active");
                 }
             }
         },
@@ -47,7 +71,8 @@ var app = new Vue({
                 this.currentCategoryIndex = -1;
             }
             this.currentTab = tab;
-            this.menu(false);
+            this.menu(false); //close the menu
+            scroll(0,0); //scroll to top
         },
         switchCategory(index) {
             this.openTab(this.C.FILES_TAB);
@@ -64,5 +89,9 @@ var app = new Vue({
     },
     mounted() {
         this.currentTheme = loadTheme();
+        setTimeout(() => {
+            var body = document.querySelector("body");
+            body.classList.add("ready");
+        }, 500) // for the theme to apply propertly, and also to prevent sudden transition
     }
 })
