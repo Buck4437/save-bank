@@ -8,7 +8,7 @@ Vue.component("input-model", {
             <div class="input-model-header">{{header}}</div>
             <ul>
                 <template v-for="field in fields">
-                    <li>{{field}}: <input :class="'input-' + field"></input></li>
+                    <li><div>{{field}}: </div><input :class="'input-' + field"></input></li>
                 </template>
             </ul>
             <button class="input-submit-btn" @click="submit()">Submit</button>

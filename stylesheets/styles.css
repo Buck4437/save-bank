@@ -121,17 +121,12 @@ button:hover{
 }
 
 .input-model {
-    min-width: 25%;
+    min-width: 40%;
     position: relative;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-}
-
-.input-model input {
-    border: none;
-    background-color: var(--background);
 }
 
 .input-model-header {
@@ -142,13 +137,25 @@ button:hover{
 .input-model ul {
     flex-grow: 1;
 
+    min-width: 80%;
+
     padding: 0;
     margin: 0;
     list-style-type: none;
 }
 
 .input-model li {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
     padding: 8px;
+}
+
+.input-model input {
+    margin-left: 16px;
+    flex-grow: 1;
+    border: none;
+    background-color: var(--background);
 }
 
 .input-submit-btn {
