@@ -102,20 +102,46 @@
                             <span class="cat-title">Settings</span>
                         </div>
                         <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
+                        <button class="settings-btn warning" @click="reset()">WIPE DATA</button>
                     </div>
                 </div>
             </main>
          </div>
     </body>
-    <script src="javascripts/libraries/vue.min.js"></script>
+    <!-- Development !-->
+    <script src="javascripts/libraries/vue.js"></script>
+
+    <!-- Production !-->
+    <!-- <script src="javascripts/libraries/vue.min.js"></script> -->
 
     <script src="javascripts/components/menu-button.js"></script>
     <script src="javascripts/components/tooltip-button.js"></script>
     <script src="javascripts/components/custom-saves.js"></script>
-    <script src="javascripts/components/input-model.js"></script>
-    <script src="javascripts/components/confirm-model.js"></script>
+    <script src="javascripts/components/input-modal.js"></script>
+    <script src="javascripts/components/confirm-modal.js"></script>
 
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
 </html>
+
+<!-- TODO: REFACTOR -->
+
+<!-- TODO: Add FAQ in "info" -->
+
+<!-- TODO: Use confirm modal for wipe data-->
+
+<!-- TODO: Make save title display actual ep count (instead of rounded) -->
+
+<!-- TODO: Raise quota? Or add an option to get unlimited quota with warning-->
+
+<!-- TODO: Turn confirm modal into pure js by using functions, document append etc -->
+
+<!-- TODO: Input placeholder for name -->
+<!-- TODO: Exporting all save files as zip -->
+
+<!-- TODO: In contribution / github desc, add detailed description about contributing etc-->
+
+<!-- TODO: IDK maybe name versions after greek alphabet -->
+
+<!-- TODO: Far: save editor -->

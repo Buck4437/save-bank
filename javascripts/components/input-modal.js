@@ -1,11 +1,11 @@
 "use strict";
 
-Vue.component("input-model", {
+Vue.component("input-modal", {
     template: `
-    <div class="model-outer">
-        <div class="model input-model">
-            <button class="model-close" @click="close()">×</button>
-            <div class="input-model-header">{{header}}</div>
+    <div class="modal-outer">
+        <div class="modal input-modal">
+            <button class="modal-close" @click="close()">×</button>
+            <div class="input-modal-header">{{header}}</div>
             <ul>
                 <template v-for="field in fields">
                     <li><div>{{field}}: </div><input :class="'input-' + field"></input></li>

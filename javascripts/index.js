@@ -17,7 +17,7 @@ var app = new Vue({
         currentTheme: 0,
         sortMode: 0,
         sortTypes: ["Early to late", "Late to early"],
-        version: "Beta 4"
+        version: "Beta 5 Alpha 1"
     },
     computed: {
         currentCategory() {
@@ -86,6 +86,16 @@ var app = new Vue({
             let filename = saveFile.name + ".txt";
             let text = saveFile.data;
             download(filename, text);
+        },
+        reset() {
+            if (confirm("Are you sure you want to wipe all data? THIS CANNOT BE UNDONE!")) {
+                setTheme(0);
+                localStorage.setItem("saveBankCustomSaves", null);
+                this.currentTab = C.FILES_TAB;
+                this.currentCategoryIndex = 0;
+                this.sortMode = 0;
+                location.reload();
+            }
         }
     },
     mounted() {

@@ -27,15 +27,16 @@ Vue.component("custom-saves", {
                 <button class="file-btn delete-btn warning" @click="deleteFile(i)">Delete</button>
             </div>
         </div>
-        <input-model :fields="fields" :header="inputHeader"
-                    @submit="submit" @close="close('.custom-save-input-model')"
+        <input-modal :fields="fields" :header="inputHeader"
+                    @submit="submit" @close="close('.custom-save-input-modal')"
                     :default="inputDefault" style="display: none;"
-                    class="custom-save-input-model"></input-model>
-        <confirm-model header="Confirmation" :text="deleteConfirmationText"
-                    class="custom-save-confirm-model"
-                    style="display: none;"
-                    @close="close('.custom-save-confirm-model')"
-                    @confirm="trueDelete()"></confirm-model>
+                    class="custom-save-input-modal"></input-modal>
+        <confirm-modal class="custom-save-confirm-modal" style="display: none;"
+                    @close="close('.custom-save-confirm-modal')"
+                    @confirm="trueDelete()">
+                    Are you sure you want to delete this save file ({{currentSaveName}})?
+                    <span class="warning">THIS CANNOT BE UNDONE!</span>
+        </confirm-modal>
     </div>
     `,
     data() {
@@ -63,10 +64,9 @@ Vue.component("custom-saves", {
             }
             return saves[index];
         },
-        deleteConfirmationText() {
-            let save = this.customSaves[this.currentFileIndex] || {name: "Placeholder"};
-            let name = save.name
-            return `Are you sure you want to delete this save file (${name})? This cannot be undone!`
+        currentSaveName() {
+            let save = this.customSaves[this.currentFileIndex] || {name: null};
+            return save.name;
         }
     },
     methods: {
@@ -84,11 +84,11 @@ Vue.component("custom-saves", {
                 }
             }
             this.save();
-            this.close('.custom-save-input-model');
+            this.close('.custom-save-input-modal');
         },
         edit(i) {
             this.currentFileIndex = i;
-            this.open('.custom-save-input-model');
+            this.open('.custom-save-input-modal');
         },
         copy(save) {
             this.$emit('copy-file', save);
@@ -98,13 +98,13 @@ Vue.component("custom-saves", {
         },
         deleteFile(i) {
             this.currentFileIndex = i;
-            this.open('.custom-save-confirm-model');
+            this.open('.custom-save-confirm-modal');
         },
         trueDelete() {
             let i = this.currentFileIndex;
             this.customSaves.splice(i, 1);
             this.save();
-            this.close('.custom-save-confirm-model');
+            this.close('.custom-save-confirm-modal');
         },
         open(c) {
             let element = this.$el.querySelector(c)
@@ -128,7 +128,7 @@ Vue.component("custom-saves", {
     },
     mounted() {
         let saves = localStorage.getItem("saveBankCustomSaves");
-        if (saves !== undefined) {
+        if (String(saves) !== "undefined" && String(saves) !== "null") {
             let data = JSON.parse(saves);
             if (Array.isArray(data.saves)) {
                 for (let save of data.saves) {

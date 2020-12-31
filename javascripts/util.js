@@ -64,8 +64,36 @@ function setTheme(index) {
     localStorage.setItem("saveBankTheme", index)
 }
 
+// // Modals
+//
+// function createBaseModal() {
+//     let modalFrame = document.createElement("div");
+//     modalFrame.classList.add("modal-outer");
+//
+//     let modal = document.createElement("div");
+//     modal.classList.add("modal");
+//
+//     modalFrame.appendChild(modal);
+//     return modalFrame;
+// }
+//
+// function confirmModal(data) {
+//     let modalFrame = createBaseModal();
+//
+//     let content = modalFrame.querySelector(".modal");
+//
+//     let header = document.createElement("div");
+//     header.textContent = "Confirmation";
+//
+// }
+
 // Misc
 
 function isNumber(val) {
     return typeof val === 'number' && isFinite(val)
+}
+
+function getCssVar(name) {
+    return getComputedStyle(document.querySelector("body"))
+            .getPropertyValue('--background');
 }
