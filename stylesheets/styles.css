@@ -51,7 +51,7 @@ button:hover{
 	padding: 8px;
 	opacity: 0;
 	display: inline-block;
-	transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s;
+	transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s, left 0.5s linear 0.5s;
 	user-select: none;
 	cursor: default;
 	-webkit-tap-highlight-color: transparent; /* prevent selection on mobile */
@@ -59,8 +59,9 @@ button:hover{
 	position: absolute;
 	z-index: 10;
 	top: -60px;
-	left: calc(50% - 40px);
+	left: -9999px;
 }
+
 .tooltip-text::after {
 	content: " ";
 	position: absolute;
@@ -74,7 +75,113 @@ button:hover{
 }
 
 .tooltip-text.is-active {
+    left: calc(50% - 40px);
+    transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s;
     opacity: 1;
+}
+
+/* model boxes - IMPORTANT! */
+
+.model-outer {
+    position: fixed;
+    z-index: 500;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: var(--model);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.model {
+    z-index: 501;
+
+    border-radius: 8px;
+    padding: 16px;
+    background-color: var(--secondary);
+
+	box-shadow: 5px 8px 8px 0px #00000060;
+}
+
+.model-close {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    left: calc(100% - 40px);
+    border: none;
+    border-radius: 8px; /* match the model */
+    color: var(--warning);
+}
+
+.input-model {
+    min-width: 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.input-model-header {
+    font-size: 20px;
+    padding: 8px;
+}
+
+.input-model ul {
+    flex-grow: 1;
+
+    min-width: 80%;
+
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.input-model li {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.input-model input {
+    margin-left: 16px;
+    flex-grow: 1;
+    border: none;
+    background-color: var(--background);
+}
+
+.input-submit-btn {
+    flex-grow: 0;
+    margin: 8px;
+    padding: 8px;
+}
+
+.confirm-model {
+    max-width: 50%;
+}
+
+.confirm-model-header {
+    font-size: 20px;
+    padding: 8px;
+}
+
+.confirm-model-context {
+    padding: 8px;
+    padding-bottom: 16px;
+}
+
+.confirm-model-btn {
+    flex-grow: 0;
+    margin: 8px;
+    padding: 8px 16px;
 }
 
 /* actual layout */
@@ -233,9 +340,7 @@ body.is-active .mask {
     font-size: 16px;
 }
 
-/* sort by */
-
-.sort-by-btn {
+.sort-by-btn, .add-save-btn {
     min-width: 208px;
     min-height: 32px;
     padding: 8px;
@@ -278,7 +383,7 @@ body.is-active .mask {
     min-width: 192px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .file-btn {
@@ -296,21 +401,38 @@ body.is-active .mask {
     min-height: 48px;
 }
 
+/* custom saves css - I hate this part */
+
+.custom-save-con {
+    flex-direction: column;
+}
+
+.custom-save-con .file-btn-con {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 /* settings */
 
 .settings-con{
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
 }
 
 .settings-btn{
-    flex-grow: 0;
+    align-self: flex-start;
     min-width: 192px;
     min-height: 96px;
 }
 
 
-/* preset backgrounds */
+/* presets */
+.warning {
+    border-color: var(--warning);
+    color: var(--warning);
+}
 
 .normal {
     border-color: var(--color-antimatter);
@@ -380,6 +502,10 @@ body.is-active .mask {
 .reality.is-active {
     background-color: var(--color-reality);
     color: var(--background);
+}
+
+.custom-background {
+    background-color: var(--color-custom-background);
 }
 
 /* All Mobile Sizes (devices and browser) */
@@ -477,6 +603,14 @@ body.is-active .mask {
         align-items: stretch;
     }
 
+    .file-btn-con {
+        flex-wrap: wrap;
+    }
+
+    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+        flex-grow: 1;
+    }
+
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -489,6 +623,15 @@ body.is-active .mask {
 
     .file-btn, .file-btn-outer {
         flex-grow: 1;
+    }
+
+    .custom-save-con .file-btn-con {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .custom-save-con .file-btn {
+        justify-self: stretch;
     }
 
 }
@@ -517,8 +660,33 @@ body.is-active .mask {
         align-items: center;
     }
 
+    .custom-save-info {
+        flex-direction: column;
+    }
+
+    .custom-save-size {
+        margin: 8px 0;
+        font-size: 18px;
+    }
+
+    .custom-save-con .file-btn-con, .custom-save-con .file-btn-row {
+        flex-direction: column;
+    }
+
+
+
+    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+        /* width: 45%; */
+    }
+
+    .model {
+        max-width: 80vw;
+    }
+
     .settings-con{
         display: flex;
+        flex-grow: 0;
+        align-self: center;
         flex-direction: column;
     }
 }
