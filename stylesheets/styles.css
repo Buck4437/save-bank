@@ -104,6 +104,8 @@ button:hover{
     border-radius: 8px;
     padding: 16px;
     background-color: var(--secondary);
+
+	box-shadow: 5px 8px 8px 0px #00000060;
 }
 
 .model-close {
@@ -392,6 +394,18 @@ body.is-active .mask {
     min-height: 48px;
 }
 
+/* custom saves css - I hate this part */
+
+.custom-save-con {
+    flex-direction: column;
+}
+
+.custom-save-con .file-btn-con {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 /* settings */
 
 .settings-con{
@@ -604,8 +618,13 @@ body.is-active .mask {
         flex-grow: 1;
     }
 
-    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
-        width: 30%;
+    .custom-save-con .file-btn-con {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .custom-save-con .file-btn {
+        justify-self: stretch;
     }
 
 }
