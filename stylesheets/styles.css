@@ -264,13 +264,13 @@ main {
     align-items: center;
 }
 
-.cat-btn {
+.nav-btn {
     margin-bottom: 16px;
     min-width: 240px;
     min-height: 48px;
 }
 
-.cat-btn.is-active {
+.nav-btn.is-active {
     background-color: var(--color);
     color: var(--background);
 }
@@ -345,7 +345,7 @@ body.is-active .mask {
     font-size: 16px;
 }
 
-.sort-by-btn, .add-save-btn {
+.cat-btn {
     min-width: 208px;
     min-height: 32px;
     padding: 8px;

@@ -35,27 +35,22 @@
                         <span class="title">Menu</span>
                     </div>
                     <ul class="nav-ul">
-                        <template v-for="(saveCategory, i) in saves">
-                            <li class="nav-btn-con">
-                                <button class="cat-btn"
-                                    :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
-                                    @click="switchCategory(i)">
-                                    {{saveCategory.name}} ({{(saveCategory.saves || []).length}})
-                                </button>{{' '}}
-                            </li>
-                        </template>
+                        <li class="nav-btn-con" v-for="(saveCategory, i) in saves" :key="i">
+                            <button class="nav-btn" :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
+                                @click="switchCategory(i)">
+                                {{saveCategory.name}} ({{(saveCategory.saves || []).length}})
+                            </button>{{' '}}
+                        </li>
                         <li class="nav-btn-con">
-                            <button class="cat-btn"
-                                    :class="{'is-active': currentTab === C.CUSTOM_TAB}"
-                                    @click="openTab(C.CUSTOM_TAB)">
-                            Custom Saves
+                            <button class="nav-btn" :class="{'is-active': currentTab === C.CUSTOM_TAB}"
+                                @click="openTab(C.CUSTOM_TAB)">
+                                Custom Saves
                             </button>
                         </li>
                         <li class="nav-btn-con">
-                            <button class="cat-btn"
-                                    :class="{'is-active': currentTab === C.SETTINGS_TAB}"
-                                    @click="openTab(C.SETTINGS_TAB)">
-                            Settings
+                            <button class="nav-btn" :class="{'is-active': currentTab === C.SETTINGS_TAB}"
+                                @click="openTab(C.SETTINGS_TAB)">
+                                Settings
                             </button>
                         </li>
                         <li class="nav-version">{{version}}</li>
@@ -66,35 +61,30 @@
                 <div class="mask" @click="menu()"></div>
                 <div class="tab-con">
                     <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
-                        <category-header>
-                            {{currentCategory.name}}
-                            <template v-slot:description>
-                                {{currentCategory.desc || ""}}
-                            </template>
-                            <template v-slot:button>
-                                <button class="sort-by-btn" @click="toggleSort()">
-                                    Ordering: {{sortTypes[sortMode]}}
-                                </button>
-                            </template>
+                        <category-header :title="currentCategory.name" @click="toggleSort()"
+                                        :button="'Ordering: ' + sortTypes[sortMode]">
+                            {{currentCategory.desc || ""}}
                         </category-header>
                         <save-file-container v-for="(saveFile, i) in currentSaveFiles"
                                             :class="i % 2 == 1 ? currentCategory.era + '-background' : ''"
                                             :save-file="saveFile" :key="i"></save-file-container>
-                        <div v-if="currentSaveFiles.length == 0">
-                            <save-file-container>
-                                <template v-slot:description>
-                                    No save file available.
-                                </template>
-                            </save-file-container>
-                        </div>
+                        <save-file-container v-if="currentSaveFiles.length == 0">
+                            <template v-slot:description>
+                                No save file available.
+                            </template>
+                        </save-file-container>
                     </div>
                     <div class="tab file-list" v-if="currentTab === C.CUSTOM_TAB">
                         <custom-saves></custom-saves>
                     </div>
                     <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
-                        <category-header>Settings</category-header>
-                        <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
-                        <button class="settings-btn warning" @click="showWipeDataModal = true">WIPE ALL DATA</button>
+                        <category-header title="Settings" :show-button="false"/>
+                        <button class="settings-btn" @click="switchTheme()">
+                            Theme: {{themes[currentTheme]}}
+                        </button>
+                        <button class="settings-btn warning" @click="showWipeDataModal = true">
+                            WIPE ALL DATA
+                        </button>
                         <modal-confirm v-if="showWipeDataModal" @yes="reset" @no="showWipeDataModal = false">
                             <template v-slot:header>
                                 <span class="warning">WIPE ALL DATA</span>
@@ -115,29 +105,22 @@
 
     <script src="javascripts/components/button-menu.js"></script>
     <script src="javascripts/components/button-tooltip.js"></script>
-    <script src="javascripts/components/save-file-container.js"></script>
-    <script src="javascripts/components/save-file-button-copy.js"></script>
-    <script src="javascripts/components/save-file-button-export.js"></script>
-    <script src="javascripts/components/custom-saves.js"></script>
-    <script src="javascripts/components/save-file-custom-container.js"></script>
     <script src="javascripts/components/category-header.js"></script>
+    <script src="javascripts/components/save-file-container.js"></script>
+    <script src="javascripts/components/save-file-custom-container.js"></script>
+    <script src="javascripts/components/custom-saves.js"></script>
     <script src="javascripts/components/modal-base.js"></script>
     <script src="javascripts/components/modal-input.js"></script>
     <script src="javascripts/components/modal-confirm.js"></script>
-    
+
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
 </html>
 
-<!-- TODO: REFACTOR -->
-<!-- TODO: Refactor modal-input -->
-
-<!-- TODO: Add FAQ in "info" -->
+<!-- TODO: Refactor -->
 
 <!-- TODO: Make save title display actual ep count (instead of rounded) -->
-
-<!-- TODO: Raise quota? Or add an option to get unlimited quota with warning-->
 
 <!-- TODO: Input placeholder for name -->
 <!-- TODO: Exporting all save files as zip -->

@@ -5,10 +5,16 @@ Vue.component("button-tooltip", {
     <button class="tooltip-btn" @click="click()">
         <slot>Text</slot>
         <span class="tooltip-text">
-            <slot name="tooltip">Tooltip text</slot>
+            {{tooltip}}
         </span>
     </button>
     `,
+    props: {
+        tooltip: {
+            default: "Tooltip text",
+            type: String
+        }
+    },
     methods: {
         click() {
             let classList = this.$el.querySelector(".tooltip-text").classList;

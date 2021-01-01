@@ -3,41 +3,33 @@
 Vue.component("custom-saves", {
     template: `
     <div>
-        <category-header>
-            Custom Saves
-            <template v-slot:description>
-                Quota: <span :class="{'warning': customSaves.length >= 10}">{{customSaves.length}} / 10</span>
-            </template>
-            <template v-slot:button>
-                <button class="add-save-btn" v-if="customSaves.length < 10" @click="showAddModal = true">
-                    Add new save
-                </button>
-            </template>
+        <category-header title="Custom Saves" :showButton="!maxQuota"
+                        button="Add new save" @click="showAddModal = true">
+            Quota:
+            <span :class="{'warning': maxQuota}">
+                {{customSaves.length}} / {{QUOTA}}
+            </span>
         </category-header>
-        <div v-for="(saveFile, i) in customSaves"
-            :class="i % 2 == 1 ? 'custom-background' : ''">
+        <div v-for="(saveFile, i) in customSaves" :class="i % 2 == 1 ? 'custom-background' : ''">
             <save-file-custom-container :saveFile="saveFile" @delete="deleteFile(i)" @edit="edit(i, $event)"/>
         </div>
-        <modal-input v-if="showAddModal" :fields="fields"
-            @close="closeAddModal" @submit="addSaveFile">
-            <template v-slot:header>
-                Add save info:
-            </template>
-        </modal-input>
+        <modal-input v-if="showAddModal" header="Add save info:" @close="closeAddModal" @submit="addSaveFile"/>
     </div>
     `,
     data() {
         return {
             saveIndex: 0,
             customSaves: [],
-            fields: ["Name", "Desc", "Data"],
-            showAddModal: false
+            showAddModal: false,
+            QUOTA: 10
+        }
+    },
+    computed: {
+        maxQuota() {
+            return this.customSaves.length >= this.QUOTA;
         }
     },
     methods: {
-        closeAddModal() {
-            this.showAddModal = false
-        },
         addSaveFile(saveFile) {
             this.closeAddModal();
             if (saveFile.name.replace(/\s/g, "") == "") {
@@ -57,6 +49,9 @@ Vue.component("custom-saves", {
         deleteFile(i) {
             this.customSaves.splice(i, 1);
             this.save();
+        },
+        closeAddModal() {
+            this.showAddModal = false
         },
         save() {
             let data = {

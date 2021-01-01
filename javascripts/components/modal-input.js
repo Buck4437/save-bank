@@ -5,14 +5,15 @@ Vue.component("modal-input", {
     <modal-base @close="$emit('close')">
         <template v-slot:header class="modal-input-header">
             <div class="modal-input-header">
-                <slot name="header"></slot>
+                {{header}}
             </div>
         </template>
 
         <div class="modal-input-context">
             <ul>
                 <li v-for="field in fields">
-                    <span>{{field}}: </span><input :class="'input-' + field"></input>
+                    <span>{{capFirstLetter(field)}}: </span>
+                    <input :class="'input-' + field" :value="value[field]"></input>
                 </li>
             </ul>
         </div>
@@ -25,35 +26,30 @@ Vue.component("modal-input", {
     </modal-base>
     `,
     props: {
-        default: Object,
-        header: String,
-        fields: Array
+        value: {
+            default() {
+                return {};
+            },
+            type: Object
+        },
+        header: String
+    },
+    data() {
+        return {
+            fields: ["name", "desc", "data"]
+        }
     },
     methods: {
+        capFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        },
         submit() {
             let data = {}
             for (let field of this.fields) {
-                let el = this.$el.querySelector(".input-" + field);
-                data[field.toLowerCase()] = el.value;
+                let val = this.$el.querySelector(".input-" + field).value;
+                data[field] = val;
             }
             this.$emit('submit', data);
-        },
-        updateDefault(data) {
-            if (data === undefined || data === null) {
-                data = {};
-            }
-            for (let field of this.fields) {
-                let el = this.$el.querySelector(".input-" + field);
-                el.value = data[field.toLowerCase()] || "";
-            }
         }
-    },
-    watch: {
-        default(data) {
-            this.updateDefault(data);
-        }
-    },
-    mounted() {
-        this.updateDefault(this.default);
     }
 })

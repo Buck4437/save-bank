@@ -12,14 +12,27 @@ Vue.component("save-file-container", {
             </span>
         </div>
         <div class="file-btn-con">
-            <save-file-button-copy :data="saveFile.data"/>
-            <save-file-button-export :saveFile="saveFile"/>
-            <slot name="extra-buttons">
-            </slot>
+            <button-tooltip class="file-btn" tooltip="Copied!" @click="copyText">
+                Copy to Clipboard
+            </button-tooltip>
+            <button class="file-btn" @click="exportFile">
+                Export as .txt
+            </button>
+            <slot name="extra-buttons"/>
         </div>
     </div>
     `,
     props: {
         saveFile: Object
+    },
+    methods: {
+        copyText() {
+            copyText(this.saveFile.data);
+        },
+        exportFile() {
+            let filename = this.saveFile.name + ".txt";
+            let text = this.saveFile.data;
+            download(filename, text);
+        }
     }
 })
