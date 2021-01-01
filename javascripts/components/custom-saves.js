@@ -9,90 +9,54 @@ Vue.component("custom-saves", {
                 Quota: <span :class="{'warning': customSaves.length >= 10}">{{customSaves.length}} / 10</span>
             </template>
             <template v-slot:button>
-                <button class="add-save-btn" v-if="customSaves.length < 10" @click="edit(-1)">
+                <button class="add-save-btn" v-if="customSaves.length < 10" @click="showAddModal = true">
                     Add new save
                 </button>
             </template>
         </category-header>
         <div v-for="(saveFile, i) in customSaves"
             :class="i % 2 == 1 ? 'custom-background' : ''">
-            <custom-save :saveFile="saveFile" @delete="deleteFile(i)">
-            </custom-save>
+            <save-file-custom-container :saveFile="saveFile" @delete="deleteFile(i)" @edit="edit(i, $event)"/>
         </div>
+        <modal-input v-if="showAddModal" :fields="fields"
+            @close="closeAddModal" @submit="addSaveFile">
+            <template v-slot:header>
+                Add save info:
+            </template>
+        </modal-input>
     </div>
     `,
     data() {
         return {
-            saveIndex: 0, // used for counting saves created
+            saveIndex: 0,
             customSaves: [],
             fields: ["Name", "Desc", "Data"],
-            currentFileIndex: -1
-        }
-    },
-    computed: {
-        inputHeader() {
-            let index = this.currentFileIndex;
-            let saves = this.customSaves;
-            if (index < 0 || index >= saves.length) {
-                return "Enter save info:"
-            }
-            return "Edit save info:"
-        },
-        inputDefault() {
-            let index = this.currentFileIndex;
-            let saves = this.customSaves;
-            if (index < 0 || index >= saves.length) {
-                return null;
-            }
-            return saves[index];
-        },
-        currentSaveName() {
-            let save = this.customSaves[this.currentFileIndex] || {name: null};
-            return save.name;
+            showAddModal: false
         }
     },
     methods: {
-        submit(save) {
-            let oldSave = this.inputDefault;
-            if (oldSave === null) {
-                if (save.name.replace(/\s/g, "") == "") {
-                    save.name = "Save #" + (this.saveIndex + 1)
-                    this.saveIndex ++;
-                }
-                this.customSaves.push(save)
-            } else {
-                for (let attr in save) {
-                    oldSave[attr] = save[attr];
-                }
+        closeAddModal() {
+            this.showAddModal = false
+        },
+        addSaveFile(saveFile) {
+            this.closeAddModal();
+            if (saveFile.name.replace(/\s/g, "") == "") {
+                saveFile.name = "Save #" + (this.saveIndex + 1)
+                this.saveIndex ++;
+            }
+            this.customSaves.push(saveFile)
+            this.save();
+        },
+        edit(i, newSaveFile) {
+            let oldSaveFile = this.customSaves[i];
+            for (let attr in newSaveFile) {
+                oldSaveFile[attr] = newSaveFile[attr];
             }
             this.save();
-            this.close('.custom-save-input-modal');
-        },
-        edit(i) {
-            this.currentFileIndex = i;
-            this.open('.custom-save-input-modal');
-        },
-        copy(save) {
-            this.$emit('copy-file', save);
-        },
-        downloadFile(save) {
-            this.$emit('download-file', save);
         },
         deleteFile(i) {
             this.customSaves.splice(i, 1);
             this.save();
-        },
-        open(c) {
-            let element = this.$el.querySelector(c)
-            element.style.display = "flex";
-            let body = document.querySelector("body")
-            body.style.overflowY = "hidden";
-        },
-        close(c) {
-            let element = this.$el.querySelector(c)
-            element.style.display = "none";
-            let body = document.querySelector("body")
-            body.style.overflowY = "scroll";
         },
         save() {
             let data = {

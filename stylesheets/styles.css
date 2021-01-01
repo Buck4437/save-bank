@@ -125,21 +125,14 @@ button:hover{
     color: var(--warning);
 }
 
-.modal-input {
-    min-width: 40%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
 .modal-input-header {
     font-size: 20px;
     padding: 8px;
+    display: flex;
+    justify-content: center;
 }
 
-.modal-input ul {
+.modal-input-context ul {
     font-size: 16px;
     flex-grow: 1;
 
@@ -150,14 +143,14 @@ button:hover{
     list-style-type: none;
 }
 
-.modal-input li {
+.modal-input-context li {
     display: flex;
     align-content: flex-start;
     justify-content: space-between;
     padding: 8px;
 }
 
-.modal-input input {
+.modal-input-context input {
     font-size: inherit;
     margin-left: 16px;
     flex-grow: 1;
@@ -165,7 +158,12 @@ button:hover{
     background-color: var(--background);
 }
 
-.input-submit-btn {
+.modal-input-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-input-footer button {
     font-size: 16px;
     flex-grow: 0;
     margin: 8px;

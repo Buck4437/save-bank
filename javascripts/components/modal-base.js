@@ -1,6 +1,6 @@
 "use strict";
 
-Vue.component("modal-component", {
+Vue.component("modal-base", {
     template: `
     <div class="modal-outer">
         <div class="modal">

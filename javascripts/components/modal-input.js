@@ -2,21 +2,27 @@
 
 Vue.component("modal-input", {
     template: `
-    <modal-component>
-        <template v-slot:header>
-            <slot name="header"></slot>
+    <modal-base @close="$emit('close')">
+        <template v-slot:header class="modal-input-header">
+            <div class="modal-input-header">
+                <slot name="header"></slot>
+            </div>
         </template>
 
-        <ul>
-            <li v-for="field in fields">
-                <span>{{field}}: </span><input :class="'input-' + field"></input>
-            </li>
-        </ul>
+        <div class="modal-input-context">
+            <ul>
+                <li v-for="field in fields">
+                    <span>{{field}}: </span><input :class="'input-' + field"></input>
+                </li>
+            </ul>
+        </div>
 
         <template v-slot:footer>
-            <button class="input-submit-btn" @click="submit()">Submit</button>
+            <div class="modal-input-footer">
+                <button @click="submit()">Submit</button>
+            </div>
         </template>
-    </modal-component>
+    </modal-base>
     `,
     props: {
         default: Object,
@@ -31,9 +37,6 @@ Vue.component("modal-input", {
                 data[field.toLowerCase()] = el.value;
             }
             this.$emit('submit', data);
-        },
-        close() {
-            this.$emit('close');
         },
         updateDefault(data) {
             if (data === undefined || data === null) {

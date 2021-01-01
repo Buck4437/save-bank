@@ -77,10 +77,9 @@
                                 </button>
                             </template>
                         </category-header>
-                        <div v-for="(saveFile, i) in currentSaveFiles"
-                            :class="i % 2 == 1 ? currentCategory.era + '-background' : ''">
-                            <save-file-container :save-file="saveFile"></save-file-container>
-                        </div>
+                        <save-file-container v-for="(saveFile, i) in currentSaveFiles"
+                                            :class="i % 2 == 1 ? currentCategory.era + '-background' : ''"
+                                            :save-file="saveFile" :key="i"></save-file-container>
                         <div v-if="currentSaveFiles.length == 0">
                             <save-file-container>
                                 <template v-slot:description>
@@ -95,7 +94,14 @@
                     <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
                         <category-header>Settings</category-header>
                         <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
-                        <button class="settings-btn warning" @click="reset()">WIPE DATA</button>
+                        <button class="settings-btn warning" @click="showWipeDataModal = true">WIPE ALL DATA</button>
+                        <modal-confirm v-if="showWipeDataModal" @yes="reset" @no="showWipeDataModal = false">
+                            <template v-slot:header>
+                                <span class="warning">WIPE ALL DATA</span>
+                            </template>
+                            Are you sure you want to wipe all data?
+                            <span class="warning">THIS CANNOT BE UNDONE!</span>
+                        </modal-confirm>
                     </div>
                 </div>
             </main>
@@ -109,37 +115,29 @@
 
     <script src="javascripts/components/button-menu.js"></script>
     <script src="javascripts/components/button-tooltip.js"></script>
-
     <script src="javascripts/components/save-file-container.js"></script>
     <script src="javascripts/components/save-file-button-copy.js"></script>
     <script src="javascripts/components/save-file-button-export.js"></script>
-
     <script src="javascripts/components/custom-saves.js"></script>
-    <script src="javascripts/components/custom-save.js"></script>
-
+    <script src="javascripts/components/save-file-custom-container.js"></script>
     <script src="javascripts/components/category-header.js"></script>
-
-    <script src="javascripts/components/base-modal.js"></script>
+    <script src="javascripts/components/modal-base.js"></script>
     <script src="javascripts/components/modal-input.js"></script>
     <script src="javascripts/components/modal-confirm.js"></script>
-
+    
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
     <script src="javascripts/index.js"></script>
 </html>
 
 <!-- TODO: REFACTOR -->
-<!-- TODO: refactor tooltip button -->
+<!-- TODO: Refactor modal-input -->
 
 <!-- TODO: Add FAQ in "info" -->
-
-<!-- TODO: Use confirm modal for wipe data-->
 
 <!-- TODO: Make save title display actual ep count (instead of rounded) -->
 
 <!-- TODO: Raise quota? Or add an option to get unlimited quota with warning-->
-
-<!-- TODO: Turn confirm modal into pure js by using functions, document append etc -->
 
 <!-- TODO: Input placeholder for name -->
 <!-- TODO: Exporting all save files as zip -->

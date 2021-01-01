@@ -2,13 +2,13 @@
 
 Vue.component("modal-confirm", {
     template: `
-    <modal-component :showCloseButton="false">
+    <modal-base :showCloseButton="false">
         <template v-slot:header>
-            <slot name="header">
-                <div class="modal-confirm-header">
+            <div class="modal-confirm-header">
+                <slot name="header">
                     Confirmation
-                </div>
-            </slot>
+                </slot>
+            </div>
         </template>
         <div class="modal-confirm-context">
             <slot>
@@ -25,6 +25,6 @@ Vue.component("modal-confirm", {
                 </button>
             </div>
         </template>
-    </modal-component>
+    </modal-base>
     `
 })

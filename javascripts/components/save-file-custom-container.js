@@ -1,20 +1,18 @@
 "use strict";
 
-Vue.component("custom-save", {
+Vue.component("save-file-custom-container", {
     template: `
     <div>
         <save-file-container :save-file="saveFile">
             <template v-slot:extra-buttons>
-                <button class="file-btn" @click="edit(i)">Edit</button>
+                <button class="file-btn" @click="showEditModel = true">Edit</button>
                 <button class="file-btn warning" @click="showDeleteModel = true">Delete</button>
             </template>
         </save-file-container>
-        <modal-input v-if="showEditModel" :fields="fields"
-                    @submit="submit" @close="close('.custom-save-input-modal')"
-                    :default="inputDefault" style="display: none;"
-                    class="custom-save-input-modal">
+        <modal-input v-if="showEditModel" :fields="fields" :default="saveFile"
+                    @submit="submit" @close="closeEdit">
                     <template v-slot:header>
-                        {{inputHeader}}
+                        Edit save info:
                     </template>
         </modal-input>
         <modal-confirm v-if="showDeleteModel" @yes="confirm(true)" @no="confirm(false)">
@@ -33,17 +31,19 @@ Vue.component("custom-save", {
             showDeleteModel: false
         }
     },
-    computed: {
-
-    },
     methods: {
-        confirm(del) {
+        closeEdit() {
+            this.showEditModel = false;
+        },
+        submit(newSaveFile) {
+            this.closeEdit();
+            this.$emit("edit", newSaveFile)
+        },
+        confirm(confirm) {
             this.showDeleteModel = false;
-            if (del) {
-                this.$emit("delete")
+            if (confirm) {
+                this.$emit("delete");
             }
         }
-    },
-    mounted() {
     }
 })
