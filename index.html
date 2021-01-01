@@ -18,7 +18,7 @@
         </div>
         <div id="app">
             <header>
-                <menu-button @toggle-menu="menu()"></menu-button>
+                <button-menu @toggle-menu="menu()"></button-menu>
                 <span class="title">AD Save Bank</span>
                 <span class="about">
                     <span class="version">{{version}}</span>
@@ -31,7 +31,7 @@
             <main class="main">
                 <div class="cat-nav">
                     <div class="mini-header">
-                        <menu-button @toggle-menu="menu()"></menu-button>
+                        <button-menu @toggle-menu="menu()"></button-menu>
                         <span class="title">Menu</span>
                     </div>
                     <ul class="nav-ul">
@@ -66,41 +66,34 @@
                 <div class="mask" @click="menu()"></div>
                 <div class="tab-con">
                     <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
-                        <div class="cat-header">
-                            <div class="cat-info">
-                                <span class="cat-title">{{currentCategory.name}}</span>
-                                <span class="cat-desc"><i>{{currentCategory.desc || ""}}</i></span>
-                            </div>
-                            <button class="sort-by-btn" @click="toggleSort()">
-                                Ordering: {{sortTypes[sortMode]}}
-                            </button>
-                        </div>
-                        <div class="file-con" v-for="(saveFile, i) in currentSaveFiles"
+                        <category-header>
+                            {{currentCategory.name}}
+                            <template v-slot:description>
+                                {{currentCategory.desc || ""}}
+                            </template>
+                            <template v-slot:button>
+                                <button class="sort-by-btn" @click="toggleSort()">
+                                    Ordering: {{sortTypes[sortMode]}}
+                                </button>
+                            </template>
+                        </category-header>
+                        <div v-for="(saveFile, i) in currentSaveFiles"
                             :class="i % 2 == 1 ? currentCategory.era + '-background' : ''">
-                            <div class="file-text-con">
-                                <div class="file-name">{{saveFile.name}}</div>
-                                <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
-                            </div>
-                            <div class="file-btn-con">
-                                <tooltip-button class="file-btn-outer" @click="copyByPath(saveFile)"
-                                                text="Copy To Clipboard" tooltip-text="Copied!"
-                                                :button-class="['file-btn-inner', 'copy-btn']"></tooltip-button>
-                                <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
-                            </div>
+                            <save-file-container :save-file="saveFile"></save-file-container>
                         </div>
-                        <div class="file-con" v-if="currentSaveFiles.length == 0">
-                            <div class="file-text-con">
-                                <span><i>No save file available.</i></span>
-                            </div>
+                        <div v-if="currentSaveFiles.length == 0">
+                            <save-file-container>
+                                <template v-slot:description>
+                                    No save file available.
+                                </template>
+                            </save-file-container>
                         </div>
                     </div>
                     <div class="tab file-list" v-if="currentTab === C.CUSTOM_TAB">
-                        <custom-saves @copy-file="copyByPath" @download-file="downloadFile"></custom-saves>
+                        <custom-saves></custom-saves>
                     </div>
                     <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
-                        <div class="cat-info">
-                            <span class="cat-title">Settings</span>
-                        </div>
+                        <category-header>Settings</category-header>
                         <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
                         <button class="settings-btn warning" @click="reset()">WIPE DATA</button>
                     </div>
@@ -114,11 +107,21 @@
     <!-- Production !-->
     <!-- <script src="javascripts/libraries/vue.min.js"></script> -->
 
-    <script src="javascripts/components/menu-button.js"></script>
-    <script src="javascripts/components/tooltip-button.js"></script>
+    <script src="javascripts/components/button-menu.js"></script>
+    <script src="javascripts/components/button-tooltip.js"></script>
+
+    <script src="javascripts/components/save-file-container.js"></script>
+    <script src="javascripts/components/save-file-button-copy.js"></script>
+    <script src="javascripts/components/save-file-button-export.js"></script>
+
     <script src="javascripts/components/custom-saves.js"></script>
-    <script src="javascripts/components/input-modal.js"></script>
-    <script src="javascripts/components/confirm-modal.js"></script>
+    <script src="javascripts/components/custom-save.js"></script>
+
+    <script src="javascripts/components/category-header.js"></script>
+
+    <script src="javascripts/components/base-modal.js"></script>
+    <script src="javascripts/components/modal-input.js"></script>
+    <script src="javascripts/components/modal-confirm.js"></script>
 
     <script src="javascripts/database.js"></script>
     <script src="javascripts/util.js"></script>
@@ -126,6 +129,7 @@
 </html>
 
 <!-- TODO: REFACTOR -->
+<!-- TODO: refactor tooltip button -->
 
 <!-- TODO: Add FAQ in "info" -->
 

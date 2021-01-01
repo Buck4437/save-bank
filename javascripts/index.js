@@ -17,7 +17,7 @@ var app = new Vue({
         currentTheme: 0,
         sortMode: 0,
         sortTypes: ["Early to late", "Late to early"],
-        version: "Beta 5 Alpha 1"
+        version: "Beta 5 Alpha 1b"
     },
     computed: {
         currentCategory() {
@@ -78,14 +78,6 @@ var app = new Vue({
         switchCategory(index) {
             this.openTab(this.C.FILES_TAB);
             this.currentCategoryIndex = index;
-        },
-        copyByPath(saveFile) {
-            copyText(saveFile.data);
-        },
-        downloadFile(saveFile) {
-            let filename = saveFile.name + ".txt";
-            let text = saveFile.data;
-            download(filename, text);
         },
         reset() {
             if (confirm("Are you sure you want to wipe all data? THIS CANNOT BE UNDONE!")) {

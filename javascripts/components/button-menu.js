@@ -1,6 +1,6 @@
 "use strict";
 
-Vue.component("menu-button", {
+Vue.component("button-menu", {
     template: `
     <button class="menu-btn" @click="menu()">
         <span class="menu-btn-inner top"></span>

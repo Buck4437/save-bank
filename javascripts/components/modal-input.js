@@ -1,19 +1,22 @@
 "use strict";
 
-Vue.component("input-modal", {
+Vue.component("modal-input", {
     template: `
-    <div class="modal-outer">
-        <div class="modal input-modal">
-            <button class="modal-close" @click="close()">×</button>
-            <div class="input-modal-header">{{header}}</div>
-            <ul>
-                <template v-for="field in fields">
-                    <li><div>{{field}}: </div><input :class="'input-' + field"></input></li>
-                </template>
-            </ul>
+    <modal-component>
+        <template v-slot:header>
+            <slot name="header"></slot>
+        </template>
+
+        <ul>
+            <li v-for="field in fields">
+                <span>{{field}}: </span><input :class="'input-' + field"></input>
+            </li>
+        </ul>
+
+        <template v-slot:footer>
             <button class="input-submit-btn" @click="submit()">Submit</button>
-        </div>
-    </div>
+        </template>
+    </modal-component>
     `,
     props: {
         default: Object,

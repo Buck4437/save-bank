@@ -3,22 +3,45 @@
 Vue.component("custom-saves", {
     template: `
     <div>
-        <category-header>
-            Custom Saves
-            <template v-slot:description>
-                Quota: <span :class="{'warning': customSaves.length >= 10}">{{customSaves.length}} / 10</span>
-            </template>
-            <template v-slot:button>
-                <button class="add-save-btn" v-if="customSaves.length < 10" @click="edit(-1)">
-                    Add new save
-                </button>
-            </template>
-        </category-header>
-        <div v-for="(saveFile, i) in customSaves"
-            :class="i % 2 == 1 ? 'custom-background' : ''">
-            <custom-save :saveFile="saveFile" @delete="deleteFile(i)">
-            </custom-save>
+        <div class="cat-header">
+            <div class="cat-info">
+                <span class="cat-title">Custom Saves</span>
+                <span class="cat-desc"><i>Quota: <span :class="{'warning': customSaves.length >= 10}">{{customSaves.length}} / 10</span></i></span>
+            </div>
+            <button class="add-save-btn" v-if="customSaves.length < 10" @click="edit(-1)">
+                Add new save
+            </button>
         </div>
+        <div class="file-con custom-save-con" v-for="(saveFile, i) in customSaves"
+            :class="i % 2 == 1 ? 'custom-background' : ''">
+            <div class="file-text-con">
+                <div class="file-name">{{saveFile.name}}</div>
+                <span class="pre-formatted file-desc"><i>{{saveFile.desc === "" ? "No description provided." : saveFile.desc}}</i></span>
+            </div>
+            <div class="file-btn-con">
+                <tooltip-button class="file-btn-outer" @click="copy(saveFile)"
+                                text="Copy To Clipboard" tooltip-text="Copied!"
+                                :button-class="['file-btn-inner', 'copy-btn']"></tooltip-button>
+                <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
+                <button class="file-btn edit-btn" @click="edit(i)">Edit</button>
+                <button class="file-btn delete-btn warning" @click="deleteFile(i)">Delete</button>
+            </div>
+        </div>
+        <input-modal :fields="fields"
+                    @submit="submit" @close="close('.custom-save-input-modal')"
+                    :default="inputDefault" style="display: none;"
+                    class="custom-save-input-modal">
+                    <template v-slot:header>
+                        {{inputHeader}}
+                    </template>
+        </input-modal>
+        <confirm-modal class="custom-save-confirm-modal" style="display: none;"
+                    @no="close('.custom-save-confirm-modal')"
+                    @yes="trueDelete()">
+                    <div class="confirm-modal-context">
+                        Are you sure you want to delete this save file ({{currentSaveName}})? <span class="warning">THIS CANNOT BE UNDONE!</span>
+                    </div>
+        </confirm-modal>
     </div>
     `,
     data() {
@@ -79,8 +102,14 @@ Vue.component("custom-saves", {
             this.$emit('download-file', save);
         },
         deleteFile(i) {
+            this.currentFileIndex = i;
+            this.open('.custom-save-confirm-modal');
+        },
+        trueDelete() {
+            let i = this.currentFileIndex;
             this.customSaves.splice(i, 1);
             this.save();
+            this.close('.custom-save-confirm-modal');
         },
         open(c) {
             let element = this.$el.querySelector(c)
