@@ -35,6 +35,17 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
+function zipSaves(saves) {
+    let zip = new JSZip();
+    for (let save of saves) {
+        zip.file(`${save.name}.txt`, save.data);
+    }
+    zip.generateAsync({type:"blob"})
+    .then(function (blob) {
+        saveAs(blob, "AD Save Bank - Custom Saves.zip");
+    });
+}
+
 
 // Themes
 
@@ -63,29 +74,6 @@ function setTheme(index) {
     document.body.classList.add(themes[index].toLowerCase() + "-theme");
     localStorage.setItem("saveBankTheme", index)
 }
-
-// // Modals
-//
-// function createBaseModal() {
-//     let modalFrame = document.createElement("div");
-//     modalFrame.classList.add("modal-outer");
-//
-//     let modal = document.createElement("div");
-//     modal.classList.add("modal");
-//
-//     modalFrame.appendChild(modal);
-//     return modalFrame;
-// }
-//
-// function confirmModal(data) {
-//     let modalFrame = createBaseModal();
-//
-//     let content = modalFrame.querySelector(".modal");
-//
-//     let header = document.createElement("div");
-//     header.textContent = "Confirmation";
-//
-// }
 
 // Misc
 

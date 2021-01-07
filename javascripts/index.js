@@ -18,7 +18,7 @@ var app = new Vue({
         sortMode: 0,
         sortTypes: ["Early to late", "Late to early"],
         showWipeDataModal: false,
-        version: "Beta 5 Alpha 1e"
+        version: "Beta 5 Alpha 2"
     },
     computed: {
         currentCategory() {

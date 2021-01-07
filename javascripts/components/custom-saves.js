@@ -3,22 +3,30 @@
 Vue.component("custom-saves", {
     template: `
     <div>
-        <category-header title="Custom Saves"
-                         :showButton="!maxQuota"
-                         button="Add new save"
-                         @click="showAddModal = true">
+        <category-header title="Custom Saves">
             Quota: <span :class="{'warning': maxQuota}">{{customSaves.length}} / {{QUOTA}}</span>
+            <template v-slot:buttons>
+                <button v-if="customSaves.length >= 2" class="cat-btn" @click="exportAll">
+                    Export as .zip
+                </button>
+                <button v-if="!maxQuota" class="cat-btn" @click="showAddModal = true">
+                    Add new save
+                </button>
+            </template>
         </category-header>
         <div v-for="(saveFile, i) in customSaves"
              :class="i % 2 == 1 ? 'custom-background' : ''">
             <custom-save-container :saveFile="saveFile" @delete="deleteFile(i)" @edit="edit(i, $event)"/>
         </div>
-        <modal-input v-if="showAddModal" header="Enter save info:" @close="closeAddModal" @submit="addSaveFile"/>
+        <modal-input v-if="showAddModal"
+                     header="Enter save info:"
+                     :value="{name: 'New Save'}"
+                     @submit="addSaveFile"
+                     @close="closeAddModal"/>
     </div>
     `,
     data() {
         return {
-            saveIndex: 0,
             customSaves: [],
             showAddModal: false,
             QUOTA: 10
@@ -33,8 +41,14 @@ Vue.component("custom-saves", {
         addSaveFile(saveFile) {
             this.closeAddModal();
             if (saveFile.name.replace(/\s/g, "") == "") {
-                saveFile.name = "Save #" + (this.saveIndex + 1)
-                this.saveIndex ++;
+                saveFile.name = "New Save";
+            }
+            let base = saveFile.name;
+            let names = this.customSaves.map(s => s.name);
+            let tmp = 1;
+            while (names.indexOf(saveFile.name) != -1) {
+                saveFile.name = `${base} (${tmp})`
+                tmp++;
             }
             this.customSaves.push(saveFile)
             this.save();
@@ -51,7 +65,10 @@ Vue.component("custom-saves", {
             this.save();
         },
         closeAddModal() {
-            this.showAddModal = false
+            this.showAddModal = false;
+        },
+        exportAll() {
+            zipSaves(this.customSaves);
         },
         save() {
             let data = {
@@ -69,9 +86,6 @@ Vue.component("custom-saves", {
                 for (let save of data.saves) {
                     this.customSaves.push(save);
                 }
-            }
-            if (isNumber(data.index)) {
-                this.saveIndex = data.index;
             }
         }
     }

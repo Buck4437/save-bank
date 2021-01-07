@@ -67,10 +67,13 @@
                 <div class="mask" @click="menu"></div>
                 <div class="tab-con">
                     <div v-if="currentTab === C.FILES_TAB" class="tab file-list">
-                        <category-header :title="currentCategory.name"
-                                         @click="toggleSort()"
-                                         :button="'Ordering: ' + sortTypes[sortMode]">
+                        <category-header :title="currentCategory.name">
                             {{currentCategory.desc || ""}}
+                            <template v-slot:buttons>
+                                <button class="cat-btn" @click="toggleSort()">
+                                    Ordering: {{sortTypes[sortMode]}}
+                                </button>
+                            </template>
                         </category-header>
 
                         <save-file-container v-for="(saveFile, i) in currentSaveFiles"
@@ -115,9 +118,12 @@
 
          <!-- Development !-->
          <script src="javascripts/libraries/vue.js"></script>
+         <script src="javascripts/libraries/jszip.js"></script>
 
          <!-- Production !-->
-         <!-- <script src="javascripts/libraries/vue.min.js"></script> -->
+         <!-- <script src="javascripts/libraries/vue.min.js"></script>
+              <script src="javascripts/libraries/jszip.min.js"></script>-->
+         <script src="javascripts/libraries/FileSaver.min.js"></script>
 
          <script src="javascripts/components/button-menu.js"></script>
          <script src="javascripts/components/button-tooltip.js"></script>
@@ -135,12 +141,7 @@
     </body>
 </html>
 
-<!-- TODO: Refactor -->
-<!-- TODO: v-bind era class to file-con and use nth child attr for bg (?)-->
-
-<!-- TODO: Make save title display actual ep count (instead of rounded) -->
-
-<!-- TODO: Exporting all save files as zip -->
+<!-- TODO: Exporting ALL SAVE FILES IN SAVE BANK as zip in options -->
 
 <!-- TODO: Database -->
 <!-- TODO: In contribution / github desc, add detailed description about contributing etc-->

@@ -7,21 +7,11 @@ Vue.component("category-header", {
             <span class="cat-title">{{title}}</span>
             <span class="cat-desc"><i><slot/></i></span>
         </div>
-        <button v-if="showButton" class="cat-btn" @click="$emit('click')">
-            {{button}}
-        </button>
+        <slot name="buttons"/>
     </div>
     `,
     props: {
-        showButton: {
-            default: true,
-            type: Boolean
-        },
         title: {
-            default: "",
-            type: String
-        },
-        button: {
             default: "",
             type: String
         }

@@ -60,9 +60,15 @@ Vue.component("modal-input", {
             let data = {}
             for (let field of this.fields) {
                 let val = this.$el.querySelector(".input-" + field.name).value;
-                data[field] = val;
+                data[field.name] = val;
             }
             this.$emit('submit', data);
         }
+    },
+    mounted() {
+        console.log("Tes");
+        let el = this.$el.querySelector("input");
+        el.focus();
+        el.select();
     }
 })
