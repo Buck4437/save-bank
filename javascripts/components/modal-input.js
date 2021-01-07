@@ -9,14 +9,12 @@ Vue.component("modal-input", {
             </div>
         </template>
 
-        <div class="modal-input-context">
-            <ul>
-                <li v-for="field in fields">
-                    <span>{{capFirstLetter(field)}}: </span>
-                    <input :class="'input-' + field" :value="value[field]"></input>
-                </li>
-            </ul>
-        </div>
+        <ul class="modal-input-context">
+            <li v-for="field in fields">
+                <span>{{capFirstLetter(field)}}: </span>
+                <input :class="'input-' + field" :value="value[field]"></input>
+            </li>
+        </ul>
 
         <template v-slot:footer>
             <div class="modal-input-footer">

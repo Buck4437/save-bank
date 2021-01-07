@@ -9,11 +9,9 @@ Vue.component("save-file-custom-container", {
                 <button class="file-btn warning" @click="showDeleteModel = true">Delete</button>
             </template>
         </save-file-container>
-        <modal-input v-if="showEditModel" :value="saveFile" header="Edit save info"
-                    @submit="submit" @close="closeEdit"/>
+        <modal-input v-if="showEditModel" :value="saveFile" header="Edit save info:" @submit="submit" @close="closeEdit"/>
         <modal-confirm v-if="showDeleteModel" @yes="confirm(true)" @no="confirm(false)">
-                    Are you sure you want to delete this save file ({{saveFile.name}})?
-                    <span class="warning">THIS CANNOT BE UNDONE!</span>
+            Are you sure you want to delete this save file ({{saveFile.name}})? <span class="warning">This cannot be undone!</span>
         </modal-confirm>
     </div>
     `,

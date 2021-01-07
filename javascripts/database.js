@@ -219,7 +219,6 @@ var saves = [
         name: "Time Dilation",
         era: "dilation", /* suggested by kai reeeee */
         desc: "1e1300 EP - 1e4000 EP",
-        // desc: "For those who have unlocked time dilation but have not realitied" // (new desc)
         saves: [
             {
                 name: "e1400 EP/9e10 DT/2e4 TP",

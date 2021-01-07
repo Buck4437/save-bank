@@ -5,15 +5,11 @@ Vue.component("modal-confirm", {
     <modal-base :showCloseButton="false">
         <template v-slot:header>
             <div class="modal-confirm-header">
-                <slot name="header">
-                    Confirmation
-                </slot>
+                <slot name="header">Confirmation</slot>
             </div>
         </template>
         <div class="modal-confirm-context">
-            <slot>
-                Confirm?
-            </slot>
+            <slot>Confirm?</slot>
         </div>
         <template v-slot:footer>
             <div style="display: flex; justify-content: space-around">

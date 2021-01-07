@@ -3,9 +3,9 @@
 Vue.component("button-menu", {
     template: `
     <button class="menu-btn" @click="menu()">
-        <span class="menu-btn-inner top"></span>
-        <span class="menu-btn-inner mid"></span>
-        <span class="menu-btn-inner bot"></span>
+        <span class="menu-btn-inner top"/>
+        <span class="menu-btn-inner mid"/>
+        <span class="menu-btn-inner bot"/>
     </button>
     `,
     methods: {

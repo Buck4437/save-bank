@@ -132,7 +132,7 @@ button:hover{
     justify-content: center;
 }
 
-.modal-input-context ul {
+.modal-input-context {
     font-size: 16px;
     flex-grow: 1;
 
@@ -368,14 +368,13 @@ body.is-active .mask {
 }
 
 .file-text-con{
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
+    margin: 16px;
 }
 
 .file-name{
     font-size: 20px;
     margin: 8px;
+    margin-bottom: 16px;
 }
 
 .file-desc{
@@ -384,7 +383,7 @@ body.is-active .mask {
 }
 
 .file-btn-con{
-    padding: 16px;
+    margin: 16px;
     min-width: 192px;
     display: flex;
     flex-direction: column;
@@ -393,15 +392,6 @@ body.is-active .mask {
 
 .file-btn {
     margin: 8px;
-    min-width: 160px;
-    min-height: 48px;
-}
-
-.file-btn-outer {
-    margin: 8px;
-}
-
-.file-btn-inner {
     min-width: 160px;
     min-height: 48px;
 }
@@ -438,6 +428,7 @@ body.is-active .mask {
 .warning {
     border-color: var(--warning);
     color: var(--warning);
+    text-transform: uppercase;
 }
 
 .normal {
@@ -533,6 +524,7 @@ body.is-active .mask {
         border: none;
         width: 100%;
         height: 2px;
+	    transition: color 0.5s, background-color 0.5s, border 0.5s, transform 0.5s, opacity 0.5s;
     }
 
     /* animation */

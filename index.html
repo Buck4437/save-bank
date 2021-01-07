@@ -19,14 +19,13 @@
         <div id="app">
             <header>
                 <button-menu @toggle-menu="menu()"></button-menu>
-                <span class="title">AD Save Bank</span>
-                <span class="about">
+                <div class="title">
+                    AD Save Bank
+                </div>
+                <div class="about">
                     <span class="version">{{version}}</span>
-                    <span class="link">
-                        | <a target="_blank" href="changelog.html">Changelog</a> |
-                        <a target="_blank" href="info.html">Info</a>
-                    </span>
-                </span>
+                    <span class="link"> | <a target="_blank" href="changelog.html">Changelog</a> | <a target="_blank" href="info.html">Info</a></span>
+                </div>
             </header>
             <main class="main">
                 <div class="cat-nav">
@@ -39,7 +38,7 @@
                             <button class="nav-btn" :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
                                 @click="switchCategory(i)">
                                 {{saveCategory.name}} ({{(saveCategory.saves || []).length}})
-                            </button>{{' '}}
+                            </button>
                         </li>
                         <li class="nav-btn-con">
                             <button class="nav-btn" :class="{'is-active': currentTab === C.CUSTOM_TAB}"
@@ -67,7 +66,8 @@
                         </category-header>
                         <save-file-container v-for="(saveFile, i) in currentSaveFiles"
                                             :class="i % 2 == 1 ? currentCategory.era + '-background' : ''"
-                                            :save-file="saveFile" :key="i"></save-file-container>
+                                            :save-file="saveFile" :key="i">
+                        </save-file-container>
                         <save-file-container v-if="currentSaveFiles.length == 0">
                             <template v-slot:description>
                                 No save file available.
@@ -78,19 +78,19 @@
                         <custom-saves></custom-saves>
                     </div>
                     <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
-                        <category-header title="Settings" :show-button="false"/>
+                        <category-header title="Settings" :show-button="false"></category-header>
                         <button class="settings-btn" @click="switchTheme()">
                             Theme: {{themes[currentTheme]}}
                         </button>
                         <button class="settings-btn warning" @click="showWipeDataModal = true">
-                            WIPE ALL DATA
+                            Wipe all data
                         </button>
                         <modal-confirm v-if="showWipeDataModal" @yes="reset" @no="showWipeDataModal = false">
                             <template v-slot:header>
-                                <span class="warning">WIPE ALL DATA</span>
+                                <span class="warning">Wipe all data</span>
                             </template>
                             Are you sure you want to wipe all data?
-                            <span class="warning">THIS CANNOT BE UNDONE!</span>
+                            <span class="warning">This cannot be undone!</span>
                         </modal-confirm>
                     </div>
                 </div>
@@ -119,11 +119,15 @@
 </html>
 
 <!-- TODO: Refactor -->
+<!-- TODO: v-bind era class to file-con and use nth child attr for bg (?)-->
+<!-- TODO: Fix the CSS -->
 
 <!-- TODO: Make save title display actual ep count (instead of rounded) -->
 
 <!-- TODO: Input placeholder for name -->
 <!-- TODO: Exporting all save files as zip -->
+
+<!-- TODO: SCSS? -->
 
 <!-- TODO: In contribution / github desc, add detailed description about contributing etc-->
 

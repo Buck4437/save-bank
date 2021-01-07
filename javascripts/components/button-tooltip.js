@@ -4,9 +4,7 @@ Vue.component("button-tooltip", {
     template: `
     <button class="tooltip-btn" @click="click()">
         <slot>Text</slot>
-        <span class="tooltip-text">
-            {{tooltip}}
-        </span>
+        <span class="tooltip-text">{{tooltip}}</span>
     </button>
     `,
     props: {
