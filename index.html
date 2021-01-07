@@ -17,7 +17,7 @@
         </div>
         <div id="app">
             <header>
-                <button-menu @toggle-menu="menu"></button-menu>
+                <button-menu @toggle-menu="menu()"></button-menu>
                 <div class="title">
                     AD Save Bank
                 </div>
@@ -33,7 +33,7 @@
             <main class="main">
                 <div class="cat-nav">
                     <div class="mini-header">
-                        <button-menu @toggle-menu="menu"></button-menu>
+                        <button-menu @toggle-menu="menu()"></button-menu>
                         <span class="title">Menu</span>
                     </div>
 
@@ -64,7 +64,7 @@
                         <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
                     </ul>
                 </div>
-                <div class="mask" @click="menu"></div>
+                <div class="mask" @click="menu()"></div>
                 <div class="tab-con">
                     <div v-if="currentTab === C.FILES_TAB" class="tab file-list">
                         <category-header :title="currentCategory.name">
