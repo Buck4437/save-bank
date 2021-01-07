@@ -6,10 +6,10 @@ Vue.component("custom-saves", {
         <category-header title="Custom Saves">
             Quota: <span :class="{'warning': maxQuota}">{{customSaves.length}} / {{QUOTA}}</span>
             <template v-slot:buttons>
-                <button v-if="customSaves.length >= 2" class="cat-btn" @click="exportAll">
+                <button v-if="customSaves.length >= 2" @click="exportAll">
                     Export as .zip
                 </button>
-                <button v-if="!maxQuota" class="cat-btn" @click="showAddModal = true">
+                <button v-if="!maxQuota" @click="showAddModal = true">
                     Add new save
                 </button>
             </template>
@@ -20,7 +20,7 @@ Vue.component("custom-saves", {
         </div>
         <modal-input v-if="showAddModal"
                      header="Enter save info:"
-                     :value="{name: 'New Save'}"
+                     :value="{name: placeholder}"
                      @submit="addSaveFile"
                      @close="closeAddModal"/>
     </div>
@@ -33,6 +33,16 @@ Vue.component("custom-saves", {
         }
     },
     computed: {
+        placeholder() {
+            let names = this.customSaves.map(s => s.name);
+            let name = "New Save"
+            let tmp = 1;
+            while (names.indexOf(name) != -1) {
+                name = `New Save (${tmp})`
+                tmp++;
+            }
+            return name;
+        },
         maxQuota() {
             return this.customSaves.length >= this.QUOTA;
         }

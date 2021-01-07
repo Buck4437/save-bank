@@ -70,7 +70,7 @@
                         <category-header :title="currentCategory.name">
                             {{currentCategory.desc || ""}}
                             <template v-slot:buttons>
-                                <button class="cat-btn" @click="toggleSort()">
+                                <button @click="toggleSort()">
                                     Ordering: {{sortTypes[sortMode]}}
                                 </button>
                             </template>

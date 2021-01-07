@@ -323,14 +323,15 @@ body.is-active .mask {
 
 /* files */
 
+/* header */
+
 .cat-header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
 }
-
-/* info */
 
 .cat-info {
     display: flex;
@@ -353,6 +354,11 @@ body.is-active .mask {
 }
 
 .cat-btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-btn button {
     min-width: 208px;
     min-height: 32px;
     padding: 8px;
@@ -406,10 +412,6 @@ body.is-active .mask {
 
 .custom-save-con .file-con {
     flex-direction: column;
-}
-
-.custom-save-con .file-text-con {
-    min-width: 500px;
 }
 
 .custom-save-con .file-btn-con {
@@ -613,10 +615,6 @@ body.is-active .mask {
 
     .file-btn-con {
         flex-wrap: wrap;
-    }
-
-    .custom-save-con .file-text-con {
-        min-width: 0;
     }
 
     .custom-save-con .file-btn {

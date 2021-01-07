@@ -7,7 +7,9 @@ Vue.component("category-header", {
             <span class="cat-title">{{title}}</span>
             <span class="cat-desc"><i><slot/></i></span>
         </div>
-        <slot name="buttons"/>
+        <div class="cat-btn">
+            <slot name="buttons"/>
+        </div>
     </div>
     `,
     props: {
