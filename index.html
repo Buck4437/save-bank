@@ -4,51 +4,58 @@
         <meta charset="utf-8">
         <title>AD Save Bank</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/colors.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/loading.css">
+        <link rel="stylesheet" href="stylesheets/core.css">
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/colors.css">
+        <link rel="stylesheet" href="stylesheets/loading.css">
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="loading">
-            Loading...
-            <br>
+            Loading...<br>
             This shouldn't take longer than a few seconds...
         </div>
         <div id="app">
             <header>
-                <button-menu @toggle-menu="menu()"></button-menu>
+                <button-menu @toggle-menu="menu"></button-menu>
                 <div class="title">
                     AD Save Bank
                 </div>
                 <div class="about">
                     <span class="version">{{version}}</span>
-                    <span class="link"> | <a target="_blank" href="changelog.html">Changelog</a> | <a target="_blank" href="info.html">Info</a></span>
+                    <span class="link">
+                         | <a target="_blank" href="changelog.html" class="link">Changelog</a>
+                         | <a target="_blank" href="info.html" class="link">Info</a>
+                    </span>
                 </div>
             </header>
+
             <main class="main">
                 <div class="cat-nav">
                     <div class="mini-header">
-                        <button-menu @toggle-menu="menu()"></button-menu>
+                        <button-menu @toggle-menu="menu"></button-menu>
                         <span class="title">Menu</span>
                     </div>
+
                     <ul class="nav-ul">
                         <li class="nav-btn-con" v-for="(saveCategory, i) in saves" :key="i">
-                            <button class="nav-btn" :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
-                                @click="switchCategory(i)">
+                            <button class="nav-btn"
+                                    :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
+                                    @click="switchCategory(i)">
                                 {{saveCategory.name}} ({{(saveCategory.saves || []).length}})
                             </button>
                         </li>
                         <li class="nav-btn-con">
-                            <button class="nav-btn" :class="{'is-active': currentTab === C.CUSTOM_TAB}"
-                                @click="openTab(C.CUSTOM_TAB)">
+                            <button class="nav-btn"
+                                    :class="{'is-active': currentTab === C.CUSTOM_TAB}"
+                                    @click="openTab(C.CUSTOM_TAB)">
                                 Custom Saves
                             </button>
                         </li>
                         <li class="nav-btn-con">
-                            <button class="nav-btn" :class="{'is-active': currentTab === C.SETTINGS_TAB}"
-                                @click="openTab(C.SETTINGS_TAB)">
+                            <button class="nav-btn"
+                                    :class="{'is-active': currentTab === C.SETTINGS_TAB}"
+                                    @click="openTab(C.SETTINGS_TAB)">
                                 Settings
                             </button>
                         </li>
@@ -57,78 +64,85 @@
                         <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
                     </ul>
                 </div>
-                <div class="mask" @click="menu()"></div>
+                <div class="mask" @click="menu"></div>
                 <div class="tab-con">
-                    <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
-                        <category-header :title="currentCategory.name" @click="toggleSort()"
-                                        :button="'Ordering: ' + sortTypes[sortMode]">
+                    <div v-if="currentTab === C.FILES_TAB" class="tab file-list">
+                        <category-header :title="currentCategory.name"
+                                         @click="toggleSort()"
+                                         :button="'Ordering: ' + sortTypes[sortMode]">
                             {{currentCategory.desc || ""}}
                         </category-header>
+
                         <save-file-container v-for="(saveFile, i) in currentSaveFiles"
                                             :class="i % 2 == 1 ? currentCategory.era + '-background' : ''"
-                                            :save-file="saveFile" :key="i">
+                                            :save-file="saveFile"
+                                            :key="i">
                         </save-file-container>
+
                         <save-file-container v-if="currentSaveFiles.length == 0">
                             <template v-slot:description>
                                 No save file available.
                             </template>
                         </save-file-container>
                     </div>
+
                     <div class="tab file-list" v-if="currentTab === C.CUSTOM_TAB">
                         <custom-saves></custom-saves>
                     </div>
+
                     <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
                         <category-header title="Settings" :show-button="false"></category-header>
+
                         <button class="settings-btn" @click="switchTheme()">
                             Theme: {{themes[currentTheme]}}
                         </button>
+
                         <button class="settings-btn warning" @click="showWipeDataModal = true">
                             Wipe all data
                         </button>
+
                         <modal-confirm v-if="showWipeDataModal" @yes="reset" @no="showWipeDataModal = false">
                             <template v-slot:header>
                                 <span class="warning">Wipe all data</span>
                             </template>
-                            Are you sure you want to wipe all data?
-                            <span class="warning">This cannot be undone!</span>
+
+                            Are you sure you want to wipe all data? <span class="warning">This cannot be undone!</span>
                         </modal-confirm>
                     </div>
                 </div>
             </main>
          </div>
+
+         <!-- Development !-->
+         <script src="javascripts/libraries/vue.js"></script>
+
+         <!-- Production !-->
+         <!-- <script src="javascripts/libraries/vue.min.js"></script> -->
+
+         <script src="javascripts/components/button-menu.js"></script>
+         <script src="javascripts/components/button-tooltip.js"></script>
+         <script src="javascripts/components/category-header.js"></script>
+         <script src="javascripts/components/save-file-container.js"></script>
+         <script src="javascripts/components/custom-saves.js"></script>
+         <script src="javascripts/components/custom-save-container.js"></script>
+         <script src="javascripts/components/modal-base.js"></script>
+         <script src="javascripts/components/modal-input.js"></script>
+         <script src="javascripts/components/modal-confirm.js"></script>
+
+         <script src="javascripts/database.js"></script>
+         <script src="javascripts/util.js"></script>
+         <script src="javascripts/index.js"></script>
     </body>
-    <!-- Development !-->
-    <script src="javascripts/libraries/vue.js"></script>
-
-    <!-- Production !-->
-    <!-- <script src="javascripts/libraries/vue.min.js"></script> -->
-
-    <script src="javascripts/components/button-menu.js"></script>
-    <script src="javascripts/components/button-tooltip.js"></script>
-    <script src="javascripts/components/category-header.js"></script>
-    <script src="javascripts/components/save-file-container.js"></script>
-    <script src="javascripts/components/save-file-custom-container.js"></script>
-    <script src="javascripts/components/custom-saves.js"></script>
-    <script src="javascripts/components/modal-base.js"></script>
-    <script src="javascripts/components/modal-input.js"></script>
-    <script src="javascripts/components/modal-confirm.js"></script>
-
-    <script src="javascripts/database.js"></script>
-    <script src="javascripts/util.js"></script>
-    <script src="javascripts/index.js"></script>
 </html>
 
 <!-- TODO: Refactor -->
 <!-- TODO: v-bind era class to file-con and use nth child attr for bg (?)-->
-<!-- TODO: Fix the CSS -->
 
 <!-- TODO: Make save title display actual ep count (instead of rounded) -->
 
-<!-- TODO: Input placeholder for name -->
 <!-- TODO: Exporting all save files as zip -->
 
-<!-- TODO: SCSS? -->
-
+<!-- TODO: Database -->
 <!-- TODO: In contribution / github desc, add detailed description about contributing etc-->
 
 <!-- TODO: IDK maybe name versions after greek alphabet -->

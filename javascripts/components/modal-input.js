@@ -9,10 +9,12 @@ Vue.component("modal-input", {
             </div>
         </template>
 
-        <ul class="modal-input-context">
+        <ul class="modal-input-content">
             <li v-for="field in fields">
-                <span>{{capFirstLetter(field)}}: </span>
-                <input :class="'input-' + field" :value="value[field]"></input>
+                <span>{{capFirstLetter(field.name)}}: </span>
+                <input :class="'input-' + field.name"
+                       :value="value[field.name]"
+                       :placeholder="field.placeholder"/>
             </li>
         </ul>
 
@@ -34,7 +36,20 @@ Vue.component("modal-input", {
     },
     data() {
         return {
-            fields: ["name", "desc", "data"]
+            fields: [
+                {
+                    name: "name",
+                    placeholder: "Enter name"
+                },
+                {
+                    name: "desc",
+                    placeholder: "Enter description"
+                },
+                {
+                    name: "data",
+                    placeholder: "Enter save file data"
+                }
+            ]
         }
     },
     methods: {
@@ -44,7 +59,7 @@ Vue.component("modal-input", {
         submit() {
             let data = {}
             for (let field of this.fields) {
-                let val = this.$el.querySelector(".input-" + field).value;
+                let val = this.$el.querySelector(".input-" + field.name).value;
                 data[field] = val;
             }
             this.$emit('submit', data);

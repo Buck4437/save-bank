@@ -18,14 +18,3 @@ Vue.component("modal-base", {
         }
     }
 })
-
-
-// <div>
-//     <slot name="header">Modal header</slot>
-// </div>
-// <div>
-//     <slot>Modal content</slot>
-// </div>
-// <div>
-//     <slot name="footer">Modal footer</slot>
-// </div>

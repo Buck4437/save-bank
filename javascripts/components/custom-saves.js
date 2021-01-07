@@ -3,11 +3,15 @@
 Vue.component("custom-saves", {
     template: `
     <div>
-        <category-header title="Custom Saves" :showButton="!maxQuota" button="Add new save" @click="showAddModal = true">
+        <category-header title="Custom Saves"
+                         :showButton="!maxQuota"
+                         button="Add new save"
+                         @click="showAddModal = true">
             Quota: <span :class="{'warning': maxQuota}">{{customSaves.length}} / {{QUOTA}}</span>
         </category-header>
-        <div v-for="(saveFile, i) in customSaves" :class="i % 2 == 1 ? 'custom-background' : ''">
-            <save-file-custom-container :saveFile="saveFile" @delete="deleteFile(i)" @edit="edit(i, $event)"/>
+        <div v-for="(saveFile, i) in customSaves"
+             :class="i % 2 == 1 ? 'custom-background' : ''">
+            <custom-save-container :saveFile="saveFile" @delete="deleteFile(i)" @edit="edit(i, $event)"/>
         </div>
         <modal-input v-if="showAddModal" header="Enter save info:" @close="closeAddModal" @submit="addSaveFile"/>
     </div>

@@ -8,11 +8,11 @@ Vue.component("modal-confirm", {
                 <slot name="header">Confirmation</slot>
             </div>
         </template>
-        <div class="modal-confirm-context">
+        <div class="modal-confirm-content">
             <slot>Confirm?</slot>
         </div>
         <template v-slot:footer>
-            <div style="display: flex; justify-content: space-around">
+            <div class="modal-confirm-footer">
                 <button class="modal-confirm-btn warning" @click="$emit('yes')">
                     <slot name="yes">Yes</slot>
                 </button>

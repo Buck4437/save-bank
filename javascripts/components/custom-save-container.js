@@ -1,15 +1,23 @@
 "use strict";
 
-Vue.component("save-file-custom-container", {
+Vue.component("custom-save-container", {
     template: `
-    <div>
+    <div class="custom-save-con">
         <save-file-container :save-file="saveFile">
             <template v-slot:extra-buttons>
-                <button class="file-btn" @click="showEditModel = true">Edit</button>
-                <button class="file-btn warning" @click="showDeleteModel = true">Delete</button>
+                <button class="file-btn" @click="showEditModel = true">
+                    Edit
+                </button>
+                <button class="file-btn warning" @click="showDeleteModel = true">
+                    Delete
+                </button>
             </template>
         </save-file-container>
-        <modal-input v-if="showEditModel" :value="saveFile" header="Edit save info:" @submit="submit" @close="closeEdit"/>
+        <modal-input v-if="showEditModel"
+                     :value="saveFile"
+                     header="Edit save info:"
+                     @submit="submit"
+                     @close="closeEdit"/>
         <modal-confirm v-if="showDeleteModel" @yes="confirm(true)" @no="confirm(false)">
             Are you sure you want to delete this save file ({{saveFile.name}})? <span class="warning">This cannot be undone!</span>
         </modal-confirm>
