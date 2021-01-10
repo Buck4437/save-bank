@@ -46,7 +46,6 @@ function zipSaves(saves) {
     });
 }
 
-
 // Themes
 
 var themes = ["Dark", "Light"];

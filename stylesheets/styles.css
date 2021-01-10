@@ -29,6 +29,11 @@ button:hover {
     transition-duration: 0.3s;
 }
 
+button.is-active {
+    background-color: var(--color);
+    color: var(--background);
+}
+
 /* custom elements */
 
 /* tooltip - Important! */
@@ -56,7 +61,6 @@ button:hover {
     pointer-events: none; /* prevent clicking tooltip from triggering button */
 	cursor: default;
 	-webkit-tap-highlight-color: transparent; /* prevent selection on mobile */
-
 	position: absolute;
 	z-index: 10;
 	top: -60px;
@@ -266,20 +270,10 @@ main {
     padding-bottom: 120px; /* try to and fix the weird chrome vh bug */
 }
 
-.nav-btn-con {
-    display: flex;
-    align-items: center;
-}
-
-.nav-btn {
+.nav-ul button {
     margin-bottom: 16px;
     min-width: 240px;
     min-height: 48px;
-}
-
-.nav-btn.is-active {
-    background-color: var(--color);
-    color: var(--background);
 }
 
 .nav-version, .nav-link {
@@ -313,7 +307,6 @@ body.is-active .mask {
 .tab-con {
     margin-left: 288px;
     padding: 16px;
-    /* width: calc(100vw - 288px - 32px); */
 
     flex-grow: 1;
     display: flex;
@@ -422,15 +415,15 @@ body.is-active .mask {
 
 /* settings */
 
-.settings-con{
+.settings-tab{
     display: flex;
     flex-grow: 1;
     flex-direction: column;
 }
 
-.settings-btn{
+.settings-tab>button{
     align-self: flex-start;
-    min-width: 192px;
+    width: 192px;
     min-height: 96px;
     margin-bottom: 16px;
 }
@@ -687,7 +680,7 @@ body.is-active .mask {
         max-width: 80vw;
     }
 
-    .settings-con{
+    .settings-tab{
         display: flex;
         flex-grow: 0;
         align-self: center;

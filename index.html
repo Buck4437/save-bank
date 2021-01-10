@@ -38,25 +38,16 @@
                     </div>
 
                     <ul class="nav-ul">
-                        <li class="nav-btn-con" v-for="(saveCategory, i) in saves" :key="i">
-                            <button class="nav-btn"
-                                    :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
-                                    @click="switchCategory(i)">
-                                {{saveCategory.name}} ({{(saveCategory.saves || []).length}})
+                        <li v-for="(tab, i) in tabs" :key="i">
+                            <button v-if="i < saves.length"
+                                    :class="[{'is-active': currentTab === tab}, saves[i].era]"
+                                    @click="switchTab(i)">
+                                {{tab}} ({{(saves[i].saves || []).length}})
                             </button>
-                        </li>
-                        <li class="nav-btn-con">
-                            <button class="nav-btn"
-                                    :class="{'is-active': currentTab === C.CUSTOM_TAB}"
-                                    @click="openTab(C.CUSTOM_TAB)">
-                                Custom Saves
-                            </button>
-                        </li>
-                        <li class="nav-btn-con">
-                            <button class="nav-btn"
-                                    :class="{'is-active': currentTab === C.SETTINGS_TAB}"
-                                    @click="openTab(C.SETTINGS_TAB)">
-                                Settings
+                            <button v-else
+                                    :class="{'is-active': currentTab === tab}"
+                                    @click="switchTab(i)">
+                                {{tab}}
                             </button>
                         </li>
                         <li class="nav-version">{{version}}</li>
@@ -66,9 +57,11 @@
                 </div>
                 <div class="mask" @click="menu()"></div>
                 <div class="tab-con">
-                    <div v-if="currentTab === C.FILES_TAB" class="tab file-list">
-                        <category-header :title="currentCategory.name">
-                            {{currentCategory.desc || ""}}
+                    <div v-for="cat in saves"
+                         v-if="currentTab === cat.name"
+                         class="tab file-list">
+                        <category-header :title="cat.name">
+                            {{cat.desc || ""}}
                             <template v-slot:buttons>
                                 <button @click="toggleSort()">
                                     Ordering: {{sortTypes[sortMode]}}
@@ -76,40 +69,41 @@
                             </template>
                         </category-header>
 
-                        <save-file-container v-for="(saveFile, i) in currentSaveFiles"
-                                            :class="i % 2 == 1 ? currentCategory.era + '-background' : ''"
-                                            :save-file="saveFile"
-                                            :key="i">
+                        <save-file-container v-if="cat.saves !== undefined && cat.saves.length !== 0"
+                                             v-for="(saveFile, i) in sort(cat.saves)"
+                                             :class="i % 2 == 1 ? cat.era + '-background' : ''"
+                                             :save-file="saveFile"
+                                             :key="i">
                         </save-file-container>
 
-                        <save-file-container v-if="currentSaveFiles.length == 0">
+                        <save-file-container v-else>
                             <template v-slot:description>
                                 No save file available.
                             </template>
                         </save-file-container>
                     </div>
 
-                    <div class="tab file-list" v-if="currentTab === C.CUSTOM_TAB">
+                    <div class="tab file-list" v-if="currentTab === 'Custom Saves'">
                         <custom-saves></custom-saves>
                     </div>
 
-                    <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
+                    <div class="tab settings-tab" v-if="currentTab === 'Settings'">
                         <category-header title="Settings" :show-button="false"></category-header>
 
-                        <button class="settings-btn" @click="switchTheme()">
+                        <button @click="switchTheme()">
                             Theme: {{themes[currentTheme]}}
                         </button>
 
-                        <button class="settings-btn warning" @click="showWipeDataModal = true">
-                            Wipe all data
+                        <button class="warning" @click="showWipeDataModal = true">
+                            Wipe all user data
                         </button>
 
                         <modal-confirm v-if="showWipeDataModal" @yes="reset" @no="showWipeDataModal = false">
                             <template v-slot:header>
-                                <span class="warning">Wipe all data</span>
+                                <span class="warning">Wipe all user data</span>
                             </template>
 
-                            Are you sure you want to wipe all data? <span class="warning">This cannot be undone!</span>
+                            Are you sure you want to wipe all user data? <span class="warning">This cannot be undone!</span>
                         </modal-confirm>
                     </div>
                 </div>
@@ -122,7 +116,7 @@
 
          <!-- Production !-->
          <!-- <script src="javascripts/libraries/vue.min.js"></script>
-              <script src="javascripts/libraries/jszip.min.js"></script>-->
+         <script src="javascripts/libraries/jszip.min.js"></script> -->
          <script src="javascripts/libraries/FileSaver.min.js"></script>
 
          <script src="javascripts/components/button-menu.js"></script>
@@ -140,8 +134,6 @@
          <script src="javascripts/index.js"></script>
     </body>
 </html>
-
-<!-- TODO: Exporting ALL SAVE FILES IN SAVE BANK as zip in options -->
 
 <!-- TODO: Database -->
 <!-- TODO: In contribution / github desc, add detailed description about contributing etc-->

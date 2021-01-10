@@ -66,9 +66,7 @@ Vue.component("modal-input", {
         }
     },
     mounted() {
-        console.log("Tes");
         let el = this.$el.querySelector("input");
         el.focus();
-        el.select();
     }
 })

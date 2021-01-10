@@ -1,46 +1,23 @@
 "use strict";
 
-const C = {
-    FILES_TAB: 0,
-    CUSTOM_TAB: 1,
-    SETTINGS_TAB: 2
-}
-
 var app = new Vue({
     el: "#app",
     data: {
         saves,
         themes,
-        C,
-        currentCategoryIndex: 0,
-        currentTab: C.FILES_TAB,
+        currentTab: "",
         currentTheme: 0,
         sortMode: 0,
         sortTypes: ["Early to late", "Late to early"],
         showWipeDataModal: false,
-        version: "Beta 5 Alpha 2a"
+        version: "Beta 5 Alpha 3"
     },
     computed: {
-        currentCategory() {
-            let i = this.currentCategoryIndex;
-            let saves = this.saves;
-            if (i > -1 && i < saves.length) {
-                return saves[i]
-            }
-            return null;
-        },
-        currentSaveFiles() {
-            let cat = this.currentCategory;
-            if (cat !== null) {
-                if (cat.saves !== undefined) {
-                    let saves = cat.saves
-                    switch (this.sortMode) {
-                        case 1: return [...saves].reverse();
-                        default: return saves; //including case 0
-                    }
-                }
-            }
-            return [];
+        tabs() {
+            let tabs = this.saves.map(cat => cat.name);
+            tabs.push("Custom Saves");
+            tabs.push("Settings");
+            return tabs;
         }
     },
     methods: {
@@ -61,6 +38,12 @@ var app = new Vue({
                 }
             }
         },
+        sort(saves) {
+            switch (this.sortMode) {
+                case 1: return [...saves].reverse();
+                default: return saves; //including case 0
+            }
+        },
         switchTheme() {
             this.currentTheme++;
             if (this.currentTheme >= themes.length) {
@@ -68,28 +51,19 @@ var app = new Vue({
             }
             setTheme(this.currentTheme);
         },
-        openTab(tab) {
-            if (tab !== this.C.FILES_TAB) {
-                this.currentCategoryIndex = -1;
-            }
-            this.currentTab = tab;
+        switchTab(i) {
+            this.currentTab = this.tabs[i];
             this.menu(false); //close the menu
             scroll(0,0); //scroll to top
         },
-        switchCategory(index) {
-            this.openTab(this.C.FILES_TAB);
-            this.currentCategoryIndex = index;
-        },
         reset() {
-            setTheme(0);
             localStorage.setItem("saveBankCustomSaves", null);
-            this.currentTab = C.FILES_TAB;
-            this.currentCategoryIndex = 0;
-            this.sortMode = 0;
+            localStorage.setItem("saveBankTheme", null);
             location.reload();
         }
     },
     mounted() {
+        this.currentTab = this.tabs[0];
         this.currentTheme = loadTheme();
         setTimeout(() => {
             var body = document.querySelector("body");
