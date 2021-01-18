@@ -57,55 +57,17 @@
                 </div>
                 <div class="mask" @click="menu()"></div>
                 <div class="tab-con">
-                    <div v-for="cat in saves"
-                         v-if="currentTab === cat.name"
-                         class="tab file-list">
-                        <category-header :title="cat.name">
-                            {{cat.desc || ""}}
-                            <template v-slot:buttons>
-                                <button @click="toggleSort()">
-                                    Ordering: {{sortTypes[sortMode]}}
-                                </button>
-                            </template>
-                        </category-header>
+                    <tab-saves v-if="selectedCategory"
+                               :selected-category="selectedCategory"
+                               :sort-mode="sortMode"
+                               @set-sort="setSort"></tab-saves>
 
-                        <save-file-container v-if="cat.saves !== undefined && cat.saves.length !== 0"
-                                             v-for="(saveFile, i) in sort(cat.saves)"
-                                             :class="i % 2 == 1 ? cat.era + '-background' : ''"
-                                             :save-file="saveFile"
-                                             :key="i">
-                        </save-file-container>
+                    <tab-custom-saves v-if="currentTab === 'Custom Saves'"></tab-custom-saves>
 
-                        <save-file-container v-else>
-                            <template v-slot:description>
-                                No save file available.
-                            </template>
-                        </save-file-container>
-                    </div>
-
-                    <div class="tab file-list" v-if="currentTab === 'Custom Saves'">
-                        <custom-saves></custom-saves>
-                    </div>
-
-                    <div class="tab settings-tab" v-if="currentTab === 'Settings'">
-                        <category-header title="Settings" :show-button="false"></category-header>
-
-                        <button @click="switchTheme()">
-                            Theme: {{themes[currentTheme]}}
-                        </button>
-
-                        <button class="warning" @click="showWipeDataModal = true">
-                            Wipe all user data
-                        </button>
-
-                        <modal-confirm v-if="showWipeDataModal" @yes="reset" @no="showWipeDataModal = false">
-                            <template v-slot:header>
-                                <span class="warning">Wipe all user data</span>
-                            </template>
-
-                            Are you sure you want to wipe all user data? <span class="warning">This cannot be undone!</span>
-                        </modal-confirm>
-                    </div>
+                    <tab-settings v-if="currentTab === 'Settings'"
+                                  :theme="themes[currentTheme]"
+                                  @switch-theme="switchTheme"
+                                  @reset="reset"></tab-settings>
                 </div>
             </main>
          </div>
@@ -123,11 +85,13 @@
          <script src="javascripts/components/button-tooltip.js"></script>
          <script src="javascripts/components/category-header.js"></script>
          <script src="javascripts/components/save-file-container.js"></script>
-         <script src="javascripts/components/custom-saves.js"></script>
          <script src="javascripts/components/custom-save-container.js"></script>
          <script src="javascripts/components/modal-base.js"></script>
          <script src="javascripts/components/modal-input.js"></script>
          <script src="javascripts/components/modal-confirm.js"></script>
+         <script src="javascripts/components/tab-saves.js"></script>
+         <script src="javascripts/components/tab-custom-saves.js"></script>
+         <script src="javascripts/components/tab-settings.js"></script>
 
          <script src="javascripts/database.js"></script>
          <script src="javascripts/util.js"></script>
@@ -135,6 +99,12 @@
     </body>
 </html>
 
+<!-- TODO: REFACTOR -->
+<!-- TODO: Refactor custom saves -->
+
+<!-- TODO: FAQ -->
+<!-- TODO: Add more saves -->
+<!-- TODO: Change storage system of save bank data (into sth called "saveBankData2.0") -->
 <!-- TODO: Database -->
 <!-- TODO: In contribution / github desc, add detailed description about contributing etc-->
 

@@ -1,6 +1,12 @@
 "use strict";
 
 Vue.component("modal-base", {
+    props: {
+        showCloseButton: {
+            default: true,
+            type: Boolean
+        }
+    },
     template: `
     <div class="modal-outer">
         <div class="modal">
@@ -10,11 +16,5 @@ Vue.component("modal-base", {
             <slot name="footer">Modal footer</slot>
         </div>
     </div>
-    `,
-    props: {
-        showCloseButton: {
-            default: true,
-            type: Boolean
-        }
-    }
+    `
 })

@@ -1,12 +1,6 @@
 "use strict";
 
 Vue.component("button-tooltip", {
-    template: `
-    <button class="tooltip-btn" @click="click()">
-        <slot>Text</slot>
-        <span class="tooltip-text">{{tooltip}}</span>
-    </button>
-    `,
     props: {
         tooltip: {
             default: "Tooltip text",
@@ -22,5 +16,11 @@ Vue.component("button-tooltip", {
             }, 1000)
             this.$emit('click');
         }
-    }
+    },
+    template: `
+    <button class="tooltip-btn" @click="click()">
+        <slot>Text</slot>
+        <span class="tooltip-text">{{tooltip}}</span>
+    </button>
+    `
 })

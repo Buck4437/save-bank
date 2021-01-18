@@ -1,6 +1,19 @@
 "use strict";
 
 Vue.component("save-file-container", {
+    props: {
+        saveFile: Object
+    },
+    methods: {
+        copyText() {
+            copyText(this.saveFile.data);
+        },
+        exportFile() {
+            let filename = this.saveFile.name + ".txt";
+            let text = this.saveFile.data;
+            download(filename, text);
+        }
+    },
     template: `
     <div class="file-con">
         <div class="file-text-con">
@@ -21,18 +34,5 @@ Vue.component("save-file-container", {
             <slot name="extra-buttons"/>
         </div>
     </div>
-    `,
-    props: {
-        saveFile: Object
-    },
-    methods: {
-        copyText() {
-            copyText(this.saveFile.data);
-        },
-        exportFile() {
-            let filename = this.saveFile.name + ".txt";
-            let text = this.saveFile.data;
-            download(filename, text);
-        }
-    }
+    `
 })

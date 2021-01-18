@@ -3,13 +3,14 @@
 var app = new Vue({
     el: "#app",
     data: {
+        user: {
+            //placeholder
+        },
         saves,
         themes,
         currentTab: "",
         currentTheme: 0,
         sortMode: 0,
-        sortTypes: ["Early to late", "Late to early"],
-        showWipeDataModal: false,
         version: "Beta 5 Alpha 3"
     },
     computed: {
@@ -18,14 +19,19 @@ var app = new Vue({
             tabs.push("Custom Saves");
             tabs.push("Settings");
             return tabs;
+        },
+        selectedCategory() {
+            for (let cat of saves) {
+                if (this.currentTab === cat.name) {
+                    return cat;
+                }
+            }
+            return null;
         }
     },
     methods: {
-        toggleSort() {
-            this.sortMode++;
-            if (this.sortMode >= this.sortTypes.length) {
-                this.sortMode = 0;
-            }
+        setSort(i) {
+            this.sortMode = i;
         },
         menu(toggle) {
             var body = document.querySelector("body");
@@ -36,12 +42,6 @@ var app = new Vue({
                 if (toggle) {
                     body.classList.add("is-active");
                 }
-            }
-        },
-        sort(saves) {
-            switch (this.sortMode) {
-                case 1: return [...saves].reverse();
-                default: return saves; //including case 0
             }
         },
         switchTheme() {
