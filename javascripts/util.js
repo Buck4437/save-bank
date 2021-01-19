@@ -4,6 +4,7 @@
 
 function copyText(text){
     //source: https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
+
     const el = document.createElement('textarea');
     el.value = text;
     el.setAttribute('readonly', '');
@@ -23,6 +24,7 @@ function copyText(text){
 
 function download(filename, text) {
     //source: https://www.bitdegree.org/learn/javascript-download
+
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
@@ -51,18 +53,16 @@ function zipSaves(saves) {
 var themes = ["Dark", "Light"];
 
 function getTheme() {
-    let theme = Number(localStorage.getItem("saveBankTheme"));
+    let theme = Number(JSON.parse(localStorage.getItem("saveBankData")).theme);
     if (isNaN(theme)) {
-        theme =  0;
+        theme = 0;
     }
     return theme;
 }
 
 function loadTheme() {
     let theme = getTheme();
-    if (theme !== 0) {
-        setTheme(theme);
-    }
+    setTheme(theme);
     return theme;
 }
 
@@ -71,7 +71,6 @@ function setTheme(index) {
         document.body.classList.remove(theme.toLowerCase() + "-theme");
     }
     document.body.classList.add(themes[index].toLowerCase() + "-theme");
-    localStorage.setItem("saveBankTheme", index)
 }
 
 // Misc

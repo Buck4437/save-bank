@@ -3,15 +3,15 @@
 var app = new Vue({
     el: "#app",
     data: {
-        user: {
-            //placeholder
+        userData: {
+            theme: 0,
+            customSaves: []
         },
         saves,
         themes,
         currentTab: "",
-        currentTheme: 0,
         sortMode: 0,
-        version: "Beta 5 Alpha 3"
+        version: "Beta 5 Alpha 4"
     },
     computed: {
         tabs() {
@@ -37,19 +37,18 @@ var app = new Vue({
             var body = document.querySelector("body");
             if (toggle === undefined) {
                 body.classList.toggle("is-active");
+            } else if (toggle){
+                body.classList.add("is-active");
             } else {
                 body.classList.remove("is-active");
-                if (toggle) {
-                    body.classList.add("is-active");
-                }
             }
         },
         switchTheme() {
-            this.currentTheme++;
-            if (this.currentTheme >= themes.length) {
-                this.currentTheme = 0;
+            this.userData.theme ++;
+            if (this.userData.theme >= themes.length) {
+                this.userData.theme = 0;
             }
-            setTheme(this.currentTheme);
+            setTheme(this.userData.theme);
         },
         switchTab(i) {
             this.currentTab = this.tabs[i];
@@ -57,14 +56,25 @@ var app = new Vue({
             scroll(0,0); //scroll to top
         },
         reset() {
-            localStorage.setItem("saveBankCustomSaves", null);
-            localStorage.setItem("saveBankTheme", null);
+            localStorage.removeItem("saveBankData");
             location.reload();
         }
     },
+    watch: {
+        userData: {
+            deep: true,
+            handler() {
+                localStorage.setItem("saveBankData", JSON.stringify(this.userData));
+            }
+        }
+    },
     mounted() {
+        this.userData = JSON.parse(localStorage.getItem("saveBankData"));
         this.currentTab = this.tabs[0];
-        this.currentTheme = loadTheme();
+        if (!Array.isArray(this.userData.customSaves)) {
+            this.userData.customSaves = []
+        }
+        loadTheme();
         setTimeout(() => {
             var body = document.querySelector("body");
             body.classList.add("ready");

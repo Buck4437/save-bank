@@ -62,10 +62,11 @@
                                :sort-mode="sortMode"
                                @set-sort="setSort"></tab-saves>
 
-                    <tab-custom-saves v-if="currentTab === 'Custom Saves'"></tab-custom-saves>
+                    <tab-custom-saves v-if="currentTab === 'Custom Saves'"
+                                      :custom-saves="userData.customSaves"></tab-custom-saves>
 
                     <tab-settings v-if="currentTab === 'Settings'"
-                                  :theme="themes[currentTheme]"
+                                  :theme="themes[userData.theme]"
                                   @switch-theme="switchTheme"
                                   @reset="reset"></tab-settings>
                 </div>
@@ -93,6 +94,7 @@
          <script src="javascripts/components/tab-custom-saves.js"></script>
          <script src="javascripts/components/tab-settings.js"></script>
 
+         <script src="javascripts/update.js"></script>
          <script src="javascripts/database.js"></script>
          <script src="javascripts/util.js"></script>
          <script src="javascripts/index.js"></script>
@@ -104,7 +106,9 @@
 
 <!-- TODO: FAQ -->
 <!-- TODO: Add more saves -->
-<!-- TODO: Change storage system of save bank data (into sth called "saveBankData2.0") -->
+
+<!-- TODO: Change storage system of save bank data (into sth called "saveBankData2.0", as a signle object) -->
+
 <!-- TODO: Database -->
 <!-- TODO: In contribution / github desc, add detailed description about contributing etc-->
 

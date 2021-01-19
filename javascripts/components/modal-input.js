@@ -25,7 +25,8 @@ Vue.component("modal-input", {
                     name: "data",
                     placeholder: "Enter save file data"
                 }
-            ]
+            ],
+            newSaveFile: {}
         }
     },
     methods: {
@@ -33,31 +34,23 @@ Vue.component("modal-input", {
             return str.charAt(0).toUpperCase() + str.slice(1);
         },
         submit() {
-            let data = {}
-            for (let field of this.fields) {
-                let el = this.$el.querySelector(".input-" + field.name);
-                data[field.name] = el.value.trim();
-            }
-            this.$emit('submit', data);
+            this.$emit('submit', this.newSaveFile);
         }
     },
     mounted() {
-        let el = this.$el.querySelector("input");
-        el.focus();
+        this.newSaveFile = JSON.parse(JSON.stringify(this.value));
+        this.$el.querySelector("input").focus();
     },
     template: `
     <modal-base @close="$emit('close')">
-        <template v-slot:header class="modal-input-header">
-            <div class="modal-input-header">
-                {{header}}
-            </div>
+        <template v-slot:header>
+            <span class="modal-input-header">{{header}}</span>
         </template>
 
         <ul class="modal-input-content">
             <li v-for="field in fields">
                 <span>{{capFirstLetter(field.name)}}: </span>
-                <input :class="'input-' + field.name"
-                       :value="value[field.name]"
+                <input v-model="newSaveFile[field.name]"
                        :placeholder="field.placeholder"/>
             </li>
         </ul>
