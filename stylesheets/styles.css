@@ -246,7 +246,7 @@ main {
 
 /* naivgations */
 
-.cat-nav {
+.side-nav {
     background: var(--secondary);
     padding: 0px;
     width: 288px;
@@ -561,7 +561,7 @@ body.is-active .mask {
 
     /* navigation */
 
-    .cat-nav {
+    .side-nav {
         z-index: 100; /* to cover the mask */
 
         height: 100vh;
@@ -578,7 +578,7 @@ body.is-active .mask {
         z-index: 200;
     }
 
-    body.is-active .cat-nav {
+    body.is-active .side-nav {
         transform: translateX(0) translateY(-64px);
     }
 

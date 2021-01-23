@@ -11,7 +11,7 @@ var app = new Vue({
         themes,
         currentTab: "",
         sortMode: 0,
-        version: "Beta 5 Alpha 4a"
+        version: "Beta 5 Alpha 4b"
     },
     computed: {
         tabs() {

@@ -16,24 +16,12 @@
             This shouldn't take longer than a few seconds...
         </div>
         <div id="app">
-            <header>
-                <menu-button @toggle-menu="menu()"></menu-button>
-                <div class="title">
-                    AD Save Bank
-                </div>
-                <div class="about">
-                    <span class="version">{{version}}</span>
-                    <span class="link">
-                         | <a target="_blank" href="changelog.html" class="link">Changelog</a>
-                         | <a target="_blank" href="info.html" class="link">Info</a>
-                    </span>
-                </div>
-            </header>
+            <top-bar :version="version" @menu="menu"></top-bar>
 
             <main class="main">
-                <div class="cat-nav">
+                <div class="side-nav">
                     <div class="mini-header">
-                        <menu-button @toggle-menu="menu()"></menu-button>
+                        <menu-button @toggle-menu="menu"></menu-button>
                         <span class="title">Menu</span>
                     </div>
 
@@ -55,7 +43,9 @@
                         <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
                     </ul>
                 </div>
-                <div class="mask" @click="menu()"></div>
+
+                <div class="mask" @click="menu"></div>
+
                 <div class="tab-con">
                     <saves-tab v-if="selectedCategory"
                                :selected-category="selectedCategory"
@@ -92,6 +82,8 @@
 
          <script src="javascripts/components/SavesTab.js"></script>
          <script src="javascripts/components/SaveFile.js"></script>
+
+         <script src="javascripts/components/TopBar.js"></script>
 
          <script src="javascripts/components/CustomSavesTab.js"></script>
          <script src="javascripts/components/CustomSavesTabInputModal.js"></script>
