@@ -1,6 +1,6 @@
 "use strict";
 
-Vue.component("tab-custom-saves", {
+Vue.component("custom-saves-tab", {
     data() {
         return {
             showModal: {
@@ -24,8 +24,9 @@ Vue.component("tab-custom-saves", {
                 base = "New Save";
             }
             let name = base;
-            let names = this.customSaves.filter((v, i) => i !== pos).map(s => s.name);
             let tmp = 1;
+            let names = this.customSaves.filter((v, i) => i !== pos)
+                                        .map(s => s.name);
             while (names.indexOf(name) != -1) {
                 name = `${base} (${tmp})`
                 tmp++;
@@ -50,12 +51,12 @@ Vue.component("tab-custom-saves", {
     },
     template: `
     <div class="tab file-list">
-        <category-header title="Custom Saves">
-            <template v-slot:description>
+        <tab-header title="Custom Saves">
+            <template #description>
                 Quota: <span :class="{'warning': maxQuota}">{{customSaves.length}} / {{QUOTA}}</span>
             </template>
 
-            <template v-slot:buttons>
+            <template #buttons>
                 <button v-if="customSaves.length >= 2" @click="zipSaves(customSaves)">
                     Export as .zip
                 </button>
@@ -63,14 +64,14 @@ Vue.component("tab-custom-saves", {
                     Add new save
                 </button>
             </template>
-        </category-header>
+        </tab-header>
         <div v-for="(saveFile, i) in customSaves"
              :class="i % 2 == 1 ? 'custom-background' : ''">
-            <custom-save-container :saveFile="saveFile"
-                                   @delete="customSaves.splice(i, 1)"
-                                   @edit="edit(i, $event)"/>
+            <custom-save-file :saveFile="saveFile"
+                              @delete="customSaves.splice(i, 1)"
+                              @edit="edit(i, $event)"/>
         </div>
-        <modal-input v-if="showModal.add"
+        <input-modal v-if="showModal.add"
                      header="Enter save info:"
                      :value="{name: validateName()}"
                      @submit="addSaveFile"

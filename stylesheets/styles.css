@@ -318,7 +318,7 @@ body.is-active .mask {
 
 /* header */
 
-.cat-header {
+.tab-header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -326,32 +326,32 @@ body.is-active .mask {
     align-items: flex-end;
 }
 
-.cat-info {
+.tab-header .info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-bottom: 16px;
 }
 
-.cat-title, .cat-desc {
-    min-width: 0; /* flexbox issue s*/
+.tab-header .title, .tab-header .desc {
+    min-width: 0; /* flexbox issues*/
     margin: 8px;
 }
 
-.cat-title {
+.tab-header .title {
     font-size: 24px;
 }
 
-.cat-desc {
+.tab-header .desc {
     font-size: 16px;
 }
 
-.cat-btn {
+.tab-header .btn-con {
     display: flex;
     flex-direction: column;
 }
 
-.cat-btn button {
+.tab-header .btn-con button {
     min-width: 208px;
     min-height: 32px;
     padding: 8px;
@@ -654,12 +654,12 @@ body.is-active .mask {
         display: block;
     }
 
-    .cat-header {
+    .tab-header {
         flex-direction: column;
         align-items: center;
     }
 
-    .cat-info {
+    .tab-header .info {
         align-items: center;
     }
 

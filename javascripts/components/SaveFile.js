@@ -1,6 +1,6 @@
 "use strict";
 
-Vue.component("save-file-container", {
+Vue.component("save-file", {
     props: {
         saveFile: Object
     },
@@ -25,9 +25,9 @@ Vue.component("save-file-container", {
             </div>
         </div>
         <div class="file-btn-con">
-            <button-tooltip class="file-btn" tooltip="Copied!" @click="copyText">
+            <tooltip-button class="file-btn" tooltip="Copied!" @click="copyText">
                 Copy to Clipboard
-            </button-tooltip>
+            </tooltip-button>
             <button class="file-btn" @click="exportFile">
                 Export as .txt
             </button>

@@ -1,6 +1,6 @@
 "use strict";
 
-Vue.component("button-tooltip", {
+Vue.component("tooltip-button", {
     props: {
         tooltip: {
             default: "Tooltip text",

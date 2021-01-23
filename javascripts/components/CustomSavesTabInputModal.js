@@ -1,6 +1,6 @@
 "use strict";
 
-Vue.component("modal-input", {
+Vue.component("input-modal", {
     props: {
         value: {
             default() {
@@ -42,8 +42,8 @@ Vue.component("modal-input", {
         this.$el.querySelector("input").focus();
     },
     template: `
-    <modal-base @close="$emit('close')">
-        <template v-slot:header>
+    <base-modal @close="$emit('close')">
+        <template #header>
             <span class="modal-input-header">{{header}}</span>
         </template>
 
@@ -55,11 +55,11 @@ Vue.component("modal-input", {
             </li>
         </ul>
 
-        <template v-slot:footer>
+        <template #footer>
             <div class="modal-input-footer">
                 <button @click="submit()">Submit</button>
             </div>
         </template>
-    </modal-base>
+    </base-modal>
     `
 })

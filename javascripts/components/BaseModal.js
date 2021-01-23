@@ -1,6 +1,6 @@
 "use strict";
 
-Vue.component("modal-base", {
+Vue.component("base-modal", {
     props: {
         showCloseButton: {
             default: true,

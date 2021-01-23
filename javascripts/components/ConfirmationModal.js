@@ -1,9 +1,9 @@
 "use strict";
 
-Vue.component("modal-confirm", {
+Vue.component("confirmation-modal", {
     template: `
-    <modal-base :showCloseButton="false">
-        <template v-slot:header>
+    <base-modal :showCloseButton="false">
+        <template #header>
             <div class="modal-confirm-header">
                 <slot name="header">Confirmation</slot>
             </div>
@@ -11,7 +11,7 @@ Vue.component("modal-confirm", {
         <div class="modal-confirm-content">
             <slot>Confirm?</slot>
         </div>
-        <template v-slot:footer>
+        <template #footer>
             <div class="modal-confirm-footer">
                 <button class="modal-confirm-btn warning" @click="$emit('yes')">
                     <slot name="yes">Yes</slot>
@@ -21,6 +21,6 @@ Vue.component("modal-confirm", {
                 </button>
             </div>
         </template>
-    </modal-base>
+    </base-modal>
     `
 })
