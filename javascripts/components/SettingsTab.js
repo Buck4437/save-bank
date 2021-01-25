@@ -6,12 +6,18 @@ Vue.component("settings-tab", {
             showWipeDataModal: false
         }
     },
+    methods: {
+        reset() {
+            localStorage.removeItem("saveBankData");
+            location.reload();
+        }
+    },
     props: {
         theme: String
     },
     template: `
     <div class="tab settings-tab">
-        <tab-header title="Settings"></tab-header>
+        <tab-header title="Settings"/>
 
         <button @click="$emit('switch-theme')">
             Theme: {{theme}}
@@ -21,7 +27,7 @@ Vue.component("settings-tab", {
             Wipe all user data
         </button>
 
-        <confirmation-modal v-if="showWipeDataModal" @yes="$emit('reset')" @no="showWipeDataModal = false">
+        <confirmation-modal v-if="showWipeDataModal" @yes="reset" @no="showWipeDataModal = false">
             <template #header>
                 <span class="warning">Wipe all user data</span>
             </template>

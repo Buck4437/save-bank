@@ -11,8 +11,11 @@ Vue.component("saves-tab", {
         sortMode: Number
     },
     computed: {
+        hasSaves() {
+            return this.saves.length !== 0;
+        },
         saves() {
-            let saves = this.selectedCategory.saves
+            let saves = this.selectedCategory.saves || [];
             switch (this.sortMode) {
                 case 0: return saves;
                 case 1: return [...saves].reverse();
@@ -42,8 +45,7 @@ Vue.component("saves-tab", {
             </template>
         </tab-header>
 
-        <div v-if="selectedCategory.saves === undefined || selectedCategory.saves.length === 0"
-              class="warning">No save file available.</div>
+        <div v-if="!hasSaves" class="warning">No save file available.</div>
 
         <save-file v-else
                    v-for="(saveFile, i) in saves"

@@ -33,11 +33,9 @@ var app = new Vue({
         setSort(i) {
             this.sortMode = i;
         },
-        menu(toggle) {
+        menu(toggle = !toggle) {
             var body = document.querySelector("body");
-            if (toggle === undefined) {
-                body.classList.toggle("is-active");
-            } else if (toggle){
+            if (toggle){
                 body.classList.add("is-active");
             } else {
                 body.classList.remove("is-active");
@@ -54,10 +52,6 @@ var app = new Vue({
             this.currentTab = this.tabs[i];
             this.menu(false); //close the menu
             scroll(0,0); //scroll to top
-        },
-        reset() {
-            localStorage.removeItem("saveBankData");
-            location.reload();
         }
     },
     watch: {

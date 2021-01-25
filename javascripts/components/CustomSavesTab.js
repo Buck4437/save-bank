@@ -18,35 +18,28 @@ Vue.component("custom-saves-tab", {
         }
     },
     methods: {
-        validateName(base = "New Save", pos = -1) { //pos = position to exclude
-            base = base.trim();
-            if (base == "") {
-                base = "New Save";
-            }
+        validateName(base = "", pos = -1) { //pos = position to exclude
+            base = base.trim() || "New Save";
+
             let name = base;
-            let tmp = 1;
-            let names = this.customSaves.filter((v, i) => i !== pos)
-                                        .map(s => s.name);
-            while (names.indexOf(name) != -1) {
-                name = `${base} (${tmp})`
-                tmp++;
+            let names = this.customSaves.filter((v, i) => i != pos).map(s => s.name);
+
+            for (let j = 1; names.indexOf(name) != -1; j++) {
+                name = `${base} (${j})`;
             }
+
             return name;
         },
         addSaveFile(saveFile) {
             this.showModal.add = false;
-            saveFile.name = this.validateName(saveFile.name);
-            this.customSaves.push(saveFile);
+            this.set(this.customSaves.length, saveFile);
         },
-        edit(i, newSaveFile) {
-            let oldSaveFile = this.customSaves[i];
-            for (let attr in newSaveFile) {
-                if (attr === "name") {
-                    oldSaveFile[attr] = this.validateName(newSaveFile[attr], i);
-                } else {
-                    oldSaveFile[attr] = newSaveFile[attr];
-                }
-            }
+        deleteFile(i) {
+            this.customSaves.splice(i, 1);
+        },
+        set(i, saveFile) {
+            saveFile.name = this.validateName(saveFile.name, i);
+            this.customSaves.splice(i, 1, saveFile);
         }
     },
     template: `
@@ -68,8 +61,8 @@ Vue.component("custom-saves-tab", {
         <div v-for="(saveFile, i) in customSaves"
              :class="i % 2 == 1 ? 'custom-background' : ''">
             <custom-save-file :saveFile="saveFile"
-                              @delete="customSaves.splice(i, 1)"
-                              @edit="edit(i, $event)"/>
+                              @delete="deleteFile(i)"
+                              @edit="set(i, $event)"/>
         </div>
         <input-modal v-if="showModal.add"
                      header="Enter save info:"
