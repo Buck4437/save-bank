@@ -344,6 +344,7 @@ body.is-active .mask {
 
 .tab-header .desc {
     font-size: 16px;
+    font-style: italic;
 }
 
 .tab-header .btn-con {
@@ -385,6 +386,7 @@ body.is-active .mask {
 .file-desc{
     line-height: 1.6;
     margin: 8px;
+    font-style: italic;
 }
 
 .file-btn-con{
@@ -399,6 +401,10 @@ body.is-active .mask {
     margin: 8px;
     min-width: 160px;
     min-height: 48px;
+}
+
+.no-saves {
+    margin: 8px;
 }
 
 /* custom saves css - I hate this part */

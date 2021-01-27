@@ -17,12 +17,8 @@ Vue.component("save-file", {
     template: `
     <div class="file-con">
         <div class="file-text-con">
-            <div class="file-name">
-                {{saveFile.name}}
-            </div>
-            <div class="pre-formatted file-desc">
-                <i>{{saveFile.desc || "No description provided."}}</i>
-            </div>
+            <div class="file-name">{{saveFile.name}}</div>
+            <div class="pre-formatted file-desc">{{saveFile.desc || "No description provided."}}</div>
         </div>
         <div class="file-btn-con">
             <tooltip-button class="file-btn" tooltip="Copied!" @click="copyText">

@@ -25,7 +25,7 @@ Vue.component("custom-saves-tab", {
             let names = this.customSaves.filter((v, i) => i != pos).map(s => s.name);
 
             for (let j = 1; names.indexOf(name) != -1; j++) {
-                name = `${base} (${j})`;
+                name = base + `(${j})`;
             }
 
             return name;
@@ -58,12 +58,11 @@ Vue.component("custom-saves-tab", {
                 </button>
             </template>
         </tab-header>
-        <div v-for="(saveFile, i) in customSaves"
-             :class="i % 2 == 1 ? 'custom-background' : ''">
-            <custom-save-file :saveFile="saveFile"
-                              @delete="deleteFile(i)"
-                              @edit="set(i, $event)"/>
-        </div>
+        <custom-save-file v-for="(saveFile, i) in customSaves"
+                          :class="i % 2 == 1 ? 'custom-background' : ''"
+                          :saveFile="saveFile"
+                          @delete="deleteFile(i)"
+                          @edit="set(i, $event)"/>
         <input-modal v-if="showModal.add"
                      header="Enter save info:"
                      :value="{name: validateName()}"

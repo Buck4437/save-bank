@@ -11,7 +11,7 @@ var app = new Vue({
         themes,
         currentTab: "",
         sortMode: 0,
-        version: "Beta 5 Alpha 4b"
+        version: "Beta 5 Indev 4c"
     },
     computed: {
         tabs() {
@@ -33,9 +33,11 @@ var app = new Vue({
         setSort(i) {
             this.sortMode = i;
         },
-        menu(toggle = !toggle) {
+        menu(toggle) {
             var body = document.querySelector("body");
-            if (toggle){
+            if (toggle === undefined) {
+                body.classList.toggle("is-active");
+            } else if (toggle){
                 body.classList.add("is-active");
             } else {
                 body.classList.remove("is-active");
@@ -63,8 +65,8 @@ var app = new Vue({
         }
     },
     mounted() {
-        this.userData = JSON.parse(localStorage.getItem("saveBankData"));
         this.currentTab = this.tabs[0];
+        this.userData = JSON.parse(localStorage.getItem("saveBankData"));
         if (!Array.isArray(this.userData.customSaves)) {
             this.userData.customSaves = []
         }

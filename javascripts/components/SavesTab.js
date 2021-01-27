@@ -45,12 +45,13 @@ Vue.component("saves-tab", {
             </template>
         </tab-header>
 
-        <div v-if="!hasSaves" class="warning">No save file available.</div>
+        <div v-if="!hasSaves" class="warning no-saves">No save file available.</div>
 
         <save-file v-else
                    v-for="(saveFile, i) in saves"
-                   :class="i % 2 == 1 ? selectedCategory.era + '-background' : ''"
                    :save-file="saveFile"
+                   class="save-file"
+                   :class="i % 2 == 1 ? selectedCategory.era + '-background' : ''"
                    :key="i">
         </save-file>
     </div>
