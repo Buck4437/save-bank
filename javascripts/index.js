@@ -3,15 +3,15 @@
 var app = new Vue({
     el: "#app",
     data: {
+        saves,
+        themes,
         userData: {
             theme: 0,
             customSaves: []
         },
-        saves,
-        themes,
         currentTab: "",
         sortMode: 0,
-        version: "Beta 5 Indev 4c"
+        version: "Beta 5 Indev 5"
     },
     computed: {
         tabs() {
@@ -30,14 +30,9 @@ var app = new Vue({
         }
     },
     methods: {
-        setSort(i) {
-            this.sortMode = i;
-        },
-        menu(toggle) {
+        menu(isOpened = false) {
             var body = document.querySelector("body");
-            if (toggle === undefined) {
-                body.classList.toggle("is-active");
-            } else if (toggle){
+            if (isOpened){
                 body.classList.add("is-active");
             } else {
                 body.classList.remove("is-active");

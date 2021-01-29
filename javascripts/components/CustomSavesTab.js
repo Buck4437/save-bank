@@ -40,6 +40,9 @@ Vue.component("custom-saves-tab", {
         set(i, saveFile) {
             saveFile.name = this.validateName(saveFile.name, i);
             this.customSaves.splice(i, 1, saveFile);
+        },
+        zipSaves(saves) {
+            zipSaves(saves);
         }
     },
     template: `
@@ -62,7 +65,8 @@ Vue.component("custom-saves-tab", {
                           :class="i % 2 == 1 ? 'custom-background' : ''"
                           :saveFile="saveFile"
                           @delete="deleteFile(i)"
-                          @edit="set(i, $event)"/>
+                          @edit="set(i, $event)"
+                          :key="i"/>
         <input-modal v-if="showModal.add"
                      header="Enter save info:"
                      :value="{name: validateName()}"
