@@ -1,11 +1,13 @@
 if (!localStorage.getItem("saveBankData")) {
     let newData = {
-        theme: 0,
-        customSaves: []
+        customSaves: [],
+        settings: {
+            theme: 0
+        }
     }
 
     if (localStorage.getItem("saveBankTheme")) {
-        newData.theme = JSON.parse(localStorage.getItem("saveBankTheme"));
+        newData.settings.theme = JSON.parse(localStorage.getItem("saveBankTheme"));
     }
     if (localStorage.getItem("saveBankCustomSaves")) {
         newData.customSaves = JSON.parse(localStorage.getItem("saveBankCustomSaves")).saves;

@@ -53,7 +53,7 @@ function zipSaves(saves) {
 var themes = ["Dark", "Light"];
 
 function getTheme() {
-    let theme = Number(JSON.parse(localStorage.getItem("saveBankData")).theme);
+    let theme = Number(JSON.parse(localStorage.getItem("saveBankData")).settings.theme);
     if (isNaN(theme)) {
         theme = 0;
     }
@@ -75,11 +75,15 @@ function setTheme(index) {
 
 // Misc
 
-function isNumber(val) {
-    return typeof val === 'number' && isFinite(val)
+function isEmpty(obj) {
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            return false;
+        }
+    }
+    return true;
 }
 
-function getCssVar(name) {
-    return getComputedStyle(document.querySelector("body"))
-            .getPropertyValue('--background');
+function isNumber(val) {
+    return typeof val === 'number' && isFinite(val)
 }

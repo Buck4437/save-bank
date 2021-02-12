@@ -4,14 +4,14 @@ var app = new Vue({
     el: "#app",
     data: {
         saves,
-        themes,
         userData: {
-            theme: 0,
-            customSaves: []
+            customSaves: [],
+            settings: {
+                theme: 0
+            }
         },
         currentTab: "",
-        sortMode: 0,
-        version: "Beta 5 Indev 5"
+        version: "Beta 5 Indev 6"
     },
     computed: {
         tabs() {
@@ -26,7 +26,7 @@ var app = new Vue({
                     return cat;
                 }
             }
-            return null;
+            return undefined;
         }
     },
     methods: {
@@ -37,13 +37,6 @@ var app = new Vue({
             } else {
                 body.classList.remove("is-active");
             }
-        },
-        switchTheme() {
-            this.userData.theme ++;
-            if (this.userData.theme >= themes.length) {
-                this.userData.theme = 0;
-            }
-            setTheme(this.userData.theme);
         },
         switchTab(i) {
             this.currentTab = this.tabs[i];

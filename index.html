@@ -28,7 +28,7 @@
                     <ul class="nav-ul">
                         <li v-for="(tab, i) in tabs" :key="i">
                             <button v-if="i < saves.length"
-                                    :class="[{'is-active': currentTab === tab}, saves[i].era]"
+                                    :class="[{'is-active': currentTab === tab}, saves[i].color]"
                                     @click="switchTab(i)">
                                 {{tab}} ({{(saves[i].saves || []).length}})
                             </button>
@@ -47,17 +47,14 @@
                 <div class="mask" @click="menu(false)"></div>
 
                 <div class="tab-con">
-                    <saves-tab v-if="selectedCategory"
-                               :selected-category="selectedCategory"
-                               :sort-mode="sortMode"
-                               @set-sort="sortMode = $event"></saves-tab>
+                    <saves-tab v-show="selectedCategory"
+                               :selected-category="selectedCategory"></saves-tab>
 
-                    <custom-saves-tab v-if="currentTab === 'Custom Saves'"
+                    <custom-saves-tab v-show="currentTab === 'Custom Saves'"
                                       :custom-saves="userData.customSaves"></custom-saves-tab>
 
-                    <settings-tab v-if="currentTab === 'Settings'"
-                                  :theme="themes[userData.theme]"
-                                  @switch-theme="switchTheme"></settings-tab>
+                    <settings-tab v-show="currentTab === 'Settings'"
+                                  :settings="userData.settings"></settings-tab>
                 </div>
             </main>
          </div>
@@ -98,7 +95,10 @@
 </html>
 
 <!-- TODO: Add more saves (And maybe complete pre-infinity saves)-->
-<!-- TODO: Save Fixer -->
+
+<!-- TODO: Add css transition to modals -->
+
+<!-- TODO: Data Fixer -->
 
 <!-- TODO: Database -->
 <!-- TODO: In contribution / github desc, add detailed description about contributing etc-->

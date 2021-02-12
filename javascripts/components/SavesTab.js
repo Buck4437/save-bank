@@ -3,12 +3,17 @@
 Vue.component("saves-tab", {
     data() {
         return {
-            sortTypes: ["Early to late", "Late to early"]
+            sortTypes: ["Early to late", "Late to early"],
+            sortMode: 0
         }
     },
     props: {
-        selectedCategory: Object,
-        sortMode: Number
+        selectedCategory: {
+            type: Object,
+            default() {
+                return {}
+            }
+        }
     },
     computed: {
         hasSaves() {
@@ -24,11 +29,10 @@ Vue.component("saves-tab", {
     },
     methods: {
         toggleSort() {
-            let newId = this.sortMode + 1;
-            if (newId >= this.sortTypes.length) {
-                newId = 0;
+            this.sortMode ++;
+            if (this.sortMode >= this.sortTypes.length) {
+                this.sortMode = 0;
             }
-            this.$emit("set-sort", newId);
         }
     },
     template: `
@@ -51,7 +55,7 @@ Vue.component("saves-tab", {
                    v-for="(saveFile, i) in saves"
                    :save-file="saveFile"
                    class="save-file"
-                   :class="i % 2 == 1 ? selectedCategory.era + '-background' : ''"
+                   :class="i % 2 == 1 ? selectedCategory.color + '-background' : ''"
                    :key="i">
         </save-file>
     </div>

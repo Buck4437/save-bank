@@ -3,24 +3,32 @@
 Vue.component("settings-tab", {
     data() {
         return {
+            themes,
             showWipeDataModal: false
         }
     },
     methods: {
+        switchTheme() {
+            this.settings.theme ++;
+            if (this.settings.theme >= themes.length) {
+                this.settings.theme = 0;
+            }
+            setTheme(this.settings.theme);
+        },
         reset() {
             localStorage.removeItem("saveBankData");
             location.reload();
         }
     },
     props: {
-        theme: String
+        settings: Object
     },
     template: `
     <div class="tab settings-tab">
         <tab-header title="Settings"/>
 
-        <button @click="$emit('switch-theme')">
-            Theme: {{theme}}
+        <button @click="switchTheme">
+            Theme: {{themes[settings.theme]}}
         </button>
 
         <button class="warning" @click="showWipeDataModal = true">
