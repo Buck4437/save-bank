@@ -3,7 +3,8 @@ if (!localStorage.getItem("saveBankData")) {
         customSaves: [],
         settings: {
             theme: 0
-        }
+        },
+        saveVersion: 1
     }
 
     if (localStorage.getItem("saveBankTheme")) {

@@ -8,7 +8,8 @@ var app = new Vue({
             customSaves: [],
             settings: {
                 theme: 0
-            }
+            },
+            saveVersion: 1
         },
         currentTab: "",
         version: "Beta 5 Indev 6"
@@ -42,6 +43,26 @@ var app = new Vue({
             this.currentTab = this.tabs[i];
             this.menu(false); //close the menu
             scroll(0,0); //scroll to top
+        },
+        saveFixer(obj, def) {
+            let data = {}
+            if (Array.isArray(def)) {
+                if (def.length === 0) {
+                    return Array.isArray(obj) ? obj : def;
+                } else {
+                    data = []
+                }
+            }
+            for (let key in def) {
+                if (obj[key] === undefined || typeof obj[key] !== typeof def[key]) {
+                    data[key] = def[key]
+                } else if (typeof obj[key] === "object" && typeof def[key] === "object") {
+                    data[key] = this.saveFixer(obj[key], def[key])
+                } else {
+                    data[key] = obj[key]
+                }
+            }
+            return data;
         }
     },
     watch: {
@@ -53,11 +74,9 @@ var app = new Vue({
         }
     },
     mounted() {
-        this.currentTab = this.tabs[0];
-        this.userData = JSON.parse(localStorage.getItem("saveBankData"));
-        if (!Array.isArray(this.userData.customSaves)) {
-            this.userData.customSaves = []
-        }
+        let userData = JSON.parse(localStorage.getItem("saveBankData"));
+        this.userData = this.saveFixer(userData, this.userData);
+        this.switchTab(0);
         loadTheme();
         setTimeout(() => {
             var body = document.querySelector("body");
