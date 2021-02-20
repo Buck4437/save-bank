@@ -3,59 +3,42 @@
     <head>
         <meta charset="utf-8">
         <title>AD Save Bank</title>
+        <meta name="title" content="AD Save Bank">
+        <meta name="description" content="Save files for Antimatter Dimensions">
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/colors.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/loading.css">
+        <link rel="stylesheet" href="stylesheets/core.css">
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/colors.css">
+        <link rel="stylesheet" href="stylesheets/loading.css">
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="loading">
-            Loading...
-            <br>
+            Loading...<br>
             This shouldn't take longer than a few seconds...
         </div>
         <div id="app">
-            <header>
-                <menu-button @toggle-menu="menu()"></menu-button>
-                <span class="title">AD Save Bank</span>
-                <span class="about">
-                    <span class="version">{{version}}</span>
-                    <span class="link">
-                        | <a target="_blank" href="changelog.html">Changelog</a> |
-                        <a target="_blank" href="info.html">Info</a>
-                    </span>
-                </span>
-            </header>
+            <top-bar :version="version" @menu="menu(true)"></top-bar>
+
             <main class="main">
-                <div class="cat-nav">
+                <div class="side-nav">
                     <div class="mini-header">
-                        <menu-button @toggle-menu="menu()"></menu-button>
+                        <menu-button @toggle-menu="menu(false)"></menu-button>
                         <span class="title">Menu</span>
                     </div>
+
                     <ul class="nav-ul">
-                        <template v-for="(saveCategory, i) in saves">
-                            <li class="nav-btn-con">
-                                <button class="cat-btn"
-                                    :class="[{'is-active': currentCategoryIndex === i}, saveCategory.era]"
-                                    @click="switchCategory(i)">
-                                    {{saveCategory.name}} ({{(saveCategory.saves || []).length}})
-                                </button>{{' '}}
-                            </li>
-                        </template>
-                        <li class="nav-btn-con">
-                            <button class="cat-btn"
-                                    :class="{'is-active': currentTab === C.CUSTOM_TAB}"
-                                    @click="openTab(C.CUSTOM_TAB)">
-                            Custom Saves
+                        <li v-for="(tab, i) in tabs" :key="i">
+                            <button v-if="i < saves.length"
+                                    :class="[{'is-active': currentTab === tab}, saves[i].color]"
+                                    @click="switchTab(i)">
+                                {{tab}} ({{(saves[i].saves || []).length}})
                             </button>
-                        </li>
-                        <li class="nav-btn-con">
-                            <button class="cat-btn"
-                                    :class="{'is-active': currentTab === C.SETTINGS_TAB}"
-                                    @click="openTab(C.SETTINGS_TAB)">
-                            Settings
+                            <button v-else
+                                    :class="{'is-active': currentTab === tab}"
+                                    @click="switchTab(i)">
+                                {{tab}}
                             </button>
                         </li>
                         <li class="nav-version">{{version}}</li>
@@ -63,59 +46,48 @@
                         <li class="nav-link"><a target="_blank" href="info.html">Info</a></li>
                     </ul>
                 </div>
-                <div class="mask" @click="menu()"></div>
+
+                <div class="mask" @click="menu(false)"></div>
+
                 <div class="tab-con">
-                    <div class="tab file-list" v-if="currentTab === C.FILES_TAB">
-                        <div class="cat-header">
-                            <div class="cat-info">
-                                <span class="cat-title">{{currentCategory.name}}</span>
-                                <span class="cat-desc"><i>{{currentCategory.desc || ""}}</i></span>
-                            </div>
-                            <button class="sort-by-btn" @click="toggleSort()">
-                                Ordering: {{sortTypes[sortMode]}}
-                            </button>
-                        </div>
-                        <div class="file-con" v-for="(saveFile, i) in currentSaveFiles"
-                            :class="i % 2 == 1 ? currentCategory.era + '-background' : ''">
-                            <div class="file-text-con">
-                                <div class="file-name">{{saveFile.name}}</div>
-                                <span class="pre-formatted file-desc"><i>{{saveFile.desc || "No description provided."}}</i></span>
-                            </div>
-                            <div class="file-btn-con">
-                                <tooltip-button class="file-btn-outer" @click="copyByPath(saveFile)"
-                                                text="Copy To Clipboard" tooltip-text="Copied!"
-                                                :button-class="['file-btn-inner', 'copy-btn']"></tooltip-button>
-                                <button class="file-btn export-btn" @click="downloadFile(saveFile)">Export as .txt</button>
-                            </div>
-                        </div>
-                        <div class="file-con" v-if="currentSaveFiles.length == 0">
-                            <div class="file-text-con">
-                                <span><i>No save file available.</i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab file-list" v-if="currentTab === C.CUSTOM_TAB">
-                        <custom-saves @copy-file="copyByPath" @download-file="downloadFile"></custom-saves>
-                    </div>
-                    <div class="tab settings-con" v-if="currentTab === C.SETTINGS_TAB">
-                        <div class="cat-info">
-                            <span class="cat-title">Settings</span>
-                        </div>
-                        <button class="settings-btn" @click="switchTheme()">Theme: {{themes[currentTheme]}}</button>
-                    </div>
+                    <saves-tab v-show="selectedCategory"
+                               :selected-category="selectedCategory"></saves-tab>
+
+                    <custom-saves-tab v-show="currentTab === 'Custom Saves'"
+                                      :custom-saves="userData.customSaves"></custom-saves-tab>
+
+                    <settings-tab v-show="currentTab === 'Settings'"
+                                  :settings="userData.settings"></settings-tab>
                 </div>
             </main>
          </div>
+
+         <script src="javascripts/libraries/vue.min.js"></script>
+         <script src="javascripts/libraries/jszip.min.js"></script>
+         <script src="javascripts/libraries/FileSaver.min.js"></script>
+
+         <script src="javascripts/components/BaseMenuButton.js"></script>
+         <script src="javascripts/components/TooltipButton.js"></script>
+
+         <script src="javascripts/components/TabHeader.js"></script>
+
+         <script src="javascripts/components/BaseModal.js"></script>
+         <script src="javascripts/components/ConfirmationModal.js"></script>
+
+         <script src="javascripts/components/SavesTab.js"></script>
+         <script src="javascripts/components/SaveFile.js"></script>
+
+         <script src="javascripts/components/TopBar.js"></script>
+
+         <script src="javascripts/components/CustomSavesTab.js"></script>
+         <script src="javascripts/components/CustomSavesTabInputModal.js"></script>
+         <script src="javascripts/components/CustomSavesTabSaveFile.js"></script>
+
+         <script src="javascripts/components/SettingsTab.js"></script>
+
+         <script src="javascripts/update.js"></script>
+         <script src="javascripts/database.js"></script>
+         <script src="javascripts/util.js"></script>
+         <script src="javascripts/index.js"></script>
     </body>
-    <script src="javascripts/libraries/vue.min.js"></script>
-
-    <script src="javascripts/components/menu-button.js"></script>
-    <script src="javascripts/components/tooltip-button.js"></script>
-    <script src="javascripts/components/custom-saves.js"></script>
-    <script src="javascripts/components/input-model.js"></script>
-    <script src="javascripts/components/confirm-model.js"></script>
-
-    <script src="javascripts/database.js"></script>
-    <script src="javascripts/util.js"></script>
-    <script src="javascripts/index.js"></script>
 </html>

@@ -1,40 +1,40 @@
 :root, .dark-theme{
-    --color: #D9D9D9;
+    --color: #d9d9d9;
     --primary: #323232;
     --secondary: #222222;
     --background: #121212;
-    --warning: #CF6679;
-    --hover: #D9D9D926;
-    --tooltip: #D9D9D9;
-    --model: #00000080;
+    --warning: #cf6679;
+    --hover: #d9d9d926;
+    --tooltip: #d9d9d9;
+    --modal: #00000080;
 
     --tooltip-background: #323232;
-    --color-antimatter: #2196F3;
-    --color-antimatter-background: #DF505050;
-    --color-infinity: #B67F33;
-    --color-infinity-background: #B67F3350;
-    --color-eternity: #B341E0;
-    --color-eternity-background: #B341E050;
-    --color-dilation: #51CC0A;
-    --color-dilation-background: #51CC0A50;
-    --color-reality: #0BA00E;
-    --color-reality-background: #0BA00E50;
-    --color-custom-background: #D9D9D950;
+    --color-antimatter: #2196f3;
+    --color-antimatter-background: #df505050;
+    --color-infinity: #b67f33;
+    --color-infinity-background: #b67f3350;
+    --color-eternity: #b341e0;
+    --color-eternity-background: #b341e050;
+    --color-dilation: #51cc0a;
+    --color-dilation-background: #51cc0a50;
+    --color-reality: #0ba00e;
+    --color-reality-background: #0ba00e50;
+    --color-custom-background: #d9d9d950;
 }
 
 .light-theme{
-    --color: #4F5957;
-    --primary: #FFFFFF;
-    --secondary: #FAFAFA;
-    --background: #F0F0F0;
-    --warning: #B00020;
-    --hover: #4F595726;
-    --tooltip: #FFFFFF;
+    --color: #4f5957;
+    --primary: #ffffff;
+    --secondary: #fafafa;
+    --background: #f0f0f0;
+    --warning: #b00020;
+    --hover: #4f595726;
+    --tooltip: #ffffff;
 
-    --color-antimatter-background: #2196F350;
-    --color-infinity-background: #FF980050;
-    --color-eternity-background: #673AB750;
-    --color-dilation-background: #33B70050;
-    --color-reality-background: #0A710C50; /*IDK the actual value, just prediction*/
-    --color-custom-background: #4F595750;
+    --color-antimatter-background: #2196f350;
+    --color-infinity-background: #ff980050;
+    --color-eternity-background: #673ab750;
+    --color-dilation-background: #33b70050;
+    --color-reality-background: #0a710c50; /*IdK the actual value, just prediction*/
+    --color-custom-background: #4f595750;
 }

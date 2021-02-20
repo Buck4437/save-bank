@@ -1,95 +1,83 @@
 "use strict";
 
-const C = {
-    FILES_TAB: 0,
-    CUSTOM_TAB: 1,
-    SETTINGS_TAB: 2
-}
-
 var app = new Vue({
     el: "#app",
     data: {
         saves,
-        themes,
-        C,
-        currentCategoryIndex: 0,
-        currentTab: C.FILES_TAB,
-        currentTheme: 0,
-        sortMode: 0,
-        sortTypes: ["Early to late", "Late to early"],
-        version: "Beta 4"
+        userData: {
+            customSaves: [],
+            settings: {
+                theme: 0
+            },
+            saveVersion: 1
+        },
+        currentTab: "",
+        version: "Beta 5"
     },
     computed: {
-        currentCategory() {
-            let i = this.currentCategoryIndex;
-            let saves = this.saves;
-            if (i > -1 && i < saves.length) {
-                return saves[i]
-            }
-            return null;
+        tabs() {
+            let tabs = this.saves.map(cat => cat.name);
+            tabs.push("Custom Saves");
+            tabs.push("Settings");
+            return tabs;
         },
-        currentSaveFiles() {
-            let cat = this.currentCategory;
-            if (cat !== null) {
-                if (cat.saves !== undefined) {
-                    let saves = cat.saves
-                    switch (this.sortMode) {
-                        case 1: return [...saves].reverse();
-                        default: return saves; //including case 0
-                    }
+        selectedCategory() {
+            for (let cat of saves) {
+                if (this.currentTab === cat.name) {
+                    return cat;
                 }
             }
-            return [];
+            return undefined;
         }
     },
     methods: {
-        toggleSort() {
-            this.sortMode++;
-            if (this.sortMode >= this.sortTypes.length) {
-                this.sortMode = 0;
-            }
-        },
-        menu(toggle) {
+        menu(isOpened = false) {
             var body = document.querySelector("body");
-            if (toggle === undefined) {
-                body.classList.toggle("is-active");
+            if (isOpened){
+                body.classList.add("is-active");
             } else {
                 body.classList.remove("is-active");
-                if (toggle) {
-                    body.classList.add("is-active");
-                }
             }
         },
-        switchTheme() {
-            this.currentTheme++;
-            if (this.currentTheme >= themes.length) {
-                this.currentTheme = 0;
-            }
-            setTheme(this.currentTheme);
-        },
-        openTab(tab) {
-            if (tab !== this.C.FILES_TAB) {
-                this.currentCategoryIndex = -1;
-            }
-            this.currentTab = tab;
+        switchTab(i) {
+            this.currentTab = this.tabs[i];
             this.menu(false); //close the menu
             scroll(0,0); //scroll to top
         },
-        switchCategory(index) {
-            this.openTab(this.C.FILES_TAB);
-            this.currentCategoryIndex = index;
-        },
-        copyByPath(saveFile) {
-            copyText(saveFile.data);
-        },
-        downloadFile(saveFile) {
-            let filename = saveFile.name + ".txt";
-            let text = saveFile.data;
-            download(filename, text);
+        saveFixer(obj, def) {
+            let data = {}
+            if (Array.isArray(def)) {
+                if (def.length === 0) {
+                    return Array.isArray(obj) ? obj : def;
+                } else {
+                    data = []
+                }
+            }
+            for (let key in def) {
+                if (obj[key] === undefined || typeof obj[key] !== typeof def[key]) {
+                    data[key] = def[key]
+                } else if (typeof obj[key] === "object" && typeof def[key] === "object") {
+                    data[key] = this.saveFixer(obj[key], def[key])
+                } else {
+                    data[key] = obj[key]
+                }
+            }
+            return data;
+        }
+    },
+    watch: {
+        userData: {
+            deep: true,
+            handler() {
+                localStorage.setItem("saveBankData", JSON.stringify(this.userData));
+            }
         }
     },
     mounted() {
-        this.currentTheme = loadTheme();
+        let userData = JSON.parse(localStorage.getItem("saveBankData"));
+        this.userData = this.saveFixer(userData, this.userData);
+        this.switchTab(0);
+        loadTheme();
         setTimeout(() => {
             var body = document.querySelector("body");
             body.classList.add("ready");

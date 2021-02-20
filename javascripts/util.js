@@ -4,6 +4,7 @@
 
 function copyText(text){
     //source: https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
+
     const el = document.createElement('textarea');
     el.value = text;
     el.setAttribute('readonly', '');
@@ -23,6 +24,7 @@ function copyText(text){
 
 function download(filename, text) {
     //source: https://www.bitdegree.org/learn/javascript-download
+
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
@@ -35,24 +37,32 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
+function zipSaves(saves) {
+    let zip = new JSZip();
+    for (let save of saves) {
+        zip.file(`${save.name}.txt`, save.data);
+    }
+    zip.generateAsync({type:"blob"})
+    .then(function (blob) {
+        saveAs(blob, "AD Save Bank - Custom Saves.zip");
+    });
+}
 
 // Themes
 
 var themes = ["Dark", "Light"];
 
 function getTheme() {
-    let theme = Number(localStorage.getItem("saveBankTheme"));
+    let theme = Number(JSON.parse(localStorage.getItem("saveBankData")).settings.theme);
     if (isNaN(theme)) {
-        theme =  0;
+        theme = 0;
     }
     return theme;
 }
 
 function loadTheme() {
     let theme = getTheme();
-    if (theme !== 0) {
-        setTheme(theme);
-    }
+    setTheme(theme);
     return theme;
 }
 
@@ -61,10 +71,18 @@ function setTheme(index) {
         document.body.classList.remove(theme.toLowerCase() + "-theme");
     }
     document.body.classList.add(themes[index].toLowerCase() + "-theme");
-    localStorage.setItem("saveBankTheme", index)
 }
 
 // Misc
+
+function isEmpty(obj) {
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            return false;
+        }
+    }
+    return true;
+}
 
 function isNumber(val) {
     return typeof val === 'number' && isFinite(val)

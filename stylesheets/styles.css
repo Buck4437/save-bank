@@ -17,17 +17,24 @@ body.is-active {
     overflow: hidden;
 }
 
-button{
+button {
     background-color: transparent;
     border: 2px solid var(--color);
     cursor: pointer;
     outline: none;
 }
 
-button:hover{
+button:hover {
     background-color: var(--hover);
     transition-duration: 0.3s;
 }
+
+button.is-active {
+    background-color: var(--color);
+    color: var(--background);
+}
+
+/* custom elements */
 
 /* tooltip - Important! */
 
@@ -37,8 +44,6 @@ button:hover{
 
 .tooltip-btn {
     position: relative;
-    width: 100%;
-    height: 100%;
 }
 
 .tooltip-text {
@@ -53,9 +58,9 @@ button:hover{
 	display: inline-block;
 	transition: opacity 0.5s, width 0.5s, height 0.5s, color 0.5s, background-color 0.5s, left 0.5s linear 0.5s;
 	user-select: none;
+    pointer-events: none; /* prevent clicking tooltip from triggering button */
 	cursor: default;
 	-webkit-tap-highlight-color: transparent; /* prevent selection on mobile */
-
 	position: absolute;
 	z-index: 10;
 	top: -60px;
@@ -80,9 +85,9 @@ button:hover{
     opacity: 1;
 }
 
-/* model boxes - IMPORTANT! */
+/* modal boxes - IMPORTANT! */
 
-.model-outer {
+.modal-outer {
     position: fixed;
     z-index: 500;
     top: 0;
@@ -90,7 +95,7 @@ button:hover{
     left: 0;
     right: 0;
     margin: auto;
-    background-color: var(--model);
+    background-color: var(--modal);
 
     display: flex;
 
@@ -98,17 +103,23 @@ button:hover{
     justify-content: center;
 }
 
-.model {
+.modal {
     z-index: 501;
 
+    min-width: 40%;
+    max-width: 75%;
     border-radius: 8px;
     padding: 16px;
     background-color: var(--secondary);
 
 	box-shadow: 5px 8px 8px 0px #00000060;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.model-close {
+.modal-close {
     width: 40px;
     height: 40px;
     font-size: 24px;
@@ -116,25 +127,19 @@ button:hover{
     top: 0;
     left: calc(100% - 40px);
     border: none;
-    border-radius: 8px; /* match the model */
+    border-radius: 8px; /* match the modal */
     color: var(--warning);
 }
 
-.input-model {
-    min-width: 40%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.input-model-header {
+.modal-input-header {
     font-size: 20px;
     padding: 8px;
+    display: flex;
+    justify-content: center;
 }
 
-.input-model ul {
+.modal-input-content {
+    font-size: 16px;
     flex-grow: 1;
 
     min-width: 80%;
@@ -144,44 +149,56 @@ button:hover{
     list-style-type: none;
 }
 
-.input-model li {
+.modal-input-content li {
     display: flex;
     align-content: flex-start;
     justify-content: space-between;
     padding: 8px;
 }
 
-.input-model input {
+.modal-input-content input {
+    font-size: inherit;
+    padding: 0 4px;
     margin-left: 16px;
     flex-grow: 1;
-    border: none;
+    border: 2px solid var(--color);
     background-color: var(--background);
 }
 
-.input-submit-btn {
+.modal-input-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-input-footer button {
+    font-size: 16px;
     flex-grow: 0;
     margin: 8px;
     padding: 8px;
 }
 
-.confirm-model {
-    max-width: 50%;
-}
-
-.confirm-model-header {
+.modal-confirm-header {
     font-size: 20px;
     padding: 8px;
 }
 
-.confirm-model-context {
+.modal-confirm-content {
+    font-size: 16px;
     padding: 8px;
     padding-bottom: 16px;
 }
 
-.confirm-model-btn {
+.modal-confirm-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-confirm-btn {
+    font-size: 16px;
     flex-grow: 0;
     margin: 8px;
     padding: 8px 16px;
+    min-width: 80px;
 }
 
 /* actual layout */
@@ -230,7 +247,7 @@ main {
 
 /* naivgations */
 
-.cat-nav {
+.side-nav {
     background: var(--secondary);
     padding: 0px;
     width: 288px;
@@ -254,20 +271,10 @@ main {
     padding-bottom: 120px; /* try to and fix the weird chrome vh bug */
 }
 
-.nav-btn-con {
-    display: flex;
-    align-items: center;
-}
-
-.cat-btn {
+.nav-ul button {
     margin-bottom: 16px;
     min-width: 240px;
     min-height: 48px;
-}
-
-.cat-btn.is-active {
-    background-color: var(--color);
-    color: var(--background);
 }
 
 .nav-version, .nav-link {
@@ -301,7 +308,6 @@ body.is-active .mask {
 .tab-con {
     margin-left: 288px;
     padding: 16px;
-    /* width: calc(100vw - 288px - 32px); */
 
     flex-grow: 1;
     display: flex;
@@ -311,36 +317,43 @@ body.is-active .mask {
 
 /* files */
 
-.cat-header {
+/* header */
+
+.tab-header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-/* info */
-
-.cat-info {
+.tab-header .info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-bottom: 16px;
 }
 
-.cat-title, .cat-desc {
-    min-width: 0; /* flexbox issue s*/
+.tab-header .title, .tab-header .desc {
+    min-width: 0; /* flexbox issues*/
     margin: 8px;
 }
 
-.cat-title {
+.tab-header .title {
     font-size: 24px;
 }
 
-.cat-desc {
+.tab-header .desc {
     font-size: 16px;
+    font-style: italic;
 }
 
-.sort-by-btn, .add-save-btn {
+.tab-header .btn-con {
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-header .btn-con button {
     min-width: 208px;
     min-height: 32px;
     padding: 8px;
@@ -363,23 +376,22 @@ body.is-active .mask {
 }
 
 .file-text-con{
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
+    margin: 16px;
 }
 
 .file-name{
     font-size: 20px;
-    margin: 8px;
+    margin: 8px 8px 16px;
 }
 
 .file-desc{
     line-height: 1.6;
     margin: 8px;
+    font-style: italic;
 }
 
 .file-btn-con{
-    padding: 16px;
+    margin: 16px;
     min-width: 192px;
     display: flex;
     flex-direction: column;
@@ -392,18 +404,13 @@ body.is-active .mask {
     min-height: 48px;
 }
 
-.file-btn-outer {
+.no-saves {
     margin: 8px;
-}
-
-.file-btn-inner {
-    min-width: 160px;
-    min-height: 48px;
 }
 
 /* custom saves css - I hate this part */
 
-.custom-save-con {
+.custom-save-con .file-con {
     flex-direction: column;
 }
 
@@ -415,16 +422,17 @@ body.is-active .mask {
 
 /* settings */
 
-.settings-con{
+.settings-tab{
     display: flex;
     flex-grow: 1;
     flex-direction: column;
 }
 
-.settings-btn{
+.settings-tab>button{
     align-self: flex-start;
-    min-width: 192px;
+    width: 192px;
     min-height: 96px;
+    margin-bottom: 16px;
 }
 
 
@@ -432,6 +440,7 @@ body.is-active .mask {
 .warning {
     border-color: var(--warning);
     color: var(--warning);
+    text-transform: uppercase;
 }
 
 .normal {
@@ -527,6 +536,7 @@ body.is-active .mask {
         border: none;
         width: 100%;
         height: 2px;
+	    transition: color 0.5s, background-color 0.5s, border 0.5s, transform 0.5s, opacity 0.5s;
     }
 
     /* animation */
@@ -558,7 +568,7 @@ body.is-active .mask {
 
     /* navigation */
 
-    .cat-nav {
+    .side-nav {
         z-index: 100; /* to cover the mask */
 
         height: 100vh;
@@ -575,7 +585,7 @@ body.is-active .mask {
         z-index: 200;
     }
 
-    body.is-active .cat-nav {
+    body.is-active .side-nav {
         transform: translateX(0) translateY(-64px);
     }
 
@@ -607,7 +617,7 @@ body.is-active .mask {
         flex-wrap: wrap;
     }
 
-    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
+    .custom-save-con .file-btn {
         flex-grow: 1;
     }
 
@@ -621,7 +631,7 @@ body.is-active .mask {
         justify-content: space-between;
     }
 
-    .file-btn, .file-btn-outer {
+    .file-btn {
         flex-grow: 1;
     }
 
@@ -651,12 +661,12 @@ body.is-active .mask {
         display: block;
     }
 
-    .cat-header {
+    .tab-header {
         flex-direction: column;
         align-items: center;
     }
 
-    .cat-info {
+    .tab-header .info {
         align-items: center;
     }
 
@@ -673,17 +683,11 @@ body.is-active .mask {
         flex-direction: column;
     }
 
-
-
-    .custom-save-con .file-btn, .custom-save-con .file-btn-outer {
-        /* width: 45%; */
-    }
-
-    .model {
+    .modal {
         max-width: 80vw;
     }
 
-    .settings-con{
+    .settings-tab{
         display: flex;
         flex-grow: 0;
         align-self: center;
