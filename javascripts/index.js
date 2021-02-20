@@ -12,7 +12,7 @@ var app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 5 Indev 6"
+        version: "Beta 5"
     },
     computed: {
         tabs() {
