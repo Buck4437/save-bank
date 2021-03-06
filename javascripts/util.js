@@ -54,7 +54,7 @@ var themes = ["Dark", "Light"];
 
 function getTheme() {
     let theme = Number(JSON.parse(localStorage.getItem("saveBankData")).settings.theme);
-    if (isNaN(theme)) {
+    if (isNaN(theme) || theme >= themes.length) {
         theme = 0;
     }
     return theme;
