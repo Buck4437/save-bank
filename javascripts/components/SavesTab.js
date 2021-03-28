@@ -43,13 +43,13 @@ Vue.component("saves-tab", {
             </template>
 
             <template #buttons>
-                <button @click="toggleSort">
+                <button v-if="selectedCategory.sort !== false && hasSaves" @click="toggleSort">
                     Ordering: {{sortTypes[sortMode]}}
                 </button>
             </template>
         </tab-header>
 
-        <div v-if="!hasSaves" class="warning no-saves">No save file available.</div>
+        <div v-if="!hasSaves" class="no-saves">{{selectedCategory.placeholder || "No save file available."}}</div>
 
         <save-file v-else
                    v-for="(saveFile, i) in saves"
