@@ -5,15 +5,15 @@
 function copyText(text){
     //source: https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
 
-    const el = document.createElement('textarea');
+    const el = document.createElement("textarea");
     el.value = text;
-    el.setAttribute('readonly', '');
-    el.style.position = 'absolute';
-    el.style.left = '-9999px';
+    el.setAttribute("readonly", "");
+    el.style.position = "absolute";
+    el.style.left = "-9999px";
     document.body.appendChild(el);
     el.select();
     try{
-        document.execCommand('copy');
+        document.execCommand("copy");
         console.log("Auto-copy successful");
     } catch(e){
         console.log("Auto-copy unsuccessful");
@@ -25,11 +25,11 @@ function copyText(text){
 function download(filename, text) {
     //source: https://www.bitdegree.org/learn/javascript-download
 
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
+    var element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
 
-    element.style.display = 'none';
+    element.style.display = "none";
     document.body.appendChild(element);
 
     element.click();
@@ -43,9 +43,9 @@ function zipSaves(saves) {
         zip.file(`${save.name}.txt`, save.data);
     }
     zip.generateAsync({type:"blob"})
-    .then(function (blob) {
-        saveAs(blob, "AD Save Bank - Custom Saves.zip");
-    });
+        .then(function (blob) {
+            saveAs(blob, "AD Save Bank - Custom Saves.zip");
+        });
 }
 
 // Themes
@@ -85,5 +85,5 @@ function isEmpty(obj) {
 }
 
 function isNumber(val) {
-    return typeof val === 'number' && isFinite(val)
+    return typeof val === "number" && isFinite(val);
 }

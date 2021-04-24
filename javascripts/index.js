@@ -1,5 +1,3 @@
-"use strict";
-
 var app = new Vue({
     el: "#app",
     data: {
@@ -45,21 +43,21 @@ var app = new Vue({
             scroll(0,0); //scroll to top
         },
         saveFixer(obj, def) {
-            let data = {}
+            let data = {};
             if (Array.isArray(def)) {
                 if (def.length === 0) {
                     return Array.isArray(obj) ? obj : def;
                 } else {
-                    data = []
+                    data = [];
                 }
             }
             for (let key in def) {
                 if (obj[key] === undefined || typeof obj[key] !== typeof def[key]) {
-                    data[key] = def[key]
+                    data[key] = def[key];
                 } else if (typeof obj[key] === "object" && typeof def[key] === "object") {
-                    data[key] = this.saveFixer(obj[key], def[key])
+                    data[key] = this.saveFixer(obj[key], def[key]);
                 } else {
-                    data[key] = obj[key]
+                    data[key] = obj[key];
                 }
             }
             return data;
@@ -81,6 +79,6 @@ var app = new Vue({
         setTimeout(() => {
             var body = document.querySelector("body");
             body.classList.add("ready");
-        }, 500) // for the theme to apply propertly, and also to prevent sudden transition
+        }, 500); // for the theme to apply propertly, and also to prevent sudden transition
     }
-})
+});
