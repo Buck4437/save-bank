@@ -53,9 +53,6 @@
                     <saves-tab v-show="selectedCategory"
                                :selected-category="selectedCategory"></saves-tab>
 
-                    <custom-saves-tab v-show="currentTab === 'Custom Saves'"
-                                      :custom-saves="userData.customSaves"></custom-saves-tab>
-
                     <settings-tab v-show="currentTab === 'Settings'"
                                   :settings="userData.settings"></settings-tab>
                 </div>
@@ -83,11 +80,6 @@
          <script src="javascripts/components/SaveFile.js"></script>
 
          <script src="javascripts/components/TopBar.js"></script>
-
-         <script src="javascripts/components/CustomSavesTab.js"></script>
-         <script src="javascripts/components/CustomSavesTabInputModal.js"></script>
-         <script src="javascripts/components/CustomSavesTabSaveFile.js"></script>
-
          <script src="javascripts/components/SettingsTab.js"></script>
 
          <script src="javascripts/update.js"></script>

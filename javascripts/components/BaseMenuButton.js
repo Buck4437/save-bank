@@ -1,5 +1,3 @@
-"use strict";
-
 Vue.component("menu-button", {
     template: `
     <button class="menu-btn" @click="$emit('toggle-menu')">
