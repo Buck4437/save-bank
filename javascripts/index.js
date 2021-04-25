@@ -1,5 +1,8 @@
 "use strict";
 
+var searchThing = {
+    text: ""
+};
 var app = new Vue({
     el: "#app",
     data: {
@@ -43,6 +46,7 @@ var app = new Vue({
             this.currentTab = this.tabs[i];
             this.menu(false); //close the menu
             scroll(0,0); //scroll to top
+            searchThing.text = ""
         },
         saveFixer(obj, def) {
             let data = {}
