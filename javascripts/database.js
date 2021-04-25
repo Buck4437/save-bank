@@ -1,5 +1,4 @@
-"use strict";
-
+/* eslint-disable max-len */
 const saves = [
     {
         name: "Pre-Infinity",
@@ -380,7 +379,8 @@ const saves = [
     },
     {
         name: "Time Dilation",
-        color: "dilation", /* suggested by kai reeeee */
+        /* Suggested by kai reeeee */
+        color: "dilation",
         desc: "Time Dilation - 1e4000 EP",
         saves: [
             {
