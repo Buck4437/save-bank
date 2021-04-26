@@ -1,4 +1,4 @@
-Vue.component("menu-button", {
+export default {
     template: `
     <button class="menu-btn" @click="$emit('toggle-menu')">
         <span class="menu-btn-inner top"/>
@@ -6,4 +6,4 @@ Vue.component("menu-button", {
         <span class="menu-btn-inner bot"/>
     </button>
     `
-});
+};

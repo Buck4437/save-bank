@@ -1,4 +1,9 @@
-Vue.component("top-bar", {
+import menuButton from "./BaseMenuButton.js";
+
+export default {
+    components: {
+        menuButton
+    },
     props: {
         version: String
     },
@@ -17,4 +22,4 @@ Vue.component("top-bar", {
         </div>
     </header>
     `
-});
+};

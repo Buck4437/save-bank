@@ -1,4 +1,4 @@
-Vue.component("base-modal", {
+export default {
     props: {
         showCloseButton: {
             default: true,
@@ -15,4 +15,4 @@ Vue.component("base-modal", {
         </div>
     </div>
     `
-})
+};

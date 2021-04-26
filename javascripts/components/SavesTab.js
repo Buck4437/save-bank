@@ -1,4 +1,11 @@
-Vue.component("saves-tab", {
+import tabHeader from "./TabHeader.js";
+import saveFile from "./SaveFile.js";
+
+export default {
+    components: {
+        tabHeader,
+        saveFile
+    },
     data() {
         return {
             sortTypes: ["Early to late", "Late to early"],
@@ -23,7 +30,6 @@ Vue.component("saves-tab", {
             const text = this.searchBarText.trim().toLowerCase();
 
             if (text.trim() !== "") {
-
                 saves = saves.filter(s => s.name.toLowerCase().includes(text));
             }
 
@@ -88,4 +94,4 @@ Vue.component("saves-tab", {
         </div>
     </div>
     `
-});
+};
