@@ -481,3 +481,4 @@ const saves = [
         sort: false
     }
 ];
+export default saves;

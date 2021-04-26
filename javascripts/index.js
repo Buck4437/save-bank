@@ -1,3 +1,5 @@
+import saves from "./database.js";
+
 const app = new Vue({
     el: "#app",
     data: {
