@@ -15,6 +15,7 @@ const app = new Vue({
     data: {
         saves,
         userData: {
+            customSaves: [],
             settings: {
                 theme: 0
             },

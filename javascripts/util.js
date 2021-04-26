@@ -1,5 +1,3 @@
-
-
 // File management
 
 function copyText(text) {
@@ -20,6 +18,21 @@ function copyText(text) {
         prompt("Failed to Auto-copy. Please copy manually:", text);
     }
     document.body.removeChild(el);
+}
+
+function download(filename, text) {
+    // Source: https://www.bitdegree.org/learn/javascript-download
+
+    const element = document.createElement("a");
+    element.setAttribute("href", `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
 }
 
 // Themes
