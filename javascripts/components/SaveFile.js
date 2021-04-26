@@ -12,9 +12,6 @@ Vue.component("save-file", {
             download(filename, text);
         }
     },
-    data() { return {
-        searchThing
-    }},
     template: `
     <div class="file-con">
         <div class="file-text-con">

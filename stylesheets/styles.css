@@ -21,7 +21,6 @@ button {
     background-color: transparent;
     border: 2px solid var(--color);
     cursor: pointer;
-    outline: none;
 }
 
 button:hover {
@@ -360,6 +359,33 @@ body.is-active .mask {
     margin-bottom: 16px;
 }
 
+.search-bar {
+    display: flex;
+    margin-bottom: 16px;
+    border: 2px solid var(--color);
+}
+
+.search-bar-icon {
+    width: 24px;
+    height: 24px;
+    margin: 4px;
+}
+
+.search-bar-seperator {
+    width: 2px;
+    background-color: var(--color);
+}
+
+.search-bar-input {
+    width: 100%;
+    height: 30px;
+    padding: 0 8px;
+    background-color: var(--background);
+    color: var(--color);
+    border: none;
+}
+
+
 /* saves */
 
 .file-list {
@@ -406,18 +432,6 @@ body.is-active .mask {
 
 .no-saves {
     margin: 8px;
-}
-
-/* custom saves css - I hate this part */
-
-.custom-save-con .file-con {
-    flex-direction: column;
-}
-
-.custom-save-con .file-btn-con {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 }
 
 /* settings */
@@ -693,25 +707,4 @@ body.is-active .mask {
         align-self: center;
         flex-direction: column;
     }
-}
-
-
-.search {
-    background-color: var(--background);
-    color: var(--color);
-    outline: none;
-    border: 2px solid var(--color);
-    height: 40px;
-    display: flex;
-    font-size: 20px;
-    align-items: center;
-}
-input {
-    margin: 0;
-    background-color: var(--background);
-    color: var(--color);
-    outline: none;
-    border: none;
-    width: 100%;
-    height: 30px;
 }
