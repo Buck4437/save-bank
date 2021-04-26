@@ -44,4 +44,4 @@ Vue.component("settings-tab", {
         </confirmation-modal>
     </div>
     `
-})
+});

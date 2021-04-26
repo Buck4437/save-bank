@@ -21,4 +21,4 @@ Vue.component("confirmation-modal", {
         </template>
     </base-modal>
     `
-})
+});

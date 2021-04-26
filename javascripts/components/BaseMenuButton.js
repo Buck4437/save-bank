@@ -6,4 +6,4 @@ Vue.component("menu-button", {
         <span class="menu-btn-inner bot"/>
     </button>
     `
-})
+});

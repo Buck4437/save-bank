@@ -1,5 +1,3 @@
-"use strict";
-
 Vue.component("top-bar", {
     props: {
         version: String
@@ -19,4 +17,4 @@ Vue.component("top-bar", {
         </div>
     </header>
     `
-})
+});

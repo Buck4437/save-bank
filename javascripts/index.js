@@ -1,9 +1,8 @@
-var app = new Vue({
+const app = new Vue({
     el: "#app",
     data: {
         saves,
         userData: {
-            customSaves: [],
             settings: {
                 theme: 0
             },
@@ -14,13 +13,12 @@ var app = new Vue({
     },
     computed: {
         tabs() {
-            let tabs = this.saves.map(cat => cat.name);
-            tabs.push("Custom Saves");
+            const tabs = this.saves.map(cat => cat.name);
             tabs.push("Settings");
             return tabs;
         },
         selectedCategory() {
-            for (let cat of saves) {
+            for (const cat of saves) {
                 if (this.currentTab === cat.name) {
                     return cat;
                 }
@@ -30,8 +28,8 @@ var app = new Vue({
     },
     methods: {
         menu(isOpened = false) {
-            var body = document.querySelector("body");
-            if (isOpened){
+            const body = document.querySelector("body");
+            if (isOpened) {
                 body.classList.add("is-active");
             } else {
                 body.classList.remove("is-active");
@@ -39,19 +37,21 @@ var app = new Vue({
         },
         switchTab(i) {
             this.currentTab = this.tabs[i];
-            this.menu(false); //close the menu
-            scroll(0,0); //scroll to top
+            // Close the menu
+            this.menu(false);
+            // Scroll to top
+            scroll(0, 0);
         },
         saveFixer(obj, def) {
             let data = {};
             if (Array.isArray(def)) {
                 if (def.length === 0) {
                     return Array.isArray(obj) ? obj : def;
-                } else {
-                    data = [];
                 }
+                data = [];
+
             }
-            for (let key in def) {
+            for (const key in def) {
                 if (obj[key] === undefined || typeof obj[key] !== typeof def[key]) {
                     data[key] = def[key];
                 } else if (typeof obj[key] === "object" && typeof def[key] === "object") {
@@ -72,13 +72,14 @@ var app = new Vue({
         }
     },
     mounted() {
-        let userData = JSON.parse(localStorage.getItem("saveBankData"));
+        const userData = JSON.parse(localStorage.getItem("saveBankData"));
         this.userData = this.saveFixer(userData, this.userData);
         this.switchTab(0);
         loadTheme();
+        // For the theme to apply properly, and also to prevent sudden transition
         setTimeout(() => {
-            var body = document.querySelector("body");
+            const body = document.querySelector("body");
             body.classList.add("ready");
-        }, 500); // for the theme to apply propertly, and also to prevent sudden transition
+        }, 500);
     }
 });

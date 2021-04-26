@@ -28,4 +28,4 @@ Vue.component("save-file", {
         </div>
     </div>
     `
-})
+});
