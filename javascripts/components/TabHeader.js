@@ -1,5 +1,3 @@
-"use strict";
-
 Vue.component("tab-header", {
     props: {
         title: {
@@ -18,4 +16,4 @@ Vue.component("tab-header", {
         </div>
     </div>
     `
-})
+});

@@ -1,5 +1,3 @@
-"use strict";
-
 Vue.component("confirmation-modal", {
     template: `
     <base-modal :showCloseButton="false">
@@ -23,4 +21,4 @@ Vue.component("confirmation-modal", {
         </template>
     </base-modal>
     `
-})
+});

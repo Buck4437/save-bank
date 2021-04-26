@@ -53,18 +53,17 @@
                     <saves-tab v-show="selectedCategory"
                                :selected-category="selectedCategory"></saves-tab>
 
-                    <custom-saves-tab v-show="currentTab === 'Custom Saves'"
-                                      :custom-saves="userData.customSaves"></custom-saves-tab>
-
                     <settings-tab v-show="currentTab === 'Settings'"
                                   :settings="userData.settings"></settings-tab>
                 </div>
             </main>
          </div>
 
-         <script src="javascripts/libraries/vue.min.js"></script>
-         <script src="javascripts/libraries/jszip.min.js"></script>
-         <script src="javascripts/libraries/FileSaver.min.js"></script>
+         <!-- Development !-->
+         <script src="javascripts/libraries/vue.js"></script>
+
+         <!-- Production !-->
+         <!-- <script src="javascripts/libraries/vue.min.js"></script> -->
 
          <script src="javascripts/components/BaseMenuButton.js"></script>
          <script src="javascripts/components/TooltipButton.js"></script>
@@ -78,16 +77,37 @@
          <script src="javascripts/components/SaveFile.js"></script>
 
          <script src="javascripts/components/TopBar.js"></script>
-
-         <script src="javascripts/components/CustomSavesTab.js"></script>
-         <script src="javascripts/components/CustomSavesTabInputModal.js"></script>
-         <script src="javascripts/components/CustomSavesTabSaveFile.js"></script>
-
          <script src="javascripts/components/SettingsTab.js"></script>
 
          <script src="javascripts/update.js"></script>
-         <script src="javascripts/database.js"></script>
          <script src="javascripts/util.js"></script>
-         <script src="javascripts/index.js"></script>
+         <script type="module" src="javascripts/index.js"></script>
     </body>
 </html>
+
+<!-- TODO: Set offline time to something big (?) -->
+<!-- TODO: Export all user data, add FAQ -->
+<!-- TODO: Add more saves-->
+
+<!-- TODO: addSave() to split the datas -->
+
+<!-- TODO: Embed Image for embed-->
+<!-- TODO: Icon for save bank -->
+<!-- TODO: Improve database -->
+<!-- TODO: In contribution / github desc, add detailed description about contributing etc-->
+
+<!-- IDEA: Toggle between web and mobile -->
+
+<!-- TODO: Reality Might Completely rename dimshift to dimboost, so i'll hv to change the name of saves in pre-infinity to dimboost amount -->
+
+<!-- IDEA: Database -->
+<!-- IDEA: IDK maybe name versions after greek alphabet -->
+<!-- IDEA: Maybe make a tab and make current cats subtab?  still haven't thought of the layout though
+this allows you to create seperate categories for automator script and custom saves-->
+<!-- IDEA: Jetbrain mono is cool -->
+
+<!-- Other planned projects:
+Save editor
+Script that plays AD
+My github page lol
+LMGTFY (query string test)-->

@@ -1,5 +1,3 @@
-"use strict";
-
 Vue.component("menu-button", {
     template: `
     <button class="menu-btn" @click="$emit('toggle-menu')">
@@ -8,4 +6,4 @@ Vue.component("menu-button", {
         <span class="menu-btn-inner bot"/>
     </button>
     `
-})
+});
