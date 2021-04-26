@@ -23,8 +23,8 @@ Vue.component("saves-tab", {
         saves() {
             let saves = this.selectedCategory.saves || [];
             switch (this.sortMode) {
-                case 0: return saves.filter(_=>_.name.includes(searchThing.text));
-                case 1: return [...saves].reverse().filter(_=>_.name.includes(searchThing.text));
+                case 0: return saves.filter(_=>_.name.toLowerCase().includes(searchThing.text.toLowerCase().trim()));
+                case 1: return [...saves].reverse().filter(_=>_.name.toLowerCase().includes(searchThing.text.toLowerCase().trim()));
             }
         }
     },
