@@ -1,4 +1,4 @@
-import saves from "./database.js";
+import saves from "./database/index.js";
 
 const app = new Vue({
     el: "#app",
@@ -11,7 +11,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 5"
+        version: "Beta 5 Indev 1"
     },
     computed: {
         tabs() {
