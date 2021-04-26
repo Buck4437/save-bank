@@ -1,5 +1,8 @@
 import saves from "./database/index.js";
 
+var searchThing = {
+    text: ""
+};
 const app = new Vue({
     el: "#app",
     data: {
@@ -43,6 +46,8 @@ const app = new Vue({
             this.menu(false);
             // Scroll to top
             scroll(0, 0);
+            // Reset search field
+            searchThing.text = "";
         },
         saveFixer(obj, def) {
             let data = {};

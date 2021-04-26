@@ -694,3 +694,24 @@ body.is-active .mask {
         flex-direction: column;
     }
 }
+
+
+.search {
+    background-color: var(--background);
+    color: var(--color);
+    outline: none;
+    border: 2px solid var(--color);
+    height: 40px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+}
+input {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--color);
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 30px;
+}
