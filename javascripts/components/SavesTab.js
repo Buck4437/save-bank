@@ -1,11 +1,4 @@
-import tabHeader from "TabHeader.js";
-import saveFile from "SaveFile.js";
-
-export default {
-    components: {
-        tabHeader,
-        saveFile
-    },
+Vue.component("saves-tab", {
     data() {
         return {
             sortTypes: ["Early to late", "Late to early"],
@@ -94,4 +87,4 @@ export default {
         </div>
     </div>
     `
-};
+});

@@ -1,9 +1,4 @@
-import menuButton from "BaseMenuButton.js";
-
-export default {
-    components: {
-        menuButton
-    },
+Vue.component("top-bar", {
     props: {
         version: String
     },
@@ -22,4 +17,4 @@ export default {
         </div>
     </header>
     `
-};
+});

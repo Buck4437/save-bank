@@ -1,4 +1,4 @@
-export default {
+Vue.component("base-modal", {
     props: {
         showCloseButton: {
             default: true,
@@ -15,4 +15,4 @@ export default {
         </div>
     </div>
     `
-};
+});
