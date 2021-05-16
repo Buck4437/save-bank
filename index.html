@@ -53,41 +53,14 @@
                     <saves-tab v-show="selectedCategory"
                                :selected-category="selectedCategory"></saves-tab>
 
-                    <custom-saves-tab v-show="currentTab === 'Custom Saves'"
-                                      :custom-saves="userData.customSaves"></custom-saves-tab>
-
                     <settings-tab v-show="currentTab === 'Settings'"
                                   :settings="userData.settings"></settings-tab>
                 </div>
             </main>
          </div>
-
          <script src="javascripts/libraries/vue.min.js"></script>
-         <script src="javascripts/libraries/jszip.min.js"></script>
-         <script src="javascripts/libraries/FileSaver.min.js"></script>
-
-         <script src="javascripts/components/BaseMenuButton.js"></script>
-         <script src="javascripts/components/TooltipButton.js"></script>
-
-         <script src="javascripts/components/TabHeader.js"></script>
-
-         <script src="javascripts/components/BaseModal.js"></script>
-         <script src="javascripts/components/ConfirmationModal.js"></script>
-
-         <script src="javascripts/components/SavesTab.js"></script>
-         <script src="javascripts/components/SaveFile.js"></script>
-
-         <script src="javascripts/components/TopBar.js"></script>
-
-         <script src="javascripts/components/CustomSavesTab.js"></script>
-         <script src="javascripts/components/CustomSavesTabInputModal.js"></script>
-         <script src="javascripts/components/CustomSavesTabSaveFile.js"></script>
-
-         <script src="javascripts/components/SettingsTab.js"></script>
-
          <script src="javascripts/update.js"></script>
-         <script src="javascripts/database.js"></script>
          <script src="javascripts/util.js"></script>
-         <script src="javascripts/index.js"></script>
+         <script type="module" src="javascripts/index.js"></script>
     </body>
 </html>

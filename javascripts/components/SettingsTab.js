@@ -1,11 +1,16 @@
-"use strict";
+import tabHeader from "./TabHeader.js";
+import confirmationModal from "./ConfirmationModal.js";
 
-Vue.component("settings-tab", {
+export default {
+    components: {
+        tabHeader,
+        confirmationModal
+    },
     data() {
         return {
             themes,
             showWipeDataModal: false
-        }
+        };
     },
     methods: {
         switchTheme() {
@@ -44,4 +49,4 @@ Vue.component("settings-tab", {
         </confirmation-modal>
     </div>
     `
-})
+};

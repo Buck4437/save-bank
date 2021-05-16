@@ -1,6 +1,4 @@
-"use strict";
-
-Vue.component("tooltip-button", {
+export default {
     props: {
         tooltip: {
             default: "Tooltip text",
@@ -9,12 +7,12 @@ Vue.component("tooltip-button", {
     },
     methods: {
         click() {
-            let classList = this.$el.querySelector(".tooltip-text").classList;
+            const classList = this.$el.querySelector(".tooltip-text").classList;
             classList.add("is-active");
             setTimeout(() => {
-                classList.remove("is-active")
-            }, 1000)
-            this.$emit('click');
+                classList.remove("is-active");
+            }, 1000);
+            this.$emit("click");
         }
     },
     template: `
@@ -23,4 +21,4 @@ Vue.component("tooltip-button", {
         <span class="tooltip-text">{{tooltip}}</span>
     </button>
     `
-})
+};

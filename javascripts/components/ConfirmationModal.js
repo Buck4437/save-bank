@@ -1,6 +1,9 @@
-"use strict";
+import baseModal from "./BaseModal.js";
 
-Vue.component("confirmation-modal", {
+export default {
+    components: {
+        baseModal
+    },
     template: `
     <base-modal :showCloseButton="false">
         <template #header>
@@ -23,4 +26,4 @@ Vue.component("confirmation-modal", {
         </template>
     </base-modal>
     `
-})
+};
