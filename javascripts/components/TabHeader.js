@@ -1,6 +1,4 @@
-"use strict";
-
-Vue.component("tab-header", {
+export default {
     props: {
         title: {
             default: "",
@@ -18,4 +16,4 @@ Vue.component("tab-header", {
         </div>
     </div>
     `
-})
+};

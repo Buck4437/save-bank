@@ -1,6 +1,9 @@
-"use strict";
+import tooltipButton from "./TooltipButton.js";
 
-Vue.component("save-file", {
+export default {
+    components: {
+        tooltipButton
+    },
     props: {
         saveFile: Object
     },
@@ -9,8 +12,8 @@ Vue.component("save-file", {
             copyText(this.saveFile.data);
         },
         exportFile() {
-            let filename = this.saveFile.name + ".txt";
-            let text = this.saveFile.data;
+            const filename = `${this.saveFile.name}.txt`;
+            const text = this.saveFile.data;
             download(filename, text);
         }
     },
@@ -27,8 +30,7 @@ Vue.component("save-file", {
             <button class="file-btn" @click="exportFile">
                 Export as .txt
             </button>
-            <slot name="extra-buttons"/>
         </div>
     </div>
     `
-})
+};
