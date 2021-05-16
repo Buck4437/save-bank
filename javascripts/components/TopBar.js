@@ -1,4 +1,4 @@
-import menuButton from "./BaseMenuButton.js";
+import menuButton from "BaseMenuButton.js";
 
 export default {
     components: {

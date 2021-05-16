@@ -1,8 +1,8 @@
-import saves from "./database/index.js";
-import topBar from "./components/TopBar.js";
-import menuButton from "./components/BaseMenuButton.js";
-import savesTab from "./components/SavesTab.js";
-import settingsTab from "./components/SettingsTab.js";
+import saves from "database/index.js";
+import topBar from "components/TopBar.js";
+import menuButton from "components/BaseMenuButton.js";
+import savesTab from "components/SavesTab.js";
+import settingsTab from "components/SettingsTab.js";
 
 const app = new Vue({
     components: {

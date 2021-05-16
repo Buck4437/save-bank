@@ -1,5 +1,5 @@
-import tabHeader from "./TabHeader.js";
-import confirmationModal from "./ConfirmationModal.js";
+import tabHeader from "TabHeader.js";
+import confirmationModal from "ConfirmationModal.js";
 
 export default {
     components: {

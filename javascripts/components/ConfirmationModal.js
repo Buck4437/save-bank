@@ -1,4 +1,4 @@
-import baseModal from "./BaseModal.js";
+import baseModal from "BaseModal.js";
 
 export default {
     components: {

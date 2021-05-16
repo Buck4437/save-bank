@@ -1,4 +1,4 @@
-import tooltipButton from "./TooltipButton.js";
+import tooltipButton from "TooltipButton.js";
 
 export default {
     components: {

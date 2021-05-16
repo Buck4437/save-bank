@@ -1,5 +1,5 @@
-import tabHeader from "./TabHeader.js";
-import saveFile from "./SaveFile.js";
+import tabHeader from "TabHeader.js";
+import saveFile from "SaveFile.js";
 
 export default {
     components: {
