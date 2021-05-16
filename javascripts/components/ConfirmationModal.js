@@ -1,4 +1,4 @@
-Vue.component("base-modal", {
+Vue.component("confirmation-modal", {
     template: `
     <base-modal :showCloseButton="false">
         <template #header>
