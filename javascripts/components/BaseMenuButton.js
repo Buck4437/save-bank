@@ -1,4 +1,4 @@
-export default {
+Vue.component("menu-button", {
     template: `
     <button class="menu-btn" @click="$emit('toggle-menu')">
         <span class="menu-btn-inner top"/>
@@ -6,4 +6,4 @@ export default {
         <span class="menu-btn-inner bot"/>
     </button>
     `
-};
+});

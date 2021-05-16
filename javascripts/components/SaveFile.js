@@ -1,9 +1,4 @@
-import tooltipButton from "./TooltipButton.js";
-
-export default {
-    components: {
-        tooltipButton
-    },
+Vue.component("save-file", {
     props: {
         saveFile: Object
     },
@@ -33,4 +28,4 @@ export default {
         </div>
     </div>
     `
-};
+});

@@ -1,4 +1,4 @@
-export default {
+Vue.component("tooltip-button", {
     props: {
         tooltip: {
             default: "Tooltip text",
@@ -21,4 +21,4 @@ export default {
         <span class="tooltip-text">{{tooltip}}</span>
     </button>
     `
-};
+});
