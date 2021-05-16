@@ -34,9 +34,9 @@ export default {
             }
 
             switch (this.sortMode) {
-            case 0: return saves;
-            case 1: return [...saves].reverse();
-            default: return [];
+                case 0: return saves;
+                case 1: return [...saves].reverse();
+                default: return [];
             }
         }
     },
