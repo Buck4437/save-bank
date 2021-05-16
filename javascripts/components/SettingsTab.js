@@ -1,11 +1,4 @@
-import tabHeader from "./TabHeader.js";
-import confirmationModal from "./ConfirmationModal.js";
-
-export default {
-    components: {
-        tabHeader,
-        confirmationModal
-    },
+Vue.component("settings-tab", {
     data() {
         return {
             themes,
@@ -49,4 +42,4 @@ export default {
         </confirmation-modal>
     </div>
     `
-};
+});

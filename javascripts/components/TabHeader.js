@@ -1,4 +1,4 @@
-export default {
+Vue.component("tab-header", {
     props: {
         title: {
             default: "",
@@ -16,4 +16,4 @@ export default {
         </div>
     </div>
     `
-};
+});

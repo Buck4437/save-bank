@@ -1,9 +1,4 @@
-import baseModal from "./BaseModal.js";
-
-export default {
-    components: {
-        baseModal
-    },
+Vue.component("base-modal", {
     template: `
     <base-modal :showCloseButton="false">
         <template #header>
@@ -26,4 +21,4 @@ export default {
         </template>
     </base-modal>
     `
-};
+});
