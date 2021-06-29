@@ -88,7 +88,7 @@ button.is-active {
 
 .modal-outer {
     position: fixed;
-    z-index: 500;
+    z-index: 5000;
     top: 0;
     bottom: 0;
     left: 0;
@@ -103,7 +103,7 @@ button.is-active {
 }
 
 .modal {
-    z-index: 501;
+    z-index: 5001;
 
     min-width: 40%;
     max-width: 75%;
@@ -219,8 +219,11 @@ header {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 25;
+    z-index: 100;
     height: 64px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05),
+                0 1px 4px rgba(0,0,0,0.05),
+                0 2px 8px rgba(0,0,0,0.05);
 }
 
 .menu-btn {
@@ -254,7 +257,7 @@ main {
     margin: 0;
 
     position: fixed;
-    z-index: 25;
+    z-index: 50;
     height: calc(100vh - 64px);
     overflow: auto;
 }
@@ -289,7 +292,7 @@ main {
     background-color: #00000000;
 
     position: fixed;
-    z-index: 50;
+    z-index: 1000;
 
     -webkit-tap-highlight-color: transparent; /* prevent selection on mobile */
 }
@@ -583,7 +586,7 @@ body.is-active .mask {
     /* navigation */
 
     .side-nav {
-        z-index: 100; /* to cover the mask */
+        z-index: 1001; /* to cover the mask */
 
         height: 100vh;
         transition: all 0.5s, height 0s;
@@ -592,11 +595,14 @@ body.is-active .mask {
 
     .mini-header {
         background-color: var(--primary);
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05),
+                    0 1px 4px rgba(0,0,0,0.05),
+                    0 2px 8px rgba(0,0,0,0.05);
         display: flex;
 
         position: sticky;
         top: 0;
-        z-index: 200;
+        z-index: 1100;
     }
 
     body.is-active .side-nav {
