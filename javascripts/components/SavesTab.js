@@ -15,14 +15,20 @@ Vue.component("saves-tab", {
         }
     },
     computed: {
+        unavaliable() {
+            return !this.hasSaves && !this.hasText;
+        },
         hasSaves() {
             return this.saves.length !== 0;
+        },
+        hasText() {
+            return this.searchBarText.trim() !== "";
         },
         saves() {
             let saves = this.selectedCategory.saves || [];
             const text = this.searchBarText.trim().toLowerCase();
 
-            if (text.trim() !== "") {
+            if (this.hasText) {
                 saves = saves.filter(s => s.name.toLowerCase().includes(text));
             }
 
@@ -57,12 +63,12 @@ Vue.component("saves-tab", {
             </template>
 
             <template #buttons>
-                <button v-if="selectedCategory.sort !== false && hasSaves" @click="toggleSort">
+                <button v-if="selectedCategory.sort !== false && !unavaliable" @click="toggleSort">
                     Ordering: {{sortTypes[sortMode]}}
                 </button>
             </template>
         </tab-header>
-        <div v-if="!hasSaves && searchBarText.trim() === ''"
+        <div v-if="unavaliable"
              class="no-saves">
             {{selectedCategory.placeholder || "No save file available."}}
         </div>

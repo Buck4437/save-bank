@@ -1,6 +1,7 @@
-/* eslint-disable max-len */
-saves.push({
-    name: "Reality",
-    color: "reality",
-    placeholder: "Coming soon!"
-});
+// /* eslint-disable max-len */
+// saves.push({
+//     name: "Automator Scripts",
+//     color: "reality",
+//     placeholder: "Coming soon!",
+//     sort: false
+// });
