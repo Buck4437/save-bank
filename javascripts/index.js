@@ -10,7 +10,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.0.1"
+        version: "Beta 6.1.0"
     },
     computed: {
         tabs() {
@@ -36,8 +36,8 @@ const app = new Vue({
                 body.classList.remove("is-active");
             }
         },
-        switchTab(i) {
-            this.currentTab = this.tabs[i];
+        switchTab(name) {
+            this.currentTab = name;
             // Close the menu
             this.menu(false);
             // Scroll to top
@@ -62,6 +62,23 @@ const app = new Vue({
                 }
             }
             return data;
+        },
+        setHash(hash = this.tabs[0]) {
+            window.location.hash = hash.replaceAll(" ", "_");
+        },
+        updateTab() {
+            hash = window.location.hash.replaceAll("_", " ");
+            if (hash === "") {
+                this.setHash();
+            } else {
+                tab = hash.substring(1);
+                if (this.tabs.includes(tab)) {
+                    this.switchTab(tab);
+                }
+            }
+        },
+        setListeners() {
+            window.onhashchange = this.updateTab;
         }
     },
     watch: {
@@ -75,7 +92,8 @@ const app = new Vue({
     mounted() {
         const userData = JSON.parse(localStorage.getItem("saveBankData"));
         this.userData = this.saveFixer(userData, this.userData);
-        this.switchTab(0);
+        this.setListeners();
+        this.updateTab();
         loadTheme();
         // For the theme to apply properly, and also to prevent sudden transition
         setTimeout(() => {
