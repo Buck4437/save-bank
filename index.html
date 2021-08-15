@@ -32,12 +32,12 @@
                         <li v-for="(tab, i) in tabs" :key="i">
                             <button v-if="i < saves.length"
                                     :class="[{'is-active': currentTab === tab}, saves[i].color]"
-                                    @click="switchTab(i)">
+                                    @click="setHash(tab)">
                                 {{tab}} ({{(saves[i].saves || []).length}})
                             </button>
                             <button v-else
                                     :class="{'is-active': currentTab === tab}"
-                                    @click="switchTab(i)">
+                                    @click="setHash(tab)">
                                 {{tab}}
                             </button>
                         </li>
@@ -59,7 +59,8 @@
             </main>
          </div>
 
-         <script src="javascripts/libraries/vue.min.js"></script>
+         <!-- Switch when update !-->
+         <script src="javascripts/libraries/vue.js"></script>
 
          <script src="javascripts/components/BaseMenuButton.js"></script>
          <script src="javascripts/components/BaseModal.js"></script>
