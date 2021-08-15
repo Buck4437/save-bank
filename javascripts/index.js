@@ -93,6 +93,7 @@ const app = new Vue({
         const userData = JSON.parse(localStorage.getItem("saveBankData"));
         this.userData = this.saveFixer(userData, this.userData);
         this.setListeners();
+        this.currentTab = this.tabs[0];
         this.updateTab();
         loadTheme();
         // For the theme to apply properly, and also to prevent sudden transition
