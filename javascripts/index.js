@@ -10,7 +10,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.1.0"
+        version: "Beta 6.1.1"
     },
     computed: {
         tabs() {
