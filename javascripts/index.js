@@ -67,7 +67,7 @@ const app = new Vue({
             window.location.hash = hash.replaceAll(" ", "_");
         },
         updateTab() {
-            const hash = window.location.hash.replaceAll("_", " ");
+            hash = window.location.hash.replaceAll("_", " ");
             if (hash === "") {
                 this.setHash();
             } else {
