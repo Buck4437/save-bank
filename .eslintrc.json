@@ -114,7 +114,7 @@
           "temp",
           "tmp"
         ],
-        "indent": ["error", 4],
+        "indent": ["error", 4, {"SwitchCase": 1 }],
         "key-spacing": "error",
         "keyword-spacing": "error",
         "line-comment-position": "error",
