@@ -6,11 +6,12 @@ Vue.component("settings-tab", {
     },
     methods: {
         switchTheme() {
-            this.settings.theme ++;
-            if (this.settings.theme >= themes.length) {
-                this.settings.theme = 0;
+            newTheme = this.settings.theme + 1;
+            if (newTheme >= themes.length) {
+                newTheme = 0;
             }
-            setTheme(this.settings.theme);
+            this.$emit("set-settings", "theme", newTheme);
+            setTheme(newTheme);
         }
     },
     props: {

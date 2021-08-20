@@ -54,7 +54,8 @@
                                :selected-category="selectedCategory"></saves-tab>
 
                     <settings-tab v-show="currentTab === 'Settings'"
-                                  :settings="userData.settings"></settings-tab>
+                                  :settings="userData.settings"
+                                  @set-settings="setSettings"></settings-tab>
                 </div>
             </main>
          </div>

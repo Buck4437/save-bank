@@ -36,6 +36,9 @@ const app = new Vue({
                 body.classList.remove("is-active");
             }
         },
+        setSettings(prop, data) {
+            this.userData.settings[prop] = data;
+        },
         switchTab(name) {
             this.currentTab = name;
             // Close the menu
