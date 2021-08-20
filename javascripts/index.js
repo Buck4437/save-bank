@@ -10,7 +10,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.1.1"
+        version: "Beta 6.1.2"
     },
     computed: {
         tabs() {
@@ -35,6 +35,9 @@ const app = new Vue({
             } else {
                 body.classList.remove("is-active");
             }
+        },
+        setSettings(prop, data) {
+            this.userData.settings[prop] = data;
         },
         switchTab(name) {
             this.currentTab = name;
@@ -95,7 +98,9 @@ const app = new Vue({
         this.setListeners();
         this.currentTab = this.tabs[0];
         this.updateTab();
-        loadTheme();
+
+        Theme.applyTheme(this.userData.settings.theme);
+
         // For the theme to apply properly, and also to prevent sudden transition
         setTimeout(() => {
             const body = document.querySelector("body");

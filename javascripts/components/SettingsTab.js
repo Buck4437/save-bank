@@ -1,16 +1,17 @@
 Vue.component("settings-tab", {
     data() {
         return {
-            themes
+            Theme
         };
     },
     methods: {
         switchTheme() {
-            this.settings.theme ++;
-            if (this.settings.theme >= themes.length) {
-                this.settings.theme = 0;
+            newTheme = this.settings.theme + 1;
+            if (newTheme >= Theme.themes.length) {
+                newTheme = 0;
             }
-            setTheme(this.settings.theme);
+            this.$emit("set-settings", "theme", newTheme);
+            Theme.applyTheme(newTheme);
         }
     },
     props: {
@@ -21,7 +22,7 @@ Vue.component("settings-tab", {
         <tab-header title="Settings"/>
 
         <button @click="switchTheme">
-            Theme: {{themes[settings.theme]}}
+            Theme: {{Theme.getTheme(settings.theme)}}
         </button>
     </div>
     `

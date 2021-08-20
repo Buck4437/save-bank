@@ -54,13 +54,15 @@
                                :selected-category="selectedCategory"></saves-tab>
 
                     <settings-tab v-show="currentTab === 'Settings'"
-                                  :settings="userData.settings"></settings-tab>
+                                  :settings="userData.settings"
+                                  @set-settings="setSettings"></settings-tab>
                 </div>
             </main>
          </div>
 
          <!-- Switch when update !-->
          <script src="javascripts/libraries/vue.min.js"></script>
+         <script src="javascripts/classes/Save.js"></script>
 
          <script src="javascripts/components/BaseMenuButton.js"></script>
          <script src="javascripts/components/BaseModal.js"></script>
@@ -81,9 +83,13 @@
          <script src="javascripts/database/eternity challenge.js"></script>
          <script src="javascripts/database/time dilation.js"></script>
          <script src="javascripts/database/post-e4k ep.js"></script>
+         <!-- <script src="javascripts/database/reality.js"></script>
+         <script src="javascripts/database/automator script.js"></script> -->
+
+         <script src="javascripts/utils/Theme.js"></script>
+         <script src="javascripts/utils/File.js"></script>
 
          <script src="javascripts/update.js"></script>
-         <script src="javascripts/util.js"></script>
          <script src="javascripts/index.js"></script>
     </body>
 </html>
