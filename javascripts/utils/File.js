@@ -34,6 +34,4 @@ class File {
         document.body.removeChild(element);
     }
 
-
-
 }
