@@ -56,18 +56,20 @@
         </footer>
 
     </body>
-    <script src="javascripts/util.js"></script>
+    <script src="javascripts/utils/Theme.js"></script>
     <script type="text/javascript">
-    var currentTheme = loadTheme();
+    getTheme = () => JSON.parse(localStorage.getItem("saveBankData")).settings.theme
+    currentTheme = Theme.applyTheme(getTheme())
     setInterval(() => {
         if (currentTheme != getTheme()) {
-            currentTheme = loadTheme();
+            currentTheme = Theme.applyTheme(getTheme())
         }
     }, 200)
     </script>
     <style type="text/css">
     body {
         padding-left: 16px;
+        padding-bottom: 16px;
     }
     </style>
 </html>
