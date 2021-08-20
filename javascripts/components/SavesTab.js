@@ -18,7 +18,7 @@ Vue.component("saves-tab", {
         }
     },
     computed: {
-        unavaliable() {
+        isEmpty() {
             return !this.hasSaves && !this.hasText;
         },
         hasSaves() {
@@ -66,12 +66,12 @@ Vue.component("saves-tab", {
             </template>
 
             <template #buttons>
-                <button v-if="selectedCategory.sort !== false && !unavaliable" @click="toggleSort">
+                <button v-if="selectedCategory.sort !== false && !isEmpty" @click="toggleSort">
                     Ordering: {{sortTypes[sortMode]}}
                 </button>
             </template>
         </tab-header>
-        <div v-if="unavaliable"
+        <div v-if="isEmpty"
              class="no-saves">
             {{selectedCategory.placeholder || "No save file available."}}
         </div>
