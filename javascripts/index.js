@@ -10,7 +10,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.1.1"
+        version: "Beta 6.1.2"
     },
     computed: {
         tabs() {
@@ -100,7 +100,7 @@ const app = new Vue({
         this.updateTab();
 
         Theme.applyTheme(this.userData.settings.theme);
-        
+
         // For the theme to apply properly, and also to prevent sudden transition
         setTimeout(() => {
             const body = document.querySelector("body");
