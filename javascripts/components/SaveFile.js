@@ -4,12 +4,12 @@ Vue.component("save-file", {
     },
     methods: {
         copyText() {
-            copyText(this.saveFile.data);
+            File.copyText(this.saveFile.data);
         },
         exportFile() {
             const filename = `${this.saveFile.name}.txt`;
             const text = this.saveFile.data;
-            download(filename, text);
+            File.download(filename, text);
         }
     },
     template: `

@@ -98,7 +98,9 @@ const app = new Vue({
         this.setListeners();
         this.currentTab = this.tabs[0];
         this.updateTab();
-        loadTheme();
+
+        Theme.applyTheme(this.userData.settings.theme);
+        
         // For the theme to apply properly, and also to prevent sudden transition
         setTimeout(() => {
             const body = document.querySelector("body");
