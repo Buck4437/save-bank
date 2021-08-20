@@ -97,7 +97,6 @@ button.is-active {
 header {
     background-color: var(--primary);
     display: flex;
-    padding: 0;
     align-items: center;
     padding: 0 16px;
     position: -webkit-sticky;
@@ -135,7 +134,7 @@ main {
 
 .side-nav {
     background: var(--secondary);
-    padding: 0px;
+    padding: 0;
     width: 288px;
     list-style-type: none;
     margin: 0;
