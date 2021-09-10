@@ -8,7 +8,7 @@ class Theme {
 
     static applyTheme(index) {
         let theme = index;
-        
+
         if (isNaN(theme) || theme >= Theme.themes.length) {
             theme = 0;
         }
@@ -17,6 +17,8 @@ class Theme {
             document.body.classList.remove(`${theme.toLowerCase()}-theme`);
         }
         document.body.classList.add(`${Theme.getTheme(index).toLowerCase()}-theme`);
+        
+        return theme;
     }
 
 }
