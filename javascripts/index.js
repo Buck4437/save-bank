@@ -10,7 +10,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.1.3"
+        version: "Beta 6.1.4"
     },
     computed: {
         tabs() {
@@ -70,11 +70,11 @@ const app = new Vue({
             window.location.hash = hash.replaceAll(" ", "_");
         },
         updateTab() {
-            hash = window.location.hash.replaceAll("_", " ");
+            const hash = window.location.hash.replaceAll("_", " ");
             if (hash === "") {
                 this.setHash();
             } else {
-                tab = hash.substring(1);
+                const tab = hash.substring(1);
                 if (this.tabs.includes(tab)) {
                     this.switchTab(tab);
                 }
