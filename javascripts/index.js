@@ -3,14 +3,13 @@ const app = new Vue({
     data: {
         saves,
         userData: {
-            customSaves: [],
             settings: {
                 theme: Theme.defaultTheme
             },
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.1.4a"
+        version: "Beta 6.1.4b"
     },
     computed: {
         tabs() {
@@ -94,6 +93,7 @@ const app = new Vue({
     },
     mounted() {
         const userData = JSON.parse(localStorage.getItem("saveBankData"));
+        console.log(userData)
         this.userData = this.saveFixer(userData, this.userData);
         this.setListeners();
         this.currentTab = this.tabs[0];
