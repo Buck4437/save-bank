@@ -1,6 +1,7 @@
 class Theme {
 
-    static themes = ["Light", "Dark"]
+    static themes = ["Light", "Dark"];
+    static defaultTheme = 1;
 
     static getTheme(index) {
         return Theme.themes[index]
@@ -10,14 +11,14 @@ class Theme {
         let theme = index;
 
         if (isNaN(theme) || theme >= Theme.themes.length) {
-            theme = 0;
+            theme = Theme.defaultTheme;
         }
 
         for (const theme of Theme.themes) {
             document.body.classList.remove(`${theme.toLowerCase()}-theme`);
         }
         document.body.classList.add(`${Theme.getTheme(index).toLowerCase()}-theme`);
-        
+
         return theme;
     }
 
