@@ -5,12 +5,12 @@ const app = new Vue({
         userData: {
             customSaves: [],
             settings: {
-                theme: 0
+                theme: Theme.defaultTheme
             },
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.1.4"
+        version: "Beta 6.1.4a"
     },
     computed: {
         tabs() {
