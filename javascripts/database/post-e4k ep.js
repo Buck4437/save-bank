@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 saves.push({
     name: "Post-e4k EP",
-    color: "reality",
+    color: "dilation",
     desc: "> 1e4000 EP",
     saves: [
         new Save({
