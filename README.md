@@ -15,16 +15,6 @@ This project is still a work in progress. There are a number of ways you can con
 ### Donating save files
 If you wish to donate a save file, you can send me a DM via discord (Buck#4437). I will see if I can find a place for it.
 
-#### Categories in need of save files:
-- [x] Pre-Infinity
-- [x] Infinity
-- [ ] Post-Break
-- [ ] Replicanti
-- [ ] Eternity
-- [ ] Eternity Challenges
-- [ ] Time Dilation
-- [x] Post-e4k EP
-
 ### Coding
 You can help improve the code by forking it and creating a pull request.
 
