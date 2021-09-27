@@ -3,7 +3,7 @@ saves.push({
     name: "Time Dilation",
     /* Suggested by kai reeeee */
     color: "dilation",
-    desc: "Time Dilation - 1e4000 EP",
+    desc: "13000 TT - 1e4000 EP",
     saves: [
         new Save({
             name: "e1436 EP/9e10 DT/2e4 TP",
