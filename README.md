@@ -20,7 +20,6 @@ If you wish to donate a save file, you can send me a DM via discord (Buck#4437).
 - Replicanti
 - Eternity
 - Eternity Challenges
-- Time Dilation
 
 Donations of save files from other categories are also welcomed.
 

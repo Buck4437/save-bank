@@ -231,6 +231,7 @@ body.is-active .mask {
 .tab-header .desc {
     font-size: 16px;
     font-style: italic;
+    white-space: pre;
 }
 
 .tab-header .btn-con {
@@ -582,6 +583,10 @@ body.is-active .mask {
 
     .tab-header .info {
         align-items: center;
+    }
+
+    .tab-header .desc {
+        text-align: center;
     }
 
     .custom-save-info {
