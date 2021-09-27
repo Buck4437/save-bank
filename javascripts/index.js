@@ -23,7 +23,7 @@ const app = new Vue({
                     return cat;
                 }
             }
-            return null;
+            return undefined;
         }
     },
     methods: {

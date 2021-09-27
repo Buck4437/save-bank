@@ -1,7 +1,12 @@
 /* eslint-disable max-len */
 saves.push({
     name: "Automator Scripts",
-    color: "reality",
     placeholder: "Coming soon!",
-    sort: false
+    sort: false,
+    saves: [
+        new Save({
+            name: "Test script",
+            data: "blob"
+        })
+    ]
 });

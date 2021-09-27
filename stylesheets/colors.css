@@ -19,9 +19,8 @@
     --color-dilation-background: #51cc0a50;
     --color-reality: #0ba00e;
     --color-reality-background: #0ba00e50;
-    --color-celestial: #000000; /*placeholder */
+    --color-celestial: #aaaaaa; /*placeholder */
     --color-celestial-background: #00000050;
-    --color-custom-background: #d9d9d950;
 }
 
 .light-theme{
@@ -39,5 +38,6 @@
     --color-dilation-background: #33b70050;
     /* IDK what the actual value is, just a prediction */
     --color-reality-background: #0a710c50;
-    --color-custom-background: #4f595750;
+    --color-celestial: #000000; /*placeholder */
+    --color-celestial-background: #00000050;
 }
