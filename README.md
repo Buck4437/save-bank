@@ -31,15 +31,15 @@ Coders:
 
 Major save donors:
 - Lars (Eternity-era saves)
-- Hira (Infinity-era saves)
 
 Save donors:
-- Autissima
 - AlVolrs
+- Autissima
+- Hira
 - L5racer
-- SpicyCrusader
-- MetroidLover97
 - MegaminX
+- MetroidLover97
+- SpicyCrusader
 
 Special thanks:
 - Earth, for creating the save archive
