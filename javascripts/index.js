@@ -72,13 +72,9 @@ const app = new Vue({
         },
         updateTab() {
             const hash = this.getHash();
-            if (hash === "") {
-                this.setHash(this.tabs[0]);
-            } else {
-                const tab = hash.substring(1);
-                if (this.tabs.includes(tab)) {
-                    this.switchTab(tab);
-                }
+            const tab = hash.substring(1);
+            if (this.tabs.includes(tab)) {
+                this.switchTab(tab);
             }
         },
         setListeners() {
