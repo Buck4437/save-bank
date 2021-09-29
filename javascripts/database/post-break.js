@@ -4,7 +4,8 @@ saves.push({
     color: "infinity",
     desc:
 `Break Infinity - 1e140 IP
-Note: Actual values may differ due to offline IP generation`,
+Note: Actual values may differ due to offline IP generation.
+Passive infinitied stat is unpurchased in most of the saves.`,
     saves: [
         new Save({
             name: "1e7 IP",
