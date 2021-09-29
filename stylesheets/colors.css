@@ -19,8 +19,11 @@
     --color-dilation-background: #51cc0a50;
     --color-reality: #0ba00e;
     --color-reality-background: #0ba00e50;
-    --color-celestial: #aaaaaa; /*placeholder */
-    --color-celestial-background: #00000050;
+    --color-celestial: #5151ec;
+    --color-celestial-background: #5151ec50;
+
+    --color-default: #d9d9d9;
+    --color-default-background: #d9d9d950;
 }
 
 .light-theme{
@@ -36,8 +39,10 @@
     --color-infinity-background: #ff980050;
     --color-eternity-background: #673ab750;
     --color-dilation-background: #33b70050;
-    /* IDK what the actual value is, just a prediction */
+    /* I don't know what the actual value is, this is just a prediction */
     --color-reality-background: #0a710c50;
-    --color-celestial: #000000; /*placeholder */
-    --color-celestial-background: #00000050;
+    --color-celestial-background: #433cd390;
+
+    --color-default: #4f5957;
+    --color-default-background: #4f595750;
 }
