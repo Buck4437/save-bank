@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 saves.push({
-    name: "Reality",
-    color: "reality",
+    name: "Celestial",
+    color: "celestial",
     placeholder: "Coming soon!",
     saves: [
         new Save({

@@ -62,7 +62,7 @@ Vue.component("saves-tab", {
     <div class="tab file-list">
         <tab-header :title="selectedCategory.name">
             <template #description>
-                {{selectedCategory.desc || ""}}
+                <span class="pre-formatted">{{selectedCategory.desc || ""}}</span>
             </template>
 
             <template #buttons>

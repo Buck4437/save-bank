@@ -9,7 +9,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 6.1.4b"
+        version: "Beta 7A"
     },
     computed: {
         tabs() {
@@ -52,7 +52,6 @@ const app = new Vue({
                     return Array.isArray(obj) ? obj : def;
                 }
                 data = [];
-
             }
             for (const key in def) {
                 if (obj[key] === undefined || typeof obj[key] !== typeof def[key]) {
@@ -65,13 +64,16 @@ const app = new Vue({
             }
             return data;
         },
-        setHash(hash = this.tabs[0]) {
+        setHash(hash) {
             window.location.hash = hash.replaceAll(" ", "_");
         },
+        getHash() {
+            return window.location.hash.replaceAll("_", " ");
+        },
         updateTab() {
-            const hash = window.location.hash.replaceAll("_", " ");
+            const hash = this.getHash();
             if (hash === "") {
-                this.setHash();
+                this.setHash(this.tabs[0]);
             } else {
                 const tab = hash.substring(1);
                 if (this.tabs.includes(tab)) {
@@ -92,11 +94,10 @@ const app = new Vue({
         }
     },
     mounted() {
-        const userData = JSON.parse(localStorage.getItem("saveBankData"));
-        console.log(userData)
-        this.userData = this.saveFixer(userData, this.userData);
+        const data = JSON.parse(localStorage.getItem("saveBankData"));
+        this.userData = this.saveFixer(data, this.userData);
+        this.switchTab(this.tabs[0]);
         this.setListeners();
-        this.currentTab = this.tabs[0];
         this.updateTab();
 
         Theme.applyTheme(this.userData.settings.theme);
