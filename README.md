@@ -29,7 +29,7 @@ Coders:
 - Scarlet (Search function)
 
 Major save donors:
-- Lars (Eternity-era saves)
+- Lars (Dilation saves)
 
 Save donors:
 - AlVolrs
