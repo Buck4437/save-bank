@@ -2,7 +2,7 @@
 saves.push({
     name: "Pre-Infinity",
     color: "normal",
-    desc: "under 1e308 antimatter",
+    desc: "Under 1e308 antimatter",
     saves: [
         new Save({
             name: "1st Dimshift",
