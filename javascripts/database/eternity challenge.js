@@ -2,7 +2,7 @@
 saves.push({
     name: "Eternity Challenges",
     color: "eternity",
-    desc: "Eternity Challenges - 13000 TT",
+    desc: "EC1 - 13000 TT",
     saves: [
         new Save({
             name: "1e19 EP",
