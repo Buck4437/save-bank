@@ -15,9 +15,9 @@ This project is still a work in progress. There are a number of ways you can con
 ### Donating save files
 If you wish to donate a save file, you can send me a DM via discord (Buck#4437). I will see if I can find a place for it.
 
-#### Categories in need of save files:
-- Eternity
-- Eternity Challenges
+#### Categories in need of save files
+-   Eternity
+-   Eternity Challenges
 
 Donations of save files from other categories are also welcomed.
 
@@ -26,19 +26,19 @@ You can help improve the code by forking it and creating a pull request.
 
 ## Acknowledgements
 Coders:
-- Scarlet (Search function)
+-   Scarlet (Search function)
 
 Major save donors:
-- Lars (Dilation saves)
+-   Lars (Dilation saves)
 
 Save donors:
-- AlVolrs
-- Autissima
-- Hira
-- L5racer
-- MegaminX
-- MetroidLover97
-- SpicyCrusader
+-   AlVolrs
+-   Autissima
+-   Hira
+-   L5racer
+-   MegaminX
+-   MetroidLover97
+-   SpicyCrusader
 
 Special thanks:
-- Earth, for creating the save archive
+-   Earth, for creating the save archive
