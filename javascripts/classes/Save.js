@@ -1,3 +1,5 @@
+/* exported Save */
+
 class Save {
     constructor(config) {
         this.name = config.name;

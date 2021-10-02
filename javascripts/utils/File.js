@@ -1,3 +1,5 @@
+/* exported File */
+
 class File {
 
     static copyText(text) {
