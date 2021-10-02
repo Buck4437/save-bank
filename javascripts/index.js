@@ -1,4 +1,5 @@
-const app = new Vue({
+// eslint-disable-next-line no-new
+new Vue({
     el: "#app",
     data: {
         saves,
