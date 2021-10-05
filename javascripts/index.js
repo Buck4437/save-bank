@@ -1,4 +1,5 @@
-const app = new Vue({
+// eslint-disable-next-line no-new
+new Vue({
     el: "#app",
     data: {
         saves,
@@ -9,7 +10,7 @@ const app = new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "Beta 7B"
+        version: "v1.0.0"
     },
     computed: {
         tabs() {

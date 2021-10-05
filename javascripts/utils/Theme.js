@@ -1,3 +1,5 @@
+/* exported Theme */
+
 class Theme {
 
     static themes = ["Light", "Dark"];

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 class Save {
     constructor(config) {
         this.name = config.name;
