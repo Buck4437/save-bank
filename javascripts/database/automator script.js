@@ -3,7 +3,7 @@ saves.push({
     name: "Automator Scripts",
     color: "default",
     placeholder: "Coming soon!",
-    sort: false,
+    allowSort: false,
     saves: [
         new Save({
             name: "Test",

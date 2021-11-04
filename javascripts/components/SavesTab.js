@@ -66,7 +66,7 @@ Vue.component("saves-tab", {
             </template>
 
             <template #buttons>
-                <button v-if="selectedCategory.sort !== false && !isEmpty" @click="toggleSort">
+                <button v-if="selectedCategory.allowSort !== false && !isEmpty" @click="toggleSort">
                     Ordering: {{sortTypes[sortMode]}}
                 </button>
             </template>
