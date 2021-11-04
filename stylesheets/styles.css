@@ -529,7 +529,6 @@ body.is-active .mask {
         margin-left: 0;
     }
 
-
     /* files */
 
     .file-list {
@@ -546,10 +545,6 @@ body.is-active .mask {
         flex-wrap: wrap;
     }
 
-    .custom-save-con .file-btn {
-        flex-grow: 1;
-    }
-
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -562,15 +557,6 @@ body.is-active .mask {
 
     .file-btn {
         flex-grow: 1;
-    }
-
-    .custom-save-con .file-btn-con {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .custom-save-con .file-btn {
-        justify-self: stretch;
     }
 
 }
@@ -603,17 +589,8 @@ body.is-active .mask {
         text-align: center;
     }
 
-    .custom-save-info {
-        flex-direction: column;
-    }
-
-    .custom-save-size {
-        margin: 8px 0;
-        font-size: 18px;
-    }
-
-    .custom-save-con .file-btn-con, .custom-save-con .file-btn-row {
-        flex-direction: column;
+    .no-saves {
+        text-align: center;
     }
 
     .modal {

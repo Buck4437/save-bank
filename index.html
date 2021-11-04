@@ -50,8 +50,11 @@
                 <div class="mask" @click="menu(false)"></div>
 
                 <div class="tab-con">
-                    <saves-tab v-show="selectedCategory"
-                               :selected-category="selectedCategory"></saves-tab>
+                    <saves-tab v-for="category in saves"
+                               v-show="currentTab === category.name"
+                               :category="category"
+                               :current-tab="currentTab"
+                               :key="category.name"></saves-tab>
 
                     <settings-tab v-show="currentTab === 'Settings'"
                                   :settings="userData.settings"
@@ -63,6 +66,7 @@
          <!-- Switch when update !-->
          <script src="javascripts/libraries/vue.min.js"></script>
          <script src="javascripts/classes/Save.js"></script>
+         <script src="javascripts/classes/Category.js"></script>
 
          <script src="javascripts/components/BaseMenuButton.js"></script>
          <script src="javascripts/components/SaveFile.js"></script>
@@ -74,16 +78,16 @@
 
          <script src="javascripts/database/index.js"></script>
          <!-- After reality update, the reality version should be used instead !-->
-         <!-- <script src="javascripts/database/pre-infinity.js"></script>
+         <script src="javascripts/database/pre-infinity.js"></script>
          <script src="javascripts/database/infinity.js"></script>
          <script src="javascripts/database/post-break.js"></script>
          <script src="javascripts/database/replicanti.js"></script>
          <script src="javascripts/database/eternity.js"></script>
          <script src="javascripts/database/post-milestone.js"></script>
-         <script src="javascripts/database/eternity challenge.js"></script> -->
+         <script src="javascripts/database/eternity challenge.js"></script>
          <!-- These two categories should be merged after reality update -->
-         <!-- <script src="javascripts/database/time dilation.js"></script>
-         <script src="javascripts/database/post-e4k ep.js"></script> -->
+         <script src="javascripts/database/time dilation.js"></script>
+         <script src="javascripts/database/post-e4k ep.js"></script>
          <!-- These categories are reserved for the reality update -->
          <!-- <script src="javascripts/database/reality.js"></script>
          <script src="javascripts/database/celestial.js"></script>

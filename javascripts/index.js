@@ -17,14 +17,6 @@ new Vue({
             const tabs = this.saves.map(cat => cat.name);
             tabs.push("Settings");
             return tabs;
-        },
-        selectedCategory() {
-            for (const cat of saves) {
-                if (this.currentTab === cat.name) {
-                    return cat;
-                }
-            }
-            return undefined;
         }
     },
     methods: {
