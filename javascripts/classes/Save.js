@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 class Save {
     constructor(config) {
-        this.name = config.name;
+        this.name = config.name || "Unnamed Save";
         this.desc = config.desc || "No description provided.";
-        this.data = config.data;
+        this.data = config.data || "";
     }
 
     copy() {
