@@ -1,17 +1,19 @@
 /* eslint-disable max-len */
-saves.push({
-    name: "Automator Scripts",
-    color: "default",
-    placeholder: "Coming soon!",
-    sort: false,
-    saves: [
-        new Save({
-            name: "Test",
-            data: "Test data"
-        }),
-        new Save({
-            name: "Test 2",
-            data: "Test data 2"
-        })
-    ]
-});
+saves.push(
+    new Category({
+        name: "Automator Scripts",
+        color: "default",
+        placeholder: "Coming soon!",
+        allowSort: false,
+        saves: [
+            new Save({
+                name: "Test",
+                data: "Automator test data"
+            }),
+            new Save({
+                name: "Test 2",
+                data: "Automator test data 2"
+            })
+        ]
+    })
+);

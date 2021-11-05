@@ -50,8 +50,11 @@
                 <div class="mask" @click="menu(false)"></div>
 
                 <div class="tab-con">
-                    <saves-tab v-show="selectedCategory"
-                               :selected-category="selectedCategory"></saves-tab>
+                    <saves-tab v-for="category in saves"
+                               v-show="currentTab === category.name"
+                               :category="category"
+                               :current-tab="currentTab"
+                               :key="category.name"></saves-tab>
 
                     <settings-tab v-show="currentTab === 'Settings'"
                                   :settings="userData.settings"
@@ -63,6 +66,7 @@
          <!-- Switch when update !-->
          <script src="javascripts/libraries/vue.min.js"></script>
          <script src="javascripts/classes/Save.js"></script>
+         <script src="javascripts/classes/Category.js"></script>
 
          <script src="javascripts/components/BaseMenuButton.js"></script>
          <script src="javascripts/components/SaveFile.js"></script>

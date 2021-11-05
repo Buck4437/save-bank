@@ -10,21 +10,13 @@ new Vue({
             saveVersion: 1
         },
         currentTab: "",
-        version: "v1.0.1"
+        version: "v1.0.2"
     },
     computed: {
         tabs() {
             const tabs = this.saves.map(cat => cat.name);
             tabs.push("Settings");
             return tabs;
-        },
-        selectedCategory() {
-            for (const cat of saves) {
-                if (this.currentTab === cat.name) {
-                    return cat;
-                }
-            }
-            return undefined;
         }
     },
     methods: {
