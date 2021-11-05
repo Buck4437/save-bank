@@ -7,11 +7,11 @@ saves.push(
         saves: [
             new Save({
                 name: "Test",
-                data: "Test data"
+                data: "Reality test data"
             }),
             new Save({
                 name: "Test 2",
-                data: "Test data 2"
+                data: "Reality test data 2"
             })
         ]
     })

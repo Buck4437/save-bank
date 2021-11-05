@@ -8,11 +8,11 @@ saves.push(
         saves: [
             new Save({
                 name: "Test",
-                data: "Test data"
+                data: "Automator test data"
             }),
             new Save({
                 name: "Test 2",
-                data: "Test data 2"
+                data: "Automator test data 2"
             })
         ]
     })
