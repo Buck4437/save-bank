@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>RAW</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/colors.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/about.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <pre id="app">
+            Loading...
+        </pre>
+    </body>
+    <script src="javascripts/classes/Save.js"></script>
+    <script src="javascripts/classes/Category.js"></script>
+
+    <script src="javascripts/database/index.js"></script>
+    <!-- After reality update, the reality version should be used instead !-->
+    <script src="javascripts/database/pre-infinity.js"></script>
+    <script src="javascripts/database/infinity.js"></script>
+    <script src="javascripts/database/post-break.js"></script>
+    <script src="javascripts/database/replicanti.js"></script>
+    <script src="javascripts/database/eternity.js"></script>
+    <script src="javascripts/database/post-milestone.js"></script>
+    <script src="javascripts/database/eternity challenge.js"></script>
+    <!-- These two categories should be merged after reality update -->
+    <script src="javascripts/database/time dilation.js"></script>
+    <script src="javascripts/database/post-e4k ep.js"></script>
+    <!-- These categories are reserved for the reality update -->
+    <!-- <script src="javascripts/database/reality.js"></script>
+    <script src="javascripts/database/celestial.js"></script>
+    <script src="javascripts/database/automator script.js"></script> -->
+
+    <script src="javascripts/utils/Theme.js"></script>
+    <script src="javascripts/utils/Url.js"></script>
+    <script type="text/javascript">
+    const getTheme = () => JSON.parse(localStorage.getItem("saveBankData")).settings.theme
+    let currentTheme = Theme.applyTheme(getTheme());
+    window.addEventListener("storage", () => {
+        if (currentTheme != getTheme()) {
+            currentTheme = Theme.applyTheme(getTheme());
+        }
+    });
+
+    const updateText = () => {
+        const catIndex = Url.getParam(Url.CAT_IDX_PARAM)
+        const saveIndex = Url.getParam(Url.SAVE_IDX_PARAM)
+        try {
+            text = saves[Number(catIndex)].saves[Number(saveIndex)].data
+            document.getElementById("app").innerHTML = text
+        } catch(e) {
+            document.getElementById("app").innerHTML = "File not found."
+        }
+    }
+
+    updateText();
+
+    window.addEventListener('locationchange', updateText)
+    </script>
+    <style type="text/css">
+    pre {
+        background-color: var(--background);
+        color: var(--color);
+    	white-space: pre-wrap;
+    	word-wrap: break-word;
+    }
+    </style>
+</html>

@@ -12,10 +12,10 @@
     <body id="#app">
         <div id="app">
             <h1>Changelog:</h1>
-            <h3>v1.0.3</h3>
+            <h3>v1.1</h3>
             <ul>
+                <li>Added option to display as RAW</li>
                 <li>Improve theme updating for changelog</li>
-                <li></li>
             </ul>
             <h3>v1.0.2</h3>
             <ul>
@@ -110,8 +110,8 @@
     </body>
     <script src="javascripts/utils/Theme.js"></script>
     <script type="text/javascript">
-    getTheme = () => JSON.parse(localStorage.getItem("saveBankData")).settings.theme
-    currentTheme = Theme.applyTheme(getTheme())
+    const getTheme = () => JSON.parse(localStorage.getItem("saveBankData")).settings.theme
+    let currentTheme = Theme.applyTheme(getTheme())
     window.addEventListener("storage", () => {
         if (currentTheme != getTheme()) {
             currentTheme = Theme.applyTheme(getTheme())

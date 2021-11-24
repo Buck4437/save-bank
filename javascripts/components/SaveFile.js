@@ -1,6 +1,16 @@
 Vue.component("save-file", {
     props: {
-        saveFile: Save
+        saveFile: Save,
+        metadata: Object,
+        saveIndex: Number
+    },
+    methods: {
+        raw() {
+            const params = {};
+            params[Url.CAT_IDX_PARAM] = this.metadata.categoryIndex;
+            params[Url.SAVE_IDX_PARAM] = this.saveIndex;
+            this.saveFile.raw(params);
+        }
     },
     template: `
     <div class="file-con">
@@ -10,10 +20,13 @@ Vue.component("save-file", {
         </div>
         <div class="file-btn-con">
             <tooltip-button class="file-btn" tooltip="Copied!" @click="saveFile.copy()">
-                Copy to Clipboard
+                Copy
             </tooltip-button>
             <button class="file-btn" @click="saveFile.export()">
-                Export as .txt
+                Export
+            </button>
+            <button class="file-btn" @click="raw()">
+                RAW
             </button>
         </div>
     </div>

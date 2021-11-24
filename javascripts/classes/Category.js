@@ -8,6 +8,14 @@ class Category {
         this.placeholder = config.placeholder || "No save file available.";
         this.allowSort = config.allowSort !== false;
         this.sortMode = 0;
+
+        const saveNames = new Set();
+        for (const s of this.saves) {
+            if (saveNames.has(s.name)) {
+                throw new Error(`Warning: Save file name should not be repeated for: "${s.name}"`);
+            }
+            saveNames.add(s.name);
+        }
     }
 
     hasSaves() {
@@ -46,4 +54,5 @@ class Category {
             method: saves => [...saves].reverse()
         }
     ]
+
 }

@@ -50,10 +50,11 @@
                 <div class="mask" @click="menu(false)"></div>
 
                 <div class="tab-con">
-                    <saves-tab v-for="category in saves"
+                    <saves-tab v-for="(category, i) in saves"
                                v-show="currentTab === category.name"
                                :category="category"
                                :current-tab="currentTab"
+                               :index="i"
                                :key="category.name"></saves-tab>
 
                     <settings-tab v-show="currentTab === 'Settings'"
@@ -64,7 +65,7 @@
          </div>
 
          <!-- Switch when update !-->
-         <script src="javascripts/libraries/vue.min.js"></script>
+         <script src="javascripts/libraries/vue.js"></script>
          <script src="javascripts/classes/Save.js"></script>
          <script src="javascripts/classes/Category.js"></script>
 

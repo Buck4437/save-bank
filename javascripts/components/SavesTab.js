@@ -12,9 +12,15 @@ Vue.component("saves-tab", {
             type: Category,
             default: () => new Category()
         },
-        currentTab: String
+        currentTab: String,
+        index: Number
     },
     computed: {
+        metadata() {
+            return {
+                categoryIndex: this.index
+            };
+        },
         hasNoResult() {
             return !this.category.hasSaves() && this.hasText;
         },
@@ -73,6 +79,8 @@ Vue.component("saves-tab", {
             </div>
             <save-file v-for="(saveFile, i) in saves"
                        :save-file="saveFile"
+                       :metadata="metadata"
+                       :save-index="i"
                        class="save-file"
                        :class="i % 2 == 1 ? category.color + '-background' : ''"
                        :key="i">
