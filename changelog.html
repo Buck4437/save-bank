@@ -12,6 +12,11 @@
     <body id="#app">
         <div id="app">
             <h1>Changelog:</h1>
+            <h3>v1.0.3</h3>
+            <ul>
+                <li>Improve theme updating for changelog</li>
+                <li></li>
+            </ul>
             <h3>v1.0.2</h3>
             <ul>
                 <li>Changed some of the infinity saves</li>
@@ -107,11 +112,11 @@
     <script type="text/javascript">
     getTheme = () => JSON.parse(localStorage.getItem("saveBankData")).settings.theme
     currentTheme = Theme.applyTheme(getTheme())
-    setInterval(() => {
+    window.addEventListener("storage", () => {
         if (currentTheme != getTheme()) {
             currentTheme = Theme.applyTheme(getTheme())
         }
-    }, 200)
+    });
     </script>
     <style type="text/css">
     body {

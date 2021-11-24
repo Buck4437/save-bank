@@ -32,12 +32,12 @@
                         <li v-for="(tab, i) in tabs" :key="i">
                             <button v-if="i < saves.length"
                                     :class="[{'is-active': currentTab === tab}, saves[i].color]"
-                                    @click="setHash(tab)">
+                                    @click="switchTab(tab)">
                                 {{tab}} ({{(saves[i].saves || []).length}})
                             </button>
                             <button v-else
                                     :class="{'is-active': currentTab === tab}"
-                                    @click="setHash(tab)">
+                                    @click="switchTab(tab)">
                                 {{tab}}
                             </button>
                         </li>
@@ -95,6 +95,7 @@
 
          <script src="javascripts/utils/Theme.js"></script>
          <script src="javascripts/utils/File.js"></script>
+         <script src="javascripts/utils/Url.js"></script>
 
          <script src="javascripts/update.js"></script>
          <script src="javascripts/index.js"></script>

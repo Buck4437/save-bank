@@ -31,12 +31,14 @@ new Vue({
         setSettings(prop, data) {
             this.userData.settings[prop] = data;
         },
-        switchTab(name) {
+        switchTab(name = this.tabs[0]) {
             this.currentTab = name;
             // Close the menu
             this.menu(false);
             // Scroll to top
             scroll(0, 0);
+            // Update the URL
+            Url.setHash(name);
         },
         saveFixer(obj, def) {
             let data = {};
@@ -57,21 +59,16 @@ new Vue({
             }
             return data;
         },
-        setHash(hash) {
-            window.location.hash = hash.replaceAll(" ", "_");
-        },
-        getHash() {
-            return window.location.hash.replaceAll("_", " ");
-        },
-        updateTab() {
-            const hash = this.getHash();
-            const tab = hash.substring(1);
+        updateTabFromHash() {
+            const tab = Url.getHash();
             if (this.tabs.includes(tab)) {
                 this.switchTab(tab);
+                return true;
             }
+            return false;
         },
         setListeners() {
-            window.onhashchange = this.updateTab;
+            window.onhashchange = this.updateTabFromHash;
         }
     },
     watch: {
@@ -85,9 +82,10 @@ new Vue({
     mounted() {
         const data = JSON.parse(localStorage.getItem("saveBankData"));
         this.userData = this.saveFixer(data, this.userData);
-        this.switchTab(this.tabs[0]);
+        if (!this.updateTabFromHash()) {
+            this.switchTab();
+        }
         this.setListeners();
-        this.updateTab();
 
         Theme.applyTheme(this.userData.settings.theme);
 
