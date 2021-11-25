@@ -7,7 +7,8 @@ class Url {
 
     static getHash() {
         try {
-            return decodeURIComponent(window.location.hash.substring(1));
+            const hash = decodeURIComponent(window.location.hash.substring(1));
+            return hash;
         } catch (e) {
             return "";
         }

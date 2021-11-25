@@ -18,6 +18,7 @@ class Save {
 
     raw(params = {}) {
         const str = new URLSearchParams(params).toString();
-        window.open(`../../raw.html?${str}`, "_blank").focus();
+        window.open(`raw.html?${str}`, "_blank").focus();
     }
+
 }

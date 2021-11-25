@@ -46,26 +46,35 @@
     });
 
     const updateText = () => {
-        const catIndex = Url.getParam(Url.CAT_IDX_PARAM)
-        const saveIndex = Url.getParam(Url.SAVE_IDX_PARAM)
+        const catIndex = Url.getParam(Url.CAT_IDX_PARAM);
+        const saveIndex = Url.getParam(Url.SAVE_IDX_PARAM);
         try {
-            text = saves[Number(catIndex)].saves[Number(saveIndex)].data
-            document.getElementById("app").innerHTML = text
+            save = saves[Number(catIndex)].saves[Number(saveIndex)];
+            document.getElementById("app").innerHTML = save.data;
+            document.title = save.name;
         } catch(e) {
-            document.getElementById("app").innerHTML = "File not found."
+            const parent = document.getElementById("app");
+            parent.innerHTML = "";
+
+            const el = document.createElement("span");
+            el.classList.add("warning");
+            el.innerHTML = "File not found.";
+            parent.appendChild(el);
+            document.title = "Error";
         }
     }
-
     updateText();
-
-    window.addEventListener('locationchange', updateText)
+    window.addEventListener('locationchange', updateText);
     </script>
     <style type="text/css">
     pre {
-        background-color: var(--background);
-        color: var(--color);
     	white-space: pre-wrap;
     	word-wrap: break-word;
+    }
+
+    .warning {
+        text-transform: uppercase;
+        color: var(--warning);
     }
     </style>
 </html>
