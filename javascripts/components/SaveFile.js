@@ -20,13 +20,13 @@ Vue.component("save-file", {
         </div>
         <div class="file-btn-con">
             <tooltip-button class="file-btn" tooltip="Copied!" @click="saveFile.copy()">
-                Copy
+                Copy to Clipboard
             </tooltip-button>
             <button class="file-btn" @click="saveFile.export()">
-                Export
+                Export as .txt
             </button>
             <button class="file-btn" @click="raw()">
-                RAW
+                View as RAW
             </button>
         </div>
     </div>

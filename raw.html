@@ -50,7 +50,7 @@
         const saveIndex = Url.getParam(Url.SAVE_IDX_PARAM);
         try {
             save = saves[Number(catIndex)].saves[Number(saveIndex)];
-            document.getElementById("app").innerHTML = save.data;
+            document.getElementById("app").textContent = save.data;
             document.title = save.name;
         } catch(e) {
             const parent = document.getElementById("app");
