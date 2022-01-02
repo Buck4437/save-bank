@@ -9,7 +9,7 @@ Vue.component("saves-tab", {
     },
     props: {
         category: {
-            type: Category,
+            type: Object,
             default: () => new Category()
         },
         currentTab: String,

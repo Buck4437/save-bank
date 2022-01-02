@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+      "outFile": "dist/saves.js",
+      "noEmitOnError": true,
+      "target": "es5",
+      "removeComments": true,
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "esModuleInterop": true
+  },
+  "include": [
+      "src/index.ts"
+  ]
+}

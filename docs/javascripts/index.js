@@ -2,7 +2,7 @@
 new Vue({
     el: "#app",
     data: {
-        saves,
+        saves: Saves.saves,
         userData: {
             settings: {
                 theme: Theme.defaultTheme

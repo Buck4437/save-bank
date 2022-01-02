@@ -1,6 +1,6 @@
 Vue.component("save-file", {
     props: {
-        saveFile: Save,
+        saveFile: Object,
         metadata: Object,
         saveIndex: Number
     },
