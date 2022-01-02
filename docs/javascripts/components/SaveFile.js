@@ -25,7 +25,7 @@ Vue.component("save-file", {
             <button class="file-btn" @click="saveFile.export()">
                 Export as .txt
             </button>
-            <button class="file-btn" @click="raw()">
+            <button v-if="metadata.allowRaw" class="file-btn" @click="raw()">
                 View as RAW
             </button>
         </div>

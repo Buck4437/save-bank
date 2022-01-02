@@ -18,7 +18,8 @@ Vue.component("saves-tab", {
     computed: {
         metadata() {
             return {
-                categoryIndex: this.index
+                categoryIndex: this.index,
+                allowRaw: this.category.allowRaw
             };
         },
         hasNoResult() {
