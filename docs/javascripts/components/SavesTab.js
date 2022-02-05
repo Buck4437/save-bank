@@ -1,6 +1,7 @@
 Vue.component("saves-tab", {
     props: {
-        category: Object
+        category: Object,
+        sortMode: Number
     },
     template: `
     <div class="tab file-list">
@@ -10,9 +11,8 @@ Vue.component("saves-tab", {
             </template>
 
             <template #buttons>
-                <button v-if="category.allowSort !== false"
-                        @click="category.toggleSortMode()">
-                    Ordering: {{category.getSortModeName()}}
+                <button @click="$emit('switch-sort')">
+                    Ordering: {{category.getSortModeName(sortMode)}}
                 </button>
             </template>
         </tab-header>
@@ -21,7 +21,7 @@ Vue.component("saves-tab", {
             {{category.placeholder}}
         </div>
         <div v-else>
-            <save-file v-for="(saveFile, i) in category.getSortedSaves()"
+            <save-file v-for="(saveFile, i) in category.getSortedSaves(sortMode)"
                        class="save-file"
                        :save-file="saveFile"
                        :class="i % 2 == 1 ? category.color + '-background' : ''"

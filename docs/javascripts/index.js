@@ -10,6 +10,7 @@ new Vue({
             saveVersion: 1
         },
         currentTab: "",
+        sortMode: 0,
         version: "v1.0.3"
     },
     computed: {
@@ -69,6 +70,12 @@ new Vue({
         },
         setListeners() {
             window.onhashchange = this.updateTabFromHash;
+        },
+        switchSortMode() {
+            this.sortMode++;
+            if (this.sortMode > this.saves[0].getMaxSortMode()) {
+                this.sortMode = 0;
+            }
         }
     },
     watch: {

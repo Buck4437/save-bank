@@ -53,6 +53,8 @@
                     <saves-tab v-for="category in saves"
                                v-show="currentTab === category.name"
                                :category="category"
+                               :sort-mode="sortMode"
+                               @switch-sort="switchSortMode"
                                :key="category.name"></saves-tab>
 
                     <settings-tab v-show="currentTab === 'Settings'"

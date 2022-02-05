@@ -6,8 +6,6 @@ class Category {
         this.desc = config.desc || "";
         this.color = config.color || "";
         this.placeholder = config.placeholder || "No save file available.";
-        this.allowSort = config.allowSort !== false;
-        this.sortMode = 0;
 
         const saveNames = new Set();
         for (const s of this.saves) {
@@ -22,26 +20,22 @@ class Category {
         return this.saves.length > 0;
     }
 
-    getSortedSaves() {
-        if (!this.hasSaves || this.sortMode >= Category.sortingMethods.length) {
+    getMaxSortMode() {
+        return Category.sortingMethods.length - 1;
+    }
+
+    getSortedSaves(sortMode = 0) {
+        if (!this.hasSaves || sortMode > this.getMaxSortMode()) {
             return [];
         }
-        return Category.sortingMethods[this.sortMode].method(this.saves);
+        return Category.sortingMethods[sortMode].method(this.saves);
     }
 
-    getSortModeName() {
-        if (this.sortMode >= Category.sortingMethods.length) {
+    getSortModeName(sortMode = 0) {
+        if (sortMode > this.getMaxSortMode()) {
             return "";
         }
-        return Category.sortingMethods[this.sortMode].name;
-    }
-
-    toggleSortMode() {
-        this.sortMode = (this.sortMode + 1) % Category.sortingMethods.length;
-    }
-
-    resetSortMode() {
-        this.sortMode = 0;
+        return Category.sortingMethods[sortMode].name;
     }
 
     static sortingMethods = [
