@@ -50,11 +50,9 @@
                 <div class="mask" @click="menu(false)"></div>
 
                 <div class="tab-con">
-                    <saves-tab v-for="(category, i) in saves"
+                    <saves-tab v-for="category in saves"
                                v-show="currentTab === category.name"
                                :category="category"
-                               :current-tab="currentTab"
-                               :index="i"
                                :key="category.name"></saves-tab>
 
                     <settings-tab v-show="currentTab === 'Settings'"

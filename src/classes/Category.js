@@ -7,7 +7,6 @@ class Category {
         this.color = config.color || "";
         this.placeholder = config.placeholder || "No save file available.";
         this.allowSort = config.allowSort !== false;
-        this.allowRaw = config.allowRaw === true;
         this.sortMode = 0;
 
         const saveNames = new Set();

@@ -1,16 +1,6 @@
 Vue.component("save-file", {
     props: {
         saveFile: Object,
-        metadata: Object,
-        saveIndex: Number
-    },
-    methods: {
-        raw() {
-            const params = {};
-            params[Url.CAT_IDX_PARAM] = this.metadata.categoryIndex;
-            params[Url.SAVE_IDX_PARAM] = this.saveIndex;
-            this.saveFile.raw(params);
-        }
     },
     template: `
     <div class="file-con">
@@ -24,9 +14,6 @@ Vue.component("save-file", {
             </tooltip-button>
             <button class="file-btn" @click="saveFile.export()">
                 Export as .txt
-            </button>
-            <button v-if="metadata.allowRaw" class="file-btn" @click="raw()">
-                View as RAW
             </button>
         </div>
     </div>

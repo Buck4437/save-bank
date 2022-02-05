@@ -16,11 +16,6 @@ class Save {
         File.download(filename, text);
     }
 
-    raw(params = {}) {
-        const str = new URLSearchParams(params).toString();
-        window.open(`raw.html?${str}`, "_blank").focus();
-    }
-
 }
 
 export default Save;
