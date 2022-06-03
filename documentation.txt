@@ -1,4 +1,3 @@
-
 A. Adding saves
     1. Go to src, you will see a bunch of .js modules
     2. Select the correct module and follow the format of other saves)
@@ -13,7 +12,7 @@ B. Making new category
     3. In index.js, import the new module and add it to the exported array
 
 C. Building
-    1. Navigate to this folder using cmd
+    1. Navigate to this folder using any CLI
     2. Do "npm run build". If everything went right it will bundle everything into a single file
     3. Load the save bank page to ensure that stuff works properly
 
