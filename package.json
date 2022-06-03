@@ -1,0 +1,27 @@
+{
+  "name": "save-bank",
+  "version": "1.0.0",
+  "description": "Centralized database system for storing saves of Antimatter Dimensions.",
+  "main": "index.html",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Buck4437/save-bank.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Buck4437/save-bank/issues"
+  },
+  "homepage": "https://github.com/Buck4437/save-bank#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {}
+}

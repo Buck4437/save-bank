@@ -21,15 +21,15 @@ You can help improve the code by forking it and creating a pull request.
 
 ## Acknowledgements
 Coders:
--   Scarlet (Search function)
+-   Scarlet
 
 Major save donors:
 -   Lars (Dilation saves)
+-   Hira (Infinity saves)
 
 Save donors:
 -   AlVolrs
 -   Autissima
--   Hira
 -   L5racer
 -   MegaminX
 -   MetroidLover97

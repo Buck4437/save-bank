@@ -1,0 +1,38 @@
+A. Adding saves
+    1. Go to src, you will see a bunch of .js modules
+    2. Select the correct module and follow the format of other saves)
+
+B. Making new category
+    1. Copy an existing module
+    2. Edit the category params and export name
+        Category params:
+            - name: Name of category
+            - color: Theme colour of the category, can be adjusted in docs/stylesheets
+            - desc: Description of the category, supports multiline display
+    3. In index.js, import the new module and add it to the exported array
+
+C. Building
+    1. Navigate to this folder using any CLI
+    2. Do "npm run build". If everything went right it will bundle everything into a single file
+    3. Load the save bank page to ensure that stuff works properly
+
+D. Adding new colours (for categories)
+    1. Go to docs/colors.css
+    2. Add the new colour in both themes, name the variable with the following format:
+        --color-(name) and --color-(name)-background;
+    3. Go to styles.css and scroll to the section where you see a bunch of colour classes.
+    4. Add these classes:
+        .(name) {
+            border-color: var(--color-(name));
+            color: var(--color-(name));
+        }
+
+        .(name)-background {
+            background-color: var(--color-(name)-background);
+        }
+
+        .(name).is-active {
+            background-color: var(--color-(name));
+            color: var(--background);
+        }
+    5. Reload the page to ensure that the colours are displayed correctly

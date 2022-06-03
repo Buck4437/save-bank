@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Changelog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/colors.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/about.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+    </head>
+    <body id="#app">
+        <div id="app">
+            <h1>Changelog:</h1>
+            <h3>v1.0.3</h3>
+            <ul>
+                <li>Removed search function</li>
+                <li>Improved source code</li>
+                <li>Improved theme updating for changelog</li>
+                <li>Fixed some issues related to Time Dilation saves/li>
+            </ul>
+            <h3>v1.0.2</h3>
+            <ul>
+                <li>Changed some of the infinity saves</li>
+                <li>Code cleanup</li>
+            </ul>
+            <h3>v1.0 / Beta 7C</h3>
+            <ul>
+                <li>Added more saves (165 -> 189)</li>
+                <li>Filled most gaps between save files</li>
+            </ul>
+            <h3>Beta 7B</h3>
+            <ul>
+                <li>Added even more saves (128 -> 165)</li>
+                <li>Splitted "Eternity" to reduce its size</li>
+            </ul>
+            <h3>Beta 7A</h3>
+            <ul>
+                <li>Added a lot of saves (95 -> 128)</li>
+                <li>Updated README.md (Available on github)</li>
+                <li>Changed the color of "Post-4k EP" (Reality -> Dilation)</li>
+            </ul>
+            <h3>Beta 6.1</h3>
+            <ul>
+                <li>Added hash to the URL</li>
+            </ul>
+            <h3>Beta 6</h3>
+            <ul>
+                <li>Removed custom saves for being rarely used</li>
+                <li>Added search function, in courtesy of Scarlet</li>
+                <li>Added more saves</li>
+            </ul>
+            <h3>Beta 5</h3>
+            <ul>
+                <li>Added more saves</li>
+                <li>Added option to wipe all data</li>
+                <li>Added option to export all custom saves as zip</li>
+                <li>Added FAQ</li>
+                <li>Custom saves without name now default its name as "New Save"</li>
+            </ul>
+            <h3>Beta 4</h3>
+            <ul>
+                <li>Custom saves</li>
+            </ul>
+            <h3>Beta 3</h3>
+            <ul>
+                <li>Added titles and descriptions</li>
+                <li>Added sorting by progression</li>
+                <li>Added loading screen</li>
+                <li>Slight UI change</li>
+                <li>Reworked tooltip - Hopefully fixing a bug in the process</li>
+            </ul>
+            <h3>Beta 2</h3>
+            <ul>
+                <li>New UI</li>
+                <li>Removed paperclips :blobsad:</li>
+            </ul>
+            <h3>Beta 1</h3>
+            <ul>
+                <li>Added settings</li>
+                <li>Added light mode</li>
+                <li>Added more colours</li>
+                <li>Added mobile layout</li>
+                <li>Added new saves</li>
+                <li>Added paperclips</li>
+                <li>Added some descriptions</li>
+                <li>Added display for number of saves in each category</li>
+                <li>Added info</li>
+            </ul>
+            <h3>Alpha 2.1</h3>
+            <ul>
+                <li>Fixed a crucial bug</li>
+                <li>Fixed some save files</li>
+                <li>Added some more info</li>
+            </ul>
+            <h3>Alpha 2</h3>
+            <ul>
+                <li>Option to export as .txt file</li>
+                <li>Changed save file storage system</li>
+                <li>Added new time dilation save</li>
+                <li>Changelog!</li>
+            </ul>
+            <h3>Alpha 1</h3>
+            <ul>
+                <li>New UI</li>
+            </ul>
+            <h3><a target="_blank" href="https://youtu.be/6WsM9ExX7Bg"><del>Aleph-0</del></a> Alpha 0</h3>
+            <ul>
+                <li>Initial Release</li>
+            </ul>
+        </div>
+    </body>
+    <script src="javascripts/utils/Theme.js"></script>
+    <script type="text/javascript">
+    const getTheme = () => JSON.parse(localStorage.getItem("saveBankData")).settings.theme
+    let currentTheme = Theme.applyTheme(getTheme())
+    window.addEventListener("storage", () => {
+        if (currentTheme != getTheme()) {
+            currentTheme = Theme.applyTheme(getTheme())
+        }
+    });
+    </script>
+    <style type="text/css">
+    body {
+        padding-left: 16px;
+        padding-bottom: 16px;
+    }
+
+    h1, h3 {
+        font-weight: normal;
+    }
+    </style>
+</html>
