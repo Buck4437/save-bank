@@ -4,7 +4,7 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: "saves.min.js",
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "docs"),
         library: {
             name: "Saves",
             type: "var"
