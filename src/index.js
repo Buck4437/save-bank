@@ -12,6 +12,7 @@ import { postE4k } from "./post-e4k-ep";
 /* Template for reality */
 // import { reality } from "./reality";
 // import { celestial } from "./celestial";
+// import { automatorScript } from "./automator-scripts";
 
 export const saves = [
     preInfinity,

@@ -16,6 +16,10 @@ class Save {
         File.download(filename, text);
     }
 
+    preview() {
+        alert(this.data);
+    }
+
 }
 
 export default Save;

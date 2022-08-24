@@ -280,7 +280,7 @@ body.is-active .mask {
     transition-duration: 0s;
 }
 
-.file-con{
+.file-con {
     display: flex;
     justify-content: space-between;
     border: 2px solid var(--color);
@@ -290,6 +290,7 @@ body.is-active .mask {
 
 .file-text-con{
     margin: 16px;
+    width: 60%;
 }
 
 .file-name{
@@ -305,16 +306,17 @@ body.is-active .mask {
 
 .file-btn-con{
     margin: 16px;
-    min-width: 192px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: right;
 }
 
 .file-btn {
     margin: 8px;
     min-width: 160px;
-    min-height: 48px;
+    height: 48px;
+    display: inline;
 }
 
 .no-saves {
@@ -442,6 +444,7 @@ body.is-active .mask {
     color: var(--background);
 }
 
+
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
 
@@ -541,7 +544,12 @@ body.is-active .mask {
     }
 
     .file-btn-con {
-        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .file-btn {
+        min-height: 48px;
     }
 
 }
