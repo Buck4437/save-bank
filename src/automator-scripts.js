@@ -7,15 +7,5 @@ export const automatorScript = new Category({
     placeholder: "Coming soon!",
     isAutomatorMode: true,
     saves: [
-        new Save({
-            name: "Test",
-            desc: "Sample Desc",
-            data: `Script test data`
-        }),
-        new Save({
-            name: "Test 2",
-            desc: "Sample Desc",
-            data: `Script test data 2`
-        })
     ]
 });

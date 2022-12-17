@@ -1,6 +1,6 @@
 A. Adding saves
     1. Go to src, you will see a bunch of .js modules
-    2. Select the correct module and follow the format of other saves)
+    2. Select the correct module and follow the format of other saves
 
 B. Making new category
     1. Copy an existing module
@@ -12,7 +12,9 @@ B. Making new category
     3. In index.js, import the new module and add it to the exported array
 
 C. Building
+    0. Install node.js + npm
     1. Navigate to this folder using any CLI
+    1(-1). If node_modules are not installed, install webpack using "npm install webpack"
     2. Do "npm run build". If everything went right it will bundle everything into a single file
     3. Load the save bank page to ensure that stuff works properly
 
