@@ -1,7 +1,6 @@
 Vue.component("save-file", {
     props: {
-        saveFile: Object,
-        isAutomatorMode: Boolean
+        saveFile: Object
     },
     template: `
     <div class="file-con">
@@ -15,11 +14,6 @@ Vue.component("save-file", {
             </tooltip-button>
             <button class="file-btn" @click="saveFile.export()">
                 Export as .txt
-            </button>
-            <button v-if="isAutomatorMode"
-                    class="file-btn" 
-                    @click="saveFile.preview()">
-                Preview
             </button>
         </div>
     </div>

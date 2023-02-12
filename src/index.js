@@ -8,8 +8,7 @@ import { eternityChallenge } from "./eternity-challenge";
 import { timeDilation } from "./time-dilation";
 import { postE4k } from "./post-e4k-ep";
 import { reality } from "./reality";
-import { celestial } from "./celestial";
-import { automatorScript } from "./automator-scripts";
+import { celestial1 } from "./celestial-1";
 
 export const saves = [
     preInfinity,
@@ -22,6 +21,5 @@ export const saves = [
     timeDilation,
     postE4k,
     reality,
-    celestial,
-    automatorScript
+    celestial1
 ];

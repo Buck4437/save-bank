@@ -2,10 +2,10 @@
 import Category from "./classes/Category";
 import Save from "./classes/Save";
 
-export const automatorScript = new Category({
-    name: "Automator Script",
+export const celestial1 = new Category({
+    name: "Celestial 1",
+    color: "celestial",
     placeholder: "Coming soon!",
-    isAutomatorMode: true,
     saves: [
     ]
 });

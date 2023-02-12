@@ -6,7 +6,6 @@ class Category {
         this.desc = config.desc || "";
         this.color = config.color || "default";
         this.placeholder = config.placeholder || "No save file available.";
-        this.isAutomatorMode = config.isAutomatorMode || false;
 
         const saveNames = new Set();
         for (const s of this.saves) {
@@ -15,10 +14,6 @@ class Category {
             }
             saveNames.add(s.name);
         }
-    }
-
-    isAutomatorMode() {
-        return this.isAutomatorMode;
     }
 
     hasSaves() {

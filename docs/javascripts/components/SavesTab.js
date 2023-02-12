@@ -11,8 +11,7 @@ Vue.component("saves-tab", {
             </template>
 
             <template #buttons>
-                <button v-if="!category.isAutomatorMode" 
-                        @click="$emit('switch-sort')">
+                <button @click="$emit('switch-sort')">
                     Ordering: {{category.getSortModeName(sortMode)}}
                 </button>
             </template>
@@ -25,7 +24,6 @@ Vue.component("saves-tab", {
             <save-file v-for="(saveFile, i) in category.getSortedSaves(sortMode)"
                        class="save-file"
                        :save-file="saveFile"
-                       :isAutomatorMode="category.isAutomatorMode"
                        :class="i % 2 == 1 ? category.color + '-background' : ''"
                        :key="i">
             </save-file>

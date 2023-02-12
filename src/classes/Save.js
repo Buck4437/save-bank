@@ -4,6 +4,7 @@ class Save {
         this.name = config.name || "Unnamed Save";
         this.desc = config.desc || "No description provided.";
         this.data = config.data || "";
+        this.author = config.author || "Unknown";
     }
 
     copy() {
