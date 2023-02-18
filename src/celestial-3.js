@@ -2,9 +2,9 @@
 import Category from "./classes/Category";
 import Save from "./classes/Save";
 
-export const celestial1 = new Category({
+export const celestial3 = new Category({
     name: "Celestial 3",
-    color: "celestial",
+    color: "nameless-v",
     placeholder: "Coming soon!",
     saves: [
     ]
