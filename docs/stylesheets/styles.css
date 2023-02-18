@@ -426,7 +426,7 @@ body.is-active .mask {
 }
 
 .teresa-effarig.is-active {
-    background: linear-gradient(to right, var(--color-teresa), var(--color-effarig));
+    background-color: var(--color-celestial);
     color: var(--background);
 }
 
@@ -440,7 +440,7 @@ body.is-active .mask {
 }
 
 .nameless-v.is-active {
-    background: linear-gradient(to right, var(--color-nameless), var(--color-v));
+    background-color: var(--color-celestial);
     color: var(--background);
 }
 
