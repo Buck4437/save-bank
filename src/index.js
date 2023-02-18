@@ -9,6 +9,7 @@ import { timeDilation } from "./time-dilation";
 import { postE4k } from "./post-e4k-ep";
 import { reality } from "./reality";
 import { celestial1 } from "./celestial-1";
+import { celestial3 } from "./celestial-3";
 
 export const saves = [
     preInfinity,
@@ -21,5 +22,6 @@ export const saves = [
     timeDilation,
     postE4k,
     reality,
-    celestial1
+    celestial1,
+    celestial3
 ];

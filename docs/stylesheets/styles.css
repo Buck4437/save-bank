@@ -416,6 +416,34 @@ body.is-active .mask {
     color: var(--background);
 }
 
+.teresa-effarig {
+    border-color: var(--color-teresa);
+    color: var(--color-teresa);
+}
+
+.teresa-effarig-background {
+    background: linear-gradient(to right, var(--color-teresa-background), var(--color-effarig-background));
+}
+
+.teresa-effarig.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.nameless-v {
+    border-color: var(--color-teresa);
+    color: var(--color-teresa);
+}
+
+.nameless-v-background {
+    background: linear-gradient(to right, var(--color-nameless-background), var(--color-v-background));
+}
+
+.nameless-v.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
 .celestial {
     border-color: var(--color-celestial);
     color: var(--color-celestial);
