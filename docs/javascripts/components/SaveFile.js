@@ -6,7 +6,6 @@ Vue.component("save-file", {
     <div class="file-con">
         <div class="file-text-con">
             <div class="file-name">{{saveFile.name}}</div>
-            <div class="pre-formatted file-desc">{{saveFile.author}}</div>
             <div class="pre-formatted file-desc">{{saveFile.desc}}</div>
         </div>
         <div class="file-btn-con">
