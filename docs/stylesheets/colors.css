@@ -19,6 +19,7 @@
     --color-dilation-background: #51cc0a50;
     --color-reality: #0ba00e;
     --color-reality-background: #0ba00e50;
+
     --color-teresa: #5151ec;
     --color-teresa-background: #5151ec50;
     --color-effarig: #d13737;
@@ -50,8 +51,13 @@
     --color-infinity-background: #ff980050;
     --color-eternity-background: #673ab750;
     --color-dilation-background: #33b70050;
-    /* I don't know what the actual value is, this is just a prediction */
+    /* I don't know what the actual value is, I just adjust them until they look good */
     --color-reality-background: #0a710c50;
+    --color-teresa-background: #4040e450;
+    --color-effarig-background: #d1232350;
+    --color-nameless-background: #e7925e50;
+    --color-v-background: #e9cc5a50;
+    --color-ra-background: #8157ca50;
     --color-celestial-background: #433cd390;
 
     --color-default: #4f5957;
