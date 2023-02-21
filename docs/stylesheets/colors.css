@@ -30,6 +30,10 @@
     --color-v-background: #ead58450;
     --color-ra: #9575cd;
     --color-ra-background: #9575cd50;
+    --color-laitela: black;
+    --color-laitela-background: #00000050;
+    --color-pelle: crimson;
+    --color-pelle-background: #dc143c50;
     /* Generic colour for celestials */
     --color-celestial: #5151ec;
     --color-celestial-background: #5151ec50;
@@ -59,6 +63,8 @@
     --color-v-background: #e9cc5a50;
     --color-ra-background: #8157ca50;
     --color-celestial-background: #433cd390;
+    --color-laitela-background: #10101050;
+    --color-pelle-background: #e1043050;
 
     --color-default: #4f5957;
     --color-default-background: #4f595750;

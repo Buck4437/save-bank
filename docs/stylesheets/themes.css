@@ -1,0 +1,173 @@
+.normal {
+    border-color: var(--color-antimatter);
+    color: var(--color-antimatter);
+}
+
+.normal-background {
+    background-color: var(--color-antimatter-background);
+}
+
+.normal.is-active {
+    background-color: var(--color-antimatter);
+    color: var(--background);
+}
+
+.infinity {
+    border-color: var(--color-infinity);
+    color: var(--color-infinity);
+}
+
+.infinity-background {
+    background-color: var(--color-infinity-background);
+}
+
+.infinity.is-active {
+    background-color: var(--color-infinity);
+    color: var(--background);
+}
+
+.eternity {
+    border-color: var(--color-eternity);
+    color: var(--color-eternity);
+}
+
+.eternity-background {
+    background-color: var(--color-eternity-background);
+}
+
+.eternity.is-active {
+    background-color: var(--color-eternity);
+    color: var(--background);
+}
+
+.dilation {
+    border-color: var(--color-dilation);
+    color: var(--color-dilation);
+}
+
+.dilation-background {
+    background-color: var(--color-dilation-background);
+}
+
+.dilation.is-active {
+    background-color: var(--color-dilation);
+    color: var(--background);
+}
+
+.reality {
+    border-color: var(--color-reality);
+    color: var(--color-reality);
+}
+
+.reality-background {
+    background-color: var(--color-reality-background);
+}
+
+.reality.is-active {
+    background-color: var(--color-reality);
+    color: var(--background);
+}
+
+.teresa-effarig {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.teresa-effarig-background {
+    background: linear-gradient(to right, var(--color-teresa-background), var(--color-effarig-background));
+}
+
+.teresa-effarig.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.nameless-v {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.nameless-v-background {
+    background: linear-gradient(to right, var(--color-nameless-background), var(--color-v-background));
+}
+
+.nameless-v.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.ra {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.ra-background {
+    background-color: var(--color-ra-background)
+}
+
+.ra.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.ra-laitela {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.ra-laitela-background {
+    background: linear-gradient(to right, var(--color-ra-background), var(--color-laitela-background));
+}
+
+.ra-laitela.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.pelle {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.pelle-background {
+    background-color: var(--color-pelle-background);
+    box-shadow: inset 0 0 30px var(--color);
+}
+
+.pelle-background-odd {
+    box-shadow: inset 0 0 30px var(--color);
+}
+
+
+.pelle.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.celestial {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.celestial-background {
+    background-color: var(--color-celestial-background);
+}
+
+.celestial.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.default {
+    border-color: var(--color-default);
+    color: var(--color-default);
+}
+
+.default-background {
+    background-color: var(--color-default-background);
+}
+
+.default.is-active {
+    background-color: var(--color-default);
+    color: var(--background);
+}

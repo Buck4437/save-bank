@@ -24,7 +24,7 @@ Vue.component("saves-tab", {
             <save-file v-for="(saveFile, i) in category.getSortedSaves(sortMode)"
                        class="save-file"
                        :save-file="saveFile"
-                       :class="i % 2 == 1 ? category.color + '-background' : ''"
+                       :class="i % 2 == 1 ? category.color + '-background' : category.color + '-background-odd'"
                        :key="i">
             </save-file>
         </div>
