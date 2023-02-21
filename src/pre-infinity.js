@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const preInfinity = new Category({
     name: "Pre-Infinity",
-    color: "normal",
+    theme: "normal",
     desc: "Under 1e308 antimatter",
     saves: [
         new Save({

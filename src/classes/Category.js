@@ -4,7 +4,7 @@ class Category {
         this.name = config.name || "Unnamed Category";
         this.saves = config.saves || [];
         this.desc = config.desc || "";
-        this.color = config.color || "default";
+        this.theme = config.theme || "default";
         this.placeholder = config.placeholder || "No save file available.";
 
         const saveNames = new Set();

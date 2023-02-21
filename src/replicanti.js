@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const replicanti = new Category({
     name: "Replicanti",
-    color: "infinity",
+    theme: "infinity",
     desc: "1e140 IP - Pre-Eternity",
     saves: [
         new Save({

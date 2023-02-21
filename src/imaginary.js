@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const imaginary = new Category({
     name: "1e1000 RM",
-    color: "ra-laitela",
+    theme: "ra-laitela",
     placeholder: "Coming soon!",
     saves: [
         new Save({

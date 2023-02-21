@@ -9,7 +9,7 @@
     --modal: #00000080;
 
     --tooltip-background: #323232;
-    --color-antimatter: #2196f3;
+    --color-antimatter: #df5050;
     --color-antimatter-background: #df505050;
     --color-infinity: #b67f33;
     --color-infinity-background: #b67f3350;
@@ -34,9 +34,9 @@
     --color-laitela-background: #00000050;
     --color-pelle: crimson;
     --color-pelle-background: #dc143c50;
-    /* Generic colour for celestials */
-    --color-celestial: #5151ec;
-    --color-celestial-background: #5151ec50;
+    /* Generic colour for celestials, dark theme colour is adopted from dark metro */
+    --color-celestial: #00bcd4;
+    --color-celestial-background: #00bcd450;
 
     --color-default: #d9d9d9;
     --color-default-background: #d9d9d950;
@@ -51,6 +51,7 @@
     --hover: #4f595726;
     --tooltip: #ffffff;
 
+    --color-antimatter: #2196f3;
     --color-antimatter-background: #2196f350;
     --color-infinity-background: #ff980050;
     --color-eternity-background: #673ab750;
@@ -65,6 +66,9 @@
     --color-celestial-background: #433cd390;
     --color-laitela-background: #10101050;
     --color-pelle-background: #e1043050;
+
+    --color-celestial: #5151ec;
+    --color-celestial-background: #5151ec50;
 
     --color-default: #4f5957;
     --color-default-background: #4f595750;

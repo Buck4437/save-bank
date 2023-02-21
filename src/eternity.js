@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const eternity = new Category({
     name: "Eternity",
-    color: "eternity",
+    theme: "eternity",
     desc: "1 EP - All eternity milestones",
     saves: [
         new Save({

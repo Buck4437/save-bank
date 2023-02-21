@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const infinity = new Category({
     name: "Infinity",
-    color: "infinity",
+    theme: "infinity",
     desc: "1 IP - Break Infinity",
     saves: [
         new Save({

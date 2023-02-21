@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const postMilestone = new Category({
     name: "Post-Milestone",
-    color: "eternity",
+    theme: "eternity",
     desc:
 `All eternity milestones - EC1
 Note: Actual values may differ due to offline EP generation.`,

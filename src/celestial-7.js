@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const celestial7 = new Category({
     name: "Celestial 7",
-    color: "pelle",
+    theme: "pelle",
     placeholder: "Coming soon...",
     saves: [
         new Save({

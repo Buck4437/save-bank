@@ -5,7 +5,7 @@ import Save from "./classes/Save";
 export const timeDilation = new Category({
     name: "Time Dilation",
     /* Suggested by kai reeeee */
-    color: "dilation",
+    theme: "dilation",
     desc: "13000 TT - 1e4000 EP",
     saves: [
         new Save({
