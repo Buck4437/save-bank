@@ -4,8 +4,8 @@ import Save from "./classes/Save";
 
 export const celestial3 = new Category({
     name: "Celestial 3-4",
-    color: "nameless-v",
-    desc: "Note: Offline progress is disabled for some of the saves.",
+    theme: "nameless-v",
+    desc: "Celestial 3 - Celestial 5 unlock\nNote: Offline progress is disabled for some of the saves.",
     saves: [
         new Save({
             name: "1e32 RM",

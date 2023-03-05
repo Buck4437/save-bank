@@ -4,8 +4,8 @@ import Save from "./classes/Save";
 
 export const postE4k = new Category({
     name: "Post-e4k EP",
-    color: "dilation",
-    desc: "> 1e4000 EP",
+    theme: "dilation",
+    desc: "> 1e4000 EP, Pre-Reality",
     saves: [
         new Save({
             name: "e4000 EP",

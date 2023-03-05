@@ -9,8 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="stylesheets/core.css">
         <link rel="stylesheet" href="stylesheets/styles.css">
-        <link rel="stylesheet" href="stylesheets/colors.css">
         <link rel="stylesheet" href="stylesheets/loading.css">
+        <link rel="stylesheet" href="stylesheets/colors.css">
+        <link rel="stylesheet" href="stylesheets/category-themes.css">
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -31,7 +32,7 @@
                     <ul class="nav-ul">
                         <li v-for="(tab, i) in tabs" :key="i">
                             <button v-if="i < saves.length"
-                                    :class="[{'is-active': currentTab === tab}, saves[i].color]"
+                                    :class="[{'is-active': currentTab === tab}, 'category-theme-' + saves[i].theme]"
                                     @click="switchTab(tab)">
                                 {{tab}} ({{(saves[i].saves || []).length}})
                             </button>
@@ -64,7 +65,6 @@
             </main>
          </div>
 
-         <!-- Switch when update !-->
          <script src="javascripts/libraries/vue.min.js"></script>
 
          <script src="javascripts/components/BaseMenuButton.js"></script>

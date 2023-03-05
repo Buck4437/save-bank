@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const reality = new Category({
     name: "Reality",
-    color: "reality",
+    theme: "reality",
     desc: "1 RM - Celestial 1\nNote: Offline progress is disabled for some of the saves.\nThere may be variation in glyphs due to RNG.",
     saves: [
         new Save({

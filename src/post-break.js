@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const postBreak = new Category({
     name: "Post-Break",
-    color: "infinity",
+    theme: "infinity",
     desc:
 `Break Infinity - 1e140 IP
 Note: Actual values may differ due to offline IP generation.

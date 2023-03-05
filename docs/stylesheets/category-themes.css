@@ -1,0 +1,172 @@
+.category-theme-normal {
+    border-color: var(--color-antimatter);
+    color: var(--color-antimatter);
+}
+
+.category-theme-normal-background {
+    background-color: var(--color-antimatter-background);
+}
+
+.category-theme-normal.is-active {
+    background-color: var(--color-antimatter);
+    color: var(--background);
+}
+
+.category-theme-infinity {
+    border-color: var(--color-infinity);
+    color: var(--color-infinity);
+}
+
+.category-theme-infinity-background {
+    background-color: var(--color-infinity-background);
+}
+
+.category-theme-infinity.is-active {
+    background-color: var(--color-infinity);
+    color: var(--background);
+}
+
+.category-theme-eternity {
+    border-color: var(--color-eternity);
+    color: var(--color-eternity);
+}
+
+.category-theme-eternity-background {
+    background-color: var(--color-eternity-background);
+}
+
+.category-theme-eternity.is-active {
+    background-color: var(--color-eternity);
+    color: var(--background);
+}
+
+.category-theme-dilation {
+    border-color: var(--color-dilation);
+    color: var(--color-dilation);
+}
+
+.category-theme-dilation-background {
+    background-color: var(--color-dilation-background);
+}
+
+.category-theme-dilation.is-active {
+    background-color: var(--color-dilation);
+    color: var(--background);
+}
+
+.category-theme-reality {
+    border-color: var(--color-reality);
+    color: var(--color-reality);
+}
+
+.category-theme-reality-background {
+    background-color: var(--color-reality-background);
+}
+
+.category-theme-reality.is-active {
+    background-color: var(--color-reality);
+    color: var(--background);
+}
+
+.category-theme-teresa-effarig {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.category-theme-teresa-effarig-background {
+    background: linear-gradient(to right, var(--color-teresa-background), var(--color-effarig-background));
+}
+
+.category-theme-teresa-effarig.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.category-theme-nameless-v {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.category-theme-nameless-v-background {
+    background: linear-gradient(to right, var(--color-nameless-background), var(--color-v-background));
+}
+
+.category-theme-nameless-v.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.category-theme-ra {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.category-theme-ra-background {
+    background-color: var(--color-ra-background)
+}
+
+.category-theme-ra.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.category-theme-ra-laitela {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.category-theme-ra-laitela-background {
+    background: linear-gradient(to right, var(--color-ra-background), var(--color-laitela-background));
+}
+
+.category-theme-ra-laitela.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.category-theme-pelle {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.category-theme-pelle-background {
+    background-color: var(--color-pelle-background);
+    box-shadow: inset 0 0 30px var(--color-celestial);
+}
+
+.category-theme-pelle-background-odd {
+    box-shadow: inset 0 0 30px var(--color-celestial);
+}
+
+.category-theme-pelle.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.category-theme-celestial {
+    border-color: var(--color-celestial);
+    color: var(--color-celestial);
+}
+
+.category-theme-celestial-background {
+    background-color: var(--color-celestial-background);
+}
+
+.category-theme-celestial.is-active {
+    background-color: var(--color-celestial);
+    color: var(--background);
+}
+
+.category-theme-default {
+    border-color: var(--color-default);
+    color: var(--color-default);
+}
+
+.category-theme-default-background {
+    background-color: var(--color-default-background);
+}
+
+.category-theme-default.is-active {
+    background-color: var(--color-default);
+    color: var(--background);
+}

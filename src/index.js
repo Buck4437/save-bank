@@ -11,6 +11,8 @@ import { reality } from "./reality";
 import { celestial1 } from "./celestial-1";
 import { celestial3 } from "./celestial-3";
 import { celestial5 } from "./celestial-5";
+import { imaginary } from "./imaginary";
+import { celestial7 } from "./celestial-7";
 
 export const saves = [
     preInfinity,
@@ -25,5 +27,6 @@ export const saves = [
     reality,
     celestial1,
     celestial3,
-    celestial5
+    celestial5,
+    imaginary
 ];
