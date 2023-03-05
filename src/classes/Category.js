@@ -1,9 +1,12 @@
+import { default as wordShift } from "../methods/word-shift.js"
+
 // eslint-disable-next-line no-unused-vars
 class Category {
     constructor(config = {}) {
         this.name = config.name || "Unnamed Category";
         this.saves = config.saves || [];
         this.desc = config.desc || "";
+        this.glitched = config.glitched || false;
         this.theme = config.theme || "default";
         this.placeholder = config.placeholder || "No save file available.";
 
@@ -14,6 +17,10 @@ class Category {
             }
             saveNames.add(s.name);
         }
+    }
+
+    getDesc() {
+        return this.glitched ? Category.processText(this.desc) : this.desc;
     }
 
     hasSaves() {
@@ -36,6 +43,13 @@ class Category {
             return "";
         }
         return Category.sortingMethods[sortMode].name;
+    }
+
+    static processText(text) {
+        const parsedText = text.replace(/<glitch>([^<]*)<\/glitch>/g, (match, group) => {
+            return wordShift.wordCycle(group.split("&"))
+        });
+        return parsedText;
     }
 
     static sortingMethods = [

@@ -3,11 +3,28 @@ Vue.component("saves-tab", {
         category: Object,
         sortMode: Number
     },
+    data() {
+        return {
+            desc: ""
+        };
+    },
+    methods: {
+        updateText() {
+            this.desc = this.category.getDesc();
+        }
+    },
+    mounted() {
+        this.updateText();
+        // To save performance
+        if (this.category.glitched) {
+            setInterval(this.updateText, 50);
+        }  
+    },
     template: `
     <div class="tab file-list">
         <tab-header :title="category.name">
             <template #description>
-                <span class="pre-formatted">{{category.desc}}</span>
+                <span class="pre-formatted">{{desc}}</span>
             </template>
 
             <template #buttons>

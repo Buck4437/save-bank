@@ -16,11 +16,6 @@ class Save {
         const text = this.data;
         File.download(filename, text);
     }
-
-    preview() {
-        alert(this.data);
-    }
-
 }
 
 export default Save;
