@@ -64,7 +64,8 @@
     --color-v-background: #e9cc5a50;
     --color-ra-background: #8157ca50;
     --color-celestial-background: #433cd390;
-    --color-laitela-background: #10101050;
+    --color-laitela: white;
+    --color-laitela-background: #FFFFFF50;
     --color-pelle-background: #e1043050;
 
     --color-celestial: #5151ec;
