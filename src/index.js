@@ -28,5 +28,6 @@ export const saves = [
     celestial1,
     celestial3,
     celestial5,
-    imaginary
+    imaginary,
+    celestial7
 ];

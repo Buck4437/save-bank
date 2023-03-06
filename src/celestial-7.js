@@ -5,8 +5,8 @@ import Save from "./classes/Save";
 export const celestial7 = new Category({
     name: "Celestial 7",
     glitched: true,
-    desc: "Doomed Reality, spans <glitch>Infinity&Eternity&Dilation</glitch>.\n" +
-            "Offline progress is disabled for some of the saves.\n\n" +
+    desc: "The final <glitch>Celestial&Challenge&Sovereign</glitch>, spanning <glitch>Infinity&Eternity&Dilation</glitch>\n" +
+            "Note: Offline progress is disabled for some of the saves.\n\n" +
             "Let's bring an end to this <glitch>Song&Dance&Charade</glitch>, shall we?",
     theme: "pelle",
     placeholder: "Coming soon...",
