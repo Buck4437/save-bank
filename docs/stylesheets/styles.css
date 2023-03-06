@@ -445,6 +445,10 @@ body.is-active .mask {
         align-items: stretch;
     }
 
+    .file-text-con{
+        width: inherit;
+    }
+
     .file-btn-con {
         flex-direction: column;
         justify-content: space-around;
