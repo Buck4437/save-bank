@@ -11,13 +11,13 @@ export const celestial7 = new Category({
     theme: "pelle",
     placeholder: "Coming soon...",
     saves: [
-        new Save({
-            name: "1",
-            data: "Dold"
-        }),
-        new Save({
-            name: "2",
-            data: "Dold"
-        })
+        // new Save({
+        //     name: "1",
+        //     data: "Dold"
+        // }),
+        // new Save({
+        //     name: "2",
+        //     data: "Dold"
+        // })
     ]
 });
