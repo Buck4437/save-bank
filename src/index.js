@@ -14,7 +14,9 @@ import { celestial5 } from "./celestial-5";
 import { imaginary } from "./imaginary";
 import { celestial7 } from "./celestial-7";
 
-export const saves = [
+import CategoryGrouped from "./classes/CategoryGrouped";
+
+const saves = [
     preInfinity,
     infinity,
     postBreak,
@@ -31,3 +33,8 @@ export const saves = [
     imaginary,
     celestial7
 ];
+
+export {
+    saves,
+    CategoryGrouped
+};

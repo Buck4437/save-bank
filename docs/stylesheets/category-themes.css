@@ -143,18 +143,40 @@
     color: var(--background);
 }
 
-.category-theme-celestial {
-    border-color: var(--color-celestial);
-    color: var(--color-celestial);
+.category-theme-pelle-pre-infinity {
+    border-color: var(--color-antimatter);
+    color: var(--color-antimatter);
 }
 
-.category-theme-celestial-background {
-    background-color: var(--color-celestial-background);
+.category-theme-pelle-pre-infinity-background {
+    background: linear-gradient(to right, var(--color-pelle-background), var(--color-antimatter-background));
 }
 
-.category-theme-celestial.is-active {
-    background-color: var(--color-celestial);
-    color: var(--background);
+.category-theme-pelle-infinity {
+    border-color: var(--color-infinity);
+    color: var(--color-infinity);
+}
+
+.category-theme-pelle-infinity-background {
+    background: linear-gradient(to right, var(--color-pelle-background), var(--color-infinity-background));
+}
+
+.category-theme-pelle-eternity {
+    border-color: var(--color-eternity);
+    color: var(--color-eternity);
+}
+
+.category-theme-pelle-eternity-background {
+    background: linear-gradient(to right, var(--color-pelle-background), var(--color-eternity-background));
+}
+
+.category-theme-pelle-dilation {
+    border-color: var(--color-dilation);
+    color: var(--color-dilation);
+}
+
+.category-theme-pelle-dilation-background {
+    background: linear-gradient(to right, var(--color-pelle-background), var(--color-dilation-background));
 }
 
 .category-theme-default {

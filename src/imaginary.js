@@ -4,7 +4,7 @@ import Save from "./classes/Save";
 
 export const imaginary = new Category({
     name: "1e1000 RM",
-    desc: "1e1000 RM - Celestial 7\n" +
+    desc: "1e1000 RM - Celestial 7 unlock\n" +
           "Note: The actual amount of iM may be inaccurate depending on your offline progress settings." +
           "\nOffline progress is disabled for some of the saves.",
     theme: "ra-laitela",

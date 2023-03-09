@@ -1,23 +1,25 @@
 /* eslint-disable max-len */
-import Category from "./classes/Category";
-import Save from "./classes/Save";
+import CategoryGrouped from "./classes/CategoryGrouped";
 
-export const celestial7 = new Category({
+import { preInfinity } from "./celestial-7-pre-infinity";
+import { infinity } from "./celestial-7-infinity";
+import { eternity } from "./celestial-7-eternity";
+import { eternityChallenge } from "./celestial-7-eternity-challenge";
+import { timeDilation } from "./celestial-7-time-dilation";
+
+export const celestial7 = new CategoryGrouped({
     name: "Celestial 7",
-    // glitched: true,
-    // desc: "The final <glitch>Celestial&Challenge&Sovereign</glitch>, spanning <glitch>Infinity&Eternity&Dilation</glitch>\n" +
-    //         "Note: Offline progress is disabled for some of the saves.\n\n" +
-    //         "Let's bring an end to this <glitch>Song&Dance&Charade</glitch>, shall we?",
     theme: "pelle",
+    glitched: true,
+    desc: "The final <glitch>Celestial&Challenge&Sovereign</glitch>, spanning <glitch>Infinity&Eternity&Dilation</glitch>\n" +
+            "Note: Offline progress is disabled for some of the saves.\n\n" +
+            "Let's bring an end to this <glitch>Song&Dance&Charade</glitch>, shall we?",
     placeholder: "Coming soon...",
     saves: [
-        // new Save({
-        //     name: "1",
-        //     data: "Dold"
-        // }),
-        // new Save({
-        //     name: "2",
-        //     data: "Dold"
-        // })
+        preInfinity,
+        infinity,
+        eternity,
+        eternityChallenge,
+        timeDilation
     ]
 });
