@@ -13,10 +13,11 @@ B. Making new category
 
 C. Building
     0. Install node.js + npm
-    1. Navigate to this folder using any CLI
-    1-1. If node_modules are not installed, install webpack using "npm install webpack"
-    2. Do "npm run build". If everything went right it will bundle everything into a single file
-    3. Load the save bank page to ensure that stuff works properly
+    1. Open the root folder using any terminal
+    2. There are a couple of dependencies you need to install.
+       Run "npm install" to automatically install everything.
+    3. Do "npm run build". If everything went right it will bundle everything into a single file
+    4. Load the save bank page to ensure that stuff works properly
 
 D. Adding new colours (for categories)
     1. Go to docs/colors.css

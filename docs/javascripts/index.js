@@ -32,6 +32,9 @@ new Vue({
         setSettings(prop, data) {
             this.userData.settings[prop] = data;
         },
+        downloadAllSaves() {
+            Saves.downloadAllSaves(this.saves);
+        },
         switchTab(name = this.tabs[0]) {
             this.currentTab = name;
             // Close the menu

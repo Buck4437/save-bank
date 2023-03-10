@@ -60,13 +60,15 @@
 
                     <settings-tab v-show="currentTab === 'Settings'"
                                   :settings="userData.settings"
-                                  @set-settings="setSettings"></settings-tab>
+                                  @set-settings="setSettings"
+                                  @download-all="downloadAllSaves"></settings-tab>
                 </div>
             </main>
          </div>
 
-         <script src="javascripts/libraries/vue.min.js"></script>
+         <script src="saves.min.js" charset="utf-8"></script>
 
+         <script src="javascripts/libraries/vue.min.js"></script>
 
          <script src="javascripts/components/BaseMenuButton.js"></script>
          <script src="javascripts/components/SaveFile.js"></script>
@@ -78,10 +80,7 @@
          <script src="javascripts/components/TooltipButton.js"></script>
          <script src="javascripts/components/TopBar.js"></script>
 
-         <script src="saves.min.js" charset="utf-8"></script>
-
          <script src="javascripts/utils/Theme.js"></script>
-         <script src="javascripts/utils/File.js"></script>
          <script src="javascripts/utils/Url.js"></script>
 
          <script src="javascripts/update.js"></script>

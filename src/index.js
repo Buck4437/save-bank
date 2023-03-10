@@ -14,6 +14,7 @@ import { imaginary } from "./imaginary";
 import { celestial7 } from "./celestial-7";
 
 import CategoryGrouped from "./classes/CategoryGrouped";
+import File from "./classes/File";
 
 const saves = [
     preInfinity,
@@ -32,7 +33,10 @@ const saves = [
     celestial7
 ];
 
+const downloadAllSaves = File.downloadAllSaves;
+
 export {
     saves,
-    CategoryGrouped
+    CategoryGrouped,
+    downloadAllSaves
 };

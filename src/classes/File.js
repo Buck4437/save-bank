@@ -1,3 +1,6 @@
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
+
 // eslint-disable-next-line no-unused-vars
 class File {
 
@@ -35,4 +38,32 @@ class File {
         document.body.removeChild(element);
     }
 
+    static downloadAllSaves(saves) {
+        const zip = new JSZip();
+        for (const category of saves) {
+            if (category instanceof Saves.CategoryGrouped) {
+                for (const group of category.saves) {
+                    const folder = zip.folder(category.name).folder(group.name);
+                    File.addSavesToFolder(folder, group.saves);
+                }
+            } else {
+                const folder = zip.folder(category.name);
+                File.addSavesToFolder(folder, category.saves);
+            }
+        }
+
+        zip.generateAsync({ type: "blob" })
+            .then(blob => {
+                saveAs(blob, "AD Save Bank - All Saves.zip");
+            });
+    }
+
+    static addSavesToFolder(folder, saves) {
+        for (const save of saves) {
+            folder.file(`${save.name.replace(/[/]/ug, ", ")}.txt`, `${save.data}\n`);
+        }
+    }
+
 }
+
+export default File;

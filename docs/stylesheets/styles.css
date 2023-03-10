@@ -315,10 +315,17 @@ body.is-active .mask {
     flex-direction: column;
 }
 
-.settings-tab>button{
+.settings-btn-con {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-tab button{
     align-self: flex-start;
     width: 192px;
     min-height: 96px;
+    margin-right: 16px;
     margin-bottom: 16px;
 }
 
@@ -499,5 +506,11 @@ body.is-active .mask {
         flex-grow: 0;
         align-self: center;
         flex-direction: column;
+    }
+
+    .settings-btn-con {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

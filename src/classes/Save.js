@@ -1,4 +1,5 @@
-import { default as wordShift } from "../methods/word-shift.js"
+import { default as wordShift } from "../methods/word-shift.js";
+import File from "../classes/File.js";
 
 // eslint-disable-next-line no-unused-vars
 class Save {

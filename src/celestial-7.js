@@ -11,7 +11,7 @@ export const celestial7 = new CategoryGrouped({
     name: "Celestial 7",
     theme: "pelle",
     glitched: true,
-    desc: "The final <glitch>Celestial&Challenge&Sovereign</glitch>, including saves from <glitch>Infinity&Eternity&Dilation</glitch>\n" +
+    desc: "The final <glitch>Celestial&Challenge&Sovereign</glitch>\n" +
             "Note: Offline progress is disabled for some of the saves.\n\n" +
             "Let's bring an end to this <glitch>Song&Dance&Charade</glitch>, shall we?",
     placeholder: "Coming soon...",
