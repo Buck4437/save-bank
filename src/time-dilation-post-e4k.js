@@ -1,11 +1,10 @@
 /* eslint-disable max-len */
-import Category from "./classes/Category";
+import Group from "./classes/Group";
 import Save from "./classes/Save";
 
-export const postE4k = new Category({
-    name: "Post-e4k EP",
+export const postE4k = new Group({
+    name: "Over 1e4000 EP",
     theme: "dilation",
-    desc: "> 1e4000 EP, Pre-Reality",
     saves: [
         new Save({
             name: "e4000 EP",

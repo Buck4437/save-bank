@@ -34,7 +34,7 @@
                             <button v-if="i < saves.length"
                                     :class="[{'is-active': currentTab === tab}, 'category-theme-' + saves[i].theme]"
                                     @click="switchTab(tab)">
-                                {{tab}} ({{(saves[i].saves || []).length}})
+                                {{tab}} ({{saves[i].getSaveCount()}})
                             </button>
                             <button v-else
                                     :class="{'is-active': currentTab === tab}"
@@ -60,25 +60,27 @@
 
                     <settings-tab v-show="currentTab === 'Settings'"
                                   :settings="userData.settings"
-                                  @set-settings="setSettings"></settings-tab>
+                                  @set-settings="setSettings"
+                                  @download-all="downloadAllSaves"></settings-tab>
                 </div>
             </main>
          </div>
+
+         <script src="saves.min.js" charset="utf-8"></script>
 
          <script src="javascripts/libraries/vue.min.js"></script>
 
          <script src="javascripts/components/BaseMenuButton.js"></script>
          <script src="javascripts/components/SaveFile.js"></script>
+         <script src="javascripts/components/SavesList.js"></script>
+         <script src="javascripts/components/SavesListGrouped.js"></script>
          <script src="javascripts/components/SavesTab.js"></script>
          <script src="javascripts/components/SettingsTab.js"></script>
          <script src="javascripts/components/TabHeader.js"></script>
          <script src="javascripts/components/TooltipButton.js"></script>
          <script src="javascripts/components/TopBar.js"></script>
 
-         <script src="saves.min.js" charset="utf-8"></script>
-
          <script src="javascripts/utils/Theme.js"></script>
-         <script src="javascripts/utils/File.js"></script>
          <script src="javascripts/utils/Url.js"></script>
 
          <script src="javascripts/update.js"></script>

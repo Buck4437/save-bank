@@ -246,32 +246,16 @@ body.is-active .mask {
     margin-bottom: 16px;
 }
 
-.search-bar {
-    display: flex;
-    margin-bottom: 16px;
+/* groups */
+
+.group-header {
+    font-size: 20px;
+    padding: 8px;
     border: 2px solid var(--color);
-}
-
-.search-bar-icon {
-    width: 24px;
-    height: 24px;
-    margin: 4px;
-}
-
-.search-bar-seperator {
-    width: 2px;
-    background-color: var(--color);
-}
-
-.search-bar-input {
+    margin-bottom: 8px;
     width: 100%;
-    height: 30px;
-    padding: 0 8px;
-    background-color: var(--background);
-    color: var(--color);
-    border: none;
+    text-align: left;
 }
-
 
 /* saves */
 
@@ -331,10 +315,17 @@ body.is-active .mask {
     flex-direction: column;
 }
 
-.settings-tab>button{
+.settings-btn-con {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-tab button{
     align-self: flex-start;
     width: 192px;
     min-height: 96px;
+    margin-right: 16px;
     margin-bottom: 16px;
 }
 
@@ -515,5 +506,11 @@ body.is-active .mask {
         flex-grow: 0;
         align-self: center;
         flex-direction: column;
+    }
+
+    .settings-btn-con {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

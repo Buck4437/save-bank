@@ -1,3 +1,6 @@
+import { default as wordShift } from "../methods/word-shift.js";
+import File from "../classes/File.js";
+
 // eslint-disable-next-line no-unused-vars
 class Save {
     constructor(config) {
@@ -5,6 +8,11 @@ class Save {
         this.desc = config.desc || "No description provided.";
         this.data = config.data || "";
         this.author = config.author || "Unknown";
+        this.glitched = config.glitched || false;
+    }
+
+    getDesc() {
+        return this.glitched ? wordShift.processText(this.desc) : this.desc;
     }
 
     copy() {

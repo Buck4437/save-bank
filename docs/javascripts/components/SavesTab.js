@@ -5,20 +5,38 @@ Vue.component("saves-tab", {
     },
     data() {
         return {
-            desc: ""
+            desc: "",
+            interval: null
         };
+    },
+    computed: {
+        isGroupedCategory() {
+            return this.category instanceof Saves.CategoryGrouped;
+        }
     },
     methods: {
         updateText() {
             this.desc = this.category.getDesc();
+        },
+        mountInterval() {
+            // To save performance
+            if (this.category.glitched) {
+                this.interval = setInterval(this.updateText, 50);
+            }  
+        }
+    },
+    watch: {
+        category() {
+            if (this.interval !== null) {
+                clearInterval(this.interval);
+            }
+            this.updateText();
+            this.mountInterval();
         }
     },
     mounted() {
         this.updateText();
-        // To save performance
-        if (this.category.glitched) {
-            setInterval(this.updateText, 50);
-        }  
+        this.mountInterval();
     },
     template: `
     <div class="tab file-list">
@@ -37,13 +55,13 @@ Vue.component("saves-tab", {
              class="no-saves">
             {{category.placeholder}}
         </div>
+        <div v-else-if="isGroupedCategory">
+            <saves-list-grouped :category="category"
+                                :sortMode="sortMode"/>
+        </div>
         <div v-else>
-            <save-file v-for="(saveFile, i) in category.getSortedSaves(sortMode)"
-                       class="save-file"
-                       :save-file="saveFile"
-                       :class="'category-theme-' + category.theme + (i % 2 == 1 ? '-background' : '-background-odd')"
-                       :key="i">
-            </save-file>
+            <saves-list :category="category"
+                        :sortMode="sortMode"/>
         </div>
     </div>
     `

@@ -9,7 +9,9 @@ class Category {
         this.glitched = config.glitched || false;
         this.theme = config.theme || "default";
         this.placeholder = config.placeholder || "No save file available.";
+    }
 
+    checkSaveNameRepeat() {
         const saveNames = new Set();
         for (const s of this.saves) {
             if (saveNames.has(s.name)) {
@@ -20,11 +22,15 @@ class Category {
     }
 
     getDesc() {
-        return this.glitched ? Category.processText(this.desc) : this.desc;
+        return this.glitched ? wordShift.processText(this.desc) : this.desc;
+    }
+
+    getSaveCount() {
+        return this.saves.length;
     }
 
     hasSaves() {
-        return this.saves.length > 0;
+        return this.getSaveCount() > 0;
     }
 
     getMaxSortMode() {
@@ -43,13 +49,6 @@ class Category {
             return "";
         }
         return Category.sortingMethods[sortMode].name;
-    }
-
-    static processText(text) {
-        const parsedText = text.replace(/<glitch>([^<]*)<\/glitch>/g, (match, group) => {
-            return wordShift.wordCycle(group.split("&"))
-        });
-        return parsedText;
     }
 
     static sortingMethods = [

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 // This entirety of file was borrowed from SpectralFlame, who sent me the code on Discord.
+// I have added a processText helper function below to parse template text.
 
 function predictableRandom(x) {
     let start = Math.pow(x % 97, 4.3) * 232344573;
@@ -67,5 +68,11 @@ export default {
         if (param >= 1) return second;
         return first.substring(0, first.length * (1 - param)) +
         second.substring(second.length * (1 - param), second.length);
+    },
+
+    // Process text and add glitch effects if needed
+    processText(text) {
+        // eslint-disable-next-line no-unused-vars
+        return text.replace(/<glitch>([^<]*)<\/glitch>/ug, (_match, group) => this.wordCycle(group.split("&")));
     }
 };

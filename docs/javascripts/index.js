@@ -11,7 +11,7 @@ new Vue({
         },
         currentTab: "",
         sortMode: 0,
-        version: "v1.2.6"
+        version: "v1.3.0"
     },
     computed: {
         tabs() {
@@ -31,6 +31,9 @@ new Vue({
         },
         setSettings(prop, data) {
             this.userData.settings[prop] = data;
+        },
+        downloadAllSaves() {
+            Saves.downloadAllSaves(this.saves);
         },
         switchTab(name = this.tabs[0]) {
             this.currentTab = name;
@@ -87,6 +90,9 @@ new Vue({
         }
     },
     mounted() {
+        this.saves.forEach(x => x.checkSaveNameRepeat);
+        console.log("Check finished.");
+
         const data = JSON.parse(localStorage.getItem("saveBankData"));
         this.userData = this.saveFixer(data, this.userData);
         if (!this.updateTabFromHash()) {
