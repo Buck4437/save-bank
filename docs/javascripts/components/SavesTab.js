@@ -5,7 +5,8 @@ Vue.component("saves-tab", {
     },
     data() {
         return {
-            desc: ""
+            desc: "",
+            interval: null
         };
     },
     computed: {
@@ -16,14 +17,26 @@ Vue.component("saves-tab", {
     methods: {
         updateText() {
             this.desc = this.category.getDesc();
+        },
+        mountInterval() {
+            // To save performance
+            if (this.category.glitched) {
+                this.interval = setInterval(this.updateText, 50);
+            }  
+        }
+    },
+    watch: {
+        category() {
+            if (this.interval !== null) {
+                clearInterval(this.interval);
+            }
+            this.updateText();
+            this.mountInterval();
         }
     },
     mounted() {
         this.updateText();
-        // To save performance
-        if (this.category.glitched) {
-            setInterval(this.updateText, 50);
-        }  
+        this.mountInterval();
     },
     template: `
     <div class="tab file-list">

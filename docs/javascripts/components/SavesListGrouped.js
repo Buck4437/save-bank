@@ -10,7 +10,7 @@ Vue.component("saves-list-grouped", {
     },
     methods: {
         arrow(isShown) {
-            return isShown ? "▲" : "▼";
+            return isShown ? "▼" : "▲";
         },
         getSaveTheme(group, i) {
             if (i % 2 === 1) {

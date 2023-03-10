@@ -129,15 +129,6 @@
     color: var(--color-celestial);
 }
 
-.category-theme-pelle-background {
-    background-color: var(--color-pelle-background);
-    box-shadow: inset 0 0 30px var(--color-celestial);
-}
-
-.category-theme-pelle-background-odd {
-    box-shadow: inset 0 0 30px var(--color-celestial);
-}
-
 .category-theme-pelle.is-active {
     background-color: var(--color-celestial);
     color: var(--background);
