@@ -284,7 +284,13 @@ body.is-active .mask {
 
 .file-desc{
     line-height: 1.6;
-    margin: 8px;
+    margin: 8px 8px 16px;
+    font-style: italic;
+}
+
+.file-author{
+    font-size: 12px;
+    margin: 8px 8px;
     font-style: italic;
 }
 
