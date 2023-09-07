@@ -7,6 +7,11 @@ Vue.component("save-file", {
             desc: ""
         };
     },
+    computed: {
+        hasAuthor() {
+            return this.saveFile.author;
+        }
+    },
     methods: {
         updateText() {
             this.desc = this.saveFile.getDesc();
@@ -36,6 +41,7 @@ Vue.component("save-file", {
         <div class="file-text-con">
             <div class="file-name">{{saveFile.name}}</div>
             <div class="pre-formatted file-desc">{{desc}}</div>
+            <div v-if="hasAuthor" class="file-author">Submitted by {{saveFile.author}}</div>
         </div>
         <div class="file-btn-con">
             <tooltip-button class="file-btn" tooltip="Copied!" @click="saveFile.copy()">
