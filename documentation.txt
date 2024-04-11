@@ -1,3 +1,5 @@
+** Simple documentation for getting started **
+
 A. Adding saves
     1. Go to src, you will see a bunch of .js modules
     2. Select the correct module and follow the format of other saves

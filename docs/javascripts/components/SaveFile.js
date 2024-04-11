@@ -9,7 +9,7 @@ Vue.component("save-file", {
     },
     computed: {
         hasAuthor() {
-            return this.saveFile.author;
+            return this.saveFile.author !== "";
         }
     },
     methods: {
