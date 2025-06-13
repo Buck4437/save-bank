@@ -170,6 +170,20 @@
     background: linear-gradient(to right, var(--color-pelle-background), var(--color-dilation-background));
 }
 
+.category-theme-postgame {
+    border-color: var(--color-postgame);
+    color: var(--color-postgame);
+}
+
+.category-theme-postgame-background {
+    background-color: var(--color-postgame-background);
+}
+
+.category-theme-postgame.is-active {
+    background-color: var(--color-postgame);
+    color: var(--background);
+}
+
 .category-theme-default {
     border-color: var(--color-default);
     color: var(--color-default);

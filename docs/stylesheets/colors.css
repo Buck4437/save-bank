@@ -38,6 +38,9 @@
     --color-celestial: #00bcd4;
     --color-celestial-background: #00bcd450;
 
+    --color-postgame: #ffff00;
+    --color-postgame-background: #ffff0050;
+
     --color-default: #d9d9d9;
     --color-default-background: #d9d9d950;
 }
@@ -70,6 +73,9 @@
 
     --color-celestial: #5151ec;
     --color-celestial-background: #5151ec50;
+
+    --color-postgame: #d9b111;
+    --color-postgame-background: #d9b11150;
 
     --color-default: #4f5957;
     --color-default-background: #4f595750;
