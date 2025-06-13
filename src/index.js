@@ -12,6 +12,7 @@ import { celestial3 } from "./celestial-3";
 import { celestial5 } from "./celestial-5";
 import { imaginary } from "./imaginary";
 import { celestial7 } from "./celestial-7";
+import { metagame } from "./metagame";
 
 import CategoryGrouped from "./classes/CategoryGrouped";
 import File from "./classes/File";
@@ -30,7 +31,8 @@ const saves = [
     celestial3,
     celestial5,
     imaginary,
-    celestial7
+    celestial7,
+    metagame
 ];
 
 const downloadAllSaves = File.downloadAllSaves;
