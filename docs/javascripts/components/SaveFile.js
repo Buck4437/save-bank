@@ -31,7 +31,7 @@ Vue.component("save-file", {
         }
     },
     watch: {
-        category () {
+        category() {
             this.onSaveChange();
         },  
         saveFile() {
