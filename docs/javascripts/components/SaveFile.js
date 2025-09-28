@@ -21,15 +21,21 @@ Vue.component("save-file", {
             if (this.saveFile.glitched) {
                 this.interval = setInterval(this.updateText, 50);
             }  
-        }
-    },
-    watch: {
-        category() {
+        },
+        onSaveChange() {
             if (this.interval !== null) {
                 clearInterval(this.interval);
             }
             this.updateText();
             this.mountInterval();
+        }
+    },
+    watch: {
+        category () {
+            this.onSaveChange();
+        },  
+        saveFile() {
+            this.onSaveChange();
         }
     },
     mounted() {
